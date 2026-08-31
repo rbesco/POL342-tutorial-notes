@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials</title>
+  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials" />
+  
+  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  
+
+<meta name="author" content="Jiajia Zhou" />
+
+
+<meta name="date" content="2026-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducing-project-datasets.html"/>
+<link rel="next" href="communicating-results.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html"><i class="fa fa-check"></i><b>1</b> Getting Started With Data Sets</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#understanding-data-sets"><i class="fa fa-check"></i><b>1.1</b> Understanding data sets</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#basics-of-a-function"><i class="fa fa-check"></i><b>1.2</b> Basics of a function</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#consider-the-first-variable-in-the-data-set"><i class="fa fa-check"></i>Consider the first variable in the data set</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#next-variables-reading-and-math."><i class="fa fa-check"></i>Next variables, “reading” and “math”.</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#measures-of-dispersion"><i class="fa fa-check"></i>Measures of dispersion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#what-is-r-what-is-coding"><i class="fa fa-check"></i>What is R? What is coding?</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#integrated-development-environment-ide-editor-rstudio"><i class="fa fa-check"></i>Integrated Development Environment (IDE) editor: RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>2.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#a-sophisticated-calculator"><i class="fa fa-check"></i>A sophisticated calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#base-r-vs.-packages"><i class="fa fa-check"></i>Base R vs. packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#working-directory-and-importing-data"><i class="fa fa-check"></i><b>2.3</b> Working directory and importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class"><i class="fa fa-check"></i><b>3.1</b> Before the start of each class</a></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
+<li class="chapter" data-level="3.5" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#tidyverse-1"><i class="fa fa-check"></i><b>3.5</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes"><i class="fa fa-check"></i>Pipes</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#piping-data-frames"><i class="fa fa-check"></i>Piping data frames</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#filter"><i class="fa fa-check"></i>filter()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#reframe"><i class="fa fa-check"></i>reframe()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#group_by"><i class="fa fa-check"></i>group_by()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#mutate"><i class="fa fa-check"></i>mutate()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#select"><i class="fa fa-check"></i>select()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#arrange"><i class="fa fa-check"></i>arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#summary"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#more-resources"><i class="fa fa-check"></i><b>3.7</b> More resources</a></li>
+<li class="chapter" data-level="3.8" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#credits-1"><i class="fa fa-check"></i><b>3.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#before-the-start-of-each-class-1"><i class="fa fa-check"></i><b>4.1</b> Before the start of each class</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#download-files-from-quercus"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#install-new-package-and-load-all-packages-required-for-this-class"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#recap-and-some-additional-basics"><i class="fa fa-check"></i><b>4.3</b> Recap and some additional basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#r-scripts"><i class="fa fa-check"></i>R scripts</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#syntax-for-functions-functionnamearguments"><i class="fa fa-check"></i>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#arguments-are-function-specific"><i class="fa fa-check"></i>Arguments are function-specific</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#argument-names"><i class="fa fa-check"></i>Argument names</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#if_else-function"><i class="fa fa-check"></i><code>if_else()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#data-visualization-1"><i class="fa fa-check"></i><b>4.4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><code>ggplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-categorical-variables"><i class="fa fa-check"></i><b>4.5</b> Plots for categorical variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-nominalordinal"><i class="fa fa-check"></i>Univariate: nominal/ordinal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-nominalordinal-variables"><i class="fa fa-check"></i>Bivariate: two nominal/ordinal variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-interval-variables"><i class="fa fa-check"></i><b>4.6</b> Plots for interval variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#survey-experiment-data"><i class="fa fa-check"></i>Survey experiment data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-interval"><i class="fa fa-check"></i>Univariate: interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-nominalordinal-and-interval"><i class="fa fa-check"></i>Bivariate: nominal/ordinal and interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-interval-variables"><i class="fa fa-check"></i>Bivariate: two interval variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization.html"><a href="data-visualization.html#credits-2"><i class="fa fa-check"></i><b>4.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Regression and confidence intervals</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#before-the-start-of-class"><i class="fa fa-check"></i><b>5.1</b> Before the start of class</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#download-files-from-quercus-1"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#install-new-package-and-load-all-packages-required-for-this-class-1"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-data-1"><i class="fa fa-check"></i>Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#recap-1"><i class="fa fa-check"></i><b>5.2</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#converting-variable-to-factor-class"><i class="fa fa-check"></i>Converting variable to factor class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#determining-plot-based-on-type-of-variable"><i class="fa fa-check"></i>Determining plot based on type of variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#experimental-study-data"><i class="fa fa-check"></i><b>5.3</b> Experimental study data</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcomes-of-interest-in-the-study"><i class="fa fa-check"></i>Outcomes of interest in the study:</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#treatment"><i class="fa fa-check"></i>Treatment</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#data"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#difference-in-means-t.test"><i class="fa fa-check"></i><b>5.4</b> Difference in means – <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#syntax"><i class="fa fa-check"></i>Syntax</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-1-beliefs-about-experts"><i class="fa fa-check"></i>Outcome 1: Beliefs about experts</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-2-policy-preferences"><i class="fa fa-check"></i>Outcome 2: Policy preferences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#visualizing-treatment-effects"><i class="fa fa-check"></i><b>5.5</b> Visualizing treatment effects</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#extract-the-output-using-tidy-from-package-broom"><i class="fa fa-check"></i>Extract the output using <code>tidy()</code> from package <code>broom</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#interpreting-the-effect"><i class="fa fa-check"></i>Interpreting the effect</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#estimates-and-confidence-intervals-geom_pointrange"><i class="fa fa-check"></i>Estimates and confidence intervals – geom_pointrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#linear-regression"><i class="fa fa-check"></i><b>5.6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-a-different-dataset-some-variables-from-varieties-of-democracies-data-set"><i class="fa fa-check"></i>Load a different dataset (some variables from Varieties of Democracies data set)</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#v-dem-codebook"><i class="fa fa-check"></i>V-Dem codebook</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#bivariate-relationship-using-a-scatter-plot-geom_point"><i class="fa fa-check"></i>Bivariate relationship using a scatter plot <code>geom_point()</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#regression-estimates-similar-to-survey-treatment-visualization"><i class="fa fa-check"></i>Regression estimates (similar to survey treatment visualization)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#credits-3"><i class="fa fa-check"></i><b>5.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html"><i class="fa fa-check"></i><b>6</b> Introducing project datasets</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets"><i class="fa fa-check"></i>Download project datasets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w8.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W8.R</code>) and put everything in your R project folder</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#overview-use-of-data-sets"><i class="fa fa-check"></i><b>6.2</b> Overview: Use of data sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets"><i class="fa fa-check"></i>Step 1: Select one of the four data sets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set"><i class="fa fa-check"></i>Step 3: Trim down the data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#vdem"><i class="fa fa-check"></i><b>6.3</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-1"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set-select-a-year"><i class="fa fa-check"></i>Step 3: Trim down the data set (select a year)</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-1"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#world-values-survey-wave-7-2017-2022"><i class="fa fa-check"></i><b>6.4</b> World Values Survey (Wave 7, 2017-2022)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-2"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-2"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#other-countries"><i class="fa fa-check"></i>Other countries</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-1"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#asian-barometer-wave-5-2018-2021"><i class="fa fa-check"></i><b>6.5</b> Asian Barometer (Wave 5, 2018-2021)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-3"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-1"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-3"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#canadian-election-study-2021"><i class="fa fa-check"></i><b>6.6</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-4"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-2"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-4"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-2"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html"><i class="fa fa-check"></i><b>7</b> Crosstabs using continuous variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#set-up-1"><i class="fa fa-check"></i><b>7.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r"><i class="fa fa-check"></i>Make sure you have your project datasets and <code>W9.R</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-libraries-1"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#vdem-1"><i class="fa fa-check"></i><b>7.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-data-2"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut"><i class="fa fa-check"></i>Create ordinal categories using function <code>cut()</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#skewed-variables"><i class="fa fa-check"></i>Skewed variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#load-libraries-3"><i class="fa fa-check"></i><b>9.1</b> Load libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="" target="blank"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">POL342 R Tutorials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="crosstabs-using-continuous-variables" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Crosstabs using continuous variables<a href="crosstabs-using-continuous-variables.html#crosstabs-using-continuous-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Goals for today’s class:
+<ul>
+<li>Transforming continuous variables into ordinal variables</li>
+<li>Creating and saving crosstab</li>
+</ul></li>
+</ul>
+<div id="set-up-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Set-up<a href="crosstabs-using-continuous-variables.html#set-up-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="make-sure-you-have-your-project-datasets-and-w9.r" class="section level3 unnumbered hasAnchor">
+<h3>Make sure you have your project datasets and <code>W9.R</code><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/w8.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="load-libraries-1" class="section level3 unnumbered hasAnchor">
+<h3>Load libraries<a href="crosstabs-using-continuous-variables.html#load-libraries-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="crosstabs-using-continuous-variables.html#cb247-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb247-2"><a href="crosstabs-using-continuous-variables.html#cb247-2" tabindex="-1"></a><span class="co"># install.packages(&quot;haven&quot;) # if you haven&#39;t installed the package</span></span>
+<span id="cb247-3"><a href="crosstabs-using-continuous-variables.html#cb247-3" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb247-4"><a href="crosstabs-using-continuous-variables.html#cb247-4" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
+</div>
+</div>
+<div id="vdem-1" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> VDem<a href="crosstabs-using-continuous-variables.html#vdem-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-data-2" class="section level3 unnumbered hasAnchor">
+<h3>Load Data<a href="crosstabs-using-continuous-variables.html#load-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="crosstabs-using-continuous-variables.html#cb248-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>, </span>
+<span id="cb248-2"><a href="crosstabs-using-continuous-variables.html#cb248-2" tabindex="-1"></a>          <span class="st">&quot;v2x_libdem&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>,<span class="st">&quot;v2mefemjrn&quot;</span>, <span class="st">&quot;v2pepwrgen&quot;</span>)</span>
+<span id="cb248-3"><a href="crosstabs-using-continuous-variables.html#cb248-3" tabindex="-1"></a></span>
+<span id="cb248-4"><a href="crosstabs-using-continuous-variables.html#cb248-4" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/VDem_post2000.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb248-5"><a href="crosstabs-using-continuous-variables.html#cb248-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
+<span id="cb248-6"><a href="crosstabs-using-continuous-variables.html#cb248-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2010</span>) </span></code></pre></div>
+<ul>
+<li>Variables selected:
+<ul>
+<li><code>v2x_libdem</code>: Liberal democracy index</li>
+<li><code>e_gdppc</code>: GDP per capita</li>
+<li><code>v2mefemjrn</code>: % of female journalist</li>
+<li><code>v2pepwrgen</code>: Power distributed by gender</li>
+</ul></li>
+</ul>
+</div>
+<div id="create-ordinal-categories-using-function-cut" class="section level3 unnumbered hasAnchor">
+<h3>Create ordinal categories using function <code>cut()</code><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="crosstabs-using-continuous-variables.html#cb249-1" tabindex="-1"></a>?cut <span class="co"># pull up the documentation for `cut()`</span></span></code></pre></div>
+<p><img src="images/w8_cut.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="consider-this-variable-v2mefemjrn-of-female-journalists" class="section level4 unnumbered hasAnchor">
+<h4>Consider this variable: v2mefemjrn (% of female journalists)<a href="crosstabs-using-continuous-variables.html#consider-this-variable-v2mefemjrn-of-female-journalists" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/w8_vdemExample.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="crosstabs-using-continuous-variables.html#cb250-1" tabindex="-1"></a><span class="fu">head</span>(vdem_selected<span class="sc">$</span>v2mefemjrn)</span></code></pre></div>
+<pre><code>## [1] 36.857 39.000 50.294 40.167 36.406 42.688</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="crosstabs-using-continuous-variables.html#cb252-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb252-2"><a href="crosstabs-using-continuous-variables.html#cb252-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb252-3"><a href="crosstabs-using-continuous-variables.html#cb252-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## [1] (24.4,38.5] (38.5,52.5] (38.5,52.5] (38.5,52.5] (24.4,38.5] (38.5,52.5]
+## Levels: (10.3,24.4] (24.4,38.5] (38.5,52.5] (52.5,66.7]</code></pre>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="crosstabs-using-continuous-variables.html#cb254-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb254-2"><a href="crosstabs-using-continuous-variables.html#cb254-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">70</span>)) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb254-3"><a href="crosstabs-using-continuous-variables.html#cb254-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## [1] (30,50] (30,50] (50,70] (30,50] (30,50] (30,50]
+## Levels: (10,30] (30,50] (50,70]</code></pre>
+</div>
+<div id="create-a-new-dataframe-with-new-ordinal-variables" class="section level4 unnumbered hasAnchor">
+<h4>Create a new dataframe with new ordinal variables<a href="crosstabs-using-continuous-variables.html#create-a-new-dataframe-with-new-ordinal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="crosstabs-using-continuous-variables.html#cb256-1" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb256-2"><a href="crosstabs-using-continuous-variables.html#cb256-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v2mefemjrn_ord4 =</span> <span class="fu">cut</span>(v2mefemjrn, </span>
+<span id="cb256-3"><a href="crosstabs-using-continuous-variables.html#cb256-3" tabindex="-1"></a>                              <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb256-4"><a href="crosstabs-using-continuous-variables.html#cb256-4" tabindex="-1"></a>         <span class="at">v2pepwrgen_ord4 =</span> <span class="fu">cut</span>(v2pepwrgen, </span>
+<span id="cb256-5"><a href="crosstabs-using-continuous-variables.html#cb256-5" tabindex="-1"></a>                                 <span class="at">breaks =</span> <span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="crosstabs" class="section level4 unnumbered hasAnchor">
+<h4>Crosstabs<a href="crosstabs-using-continuous-variables.html#crosstabs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="crosstabs-using-continuous-variables.html#cb257-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
+<span id="cb257-2"><a href="crosstabs-using-continuous-variables.html#cb257-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
+<span id="cb257-3"><a href="crosstabs-using-continuous-variables.html#cb257-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+v2mefemjrn_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+v2pepwrgen_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-1.97,-0.622]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-0.622,0.724]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.724,2.07]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(2.07,3.42]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(10.3,24.4]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">50 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">18.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">11.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">28</span><br><span style="color:#339933;">15.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.4,38.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">43.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">51.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">37</span><br><span style="color:#339933;">38.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">68</span><br><span style="color:#339933;">38.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(38.5,52.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">6.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">25.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">40</span><br><span style="color:#339933;">41.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">78.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">70</span><br><span style="color:#339933;">39.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(52.5,66.7]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">8.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12</span><br><span style="color:#339933;">6.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">16</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">96</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">23</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=39.809 · df=9 · Cramer’s V=0.273 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="export-table" class="section level4 unnumbered hasAnchor">
+<h4>Export table<a href="crosstabs-using-continuous-variables.html#export-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="crosstabs-using-continuous-variables.html#cb258-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
+<span id="cb258-2"><a href="crosstabs-using-continuous-variables.html#cb258-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
+<span id="cb258-3"><a href="crosstabs-using-continuous-variables.html#cb258-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb258-4"><a href="crosstabs-using-continuous-variables.html#cb258-4" tabindex="-1"></a>         <span class="at">file=</span><span class="st">&quot;crosstabs.html&quot;</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+v2mefemjrn_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+v2pepwrgen_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-1.97,-0.622]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-0.622,0.724]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.724,2.07]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(2.07,3.42]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(10.3,24.4]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">50 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">18.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">11.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">28</span><br><span style="color:#339933;">15.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.4,38.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">43.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">51.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">37</span><br><span style="color:#339933;">38.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">68</span><br><span style="color:#339933;">38.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(38.5,52.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">6.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">25.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">40</span><br><span style="color:#339933;">41.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">78.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">70</span><br><span style="color:#339933;">39.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(52.5,66.7]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">8.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12</span><br><span style="color:#339933;">6.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">16</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">96</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">23</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=39.809 · df=9 · Cramer’s V=0.273 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+<p>For your final project, open the html file on your laptops and copy the table into your word document</p>
+</div>
+</div>
+<div id="skewed-variables" class="section level3 unnumbered hasAnchor">
+<h3>Skewed variables<a href="crosstabs-using-continuous-variables.html#skewed-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="crosstabs-using-continuous-variables.html#cb259-1" tabindex="-1"></a><span class="fu">ggplot</span>(vdem_selected,<span class="fu">aes</span>(<span class="at">x=</span>e_gdppc)) <span class="sc">+</span></span>
+<span id="cb259-2"><a href="crosstabs-using-continuous-variables.html#cb259-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<div id="crosstabs-will-not-display-well" class="section level4 unnumbered hasAnchor">
+<h4>Crosstabs will not display well<a href="crosstabs-using-continuous-variables.html#crosstabs-will-not-display-well" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="crosstabs-using-continuous-variables.html#cb260-1" tabindex="-1"></a>crosstab2 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb260-2"><a href="crosstabs-using-continuous-variables.html#cb260-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
+<span id="cb260-3"><a href="crosstabs-using-continuous-variables.html#cb260-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb260-4"><a href="crosstabs-using-continuous-variables.html#cb260-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
+<span id="cb260-5"><a href="crosstabs-using-continuous-variables.html#cb260-5" tabindex="-1"></a>                          <span class="at">breaks =</span> <span class="dv">4</span>))</span>
+<span id="cb260-6"><a href="crosstabs-using-continuous-variables.html#cb260-6" tabindex="-1"></a></span>
+<span id="cb260-7"><a href="crosstabs-using-continuous-variables.html#cb260-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab2<span class="sc">$</span>e_gdppc_ord4,</span>
+<span id="cb260-8"><a href="crosstabs-using-continuous-variables.html#cb260-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab2<span class="sc">$</span>v2x_libdem_ord4,</span>
+<span id="cb260-9"><a href="crosstabs-using-continuous-variables.html#cb260-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+e_gdppc_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+v2x_libdem_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.00411,0.227]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.227,0.45]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.45,0.672]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.672,0.895]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.577,24.1]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">49</span><br><span style="color:#339933;">89.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">44</span><br><span style="color:#339933;">95.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">29</span><br><span style="color:#339933;">90.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">27.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">133</span><br><span style="color:#339933;">76.9 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.1,47.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">4</span><br><span style="color:#339933;">7.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">9.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">25</span><br><span style="color:#339933;">62.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">32</span><br><span style="color:#339933;">18.5 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(47.5,71]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">1.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">6</span><br><span style="color:#339933;">3.5 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(71,94.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">1.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">2.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2</span><br><span style="color:#339933;">1.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">55</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">46</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">32</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">40</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">173</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=77.469 · df=9 · Cramer’s V=0.386 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="alternative-using-quantile-cut-points" class="section level4 unnumbered hasAnchor">
+<h4>Alternative using quantile cut points<a href="crosstabs-using-continuous-variables.html#alternative-using-quantile-cut-points" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="crosstabs-using-continuous-variables.html#cb261-1" tabindex="-1"></a><span class="fu">quantile</span>(vdem_selected<span class="sc">$</span>e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)</span></code></pre></div>
+<pre><code>##     0%    25%    50%    75%   100% 
+##  0.671  3.315  8.971 20.720 94.400</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="crosstabs-using-continuous-variables.html#cb263-1" tabindex="-1"></a>crosstab3 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb263-2"><a href="crosstabs-using-continuous-variables.html#cb263-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
+<span id="cb263-3"><a href="crosstabs-using-continuous-variables.html#cb263-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="fu">quantile</span>(e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)),</span>
+<span id="cb263-4"><a href="crosstabs-using-continuous-variables.html#cb263-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
+<span id="cb263-5"><a href="crosstabs-using-continuous-variables.html#cb263-5" tabindex="-1"></a>                               <span class="at">breaks =</span> <span class="fu">quantile</span>(v2x_libdem, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)))</span>
+<span id="cb263-6"><a href="crosstabs-using-continuous-variables.html#cb263-6" tabindex="-1"></a></span>
+<span id="cb263-7"><a href="crosstabs-using-continuous-variables.html#cb263-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab3<span class="sc">$</span>v2x_libdem_ord4,</span>
+<span id="cb263-8"><a href="crosstabs-using-continuous-variables.html#cb263-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab3<span class="sc">$</span>e_gdppc_ord4,</span>
+<span id="cb263-9"><a href="crosstabs-using-continuous-variables.html#cb263-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+v2x_libdem_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+e_gdppc_ord4
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.671,3.31]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(3.31,8.97]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(8.97,20.7]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(20.7,94.4]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.005,0.157]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">27.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">30.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">9</span><br><span style="color:#339933;">21.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">16.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">41</span><br><span style="color:#339933;">24 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.157,0.373]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">41.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">27.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">9</span><br><span style="color:#339933;">21.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">41</span><br><span style="color:#339933;">24 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.373,0.66]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">30.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">34.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">31 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">44</span><br><span style="color:#339933;">25.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.66,0.894]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">26.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">31</span><br><span style="color:#339933;">72.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">45</span><br><span style="color:#339933;">26.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">42</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">171</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=74.710 · df=9 · Cramer’s V=0.382 · p=0.000
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducing-project-datasets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="communicating-results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "lunr",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

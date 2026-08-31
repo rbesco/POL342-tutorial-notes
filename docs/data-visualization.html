@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data visualization | POL342 R Tutorials</title>
+  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data visualization | POL342 R Tutorials" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data visualization | POL342 R Tutorials" />
+  
+  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  
+
+<meta name="author" content="Jiajia Zhou" />
+
+
+<meta name="date" content="2026-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-wrangling-with-tidyverse.html"/>
+<link rel="next" href="regression-and-confidence-intervals.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html"><i class="fa fa-check"></i><b>1</b> Getting Started With Data Sets</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#understanding-data-sets"><i class="fa fa-check"></i><b>1.1</b> Understanding data sets</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#basics-of-a-function"><i class="fa fa-check"></i><b>1.2</b> Basics of a function</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#consider-the-first-variable-in-the-data-set"><i class="fa fa-check"></i>Consider the first variable in the data set</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#next-variables-reading-and-math."><i class="fa fa-check"></i>Next variables, “reading” and “math”.</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#measures-of-dispersion"><i class="fa fa-check"></i>Measures of dispersion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#what-is-r-what-is-coding"><i class="fa fa-check"></i>What is R? What is coding?</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#integrated-development-environment-ide-editor-rstudio"><i class="fa fa-check"></i>Integrated Development Environment (IDE) editor: RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>2.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#a-sophisticated-calculator"><i class="fa fa-check"></i>A sophisticated calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#base-r-vs.-packages"><i class="fa fa-check"></i>Base R vs. packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#working-directory-and-importing-data"><i class="fa fa-check"></i><b>2.3</b> Working directory and importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class"><i class="fa fa-check"></i><b>3.1</b> Before the start of each class</a></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
+<li class="chapter" data-level="3.5" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#tidyverse-1"><i class="fa fa-check"></i><b>3.5</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes"><i class="fa fa-check"></i>Pipes</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#piping-data-frames"><i class="fa fa-check"></i>Piping data frames</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#filter"><i class="fa fa-check"></i>filter()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#reframe"><i class="fa fa-check"></i>reframe()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#group_by"><i class="fa fa-check"></i>group_by()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#mutate"><i class="fa fa-check"></i>mutate()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#select"><i class="fa fa-check"></i>select()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#arrange"><i class="fa fa-check"></i>arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#summary"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#more-resources"><i class="fa fa-check"></i><b>3.7</b> More resources</a></li>
+<li class="chapter" data-level="3.8" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#credits-1"><i class="fa fa-check"></i><b>3.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#before-the-start-of-each-class-1"><i class="fa fa-check"></i><b>4.1</b> Before the start of each class</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#download-files-from-quercus"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#install-new-package-and-load-all-packages-required-for-this-class"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#recap-and-some-additional-basics"><i class="fa fa-check"></i><b>4.3</b> Recap and some additional basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#r-scripts"><i class="fa fa-check"></i>R scripts</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#syntax-for-functions-functionnamearguments"><i class="fa fa-check"></i>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#arguments-are-function-specific"><i class="fa fa-check"></i>Arguments are function-specific</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#argument-names"><i class="fa fa-check"></i>Argument names</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#if_else-function"><i class="fa fa-check"></i><code>if_else()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#data-visualization-1"><i class="fa fa-check"></i><b>4.4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><code>ggplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-categorical-variables"><i class="fa fa-check"></i><b>4.5</b> Plots for categorical variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-nominalordinal"><i class="fa fa-check"></i>Univariate: nominal/ordinal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-nominalordinal-variables"><i class="fa fa-check"></i>Bivariate: two nominal/ordinal variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-interval-variables"><i class="fa fa-check"></i><b>4.6</b> Plots for interval variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#survey-experiment-data"><i class="fa fa-check"></i>Survey experiment data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-interval"><i class="fa fa-check"></i>Univariate: interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-nominalordinal-and-interval"><i class="fa fa-check"></i>Bivariate: nominal/ordinal and interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-interval-variables"><i class="fa fa-check"></i>Bivariate: two interval variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization.html"><a href="data-visualization.html#credits-2"><i class="fa fa-check"></i><b>4.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Regression and confidence intervals</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#before-the-start-of-class"><i class="fa fa-check"></i><b>5.1</b> Before the start of class</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#download-files-from-quercus-1"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#install-new-package-and-load-all-packages-required-for-this-class-1"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-data-1"><i class="fa fa-check"></i>Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#recap-1"><i class="fa fa-check"></i><b>5.2</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#converting-variable-to-factor-class"><i class="fa fa-check"></i>Converting variable to factor class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#determining-plot-based-on-type-of-variable"><i class="fa fa-check"></i>Determining plot based on type of variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#experimental-study-data"><i class="fa fa-check"></i><b>5.3</b> Experimental study data</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcomes-of-interest-in-the-study"><i class="fa fa-check"></i>Outcomes of interest in the study:</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#treatment"><i class="fa fa-check"></i>Treatment</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#data"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#difference-in-means-t.test"><i class="fa fa-check"></i><b>5.4</b> Difference in means – <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#syntax"><i class="fa fa-check"></i>Syntax</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-1-beliefs-about-experts"><i class="fa fa-check"></i>Outcome 1: Beliefs about experts</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-2-policy-preferences"><i class="fa fa-check"></i>Outcome 2: Policy preferences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#visualizing-treatment-effects"><i class="fa fa-check"></i><b>5.5</b> Visualizing treatment effects</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#extract-the-output-using-tidy-from-package-broom"><i class="fa fa-check"></i>Extract the output using <code>tidy()</code> from package <code>broom</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#interpreting-the-effect"><i class="fa fa-check"></i>Interpreting the effect</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#estimates-and-confidence-intervals-geom_pointrange"><i class="fa fa-check"></i>Estimates and confidence intervals – geom_pointrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#linear-regression"><i class="fa fa-check"></i><b>5.6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-a-different-dataset-some-variables-from-varieties-of-democracies-data-set"><i class="fa fa-check"></i>Load a different dataset (some variables from Varieties of Democracies data set)</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#v-dem-codebook"><i class="fa fa-check"></i>V-Dem codebook</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#bivariate-relationship-using-a-scatter-plot-geom_point"><i class="fa fa-check"></i>Bivariate relationship using a scatter plot <code>geom_point()</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#regression-estimates-similar-to-survey-treatment-visualization"><i class="fa fa-check"></i>Regression estimates (similar to survey treatment visualization)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#credits-3"><i class="fa fa-check"></i><b>5.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html"><i class="fa fa-check"></i><b>6</b> Introducing project datasets</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets"><i class="fa fa-check"></i>Download project datasets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w8.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W8.R</code>) and put everything in your R project folder</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#overview-use-of-data-sets"><i class="fa fa-check"></i><b>6.2</b> Overview: Use of data sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets"><i class="fa fa-check"></i>Step 1: Select one of the four data sets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set"><i class="fa fa-check"></i>Step 3: Trim down the data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#vdem"><i class="fa fa-check"></i><b>6.3</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-1"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set-select-a-year"><i class="fa fa-check"></i>Step 3: Trim down the data set (select a year)</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-1"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#world-values-survey-wave-7-2017-2022"><i class="fa fa-check"></i><b>6.4</b> World Values Survey (Wave 7, 2017-2022)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-2"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-2"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#other-countries"><i class="fa fa-check"></i>Other countries</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-1"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#asian-barometer-wave-5-2018-2021"><i class="fa fa-check"></i><b>6.5</b> Asian Barometer (Wave 5, 2018-2021)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-3"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-1"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-3"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#canadian-election-study-2021"><i class="fa fa-check"></i><b>6.6</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-4"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-2"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-4"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-2"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html"><i class="fa fa-check"></i><b>7</b> Crosstabs using continuous variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#set-up-1"><i class="fa fa-check"></i><b>7.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r"><i class="fa fa-check"></i>Make sure you have your project datasets and <code>W9.R</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-libraries-1"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#vdem-1"><i class="fa fa-check"></i><b>7.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-data-2"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut"><i class="fa fa-check"></i>Create ordinal categories using function <code>cut()</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#skewed-variables"><i class="fa fa-check"></i>Skewed variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#load-libraries-3"><i class="fa fa-check"></i><b>9.1</b> Load libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="" target="blank"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">POL342 R Tutorials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-visualization" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Data visualization<a href="data-visualization.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><p>Goals for today’s class:</p>
+<ul>
+<li>More on manipulating variables
+<ul>
+<li><code>if_else()</code></li>
+</ul></li>
+<li>Single variables using <code>ggplot</code>
+<ul>
+<li>Categorical (nominal/ordinal)
+<ul>
+<li>bar chart – <code>geom_bar()</code></li>
+</ul></li>
+<li>Continuous (interval/ratio)
+<ul>
+<li>histogram – <code>geom_histogram()</code></li>
+</ul></li>
+</ul></li>
+<li>Bivariate relationships
+<ul>
+<li>crosstabs – <code>tab_xtab()</code> from <code>sjPlot</code></li>
+<li>visualizing crosstabs with stacked bar chart <code>geom_bar()</code></li>
+<li>box plot <code>geom_boxplot()</code></li>
+<li>scatter plot <code>geom_point()</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<div id="before-the-start-of-each-class-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Before the start of each class<a href="data-visualization.html#before-the-start-of-each-class-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="download-files-from-quercus" class="section level3 unnumbered hasAnchor">
+<h3>Download files from Quercus<a href="data-visualization.html#download-files-from-quercus" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Move all the files into your R project <code>.Rproj</code> folder.
+<img src="images/w5.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="install-new-package-and-load-all-packages-required-for-this-class" class="section level3 unnumbered hasAnchor">
+<h3>Install new package and load all packages required for this class<a href="data-visualization.html#install-new-package-and-load-all-packages-required-for-this-class" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="data-visualization.html#cb131-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span>
+<span id="cb131-2"><a href="data-visualization.html#cb131-2" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb131-3"><a href="data-visualization.html#cb131-3" tabindex="-1"></a></span>
+<span id="cb131-4"><a href="data-visualization.html#cb131-4" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</div>
+</div>
+<div id="load-data" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Load data<a href="data-visualization.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will be using two data sets today, one from last week—Canada’s votes at the UNGA—and the other is an experimental data.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-visualization.html#cb132-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;unvotes_ca.csv&quot;</span>)</span>
+<span id="cb132-2"><a href="data-visualization.html#cb132-2" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="recap-and-some-additional-basics" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Recap and some additional basics<a href="data-visualization.html#recap-and-some-additional-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-scripts" class="section level3 unnumbered hasAnchor">
+<h3>R scripts<a href="data-visualization.html#r-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R scripts should be complete in itself. Before submitting your assignments, start a new session, clear your workspace, select the entire code (i.e. “Select All”) and run everything. You should not get any errors.</p>
+</div>
+<div id="syntax-for-functions-functionnamearguments" class="section level3 unnumbered hasAnchor">
+<h3>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code><a href="data-visualization.html#syntax-for-functions-functionnamearguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Functions are a fixed series of actions done to an object. The syntax will always begin with the function name, followed by <code>()</code>.</p>
+<p><img src="images/w5_function.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>(Image credit: <a href="https://medium.com/swlh/7-programming-concepts-functions-6072d7c50278" class="uri">https://medium.com/swlh/7-programming-concepts-functions-6072d7c50278</a>)</p>
+<p>In some cases, functions may not have arguments, for example, <code>n()</code>. The following is the documentation for <code>n()</code>,
+<img src="images/w5_ndocument.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="arguments-are-function-specific" class="section level3 unnumbered hasAnchor">
+<h3>Arguments are function-specific<a href="data-visualization.html#arguments-are-function-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Last week we learnt the following tidyverse functions</p>
+<ul>
+<li>filter()</li>
+<li>group_by()</li>
+<li>mutate()</li>
+<li>reframe()</li>
+<li>select()</li>
+<li>arrange()</li>
+</ul>
+<p><code>filter()</code> takes expressions that produce a logical value, i.e. conditional statements</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-visualization.html#cb133-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb133-2"><a href="data-visualization.html#cb133-2" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1983</span> <span class="sc">&amp;</span> importantvote<span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##   rcid country country_code year vote session importantvote       date
+## 1 2497  Canada           CA 1983  yes      38             1 1983-11-06
+## 2 2510  Canada           CA 1983   no      38             1 1983-12-06
+## 3 2526  Canada           CA 1983   no      38             1 1983-12-06
+## 4 2526  Canada           CA 1983   no      38             1 1983-12-06
+## 5 2563  Canada           CA 1983  yes      38             1 1983-12-07
+## 6 2610  Canada           CA 1983  yes      38             1 1983-12-03
+## 7 2610  Canada           CA 1983  yes      38             1 1983-12-03
+##       unres amend para                                short
+## 1   R/38/29     0    0                          AFGHANISTAN
+## 2  R/38/39G     0    0 SOUTH AFRICA, MILITARY COLLABORATION
+## 3 R/38/180E     0    0                    ISRAEL, ISOLATION
+## 4 R/38/180E     0    0                    ISRAEL, ISOLATION
+## 5 R/38/187C     0    0         CHEMICAL, BIOLOGICAL WEAPONS
+## 6  R/38/101     0    0            HUMAN RIGHTS, EL SALVADOR
+## 7  R/38/101     0    0            HUMAN RIGHTS, EL SALVADOR
+##                                                                                                                                                                                                                                                  descr
+## 1                                TO DEMAND THE WITHDRAWAL OF FOREIGN FORCES FROM AFGHANISTAN, TO DECLARE ONCE AGAIN THE RIGHTS OF THE PEOPLE OF AFGHANISTAN TO POLITICAL INDEPENDENCE, AND TO EXTEND A PLEA FOR RELIEF ASSISTANCE FOR AFGHAN REFUGEES.
+## 2                            TO RECOMMEND THAT THE SECURITY COUNCIL TAKE STEPS TO MAKE CERTAIN THAT ALL STATES TERMINATE MILITARY AND NUCLEAR COOPERATION WITH THE REGIME OF SOUTH AFRICA AND TO DENOUNCE THOSE STATES THAT CONTINUE SUCH COOPERATION.
+## 3                                                                                                                                                                               TO ORDER ALL STATES TO TERMINATE MILITARY AND ECONOMIC SUPPORT ISRAEL.
+## 4                                                                                                                                                                               TO ORDER ALL STATES TO TERMINATE MILITARY AND ECONOMIC SUPPORT ISRAEL.
+## 5                                                                                                            TO NOTE THE REPORT OF THE SECRETARY-GENERAL ON THE IMPLEMENTATION OF RESOLUTION 37/98D DEALING WITH CHEMICAL AND BACTERIOLOGICAL WEAPONS.
+## 6 TO EXPRESS CONCERN THAT INFRINGEMENTS OF HUMAN RIGHTS ARE CONTINUING IN EL SALVADOR, TO SUGGEST THAT NECESSARY ECONOMIC AND SOCIAL REFORMS BE IMPLEMENTED TO RESOLVE THE BASIC INTERNAL CONFLICT THERE, TO URGE THE GOVERNMENT TO PROCEED TOWARD A C
+## 7 TO EXPRESS CONCERN THAT INFRINGEMENTS OF HUMAN RIGHTS ARE CONTINUING IN EL SALVADOR, TO SUGGEST THAT NECESSARY ECONOMIC AND SOCIAL REFORMS BE IMPLEMENTED TO RESOLVE THE BASIC INTERNAL CONFLICT THERE, TO URGE THE GOVERNMENT TO PROCEED TOWARD A C
+##   short_name                                issue
+## 1         hr                         Human rights
+## 2         nu Nuclear weapons and nuclear material
+## 3         me                 Palestinian conflict
+## 4         ec                 Economic development
+## 5         di         Arms control and disarmament
+## 6         hr                         Human rights
+## 7         ec                 Economic development</code></pre>
+<p><code>group_by()</code> take either variables or conditional statements</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-visualization.html#cb135-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb135-2"><a href="data-visualization.html#cb135-2" tabindex="-1"></a>  <span class="fu">group_by</span>(session)</span>
+<span id="cb135-3"><a href="data-visualization.html#cb135-3" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="data-visualization.html#cb135-4" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb135-5"><a href="data-visualization.html#cb135-5" tabindex="-1"></a></span>
+<span id="cb135-6"><a href="data-visualization.html#cb135-6" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb135-7"><a href="data-visualization.html#cb135-7" tabindex="-1"></a>  <span class="fu">group_by</span>(year<span class="sc">&gt;</span><span class="dv">1989</span>)</span></code></pre></div>
+<p><code>mutate()</code> and <code>reframe()</code> take variable assignment arguments. For <code>mutate()</code>, the original data frame is retained and new variables/columns are added to the data frame. For <code>reframe()</code> the data frame is reduced to the size of the new object.</p>
+</div>
+<div id="missing-values" class="section level3 unnumbered hasAnchor">
+<h3>Missing values<a href="data-visualization.html#missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If a variable contains missing (<code>NA</code>) values, summary statistics such as mean() and sum() will return <code>NA</code> unless the argument na.rm is specified TRUE, meaning missing values should be removed.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-visualization.html#cb136-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb136-2"><a href="data-visualization.html#cb136-2" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">imptvote =</span> <span class="fu">sum</span>(importantvote, <span class="at">na.rm=</span>T)) <span class="co"># by default na.rm=FALSE</span></span></code></pre></div>
+<pre><code>##   imptvote
+## 1      448</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-visualization.html#cb138-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb138-2"><a href="data-visualization.html#cb138-2" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">imptvote =</span> <span class="fu">sum</span>(importantvote))</span></code></pre></div>
+<pre><code>##   imptvote
+## 1       NA</code></pre>
+<p>To see if a variable contains missing values, you can use a combination of <code>table</code> and <code>is.na()</code>. <code>is.na()</code> returns a same-length vector of <code>TRUE</code>/<code>FALSE</code> (<code>TRUE</code> if the value is missing and <code>FALSE</code> if the value is present).</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-visualization.html#cb140-1" tabindex="-1"></a><span class="fu">is.na</span>(df<span class="sc">$</span>importantvote)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="data-visualization.html#cb141-1" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>importantvote))</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##  5307   425</code></pre>
+<p>This tells us that the variable has 425 missing values.</p>
+<p><code>select()</code> and <code>arrange()</code> take variable names.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-visualization.html#cb143-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb143-2"><a href="data-visualization.html#cb143-2" tabindex="-1"></a>  <span class="fu">select</span>(country, year, issue)</span></code></pre></div>
+</div>
+<div id="argument-names" class="section level3 unnumbered hasAnchor">
+<h3>Argument names<a href="data-visualization.html#argument-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many of the examples here, I omit the name of the argument. This is fine when we know the order of the arguments or when the function requires only one argument. For example, the following codes are equivalent.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-visualization.html#cb144-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="at">file=</span><span class="st">&quot;unvotes_ca.csv&quot;</span>, <span class="at">header=</span>T)</span>
+<span id="cb144-2"><a href="data-visualization.html#cb144-2" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="data-visualization.html#cb144-3" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;unvotes_ca.csv&quot;</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>But that’s only because I stated them in the right sequence. See the documentation,</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-visualization.html#cb145-1" tabindex="-1"></a>?read.csv</span></code></pre></div>
+<p><img src="images/w5_readcsv.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Specifying the argument is a safe way to work with unfamiliar functions because it is fine if you get the sequence wrong.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-visualization.html#cb146-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">file=</span><span class="st">&quot;unvotes_ca.csv&quot;</span>)</span></code></pre></div>
+<p>This will give you an error.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-visualization.html#cb147-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="cn">TRUE</span>, <span class="st">&quot;unvotes_ca.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="if_else-function" class="section level3 unnumbered hasAnchor">
+<h3><code>if_else()</code> function<a href="data-visualization.html#if_else-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s say we want to create a new binary variable that denotes two separate periods, during and before/after the cold war.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="data-visualization.html#cb148-1" tabindex="-1"></a><span class="co">#read the if_else() documentation</span></span>
+<span id="cb148-2"><a href="data-visualization.html#cb148-2" tabindex="-1"></a>?if_else</span></code></pre></div>
+<p><code>if_else</code> takes a conditional statement as its first argument, followed by the replacement value if <code>TRUE</code> as the second argument, and replacement value if <code>FALSE</code> as the third argument. (Do you remember what a conditional statement is? See Section <a href="#conditional-statements"><strong>??</strong></a>)</p>
+<p><img src="images/w5_ifelse.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-visualization.html#cb149-1" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb149-2"><a href="data-visualization.html#cb149-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">support =</span> <span class="fu">if_else</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>, <span class="co"># logical test</span></span>
+<span id="cb149-3"><a href="data-visualization.html#cb149-3" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># TRUE/yes output</span></span>
+<span id="cb149-4"><a href="data-visualization.html#cb149-4" tabindex="-1"></a>                          <span class="dv">0</span>)) <span class="co"># FALSE/no output</span></span></code></pre></div>
+<p>Find the new variable at the extreme right of the data set.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="data-visualization.html#cb150-1" tabindex="-1"></a><span class="fu">View</span>(df2)</span></code></pre></div>
+<p>Quick exercise: Explain what each step of the following code executes and what variable <code>x</code> represents in the resultant output.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-visualization.html#cb151-1" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb151-2"><a href="data-visualization.html#cb151-2" tabindex="-1"></a>  <span class="fu">group_by</span>(issue, importantvote) <span class="sc">|&gt;</span></span>
+<span id="cb151-3"><a href="data-visualization.html#cb151-3" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb151-4"><a href="data-visualization.html#cb151-4" tabindex="-1"></a>  <span class="fu">group_by</span>(issue) <span class="sc">|&gt;</span></span>
+<span id="cb151-5"><a href="data-visualization.html#cb151-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n), <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 18 × 4
+## # Groups:   issue [6]
+##    issue                                importantvote     n     x
+##    &lt;chr&gt;                                        &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+##  1 Arms control and disarmament                     0   930  0.85
+##  2 Arms control and disarmament                     1    48  0.04
+##  3 Arms control and disarmament                    NA   110  0.1 
+##  4 Colonialism                                      0   902  0.94
+##  5 Colonialism                                      1    33  0.03
+##  6 Colonialism                                     NA    21  0.02
+##  7 Economic development                             0   637  0.84
+##  8 Economic development                             1    67  0.09
+##  9 Economic development                            NA    58  0.08
+## 10 Human rights                                     0   785  0.77
+## 11 Human rights                                     1   170  0.17
+## 12 Human rights                                    NA    58  0.06
+## 13 Nuclear weapons and nuclear material             0   681  0.8 
+## 14 Nuclear weapons and nuclear material             1    43  0.05
+## 15 Nuclear weapons and nuclear material            NA   129  0.15
+## 16 Palestinian conflict                             0   924  0.87
+## 17 Palestinian conflict                             1    87  0.08
+## 18 Palestinian conflict                            NA    49  0.05</code></pre>
+</div>
+</div>
+<div id="data-visualization-1" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Data visualization<a href="data-visualization.html#data-visualization-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ggplot" class="section level3 unnumbered hasAnchor">
+<h3><code>ggplot()</code><a href="data-visualization.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>ggplot2</code> package contains functions tailored to making presentable and informative graphs. It works through piecing together separate pieces of graphical components joined by a <code>+</code> sign, beginning with the empty plane specified using the function ggplot().</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-visualization.html#cb153-1" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-120-1.png" width="672" />
+To begin plotting on <code>ggplot()</code>, you need to specify two components, 1. data, 2. x-axis and/or y-axis.</p>
+<p>The x- and y- axes are specified under <code>aes()</code> which refers to aesthetic mappings. Aesthetic mappings describe how variables in the data are mapped to visual properties.</p>
+<p>Integer/numeric (class) on x-axis</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-visualization.html#cb154-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>importantvote))</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>Character (class) on the y-axis</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="data-visualization.html#cb155-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">y=</span>vote))</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+</div>
+</div>
+<div id="plots-for-categorical-variables" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Plots for categorical variables<a href="data-visualization.html#plots-for-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="univariate-nominalordinal" class="section level3 unnumbered hasAnchor">
+<h3>Univariate: nominal/ordinal<a href="data-visualization.html#univariate-nominalordinal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create frequency bar charts by adding <code>geom_bar()</code> to <code>ggplot()</code></p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="data-visualization.html#cb156-1" tabindex="-1"></a><span class="fu">ggplot</span>(df2, <span class="fu">aes</span>(<span class="at">x=</span>vote)) <span class="sc">+</span></span>
+<span id="cb156-2"><a href="data-visualization.html#cb156-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p>Note: Do not confuse geom_bar with another type of bar chart, <code>geom_col()</code>. <code>geom_bar()</code> summarizes the data into groups while <code>geom_col()</code> plots the values in the data.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-visualization.html#cb157-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">vote =</span> <span class="fu">c</span>(<span class="st">&quot;abstain&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>),</span>
+<span id="cb157-2"><a href="data-visualization.html#cb157-2" tabindex="-1"></a>                   <span class="at">count =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">15</span>,<span class="dv">20</span>))</span>
+<span id="cb157-3"><a href="data-visualization.html#cb157-3" tabindex="-1"></a></span>
+<span id="cb157-4"><a href="data-visualization.html#cb157-4" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>vote,<span class="at">y=</span>count)) <span class="sc">+</span></span>
+<span id="cb157-5"><a href="data-visualization.html#cb157-5" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<p>For clearer presentation of single variables, categories with long names can be plotted on the y-axis instead of x-axis.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="data-visualization.html#cb158-1" tabindex="-1"></a><span class="co"># poor presentation</span></span>
+<span id="cb158-2"><a href="data-visualization.html#cb158-2" tabindex="-1"></a>df2 <span class="sc">|&gt;</span></span>
+<span id="cb158-3"><a href="data-visualization.html#cb158-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>issue)) <span class="sc">+</span></span>
+<span id="cb158-4"><a href="data-visualization.html#cb158-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="data-visualization.html#cb159-1" tabindex="-1"></a><span class="co"># better presentation</span></span>
+<span id="cb159-2"><a href="data-visualization.html#cb159-2" tabindex="-1"></a>df2 <span class="sc">|&gt;</span></span>
+<span id="cb159-3"><a href="data-visualization.html#cb159-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>issue)) <span class="sc">+</span></span>
+<span id="cb159-4"><a href="data-visualization.html#cb159-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+</div>
+<div id="bivariate-two-nominalordinal-variables" class="section level3 unnumbered hasAnchor">
+<h3>Bivariate: two nominal/ordinal variables<a href="data-visualization.html#bivariate-two-nominalordinal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Crosstabs and chi-square test – tab_xtab()</li>
+</ul>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="data-visualization.html#cb160-1" tabindex="-1"></a>?tab_xtab</span></code></pre></div>
+<p><img src="images/w5_tabxtab.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Let’s cross-tabulate Canada’s votes on the six issues listed in the dataset. Independent variable in columns and dependent variables in rows. (Note: <code>tab_xtab</code> is not a tidyverse function. Hence, variable names should be preceded by object name of data frame and <code>$</code>)</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="data-visualization.html#cb161-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.col=</span>df2<span class="sc">$</span>issue, <span class="at">var.row=</span>df2<span class="sc">$</span>vote,</span>
+<span id="cb161-2"><a href="data-visualization.html#cb161-2" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb161-3"><a href="data-visualization.html#cb161-3" tabindex="-1"></a>         <span class="at">show.row.prc =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+vote
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="6">
+issue
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Arms control and<br>disarmament
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Colonialism
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Economic development
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Human rights
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Nuclear weapons and<br>nuclear material
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Palestinian conflict
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+abstain
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">263</span><br><span style="color:#339933;">24.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">311</span><br><span style="color:#339933;">32.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">228</span><br><span style="color:#339933;">29.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">278</span><br><span style="color:#339933;">27.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">205</span><br><span style="color:#339933;">24 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">289</span><br><span style="color:#339933;">27.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1574</span><br><span style="color:#339933;">27.5 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+no
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">231</span><br><span style="color:#339933;">21.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">240</span><br><span style="color:#339933;">25.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">137</span><br><span style="color:#339933;">18 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">338</span><br><span style="color:#339933;">33.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">236</span><br><span style="color:#339933;">27.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">301</span><br><span style="color:#339933;">28.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1483</span><br><span style="color:#339933;">25.9 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+yes
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">594</span><br><span style="color:#339933;">54.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">405</span><br><span style="color:#339933;">42.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">397</span><br><span style="color:#339933;">52.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">397</span><br><span style="color:#339933;">39.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">412</span><br><span style="color:#339933;">48.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">470</span><br><span style="color:#339933;">44.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2675</span><br><span style="color:#339933;">46.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1088</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">956</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">762</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1013</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">853</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1060</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">5732</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="8">
+χ<sup>2</sup>=108.983 · df=10 · Cramer’s V=0.098 · p=0.000
+</td>
+</tr>
+</table>
+<ul>
+<li>Visualizing the contingency table with stacked bar plot</li>
+</ul>
+<p>What we want:
+<img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<p><strong>First step: <code>geom_bar()</code></strong></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-visualization.html#cb162-1" tabindex="-1"></a>df2 <span class="sc">|&gt;</span></span>
+<span id="cb162-2"><a href="data-visualization.html#cb162-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>issue)) <span class="sc">+</span></span>
+<span id="cb162-3"><a href="data-visualization.html#cb162-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p><strong>Second step: argument <code>fill</code></strong></p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-visualization.html#cb163-1" tabindex="-1"></a>df2 <span class="sc">|&gt;</span></span>
+<span id="cb163-2"><a href="data-visualization.html#cb163-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>issue, <span class="at">fill=</span>vote)) <span class="sc">+</span></span>
+<span id="cb163-3"><a href="data-visualization.html#cb163-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><strong>Third step: argument <code>position</code></strong></p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-visualization.html#cb164-1" tabindex="-1"></a>df2 <span class="sc">|&gt;</span></span>
+<span id="cb164-2"><a href="data-visualization.html#cb164-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>issue,<span class="at">fill=</span>vote)) <span class="sc">+</span></span>
+<span id="cb164-3"><a href="data-visualization.html#cb164-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span> <span class="co"># position=&quot;fill&quot; sets each bar to the same height of 1</span></span>
+<span id="cb164-4"><a href="data-visualization.html#cb164-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Proportion&quot;</span>)</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+</div>
+</div>
+<div id="plots-for-interval-variables" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Plots for interval variables<a href="data-visualization.html#plots-for-interval-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="survey-experiment-data" class="section level3 unnumbered hasAnchor">
+<h3>Survey experiment data<a href="data-visualization.html#survey-experiment-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us switch data sets here because the UN data set does not contain suitable interval/ratio variables for us to play with.</p>
+<p>The data used in the following section is sourced from the replication data of the paper,<br />
+Lee, Nathan. “Do Policy Makers Listen to Experts? Evidence from a National Survey of Local and State Policy Makers.” American Political Science Review 116, no. 2 (2022): 677–88.  <a href="https://doi.org/10.1017/S0003055421000800" class="uri">https://doi.org/10.1017/S0003055421000800</a>.<br />
+Replication data file: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/S2SNOT" class="uri">https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/S2SNOT</a></p>
+<p>Data comes from a survey fielded to policymakers (elected municipal officials, elected county officials, state legislators, state legislative staffers)</p>
+<p>We use a simplified version of the data:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th>desc.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>issue</td>
+<td>Needle exchange (1 out of 3 issues discussed in the paper).</td>
+</tr>
+<tr class="even">
+<td>treated</td>
+<td>1 if treated, 0 if control. Treatment: Experts from several universities have examined this issue and concluded that needle exchanges do not increase drug use.</td>
+</tr>
+<tr class="odd">
+<td>preference</td>
+<td>Dependent variable 1: policy preferences (scaled 0-1). Do you support needle exchange? (Strongly support – Strongly oppose)</td>
+</tr>
+<tr class="even">
+<td>accuracy</td>
+<td>Dependent variable 2: belief accuracy (scaled 0-1). If you were to guess, what percentage of public health experts who conduct research related to needle exchanges believe these programs do NOT increase drug use? (Less than 20%, 20 - 40%, 40 - 60%, 60 - 80%, More than 80%)</td>
+</tr>
+<tr class="odd">
+<td>republican</td>
+<td>Party affiliation of the policymaker (1 if Republican, 0 if Democrat)</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>Age of the policymaker</td>
+</tr>
+<tr class="odd">
+<td>gov_exp</td>
+<td>Over your career, how many years have you worked in government?</td>
+</tr>
+</tbody>
+</table>
+<p>Take a look at the data.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="data-visualization.html#cb165-1" tabindex="-1"></a><span class="fu">View</span>(survey)</span></code></pre></div>
+</div>
+<div id="univariate-interval" class="section level3 unnumbered hasAnchor">
+<h3>Univariate: interval<a href="data-visualization.html#univariate-interval" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create histograms by adding <code>geom_histogram()</code> to <code>ggplot()</code></p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="data-visualization.html#cb166-1" tabindex="-1"></a>survey <span class="sc">|&gt;</span></span>
+<span id="cb166-2"><a href="data-visualization.html#cb166-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age)) <span class="sc">+</span></span>
+<span id="cb166-3"><a href="data-visualization.html#cb166-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+</div>
+<div id="bivariate-nominalordinal-and-interval" class="section level3 unnumbered hasAnchor">
+<h3>Bivariate: nominal/ordinal and interval<a href="data-visualization.html#bivariate-nominalordinal-and-interval" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Note: numeric class objects are treated as continuous variables</strong></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="data-visualization.html#cb167-1" tabindex="-1"></a><span class="fu">class</span>(survey<span class="sc">$</span>treated)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Box and whiskers by group – <code>geom_boxplot()</code></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="data-visualization.html#cb169-1" tabindex="-1"></a><span class="co"># incorrect plot</span></span>
+<span id="cb169-2"><a href="data-visualization.html#cb169-2" tabindex="-1"></a>survey <span class="sc">|&gt;</span></span>
+<span id="cb169-3"><a href="data-visualization.html#cb169-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>republican,<span class="at">y=</span>age)) <span class="sc">+</span></span>
+<span id="cb169-4"><a href="data-visualization.html#cb169-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p>** Factor class **</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="data-visualization.html#cb170-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">factor</span>(survey<span class="sc">$</span>republican))</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>Corrected using <code>factor()</code></p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="data-visualization.html#cb172-1" tabindex="-1"></a>survey <span class="sc">|&gt;</span></span>
+<span id="cb172-2"><a href="data-visualization.html#cb172-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(republican),<span class="at">y=</span>age)) <span class="sc">+</span></span>
+<span id="cb172-3"><a href="data-visualization.html#cb172-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+</div>
+<div id="bivariate-two-interval-variables" class="section level3 unnumbered hasAnchor">
+<h3>Bivariate: two interval variables<a href="data-visualization.html#bivariate-two-interval-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scatter plot <code>geom_point()</code></p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="data-visualization.html#cb173-1" tabindex="-1"></a><span class="fu">ggplot</span>(survey,<span class="fu">aes</span>(<span class="at">x=</span>age,<span class="at">y=</span>gov_exp)) <span class="sc">+</span></span>
+<span id="cb173-2"><a href="data-visualization.html#cb173-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+</div>
+</div>
+<div id="credits-2" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Credits<a href="data-visualization.html#credits-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>This lesson includes materials from
+<ul>
+<li><a href="https://github.com/dgrtwo/unvotes">unvotes</a></li>
+<li><a href="https://clauswilke.com/dataviz/visualizing-amounts.html">Fundamentals of Data Visualization</a></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-wrangling-with-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression-and-confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "lunr",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

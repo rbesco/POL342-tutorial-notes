@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Data Wrangling with Tidyverse | POL342 R Tutorials</title>
+  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Data Wrangling with Tidyverse | POL342 R Tutorials" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Data Wrangling with Tidyverse | POL342 R Tutorials" />
+  
+  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  
+
+<meta name="author" content="Jiajia Zhou" />
+
+
+<meta name="date" content="2026-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-r.html"/>
+<link rel="next" href="data-visualization.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html"><i class="fa fa-check"></i><b>1</b> Getting Started With Data Sets</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#understanding-data-sets"><i class="fa fa-check"></i><b>1.1</b> Understanding data sets</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#basics-of-a-function"><i class="fa fa-check"></i><b>1.2</b> Basics of a function</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#consider-the-first-variable-in-the-data-set"><i class="fa fa-check"></i>Consider the first variable in the data set</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#next-variables-reading-and-math."><i class="fa fa-check"></i>Next variables, “reading” and “math”.</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#measures-of-dispersion"><i class="fa fa-check"></i>Measures of dispersion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#what-is-r-what-is-coding"><i class="fa fa-check"></i>What is R? What is coding?</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#integrated-development-environment-ide-editor-rstudio"><i class="fa fa-check"></i>Integrated Development Environment (IDE) editor: RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>2.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#a-sophisticated-calculator"><i class="fa fa-check"></i>A sophisticated calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#base-r-vs.-packages"><i class="fa fa-check"></i>Base R vs. packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#working-directory-and-importing-data"><i class="fa fa-check"></i><b>2.3</b> Working directory and importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class"><i class="fa fa-check"></i><b>3.1</b> Before the start of each class</a></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
+<li class="chapter" data-level="3.5" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#tidyverse-1"><i class="fa fa-check"></i><b>3.5</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes"><i class="fa fa-check"></i>Pipes</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#piping-data-frames"><i class="fa fa-check"></i>Piping data frames</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#filter"><i class="fa fa-check"></i>filter()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#reframe"><i class="fa fa-check"></i>reframe()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#group_by"><i class="fa fa-check"></i>group_by()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#mutate"><i class="fa fa-check"></i>mutate()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#select"><i class="fa fa-check"></i>select()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#arrange"><i class="fa fa-check"></i>arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#summary"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#more-resources"><i class="fa fa-check"></i><b>3.7</b> More resources</a></li>
+<li class="chapter" data-level="3.8" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#credits-1"><i class="fa fa-check"></i><b>3.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#before-the-start-of-each-class-1"><i class="fa fa-check"></i><b>4.1</b> Before the start of each class</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#download-files-from-quercus"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#install-new-package-and-load-all-packages-required-for-this-class"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#recap-and-some-additional-basics"><i class="fa fa-check"></i><b>4.3</b> Recap and some additional basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#r-scripts"><i class="fa fa-check"></i>R scripts</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#syntax-for-functions-functionnamearguments"><i class="fa fa-check"></i>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#arguments-are-function-specific"><i class="fa fa-check"></i>Arguments are function-specific</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#argument-names"><i class="fa fa-check"></i>Argument names</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#if_else-function"><i class="fa fa-check"></i><code>if_else()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#data-visualization-1"><i class="fa fa-check"></i><b>4.4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><code>ggplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-categorical-variables"><i class="fa fa-check"></i><b>4.5</b> Plots for categorical variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-nominalordinal"><i class="fa fa-check"></i>Univariate: nominal/ordinal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-nominalordinal-variables"><i class="fa fa-check"></i>Bivariate: two nominal/ordinal variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-interval-variables"><i class="fa fa-check"></i><b>4.6</b> Plots for interval variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#survey-experiment-data"><i class="fa fa-check"></i>Survey experiment data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-interval"><i class="fa fa-check"></i>Univariate: interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-nominalordinal-and-interval"><i class="fa fa-check"></i>Bivariate: nominal/ordinal and interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-interval-variables"><i class="fa fa-check"></i>Bivariate: two interval variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization.html"><a href="data-visualization.html#credits-2"><i class="fa fa-check"></i><b>4.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Regression and confidence intervals</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#before-the-start-of-class"><i class="fa fa-check"></i><b>5.1</b> Before the start of class</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#download-files-from-quercus-1"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#install-new-package-and-load-all-packages-required-for-this-class-1"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-data-1"><i class="fa fa-check"></i>Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#recap-1"><i class="fa fa-check"></i><b>5.2</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#converting-variable-to-factor-class"><i class="fa fa-check"></i>Converting variable to factor class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#determining-plot-based-on-type-of-variable"><i class="fa fa-check"></i>Determining plot based on type of variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#experimental-study-data"><i class="fa fa-check"></i><b>5.3</b> Experimental study data</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcomes-of-interest-in-the-study"><i class="fa fa-check"></i>Outcomes of interest in the study:</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#treatment"><i class="fa fa-check"></i>Treatment</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#data"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#difference-in-means-t.test"><i class="fa fa-check"></i><b>5.4</b> Difference in means – <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#syntax"><i class="fa fa-check"></i>Syntax</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-1-beliefs-about-experts"><i class="fa fa-check"></i>Outcome 1: Beliefs about experts</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-2-policy-preferences"><i class="fa fa-check"></i>Outcome 2: Policy preferences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#visualizing-treatment-effects"><i class="fa fa-check"></i><b>5.5</b> Visualizing treatment effects</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#extract-the-output-using-tidy-from-package-broom"><i class="fa fa-check"></i>Extract the output using <code>tidy()</code> from package <code>broom</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#interpreting-the-effect"><i class="fa fa-check"></i>Interpreting the effect</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#estimates-and-confidence-intervals-geom_pointrange"><i class="fa fa-check"></i>Estimates and confidence intervals – geom_pointrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#linear-regression"><i class="fa fa-check"></i><b>5.6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-a-different-dataset-some-variables-from-varieties-of-democracies-data-set"><i class="fa fa-check"></i>Load a different dataset (some variables from Varieties of Democracies data set)</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#v-dem-codebook"><i class="fa fa-check"></i>V-Dem codebook</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#bivariate-relationship-using-a-scatter-plot-geom_point"><i class="fa fa-check"></i>Bivariate relationship using a scatter plot <code>geom_point()</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#regression-estimates-similar-to-survey-treatment-visualization"><i class="fa fa-check"></i>Regression estimates (similar to survey treatment visualization)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#credits-3"><i class="fa fa-check"></i><b>5.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html"><i class="fa fa-check"></i><b>6</b> Introducing project datasets</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets"><i class="fa fa-check"></i>Download project datasets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w8.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W8.R</code>) and put everything in your R project folder</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#overview-use-of-data-sets"><i class="fa fa-check"></i><b>6.2</b> Overview: Use of data sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets"><i class="fa fa-check"></i>Step 1: Select one of the four data sets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set"><i class="fa fa-check"></i>Step 3: Trim down the data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#vdem"><i class="fa fa-check"></i><b>6.3</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-1"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set-select-a-year"><i class="fa fa-check"></i>Step 3: Trim down the data set (select a year)</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-1"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#world-values-survey-wave-7-2017-2022"><i class="fa fa-check"></i><b>6.4</b> World Values Survey (Wave 7, 2017-2022)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-2"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-2"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#other-countries"><i class="fa fa-check"></i>Other countries</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-1"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#asian-barometer-wave-5-2018-2021"><i class="fa fa-check"></i><b>6.5</b> Asian Barometer (Wave 5, 2018-2021)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-3"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-1"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-3"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#canadian-election-study-2021"><i class="fa fa-check"></i><b>6.6</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-4"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-2"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-4"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-2"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html"><i class="fa fa-check"></i><b>7</b> Crosstabs using continuous variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#set-up-1"><i class="fa fa-check"></i><b>7.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r"><i class="fa fa-check"></i>Make sure you have your project datasets and <code>W9.R</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-libraries-1"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#vdem-1"><i class="fa fa-check"></i><b>7.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-data-2"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut"><i class="fa fa-check"></i>Create ordinal categories using function <code>cut()</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#skewed-variables"><i class="fa fa-check"></i>Skewed variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#load-libraries-3"><i class="fa fa-check"></i><b>9.1</b> Load libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="" target="blank"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">POL342 R Tutorials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-wrangling-with-tidyverse" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Data Wrangling with Tidyverse<a href="data-wrangling-with-tidyverse.html#data-wrangling-with-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Goals for today’s class:</p>
+<ul>
+<li>Tidyverse basics for datasets
+<ul>
+<li><code>filter()</code></li>
+<li><code>reframe()</code></li>
+<li><code>group_by()</code></li>
+<li><code>mutate()</code></li>
+<li><code>arrange()</code></li>
+<li><code>select()</code></li>
+</ul></li>
+</ul>
+<div id="before-the-start-of-each-class" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Before the start of each class<a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You should download the <code>.R</code> script and dataset from the Quercus folder for this week (Files &gt; Practical &gt; Week 4). Move the files to the .R project folder we created last week. Your folder should look something like this now:</p>
+<p><img src="images/w4_Rprojectfolder.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Open RStudio using your <code>.Rproject</code> file and follow along using the <code>W4.R</code> script.
+<img src="images/w4_RstudioSetup.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="install-and-load-packages" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Install and load packages<a href="data-wrangling-with-tidyverse.html#install-and-load-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-wrangling-with-tidyverse.html#cb80-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co"># if you haven&#39;t</span></span>
+<span id="cb80-2"><a href="data-wrangling-with-tidyverse.html#cb80-2" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="data-wrangling-with-tidyverse.html#cb80-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<div id="dataset-un-votes" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Dataset: UN votes<a href="data-wrangling-with-tidyverse.html#dataset-un-votes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data for UN votes here come from the package “unvotes.” You can find out more about the package here: <a href="https://github.com/dgrtwo/unvotes" class="uri">https://github.com/dgrtwo/unvotes</a> and<br />
+<a href="https://cran.r-project.org/web/packages/unvotes/unvotes.pdf" class="uri">https://cran.r-project.org/web/packages/unvotes/unvotes.pdf</a></p>
+<p>Know your current directory and where the data file is. You should be using the R project you created last week.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-wrangling-with-tidyverse.html#cb81-1" tabindex="-1"></a><span class="fu">getwd</span>() <span class="co">#run to display working directory</span></span></code></pre></div>
+<div id="read-dataset-and-save-as-unvotes-object" class="section level3 unnumbered hasAnchor">
+<h3>Read dataset and save as <code>unvotes</code> object<a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following code will work if you have <code>unvotes_ca.csv</code> file in your R project folder.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="data-wrangling-with-tidyverse.html#cb82-1" tabindex="-1"></a>unvotes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;unvotes_ca.csv&quot;</span>)</span></code></pre></div>
+<p>Here is a codebook for the data.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th>desc.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rcid</td>
+<td>The roll call id; used to join with un_votes and un_roll_call_issues</td>
+</tr>
+<tr class="even">
+<td>country</td>
+<td>Country name, by official English short name</td>
+</tr>
+<tr class="odd">
+<td>country_code</td>
+<td>2-character ISO country code</td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>Year in which vote took place</td>
+</tr>
+<tr class="odd">
+<td>vote</td>
+<td>Vote result as a factor of yes/abstain/no</td>
+</tr>
+<tr class="even">
+<td>session</td>
+<td>Session number. The UN holds one session per year; these started in 1946</td>
+</tr>
+<tr class="odd">
+<td>importantvote</td>
+<td>Whether the vote was classified as important by the U.S. State Department report “Voting Practices in the United Nations”. These classifications began with session 39</td>
+</tr>
+<tr class="even">
+<td>date</td>
+<td>Date of the vote, as a Date vector</td>
+</tr>
+<tr class="odd">
+<td>unres</td>
+<td>Resolution code</td>
+</tr>
+<tr class="even">
+<td>amend</td>
+<td>Whether the vote was on an amendment; coded only until 1985</td>
+</tr>
+<tr class="odd">
+<td>para</td>
+<td>Whether the vote was only on a paragraph and not a resolution; coded only until 1985</td>
+</tr>
+<tr class="even">
+<td>short</td>
+<td>Short description</td>
+</tr>
+<tr class="odd">
+<td>descr</td>
+<td>Longer description</td>
+</tr>
+<tr class="even">
+<td>short_name</td>
+<td>Two-letter issue codes</td>
+</tr>
+<tr class="odd">
+<td>issue</td>
+<td>Descriptive issue name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="view-the-data" class="section level3 unnumbered hasAnchor">
+<h3>View the data<a href="data-wrangling-with-tidyverse.html#view-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-wrangling-with-tidyverse.html#cb83-1" tabindex="-1"></a><span class="fu">View</span>(unvotes)</span>
+<span id="cb83-2"><a href="data-wrangling-with-tidyverse.html#cb83-2" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="data-wrangling-with-tidyverse.html#cb83-3" tabindex="-1"></a><span class="co"># or display first few rows of the data</span></span>
+<span id="cb83-4"><a href="data-wrangling-with-tidyverse.html#cb83-4" tabindex="-1"></a><span class="fu">head</span>(unvotes,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   rcid country country_code year vote session importantvote       date   unres
+## 1    6  Canada           CA 1946   no       1             0 1946-01-04 R/1/107
+## 2    8  Canada           CA 1946  yes       1             0 1946-01-05 R/1/297
+## 3   11  Canada           CA 1946  yes       1             0 1946-02-05 R/1/376
+## 4   11  Canada           CA 1946  yes       1             0 1946-02-05 R/1/376
+## 5   18  Canada           CA 1946   no       1             0 1946-02-03 R/1/532
+##   amend para                       short
+## 1     0    0 DECLARATION OF HUMAN RIGHTS
+## 2     1    0               ECOSOC POWERS
+## 3     0    0      TRUSTEESHIP AMENDMENTS
+## 4     0    0      TRUSTEESHIP AMENDMENTS
+## 5     1    0          ECOSOC CONSULTANTS
+##                                                                                                                                                                                                                                                   descr
+## 1                                                                                                                                            TO ADOPT A CUBAN PROPOSAL (A/3-C) THAT AN ITEM ON A DECLARATION OF THE RIGHTS AND DUTIES OF MAN BE TABLED.
+## 2  TO ADOPT A SECOND 6TH COMM. AMENDMENT (A/14) TO THE PROVISIONAL RULES OF PROCEDURE, WHICH AMENDMENT EPLACES PROVISIONAL RULE T WITH A NEW TEXT AUTHORIZING THE ECONOMIC &amp; SOC. COUNCIL TO CALL INTERNATIONAL CONFERENCES ON ANY MATTER WITHIN ITS CO
+## 3  TO ADOPT DRAFT RESOLUTIONS I AND II AS A WHOLE, OF THE 4TH COMM. REPORT (A/34) ON NON-SELF-GOVERNING TERRITORIES. RESOLUTION I PROVIDES TO PROMOTE THE POLITICAL, SOCIAL, ECONOMIC, AND EDUCATIONAL ASPIRATIONS OF NON-SELF-GOVERNING PEOPLES THROUG
+## 4  TO ADOPT DRAFT RESOLUTIONS I AND II AS A WHOLE, OF THE 4TH COMM. REPORT (A/34) ON NON-SELF-GOVERNING TERRITORIES. RESOLUTION I PROVIDES TO PROMOTE THE POLITICAL, SOCIAL, ECONOMIC, AND EDUCATIONAL ASPIRATIONS OF NON-SELF-GOVERNING PEOPLES THROUG
+## 5 TO ADOPT USSR (ORAL) AMENDMENT REPLACING THE 1ST COMM. DRAFT RESOLUTION (A/54/REV.1) WITH THE FOLLOWING:  \\TAKING INTO CONSIDERATION THE QUESTION RAISED BY THE WORLD FEDERATION OF TRADE UNIONS CONCERNING ITS PARTICIPATION IN THE WORK OF THE ECO
+##   short_name                issue
+## 1         hr         Human rights
+## 2         ec Economic development
+## 3         co          Colonialism
+## 4         ec Economic development
+## 5         ec Economic development</code></pre>
+</div>
+</div>
+<div id="recap" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Recap<a href="data-wrangling-with-tidyverse.html#recap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are going to spend around 15-30 minutes practising what we learnt last week.</p>
+<ul>
+<li>Try answering the following questions based on what we learnt last week:
+<ul>
+<li>What are the names of the 15 variables in the dataset? (Hint: <code>colnames()</code>)</li>
+<li>What are the data types of variables <code>vote</code> and <code>issue</code>? (Hint: <code>class()</code>)</li>
+<li>What are the unique values in <code>vote</code> and <code>issue</code>? Are these variables nominal, ordinal, or continuous variables? (Hint: <code>unique()</code>)</li>
+<li>Provide a tally of the data under <code>vote</code>. How many ‘yes’ votes are there in the dataset? (Hint: <code>table()</code>)</li>
+<li>What is the median <code>year</code> in the dataset?</li>
+</ul></li>
+</ul>
+</div>
+<div id="tidyverse-1" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Tidyverse<a href="data-wrangling-with-tidyverse.html#tidyverse-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pipes" class="section level3 unnumbered hasAnchor">
+<h3>Pipes<a href="data-wrangling-with-tidyverse.html#pipes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Two types of piping <code>|&gt;</code> (base R) and <code>%&gt;%</code> (magrittr). We will be using the <code>|&gt;</code> pipe for this course.</p>
+<p>Tidyverse pipes facilitate a sequence of actions performed on <strong>a single object</strong>. After every action, the <code>|&gt;</code> is used to indicate that the output of the previous action is used as the input of the next action.</p>
+<p>To make sure the pipe runs, the function must be able to take the piped object as its first argument.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-wrangling-with-tidyverse.html#cb85-1" tabindex="-1"></a><span class="do">## the following codes are equivalent</span></span>
+<span id="cb85-2"><a href="data-wrangling-with-tidyverse.html#cb85-2" tabindex="-1"></a><span class="co">#Base R</span></span>
+<span id="cb85-3"><a href="data-wrangling-with-tidyverse.html#cb85-3" tabindex="-1"></a><span class="fu">summary</span>(unvotes)</span></code></pre></div>
+<pre><code>##       rcid        country          country_code            year     
+##  Min.   :   6   Length:5732        Length:5732        Min.   :1946  
+##  1st Qu.:2100   Class :character   Class :character   1st Qu.:1979  
+##  Median :3540   Mode  :character   Mode  :character   Median :1990  
+##  Mean   :3491                                         Mean   :1991  
+##  3rd Qu.:4797                                         3rd Qu.:2006  
+##  Max.   :9145                                         Max.   :2019  
+##                                                                     
+##      vote              session      importantvote        date          
+##  Length:5732        Min.   : 1.00   Min.   :0.0000   Length:5732       
+##  Class :character   1st Qu.:34.00   1st Qu.:0.0000   Class :character  
+##  Mode  :character   Median :45.00   Median :0.0000   Mode  :character  
+##                     Mean   :45.65   Mean   :0.0844                     
+##                     3rd Qu.:61.00   3rd Qu.:0.0000                     
+##                     Max.   :74.00   Max.   :1.0000                     
+##                                     NA&#39;s   :425                        
+##     unres               amend            para          short          
+##  Length:5732        Min.   :0.000   Min.   :0.000   Length:5732       
+##  Class :character   1st Qu.:0.000   1st Qu.:0.000   Class :character  
+##  Mode  :character   Median :0.000   Median :0.000   Mode  :character  
+##                     Mean   :0.049   Mean   :0.236                     
+##                     3rd Qu.:0.000   3rd Qu.:0.000                     
+##                     Max.   :1.000   Max.   :1.000                     
+##                     NA&#39;s   :3553    NA&#39;s   :3330                      
+##     descr            short_name           issue          
+##  Length:5732        Length:5732        Length:5732       
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+## </code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-wrangling-with-tidyverse.html#cb87-1" tabindex="-1"></a><span class="co">#Tidyverse</span></span>
+<span id="cb87-2"><a href="data-wrangling-with-tidyverse.html#cb87-2" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>##       rcid        country          country_code            year     
+##  Min.   :   6   Length:5732        Length:5732        Min.   :1946  
+##  1st Qu.:2100   Class :character   Class :character   1st Qu.:1979  
+##  Median :3540   Mode  :character   Mode  :character   Median :1990  
+##  Mean   :3491                                         Mean   :1991  
+##  3rd Qu.:4797                                         3rd Qu.:2006  
+##  Max.   :9145                                         Max.   :2019  
+##                                                                     
+##      vote              session      importantvote        date          
+##  Length:5732        Min.   : 1.00   Min.   :0.0000   Length:5732       
+##  Class :character   1st Qu.:34.00   1st Qu.:0.0000   Class :character  
+##  Mode  :character   Median :45.00   Median :0.0000   Mode  :character  
+##                     Mean   :45.65   Mean   :0.0844                     
+##                     3rd Qu.:61.00   3rd Qu.:0.0000                     
+##                     Max.   :74.00   Max.   :1.0000                     
+##                                     NA&#39;s   :425                        
+##     unres               amend            para          short          
+##  Length:5732        Min.   :0.000   Min.   :0.000   Length:5732       
+##  Class :character   1st Qu.:0.000   1st Qu.:0.000   Class :character  
+##  Mode  :character   Median :0.000   Median :0.000   Mode  :character  
+##                     Mean   :0.049   Mean   :0.236                     
+##                     3rd Qu.:0.000   3rd Qu.:0.000                     
+##                     Max.   :1.000   Max.   :1.000                     
+##                     NA&#39;s   :3553    NA&#39;s   :3330                      
+##     descr            short_name           issue          
+##  Length:5732        Length:5732        Length:5732       
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+## </code></pre>
+</div>
+<div id="piping-data-frames" class="section level3 unnumbered hasAnchor">
+<h3>Piping data frames<a href="data-wrangling-with-tidyverse.html#piping-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this course, our focus is on data sets (i.e. data frames). Hence for the rest of today’s class, we will focus on six tidyverse functions that are developed for the purpose of manipulating data frames.</p>
+<ul>
+<li>Tidyverse functions for datasets
+<ul>
+<li><code>filter()</code> : subsets the data based on a conditional statement</li>
+<li><code>reframe()</code> : collapses/summarizes the dataset to produce stated summary statistics (e.g. <code>mean()</code>)</li>
+<li><code>group_by()</code> : divides the data based on specified groups so that subsequent functions can be run on each group separately</li>
+<li><code>mutate()</code> : creates a new variable (i.e. new column) in the dataset</li>
+<li><code>arrange()</code> : order the rows based on a criterion</li>
+<li><code>select()</code> : keep columns using their variable names (columns not specified are dropped from the dataset)</li>
+</ul></li>
+</ul>
+</div>
+<div id="filter" class="section level3 unnumbered hasAnchor">
+<h3>filter()<a href="data-wrangling-with-tidyverse.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>filter()</code> function allows you to slice out parts of the data based on your criterion.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-wrangling-with-tidyverse.html#cb89-1" tabindex="-1"></a><span class="co"># Subset only rows in the 60th UNGA session and save as new object</span></span>
+<span id="cb89-2"><a href="data-wrangling-with-tidyverse.html#cb89-2" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span> </span>
+<span id="cb89-3"><a href="data-wrangling-with-tidyverse.html#cb89-3" tabindex="-1"></a>  <span class="fu">filter</span>(session<span class="sc">==</span><span class="dv">60</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-wrangling-with-tidyverse.html#cb90-1" tabindex="-1"></a>sess60 <span class="ot">&lt;-</span> unvotes <span class="sc">|&gt;</span> </span>
+<span id="cb90-2"><a href="data-wrangling-with-tidyverse.html#cb90-2" tabindex="-1"></a>  <span class="fu">filter</span>(session<span class="sc">==</span><span class="dv">60</span>)</span>
+<span id="cb90-3"><a href="data-wrangling-with-tidyverse.html#cb90-3" tabindex="-1"></a></span>
+<span id="cb90-4"><a href="data-wrangling-with-tidyverse.html#cb90-4" tabindex="-1"></a><span class="co"># top 8 rows in the session 60 subset</span></span>
+<span id="cb90-5"><a href="data-wrangling-with-tidyverse.html#cb90-5" tabindex="-1"></a><span class="fu">head</span>(sess60,<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>##   rcid country country_code year    vote session importantvote       date
+## 1 4593  Canada           CA 2006     yes      60             0 2006-03-15
+## 2 4594  Canada           CA 2005     yes      60             0 2005-12-23
+## 3 4599  Canada           CA 2005 abstain      60             1 2005-12-22
+## 4 4600  Canada           CA 2005 abstain      60             1 2005-12-22
+## 5 4601  Canada           CA 2005     yes      60             0 2005-12-22
+## 6 4602  Canada           CA 2005     yes      60             0 2005-12-16
+## 7 4603  Canada           CA 2005     yes      60             0 2005-12-16
+## 8 4604  Canada           CA 2005     yes      60             0 2005-12-16
+##      unres amend para
+## 1 R/60/251    NA   NA
+## 2 R/60/231    NA   NA
+## 3 R/60/185    NA   NA
+## 4 R/60/184    NA   NA
+## 5 R/60/183    NA   NA
+## 6 R/60/170    NA   NA
+## 7 R/60/174    NA   NA
+## 8 R/60/173    NA   NA
+##                                                               short
+## 1      Human Rights Council : resolution / adopted by the General A
+## 2      Rights of the child : resolution / adopted by the General As
+## 3      Unilateral economic measures as a means of political and eco
+## 4      International trade and development : resolution / adopted b
+## 5      Permanent sovereignty of the Palestinian people in the Occup
+## 6       Situation of human rights in the Democratic Republic of the
+## 7      Situation of human rights in Uzbekistan : resolution / adopt
+## 8 Situation of human rights in the Democratic People?Ãƒâ€ s Republi
+##                                                                                                                                                                                                                                                  descr
+## 1                                                                                                                                                                                  Human Rights Council : resolution / adopted by the General Assembly
+## 2                                                                                                                                                                                   Rights of the child : resolution / adopted by the General Assembly
+## 3                                                                                               Unilateral economic measures as a means of political and economic coercion against developing countries : resolution / adopted by the General Assembly
+## 4                                                                                                                                                                   International trade and development : resolution / adopted by the General Assembly
+## 5 Permanent sovereignty of the Palestinian people in the Occupied Palestinian Territory, including East Jerusalem, and of the Arab population in the occupied Syrian Golan over their natural resources : resolution / adopted by the General Assembly
+## 6                                                                                                                                     Situation of human rights in the Democratic Republic of the Congo : resolution / adopted by the General Assembly
+## 7                                                                                                                                                               Situation of human rights in Uzbekistan : resolution / adopted by the General Assembly
+## 8                                                                                                                              Situation of human rights in the Democratic People?Ã†s Republic of Korea : resolution / adopted by the General Assembly
+##   short_name                issue
+## 1         hr         Human rights
+## 2         hr         Human rights
+## 3         ec Economic development
+## 4         ec Economic development
+## 5         me Palestinian conflict
+## 6         hr         Human rights
+## 7         hr         Human rights
+## 8         hr         Human rights</code></pre>
+<p>To understand how to <code>filter</code> datasets based on a certain criterion, we need to understand how to construct conditional statements using operators.</p>
+<div id="conditional-statements-and-operators" class="section level4 unnumbered hasAnchor">
+<h4>Conditional statements and operators<a href="data-wrangling-with-tidyverse.html#conditional-statements-and-operators" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Conditional statements produce <code>logical</code> class (i.e. TRUE or FALSE) output that help us to manipulate objects as well as customize the execution of functions.</p>
+<p>Operators are used to construct conditional statements.</p>
+<ul>
+<li>Comparison operators
+<ul>
+<li>Equal <code>==</code></li>
+<li>Not equal <code>!=</code></li>
+<li>More than <code>&gt;</code></li>
+<li>Less than <code>&lt;</code></li>
+<li>Greater than or equal to <code>&gt;=</code></li>
+<li>Less than or equal to <code>&lt;=</code></li>
+</ul></li>
+<li>Logical operators
+<ul>
+<li>And <code>&amp;</code></li>
+<li>Or <code>|</code></li>
+<li>Not <code>!</code></li>
+</ul></li>
+<li>Miscellaneous operator
+<ul>
+<li>In <code>%in%</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="run-a-few-examples-to-see-how-they-work" class="section level4 unnumbered hasAnchor">
+<h4>Run a few examples to see how they work<a href="data-wrangling-with-tidyverse.html#run-a-few-examples-to-see-how-they-work" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>5 MORE THAN 3</li>
+</ul>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-wrangling-with-tidyverse.html#cb92-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ul>
+<li>10 LESS THAN -100</li>
+</ul>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-wrangling-with-tidyverse.html#cb94-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ul>
+<li>“3 more than 5” AND “3 more than 1”</li>
+</ul>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-wrangling-with-tidyverse.html#cb96-1" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;</span> (<span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ul>
+<li>“3 more than 5” OR “3 more than 1”</li>
+</ul>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-wrangling-with-tidyverse.html#cb98-1" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">|</span> (<span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ul>
+<li>1 EQUALS TO 3</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-wrangling-with-tidyverse.html#cb100-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ul>
+<li>“apple” EQUALS TO “apple”</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-wrangling-with-tidyverse.html#cb102-1" tabindex="-1"></a>eg <span class="ot">&lt;-</span> <span class="st">&quot;apple&quot;</span></span>
+<span id="cb102-2"><a href="data-wrangling-with-tidyverse.html#cb102-2" tabindex="-1"></a>eg2 <span class="ot">&lt;-</span> <span class="st">&quot;banana&quot;</span></span>
+<span id="cb102-3"><a href="data-wrangling-with-tidyverse.html#cb102-3" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="data-wrangling-with-tidyverse.html#cb102-4" tabindex="-1"></a>eg <span class="sc">==</span> <span class="st">&quot;apple&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-wrangling-with-tidyverse.html#cb104-1" tabindex="-1"></a>eg2 <span class="sc">==</span> <span class="st">&quot;apple&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ul>
+<li>1 NOT EQUALS TO 3</li>
+</ul>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="data-wrangling-with-tidyverse.html#cb106-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>By inserting these conditional statements into the <code>filter</code> function, we can create subsets of the dataset.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="data-wrangling-with-tidyverse.html#cb108-1" tabindex="-1"></a>afterColdWar <span class="ot">&lt;-</span> unvotes <span class="sc">|&gt;</span> </span>
+<span id="cb108-2"><a href="data-wrangling-with-tidyverse.html#cb108-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">1990</span>)</span>
+<span id="cb108-3"><a href="data-wrangling-with-tidyverse.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="data-wrangling-with-tidyverse.html#cb108-4" tabindex="-1"></a><span class="co"># top 8 rows in the subset containing data after 1990</span></span>
+<span id="cb108-5"><a href="data-wrangling-with-tidyverse.html#cb108-5" tabindex="-1"></a><span class="fu">head</span>(afterColdWar,<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>##   rcid country country_code year    vote session importantvote       date
+## 1 3593  Canada           CA 1991 abstain      46             0 1991-12-06
+## 2 3594  Canada           CA 1991     yes      46             1 1991-12-06
+## 3 3595  Canada           CA 1991     yes      46             0 1991-12-06
+## 4 3596  Canada           CA 1991     yes      46             0 1991-12-06
+## 5 3596  Canada           CA 1991     yes      46             0 1991-12-06
+## 6 3597  Canada           CA 1991     yes      46             0 1991-12-06
+## 7 3598  Canada           CA 1991 abstain      46             0 1991-12-06
+## 8 3598  Canada           CA 1991 abstain      46             0 1991-12-06
+##      unres amend para                                           short
+## 1  R/46/28    NA   NA BAN, AIR, WATER AND OUTER SPACE NUCLEAR TESTING
+## 2  R/46/29    NA   NA                   COMPREHENSIVE TEST-BAN-TREATY
+## 3  R/46/31    NA   NA                    DENUCLEARIZATION, SOUTH ASIA
+## 4  R/46/32    NA   NA                              NON-NUCLEAR STATES
+## 5  R/46/32    NA   NA                              NON-NUCLEAR STATES
+## 6  R/46/33    NA   NA                          ARMS RACE, OUTER SPACE
+## 7 R/46/34A    NA   NA                   SOUTH AFRICA, NUCLEAR WEAPONS
+## 8 R/46/34A    NA   NA                   SOUTH AFRICA, NUCLEAR WEAPONS
+##                                                                                                                                                                                                                                                  descr
+## 1                                                                                                                                               Amendment of the Treaty Banning Nuclear Weapon Tests in the Atmosphere, in Outer Space and under Water
+## 2                                                                                                                                                                                                                Comprehensive Nuclear-Test-Ban Treaty
+## 3                                                                                                                                                                                            Establishment of a nuclear-weapon-free zone in South Asia
+## 4                                                                                                           Conclusion of effective international arrangements to assure non nuclear weapon States against the use or threat of use of nuclear weapons
+## 5                                                                                                           Conclusion of effective international arrangements to assure non nuclear weapon States against the use or threat of use of nuclear weapons
+## 6                                                                                                                                                                                                            Prevention of an arms race in outer space
+## 7 Condemns South Africa&#39;s continued pursuit of a nuclear capability and all forms of nuclear collaboration by any State, corporation, institution or individual with the racist regime that enable it to frustrate the objective of the Declaration wh
+## 8 Condemns South Africa&#39;s continued pursuit of a nuclear capability and all forms of nuclear collaboration by any State, corporation, institution or individual with the racist regime that enable it to frustrate the objective of the Declaration wh
+##   short_name                                issue
+## 1         nu Nuclear weapons and nuclear material
+## 2         nu Nuclear weapons and nuclear material
+## 3         nu Nuclear weapons and nuclear material
+## 4         nu Nuclear weapons and nuclear material
+## 5         di         Arms control and disarmament
+## 6         di         Arms control and disarmament
+## 7         nu Nuclear weapons and nuclear material
+## 8         di         Arms control and disarmament</code></pre>
+</div>
+</div>
+<div id="reframe" class="section level3 unnumbered hasAnchor">
+<h3>reframe()<a href="data-wrangling-with-tidyverse.html#reframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>reframe()</code> function creates a new data frame (often having the effect of reducing/summarizing the data frame) based on selected functions, e.g. <code>mean()</code>, <code>unique()</code>, <code>n()</code>(number of observations) etc.</p>
+<p>By using <code>reframe(min(year))</code>, the code collapses the data to produce only the minimum year</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="data-wrangling-with-tidyverse.html#cb110-1" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb110-2"><a href="data-wrangling-with-tidyverse.html#cb110-2" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">min</span>(year))</span></code></pre></div>
+<pre><code>##   min(year)
+## 1      1946</code></pre>
+<p>You can produce more than one summary statistic.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-wrangling-with-tidyverse.html#cb112-1" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb112-2"><a href="data-wrangling-with-tidyverse.html#cb112-2" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">yearmin =</span> <span class="fu">min</span>(year), <span class="co"># minimum year</span></span>
+<span id="cb112-3"><a href="data-wrangling-with-tidyverse.html#cb112-3" tabindex="-1"></a>          <span class="at">yearmax =</span> <span class="fu">max</span>(year), <span class="co"># maximum year</span></span>
+<span id="cb112-4"><a href="data-wrangling-with-tidyverse.html#cb112-4" tabindex="-1"></a>          <span class="at">yesvotes =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>), <span class="co"># total number who voted &quot;yes&quot;</span></span>
+<span id="cb112-5"><a href="data-wrangling-with-tidyverse.html#cb112-5" tabindex="-1"></a>          <span class="at">yesshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>)<span class="sc">/</span><span class="fu">n</span>()) <span class="co"># total number voted &quot;yes&quot; divided by total number of observations, n()</span></span></code></pre></div>
+<pre><code>##   yearmin yearmax yesvotes  yesshare
+## 1    1946    2019     2675 0.4666783</code></pre>
+<p>Note that in the <code>sum</code> function ahove, a conditional statement <code>vote=="yes"</code> is inserted so that the total number of votes can be tallied. This is possible because <code>TRUE</code> takes the value of 1 and <code>FALSE</code> takes the value of 0). For example,</p>
+<table>
+<thead>
+<tr class="header">
+<th>vote</th>
+<th>based on conditional statement</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“yes”</td>
+<td>TRUE</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>“no”</td>
+<td>FALSE</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>“no”</td>
+<td>FALSE</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>“yes”</td>
+<td>TRUE</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Output of <code>sum</code> function in this example will be 2.</p>
+</div>
+<div id="group_by" class="section level3 unnumbered hasAnchor">
+<h3>group_by()<a href="data-wrangling-with-tidyverse.html#group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>group_by()</code> function allows you to apply functions to subsets of the data. If we use <code>group_by(year)</code>, the subsequent functions will be applied separately to each group with the same <code>year</code> value.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-wrangling-with-tidyverse.html#cb114-1" tabindex="-1"></a><span class="co"># by year</span></span>
+<span id="cb114-2"><a href="data-wrangling-with-tidyverse.html#cb114-2" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb114-3"><a href="data-wrangling-with-tidyverse.html#cb114-3" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb114-4"><a href="data-wrangling-with-tidyverse.html#cb114-4" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">yesvotes =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>),</span>
+<span id="cb114-5"><a href="data-wrangling-with-tidyverse.html#cb114-5" tabindex="-1"></a>            <span class="at">yesshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>)<span class="sc">/</span><span class="fu">n</span>()) <span class="co"># n() -- number of observations</span></span></code></pre></div>
+<pre><code>## # A tibble: 73 × 3
+##     year yesvotes yesshare
+##    &lt;int&gt;    &lt;int&gt;    &lt;dbl&gt;
+##  1  1946       21    0.808
+##  2  1947       10    0.556
+##  3  1948       12    0.245
+##  4  1949       19    0.38 
+##  5  1950        4    0.235
+##  6  1951        2    1    
+##  7  1952        7    0.241
+##  8  1953        7    0.438
+##  9  1954        4    0.5  
+## 10  1955        2    0.2  
+## # ℹ 63 more rows</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-wrangling-with-tidyverse.html#cb116-1" tabindex="-1"></a><span class="co"># by vote type</span></span>
+<span id="cb116-2"><a href="data-wrangling-with-tidyverse.html#cb116-2" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb116-3"><a href="data-wrangling-with-tidyverse.html#cb116-3" tabindex="-1"></a>  <span class="fu">group_by</span>(vote) <span class="sc">|&gt;</span></span>
+<span id="cb116-4"><a href="data-wrangling-with-tidyverse.html#cb116-4" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">votes =</span> <span class="fu">n</span>()) <span class="co"># n() -- number of observations</span></span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   vote    votes
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 abstain  1574
+## 2 no       1483
+## 3 yes      2675</code></pre>
+</div>
+<div id="mutate" class="section level3 unnumbered hasAnchor">
+<h3>mutate()<a href="data-wrangling-with-tidyverse.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>mutate()</code> function allows you to add new columns to your dataframe. For example, if you wanted to retain the original dataframe while calculating the mean, max, and yes vote shares in each year, you can apply the same functions using <code>mutate()</code> instead of <code>reframe()</code></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-wrangling-with-tidyverse.html#cb118-1" tabindex="-1"></a>new_unvotes <span class="ot">&lt;-</span> unvotes <span class="sc">|&gt;</span></span>
+<span id="cb118-2"><a href="data-wrangling-with-tidyverse.html#cb118-2" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb118-3"><a href="data-wrangling-with-tidyverse.html#cb118-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yesvotes =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>),</span>
+<span id="cb118-4"><a href="data-wrangling-with-tidyverse.html#cb118-4" tabindex="-1"></a>         <span class="at">yesshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>)<span class="sc">/</span><span class="fu">n</span>()) <span class="co"># n() -- number of observations</span></span></code></pre></div>
+<p>View your new variables</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-wrangling-with-tidyverse.html#cb119-1" tabindex="-1"></a>new_unvotes<span class="sc">$</span>yesvotes</span>
+<span id="cb119-2"><a href="data-wrangling-with-tidyverse.html#cb119-2" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="data-wrangling-with-tidyverse.html#cb119-3" tabindex="-1"></a><span class="fu">View</span>(new_unvotes)</span></code></pre></div>
+</div>
+<div id="select" class="section level3 unnumbered hasAnchor">
+<h3>select()<a href="data-wrangling-with-tidyverse.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>select()</code> function allows you to reduce the dataset by selecting only the variables you are interested in, or it can also be used to reorder your dataset.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-wrangling-with-tidyverse.html#cb120-1" tabindex="-1"></a>un_small <span class="ot">&lt;-</span> unvotes <span class="sc">|&gt;</span></span>
+<span id="cb120-2"><a href="data-wrangling-with-tidyverse.html#cb120-2" tabindex="-1"></a>  <span class="fu">select</span>(country,year,issue,vote)</span>
+<span id="cb120-3"><a href="data-wrangling-with-tidyverse.html#cb120-3" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="data-wrangling-with-tidyverse.html#cb120-4" tabindex="-1"></a><span class="fu">head</span>(un_small,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    country year                issue vote
+## 1   Canada 1946         Human rights   no
+## 2   Canada 1946 Economic development  yes
+## 3   Canada 1946          Colonialism  yes
+## 4   Canada 1946 Economic development  yes
+## 5   Canada 1946 Economic development   no
+## 6   Canada 1946 Economic development  yes
+## 7   Canada 1946 Economic development  yes
+## 8   Canada 1946          Colonialism  yes
+## 9   Canada 1946          Colonialism  yes
+## 10  Canada 1946          Colonialism  yes</code></pre>
+</div>
+<div id="arrange" class="section level3 unnumbered hasAnchor">
+<h3>arrange()<a href="data-wrangling-with-tidyverse.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>arrange()</code> function simply reorders the dataset by the variable of your choice.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-wrangling-with-tidyverse.html#cb122-1" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb122-2"><a href="data-wrangling-with-tidyverse.html#cb122-2" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1990</span>) <span class="sc">|&gt;</span></span>
+<span id="cb122-3"><a href="data-wrangling-with-tidyverse.html#cb122-3" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">issue=</span><span class="fu">unique</span>(issue)) <span class="sc">|&gt;</span></span>
+<span id="cb122-4"><a href="data-wrangling-with-tidyverse.html#cb122-4" tabindex="-1"></a>  <span class="fu">arrange</span>(issue)</span></code></pre></div>
+<pre><code>##                                  issue
+## 1         Arms control and disarmament
+## 2                          Colonialism
+## 3                 Economic development
+## 4                         Human rights
+## 5 Nuclear weapons and nuclear material
+## 6                 Palestinian conflict</code></pre>
+</div>
+</div>
+<div id="summary" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Summary<a href="data-wrangling-with-tidyverse.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Piping is useful when the output you want requires a series of operations. For example, the following operations tallies the number of “yes”, “no”, “abstain” votes in each year, and creates a new data frame by assignment the pipe to a new object <code>unvotes_2015</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-wrangling-with-tidyverse.html#cb124-1" tabindex="-1"></a>unvotes_2015 <span class="ot">&lt;-</span> unvotes <span class="sc">|&gt;</span></span>
+<span id="cb124-2"><a href="data-wrangling-with-tidyverse.html#cb124-2" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2015</span>) <span class="sc">|&gt;</span> <span class="co"># subset data in 2015</span></span>
+<span id="cb124-3"><a href="data-wrangling-with-tidyverse.html#cb124-3" tabindex="-1"></a>  <span class="fu">group_by</span>(vote) <span class="sc">|&gt;</span> <span class="co"># group_by allows functions to run separately for each unique element in variable</span></span>
+<span id="cb124-4"><a href="data-wrangling-with-tidyverse.html#cb124-4" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total=</span><span class="fu">n</span>()) <span class="co"># n() -- number of observations</span></span></code></pre></div>
+<p>This is how the new data frame looks</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-wrangling-with-tidyverse.html#cb125-1" tabindex="-1"></a>unvotes_2015</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   vote    total
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 abstain    16
+## 2 no         48
+## 3 yes        28</code></pre>
+<div id="another-example" class="section level4 unnumbered hasAnchor">
+<h4>Another example<a href="data-wrangling-with-tidyverse.html#another-example" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s say we are interested in the issue of “Human rights,” and we want to know the yearly share of all the different votes that Canada has cast between 1990 to 2010. How would we do it?</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-wrangling-with-tidyverse.html#cb127-1" tabindex="-1"></a><span class="co"># first find out what vote types there are</span></span>
+<span id="cb127-2"><a href="data-wrangling-with-tidyverse.html#cb127-2" tabindex="-1"></a><span class="fu">unique</span>(unvotes<span class="sc">$</span>vote)</span></code></pre></div>
+<pre><code>## [1] &quot;no&quot;      &quot;yes&quot;     &quot;abstain&quot;</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="data-wrangling-with-tidyverse.html#cb129-1" tabindex="-1"></a><span class="co"># then, wrangle the data</span></span>
+<span id="cb129-2"><a href="data-wrangling-with-tidyverse.html#cb129-2" tabindex="-1"></a>unvotes <span class="sc">|&gt;</span></span>
+<span id="cb129-3"><a href="data-wrangling-with-tidyverse.html#cb129-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">&gt;</span><span class="dv">1990</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">2010</span> <span class="sc">&amp;</span> issue<span class="sc">==</span><span class="st">&quot;Human rights&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># three conditions in one statement</span></span>
+<span id="cb129-4"><a href="data-wrangling-with-tidyverse.html#cb129-4" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb129-5"><a href="data-wrangling-with-tidyverse.html#cb129-5" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">yesshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;yes&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
+<span id="cb129-6"><a href="data-wrangling-with-tidyverse.html#cb129-6" tabindex="-1"></a>            <span class="at">noshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;no&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
+<span id="cb129-7"><a href="data-wrangling-with-tidyverse.html#cb129-7" tabindex="-1"></a>            <span class="at">abstainshare =</span> <span class="fu">sum</span>(vote<span class="sc">==</span><span class="st">&quot;abstain&quot;</span>)<span class="sc">/</span><span class="fu">n</span>()) <span class="co"># n() -- number of observations</span></span></code></pre></div>
+<pre><code>## # A tibble: 19 × 4
+##     year yesshare noshare abstainshare
+##    &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;
+##  1  1991    0.364  0.0909       0.545 
+##  2  1992    0.455  0.0909       0.455 
+##  3  1993    0.545  0.273        0.182 
+##  4  1994    0.643  0.143        0.214 
+##  5  1995    0.714  0.143        0.143 
+##  6  1996    0.647  0.235        0.118 
+##  7  1997    0.6    0.15         0.25  
+##  8  1998    0.647  0.118        0.235 
+##  9  1999    0.5    0.2          0.3   
+## 10  2000    0.471  0.235        0.294 
+## 11  2001    0.45   0.3          0.25  
+## 12  2002    0.435  0.217        0.348 
+## 13  2003    0.48   0.32         0.2   
+## 14  2004    0.35   0.4          0.25  
+## 15  2005    0.476  0.286        0.238 
+## 16  2006    0.429  0.429        0.143 
+## 17  2007    0.407  0.481        0.111 
+## 18  2008    0.385  0.462        0.154 
+## 19  2009    0.304  0.609        0.0870</code></pre>
+</div>
+</div>
+<div id="more-resources" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> More resources<a href="data-wrangling-with-tidyverse.html#more-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Tidyverse pipes: <a href="https://style.tidyverse.org/pipes.html">Tidyverse style guide, 4 Pipes</a></li>
+<li>Non-Tidyverse pipes: <a href="https://r4ds.had.co.nz/pipes.html">R for Data Science, chapter 18</a></li>
+<li>Data wrangling in general: <a href="https://moderndive.com/3-wrangling.html#filter">ModernDive, chapter 3</a></li>
+</ul>
+</div>
+<div id="credits-1" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Credits<a href="data-wrangling-with-tidyverse.html#credits-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>This lesson uses materials from
+<ul>
+<li><a href="https://moderndive.com/index.html">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</a></li>
+<li><a href="https://github.com/dgrtwo/unvotes">unvotes</a></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "lunr",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

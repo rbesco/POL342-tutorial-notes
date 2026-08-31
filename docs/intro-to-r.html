@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Intro to R | POL342 R Tutorials</title>
+  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Intro to R | POL342 R Tutorials" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Intro to R | POL342 R Tutorials" />
+  
+  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  
+
+<meta name="author" content="Jiajia Zhou" />
+
+
+<meta name="date" content="2026-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started-with-data-sets.html"/>
+<link rel="next" href="data-wrangling-with-tidyverse.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html"><i class="fa fa-check"></i><b>1</b> Getting Started With Data Sets</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#understanding-data-sets"><i class="fa fa-check"></i><b>1.1</b> Understanding data sets</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#basics-of-a-function"><i class="fa fa-check"></i><b>1.2</b> Basics of a function</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#consider-the-first-variable-in-the-data-set"><i class="fa fa-check"></i>Consider the first variable in the data set</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#next-variables-reading-and-math."><i class="fa fa-check"></i>Next variables, “reading” and “math”.</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#measures-of-dispersion"><i class="fa fa-check"></i>Measures of dispersion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#what-is-r-what-is-coding"><i class="fa fa-check"></i>What is R? What is coding?</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#integrated-development-environment-ide-editor-rstudio"><i class="fa fa-check"></i>Integrated Development Environment (IDE) editor: RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>2.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#a-sophisticated-calculator"><i class="fa fa-check"></i>A sophisticated calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#base-r-vs.-packages"><i class="fa fa-check"></i>Base R vs. packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#working-directory-and-importing-data"><i class="fa fa-check"></i><b>2.3</b> Working directory and importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class"><i class="fa fa-check"></i><b>3.1</b> Before the start of each class</a></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
+<li class="chapter" data-level="3.5" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#tidyverse-1"><i class="fa fa-check"></i><b>3.5</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes"><i class="fa fa-check"></i>Pipes</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#piping-data-frames"><i class="fa fa-check"></i>Piping data frames</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#filter"><i class="fa fa-check"></i>filter()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#reframe"><i class="fa fa-check"></i>reframe()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#group_by"><i class="fa fa-check"></i>group_by()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#mutate"><i class="fa fa-check"></i>mutate()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#select"><i class="fa fa-check"></i>select()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#arrange"><i class="fa fa-check"></i>arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#summary"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#more-resources"><i class="fa fa-check"></i><b>3.7</b> More resources</a></li>
+<li class="chapter" data-level="3.8" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#credits-1"><i class="fa fa-check"></i><b>3.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization.html"><a href="data-visualization.html#before-the-start-of-each-class-1"><i class="fa fa-check"></i><b>4.1</b> Before the start of each class</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#download-files-from-quercus"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#install-new-package-and-load-all-packages-required-for-this-class"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization.html"><a href="data-visualization.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization.html"><a href="data-visualization.html#recap-and-some-additional-basics"><i class="fa fa-check"></i><b>4.3</b> Recap and some additional basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#r-scripts"><i class="fa fa-check"></i>R scripts</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#syntax-for-functions-functionnamearguments"><i class="fa fa-check"></i>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#arguments-are-function-specific"><i class="fa fa-check"></i>Arguments are function-specific</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#argument-names"><i class="fa fa-check"></i>Argument names</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#if_else-function"><i class="fa fa-check"></i><code>if_else()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization.html"><a href="data-visualization.html#data-visualization-1"><i class="fa fa-check"></i><b>4.4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><code>ggplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-categorical-variables"><i class="fa fa-check"></i><b>4.5</b> Plots for categorical variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-nominalordinal"><i class="fa fa-check"></i>Univariate: nominal/ordinal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-nominalordinal-variables"><i class="fa fa-check"></i>Bivariate: two nominal/ordinal variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization.html"><a href="data-visualization.html#plots-for-interval-variables"><i class="fa fa-check"></i><b>4.6</b> Plots for interval variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#survey-experiment-data"><i class="fa fa-check"></i>Survey experiment data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#univariate-interval"><i class="fa fa-check"></i>Univariate: interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-nominalordinal-and-interval"><i class="fa fa-check"></i>Bivariate: nominal/ordinal and interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#bivariate-two-interval-variables"><i class="fa fa-check"></i>Bivariate: two interval variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization.html"><a href="data-visualization.html#credits-2"><i class="fa fa-check"></i><b>4.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Regression and confidence intervals</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#before-the-start-of-class"><i class="fa fa-check"></i><b>5.1</b> Before the start of class</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#download-files-from-quercus-1"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#install-new-package-and-load-all-packages-required-for-this-class-1"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-data-1"><i class="fa fa-check"></i>Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#recap-1"><i class="fa fa-check"></i><b>5.2</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#converting-variable-to-factor-class"><i class="fa fa-check"></i>Converting variable to factor class</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#determining-plot-based-on-type-of-variable"><i class="fa fa-check"></i>Determining plot based on type of variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#experimental-study-data"><i class="fa fa-check"></i><b>5.3</b> Experimental study data</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcomes-of-interest-in-the-study"><i class="fa fa-check"></i>Outcomes of interest in the study:</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#treatment"><i class="fa fa-check"></i>Treatment</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#data"><i class="fa fa-check"></i>Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#difference-in-means-t.test"><i class="fa fa-check"></i><b>5.4</b> Difference in means – <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#syntax"><i class="fa fa-check"></i>Syntax</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-1-beliefs-about-experts"><i class="fa fa-check"></i>Outcome 1: Beliefs about experts</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#outcome-2-policy-preferences"><i class="fa fa-check"></i>Outcome 2: Policy preferences</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#visualizing-treatment-effects"><i class="fa fa-check"></i><b>5.5</b> Visualizing treatment effects</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#extract-the-output-using-tidy-from-package-broom"><i class="fa fa-check"></i>Extract the output using <code>tidy()</code> from package <code>broom</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#interpreting-the-effect"><i class="fa fa-check"></i>Interpreting the effect</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#estimates-and-confidence-intervals-geom_pointrange"><i class="fa fa-check"></i>Estimates and confidence intervals – geom_pointrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#linear-regression"><i class="fa fa-check"></i><b>5.6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#load-a-different-dataset-some-variables-from-varieties-of-democracies-data-set"><i class="fa fa-check"></i>Load a different dataset (some variables from Varieties of Democracies data set)</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#v-dem-codebook"><i class="fa fa-check"></i>V-Dem codebook</a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#bivariate-relationship-using-a-scatter-plot-geom_point"><i class="fa fa-check"></i>Bivariate relationship using a scatter plot <code>geom_point()</code></a></li>
+<li class="chapter" data-level="" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#regression-estimates-similar-to-survey-treatment-visualization"><i class="fa fa-check"></i>Regression estimates (similar to survey treatment visualization)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="regression-and-confidence-intervals.html"><a href="regression-and-confidence-intervals.html#credits-3"><i class="fa fa-check"></i><b>5.7</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html"><i class="fa fa-check"></i><b>6</b> Introducing project datasets</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets"><i class="fa fa-check"></i>Download project datasets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w8.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W8.R</code>) and put everything in your R project folder</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#overview-use-of-data-sets"><i class="fa fa-check"></i><b>6.2</b> Overview: Use of data sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets"><i class="fa fa-check"></i>Step 1: Select one of the four data sets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set"><i class="fa fa-check"></i>Step 3: Trim down the data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#vdem"><i class="fa fa-check"></i><b>6.3</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-1"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set-select-a-year"><i class="fa fa-check"></i>Step 3: Trim down the data set (select a year)</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-1"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#world-values-survey-wave-7-2017-2022"><i class="fa fa-check"></i><b>6.4</b> World Values Survey (Wave 7, 2017-2022)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-2"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-2"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#other-countries"><i class="fa fa-check"></i>Other countries</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-1"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#asian-barometer-wave-5-2018-2021"><i class="fa fa-check"></i><b>6.5</b> Asian Barometer (Wave 5, 2018-2021)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-3"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-1"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-3"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#canadian-election-study-2021"><i class="fa fa-check"></i><b>6.6</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-4"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-2"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-4"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-2"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html"><i class="fa fa-check"></i><b>7</b> Crosstabs using continuous variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#set-up-1"><i class="fa fa-check"></i><b>7.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r"><i class="fa fa-check"></i>Make sure you have your project datasets and <code>W9.R</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-libraries-1"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#vdem-1"><i class="fa fa-check"></i><b>7.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#load-data-2"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut"><i class="fa fa-check"></i>Create ordinal categories using function <code>cut()</code></a></li>
+<li class="chapter" data-level="" data-path="crosstabs-using-continuous-variables.html"><a href="crosstabs-using-continuous-variables.html#skewed-variables"><i class="fa fa-check"></i>Skewed variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<ul>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
+<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#load-libraries-3"><i class="fa fa-check"></i><b>9.1</b> Load libraries</a></li>
+<li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="" target="blank"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">POL342 R Tutorials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Intro to R<a href="intro-to-r.html#intro-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Week 3 tutorial goals:</p>
+<ul>
+<li>R Basics
+<ul>
+<li>Object types</li>
+<li>Packages</li>
+<li>Working directory</li>
+<li>Importing data</li>
+<li>Exploring data</li>
+</ul></li>
+</ul>
+<style type="text/css">
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid maroon;
+  font-weight: bold;
+}
+</style>
+<div id="rstudio" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> RStudio<a href="intro-to-r.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-r-what-is-coding" class="section level3 unnumbered hasAnchor">
+<h3>What is R? What is coding?<a href="intro-to-r.html#what-is-r-what-is-coding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Coding is a language that is fed directly into an interpreter.</li>
+<li>Programming languages are fed into a computing system that reads the script and executes the commands.</li>
+<li>Non-programming languages simply translates the programming language into its corresponding output, e.g. Hypertext Markup Language (HTML). HTML is often used to display information on webpages.
+<img src="images/w3_htmleg.png" width="70%" style="display: block; margin: auto;" /></li>
+<li>E.g. of other programming languages: JavaScript; Python; Mac Terminal (bash); Windows Command Prompt</li>
+<li><code>R</code> is a software for statistical computing. It is designed with particular processes that are tailored to statistical analysis and graphics. In order to initiate those processes, we write our commands in an R script for R to interpret and execute.</li>
+</ul>
+</div>
+<div id="integrated-development-environment-ide-editor-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>Integrated Development Environment (IDE) editor: RStudio<a href="intro-to-r.html#integrated-development-environment-ide-editor-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio is a software that makes R more user-friendly. If you run the software R, you see only a single panel, which is not very informative.</p>
+<p><img src="images/w3_Rconsole.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>RStudio gives you more panels in addition to the R console (on the left) that displays information to support our use of R.</p>
+<p><img src="images/w3_RStudio.png" width="90%" style="display: block; margin: auto;" /></p>
+<div id="console" class="section level4 unnumbered hasAnchor">
+<h4>Console<a href="intro-to-r.html#console" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/w3_RStudio1.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="environment" class="section level4 unnumbered hasAnchor">
+<h4>Environment<a href="intro-to-r.html#environment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The environment lists the objects you have saved and are able to “call” (i.e. use in subsequent commands).
+<img src="images/w3_RStudio2.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="filesplots" class="section level4 unnumbered hasAnchor">
+<h4>Files/Plots<a href="intro-to-r.html#filesplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/w3_RStudio3.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="r-script" class="section level4 unnumbered hasAnchor">
+<h4>R Script<a href="intro-to-r.html#r-script" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can try to run codes in the console, but running codes linearly can be restricting, kind of like using a typewriter instead of a word document—you have to redo everything when you make a mistake.
+<img src="images/w3_RStudio_console.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>In order to create our code document, we need the R script.
+<img src="images/w3_RStudio_Rfile.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="images/w3_RStudio_Rfile2.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="open-the-r-script-w3.r" class="section level4 unnumbered hasAnchor">
+<h4>Open the R script <code>W3.R</code><a href="intro-to-r.html#open-the-r-script-w3.r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The file <code>W3.R</code> can be found in the folder for this class (Quercus &gt; Files &gt; Practical &gt; Week 3). This R script contains all the codes I will run below. You can run them on your computers as you follow along.</p>
+</div>
+</div>
+</div>
+<div id="getting-started" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Getting started<a href="intro-to-r.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-sophisticated-calculator" class="section level3 unnumbered hasAnchor">
+<h3>A sophisticated calculator<a href="intro-to-r.html#a-sophisticated-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>R</code> can do whatever your calculator can do, and much more.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro-to-r.html#cb1-1" tabindex="-1"></a><span class="dv">0</span> <span class="sc">*</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro-to-r.html#cb3-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-r.html#cb5-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.25839012</span>,<span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.26</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-r.html#cb7-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.25839012</span>,<span class="at">digits=</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.25839</code></pre>
+</div>
+<div id="objects" class="section level3 unnumbered hasAnchor">
+<h3>Objects<a href="intro-to-r.html#objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Objects store data. You can assign objects using <code>&lt;-</code> or <code>=</code>. In general, we use <code>&lt;-</code> for assignment. There are distinctions between the two that are not relevant to the content here.</p>
+<p>The way to assignment object is to type <code>&lt;object name&gt; &lt;- &lt;data&gt;</code>. For example,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-r.html#cb9-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="dv">15</span></span></code></pre></div>
+<p>You will see <code>obj1</code> added to your environment panel. “Names of objects can only contain letters, numbers, _ (underscore), or . (period), and <em>must begin with a letter</em>” (<a href="https://bookdown.org/rwnahhas/IntroToR/naming-objects.html">An Introduction to R for Research</a>, emphasis added).</p>
+</div>
+<div id="functions" class="section level3 unnumbered hasAnchor">
+<h3>Functions<a href="intro-to-r.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Similar to what we did in Excel last week. Functions are what makes R useful.</p>
+<p>Understanding a new function. Use <code>?&lt;functionname&gt;</code> to pull up the R documentation for the function. For example, one of the basic functions we need to learn is <code>c()</code> which allows you to combine data. The function <code>mean()</code> allows you to calculate the mean value, similar to the AVERAGE function we used in Microsoft Excel last week.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-r.html#cb10-1" tabindex="-1"></a>?<span class="fu">c</span>()</span>
+<span id="cb10-2"><a href="intro-to-r.html#cb10-2" tabindex="-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
+<p>We can use <code>c()</code> to combine elements, such as numbers. We can then run a function like <code>mean()</code> on the combined output.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-r.html#cb11-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [1] 10 20</code></pre>
+<p>We assign a new object and run <code>mean()</code> on the new object.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro-to-r.html#cb13-1" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span>
+<span id="cb13-2"><a href="intro-to-r.html#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="intro-to-r.html#cb13-3" tabindex="-1"></a><span class="fu">mean</span>(obj2)</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+</div>
+<div id="comments" class="section level3 unnumbered hasAnchor">
+<h3>Comments<a href="intro-to-r.html#comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>R</code> does not evaluate lines starting with <code>#</code>. This allow us to add glosses to our code</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="intro-to-r.html#cb15-1" tabindex="-1"></a>?<span class="fu">mean</span>() <span class="co"># this function runs R documentation for function mean()</span></span></code></pre></div>
+</div>
+<div id="data-types" class="section level3 unnumbered hasAnchor">
+<h3>Data types<a href="intro-to-r.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data types tell <code>R</code> how the object should be read. Why do they matter? They affect what calculations can be done and how functions work. Words or labels can be specified using quotations <code>"</code>. These are known as characters in R. The function <code>class()</code> will tell you what kind of data type a variable is. Now lets create two objects, one with numbers and one with characters.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="intro-to-r.html#cb16-1" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">19</span>,<span class="dv">100</span>)</span>
+<span id="cb16-2"><a href="intro-to-r.html#cb16-2" tabindex="-1"></a>words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cat ate my homework&quot;</span>,<span class="st">&quot;today&quot;</span>,<span class="st">&quot;100 pianos&quot;</span>)</span>
+<span id="cb16-3"><a href="intro-to-r.html#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="intro-to-r.html#cb16-4" tabindex="-1"></a><span class="fu">class</span>(numbers)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="intro-to-r.html#cb18-1" tabindex="-1"></a><span class="fu">class</span>(words)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>The exact same numbers can be read as numbers or characters. The numbers 1, 2, 3 could refer to the <code>numeric</code> type, or they could refer to the labels “1”, “2”, “3”, which are the <code>character</code> type.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro-to-r.html#cb20-1" tabindex="-1"></a>eg1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;2&quot;</span>)</span>
+<span id="cb20-2"><a href="intro-to-r.html#cb20-2" tabindex="-1"></a><span class="fu">mean</span>(eg1) <span class="co"># characters have no mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="intro-to-r.html#cb21-1" tabindex="-1"></a><span class="fu">class</span>(eg1)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>There are six basic data types: character, numeric, integer, logical, complex, raw. We will only be using numeric, character, and logical types.</p>
+</div>
+<div id="data-frames" class="section level3 unnumbered hasAnchor">
+<h3>Data frames<a href="intro-to-r.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, we want something closer to a dataset. We can use the column bind function <code>cbind()</code> to join two equal-length vectors. Let’s create two variables</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="intro-to-r.html#cb23-1" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># the first variable, let&#39;s say we have three student ids 1,2,3</span></span>
+<span id="cb23-2"><a href="intro-to-r.html#cb23-2" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">450</span>, <span class="dv">800</span>) <span class="co"># they scored 250, 450, 800 respectively</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="intro-to-r.html#cb24-1" tabindex="-1"></a>eg2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(id,score) <span class="co">#forms a matrix with two numeric columns</span></span></code></pre></div>
+<p>View the newly created object <code>eg2</code> using <code>view()</code> function.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="intro-to-r.html#cb25-1" tabindex="-1"></a><span class="fu">View</span>(eg2)</span></code></pre></div>
+<p>Note that using <code>cbind()</code> (column bind) function creates a matrix, which can only contain one class of data, leading to a coercion of all elements to the same class.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="intro-to-r.html#cb26-1" tabindex="-1"></a><span class="co"># coercion</span></span>
+<span id="cb26-2"><a href="intro-to-r.html#cb26-2" tabindex="-1"></a>eg1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(<span class="st">&quot;1&quot;</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">250</span>,<span class="dv">450</span>,<span class="dv">800</span>))  <span class="co"># note eg1 in your Environment is marked &#39;chr&#39; indication whereas eg2 is marked &#39;num&#39;</span></span></code></pre></div>
+<p>If we want a mix of different data types in the same table, we use the <code>data.frame()</code> function. Each variable, however, can only take be one data type. If you input a mix of character and numeric elements, they will be coerced to character for that variable, similar to the previous example above.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="intro-to-r.html#cb27-1" tabindex="-1"></a>eg1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">v1 =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>),</span>
+<span id="cb27-2"><a href="intro-to-r.html#cb27-2" tabindex="-1"></a>                  <span class="at">v2 =</span> <span class="fu">c</span>(<span class="dv">250</span>,<span class="dv">450</span>,<span class="dv">800</span>)) <span class="co"># notice that &quot;=&quot; is used here for local assignment</span></span>
+<span id="cb27-3"><a href="intro-to-r.html#cb27-3" tabindex="-1"></a>eg2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">v1 =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb27-4"><a href="intro-to-r.html#cb27-4" tabindex="-1"></a>                  <span class="at">v2 =</span> <span class="fu">c</span>(<span class="dv">250</span>,<span class="dv">800</span>,<span class="dv">450</span>))</span></code></pre></div>
+<p>View each data frame.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="intro-to-r.html#cb28-1" tabindex="-1"></a><span class="fu">View</span>(eg1)</span>
+<span id="cb28-2"><a href="intro-to-r.html#cb28-2" tabindex="-1"></a><span class="fu">View</span>(eg2)</span></code></pre></div>
+</div>
+<div id="base-r-vs.-packages" class="section level3 unnumbered hasAnchor">
+<h3>Base R vs. packages<a href="intro-to-r.html#base-r-vs.-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R comes with a set of base commands that allows you to do a range of statistical tasks. For example, let’s try using plotting using base R functions and the object eg2.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="intro-to-r.html#cb29-1" tabindex="-1"></a>?<span class="fu">plot</span>() <span class="co"># Generic X-Y Plotting</span></span></code></pre></div>
+<pre><code>## Help on topic &#39;plot&#39; was found in the following packages:
+## 
+##   Package               Library
+##   base                  /Library/Frameworks/R.framework/Resources/library
+##   graphics              /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+## 
+## 
+## Using the first match ...</code></pre>
+<p><img src="images/w3_plotfunction.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>We need to specify arguments <code>x</code>, <code>y</code>, and type of plot <code>type</code>. To select one column from a dataframe, use <code>$</code> to specify column.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="intro-to-r.html#cb31-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> eg2<span class="sc">$</span>v1,</span>
+<span id="cb31-2"><a href="intro-to-r.html#cb31-2" tabindex="-1"></a>     <span class="at">y =</span> eg2<span class="sc">$</span>v2, </span>
+<span id="cb31-3"><a href="intro-to-r.html#cb31-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div id="tidyverse" class="section level4 unnumbered hasAnchor">
+<h4>Tidyverse<a href="intro-to-r.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R, as an open-source software, allows users to built functions using the basic functions within R. To load these additional user-built functions, we have to download and load packages. Tidyverse is a package we will be using throughout this course.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="intro-to-r.html#cb32-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb32-2"><a href="intro-to-r.html#cb32-2" tabindex="-1"></a><span class="co"># you only need to install packages once</span></span>
+<span id="cb32-3"><a href="intro-to-r.html#cb32-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># you have to load the package every time you restart an R session</span></span></code></pre></div>
+<p>Try using the <code>ggplot</code> function from the tidyverse package. This is complex. Don’t worry if you don’t understand what the code is doing. Just run it. We will be using the function repeatedly over the next few weeks.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="intro-to-r.html#cb33-1" tabindex="-1"></a><span class="co"># eg1</span></span>
+<span id="cb33-2"><a href="intro-to-r.html#cb33-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> eg1, <span class="fu">aes</span>(<span class="at">x =</span> v1, <span class="at">y =</span> v2)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="co"># eg1 is unable to plot a line because v1 is a character type</span></span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="intro-to-r.html#cb34-1" tabindex="-1"></a><span class="co"># eg2</span></span>
+<span id="cb34-2"><a href="intro-to-r.html#cb34-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> eg2, <span class="fu">aes</span>(<span class="at">x =</span> v1, <span class="at">y =</span> v2)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-37-2.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="working-directory-and-importing-data" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Working directory and importing data<a href="intro-to-r.html#working-directory-and-importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can find out your current working directory by using the function getwd(). Your working directory is the root folder where R begins to retrieve any information.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="intro-to-r.html#cb35-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div id="opening-file-star.csv" class="section level4 unnumbered hasAnchor">
+<h4>Opening file <code>STAR.csv</code><a href="intro-to-r.html#opening-file-star.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If the file is not in the working directory, you can</p>
+<ul>
+<li>Move the file to your working directory or,</li>
+<li>Change your working directory (Session &gt; Set Working Directory &gt; Choose Directory, and select the location where your file is located) or,</li>
+<li>Alternatively, if the file is in a subfolder of your current working directory, you can retrieve it by stating the path.</li>
+</ul>
+<p>We are going to use the function <code>read.csv()</code>, which takes a file path for its first argument.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="intro-to-r.html#cb36-1" tabindex="-1"></a><span class="co"># the basic way to load a csv file</span></span>
+<span id="cb36-2"><a href="intro-to-r.html#cb36-2" tabindex="-1"></a>?<span class="fu">read.csv</span>()</span>
+<span id="cb36-3"><a href="intro-to-r.html#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="intro-to-r.html#cb36-4" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">getwd</span>(),<span class="st">&quot;/STAR.csv&quot;</span>) <span class="co"># this will give you a string for the STAR.csv file if it is in your current directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="intro-to-r.html#cb37-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="fu">paste0</span>(<span class="fu">getwd</span>(),<span class="st">&quot;/STAR.csv&quot;</span>)) <span class="co"># this will read the file if it is in your current working directory</span></span></code></pre></div>
+<p>But that was just for illustration purposes. This can get cumbersome when dealing with multiple files.</p>
+</div>
+<div id="r-project-to-organize-our-workflow" class="section level3 unnumbered hasAnchor">
+<h3>R project to organize our workflow<a href="intro-to-r.html#r-project-to-organize-our-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>File</code> &gt; <code>New Project...</code></li>
+<li>The location of your new project will become the default working directory. You don’t have to set your working directory every time you reopen RStudio.
+<img src="images/w3_Rproj1.png" width="70%" style="display: block; margin: auto;" /></li>
+</ul>
+<p>If you are not using your own laptop, save it on a portable storage, e.g. OneDrive or your thumbdrive.
+<img src="images/w3_Rproj2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>You should see a fresh view of RStudio with the project name on top.
+<img src="images/w3_Rproj3.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="save-star.csv-in-the-r-project-folder" class="section level4 unnumbered hasAnchor">
+<h4>Save <code>STAR.csv</code> in the R project folder<a href="intro-to-r.html#save-star.csv-in-the-r-project-folder" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/w3_Rproj4.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Check your file path</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="intro-to-r.html#cb38-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<p>You should be able to run the following code if your directory matches the location of the file.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="intro-to-r.html#cb39-1" tabindex="-1"></a>star <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;STAR.csv&quot;</span>) <span class="co"># reads the data file as stores it as object &quot;star&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="exploring-the-data" class="section level3 unnumbered hasAnchor">
+<h3>Exploring the data<a href="intro-to-r.html#exploring-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, we are going to do what we tried to do something similar to what we did with Microsoft Excel last week.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="intro-to-r.html#cb40-1" tabindex="-1"></a><span class="fu">View</span>(star) <span class="co"># look at the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="intro-to-r.html#cb41-1" tabindex="-1"></a><span class="fu">head</span>(star) <span class="co"># shows the first six rows</span></span></code></pre></div>
+<pre><code>##   classtype reading math graduated
+## 1     small     578  610         1
+## 2   regular     612  612         1
+## 3   regular     583  606         1
+## 4     small     661  648         1
+## 5     small     614  636         1
+## 6   regular     610  603         0</code></pre>
+<ul>
+<li>Identify the number of observations and names of variables</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="intro-to-r.html#cb43-1" tabindex="-1"></a><span class="fu">dim</span>(star) <span class="co"># provides dimensions of dataframe: rows, columns</span></span></code></pre></div>
+<pre><code>## [1] 1274    4</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="intro-to-r.html#cb45-1" tabindex="-1"></a><span class="fu">colnames</span>(star) <span class="co"># list variable names</span></span></code></pre></div>
+<pre><code>## [1] &quot;classtype&quot; &quot;reading&quot;   &quot;math&quot;      &quot;graduated&quot;</code></pre>
+<ul>
+<li>Object type</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="intro-to-r.html#cb47-1" tabindex="-1"></a><span class="fu">class</span>(star<span class="sc">$</span>classtype) <span class="co"># column 1</span></span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<ul>
+<li>Listing unique values for a column</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="intro-to-r.html#cb49-1" tabindex="-1"></a><span class="fu">unique</span>(star<span class="sc">$</span>classtype)</span></code></pre></div>
+<pre><code>## [1] &quot;small&quot;   &quot;regular&quot;</code></pre>
+<ul>
+<li>Calculating mean</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="intro-to-r.html#cb51-1" tabindex="-1"></a><span class="fu">mean</span>(star<span class="sc">$</span>reading) <span class="co"># calculates the mean of reading</span></span></code></pre></div>
+<pre><code>## [1] 628.803</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="intro-to-r.html#cb53-1" tabindex="-1"></a><span class="fu">mean</span>(star<span class="sc">$</span>graduated) <span class="co"># calculates the mean of graduated</span></span></code></pre></div>
+<pre><code>## [1] 0.8697017</code></pre>
+<ul>
+<li>Finding mode</li>
+<li>NOT <code>mode()</code></li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="intro-to-r.html#cb55-1" tabindex="-1"></a><span class="fu">table</span>(star<span class="sc">$</span>graduated) <span class="co"># tabulates all values in the column</span></span></code></pre></div>
+<pre><code>## 
+##    0    1 
+##  166 1108</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="intro-to-r.html#cb57-1" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(star<span class="sc">$</span>graduated)) <span class="co"># sorts by increasing order</span></span></code></pre></div>
+<pre><code>## 
+##    0    1 
+##  166 1108</code></pre>
+<ul>
+<li>What if there are too many unique values?</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="intro-to-r.html#cb59-1" tabindex="-1"></a><span class="fu">table</span>(star<span class="sc">$</span>reading)</span></code></pre></div>
+<pre><code>## 
+## 527 529 533 535 536 538 542 543 545 549 552 554 555 557 559 560 562 564 565 567 
+##   1   3   1   1   1   1   1   1   2   3   5   4   1   6   6   2   3   5   4   4 
+## 569 570 572 573 575 577 578 580 582 583 585 587 588 590 592 593 595 597 599 600 
+##   4   6   5   8   4   7  14   7  15  10  13  15  15  17  16  21  24  13  12  15 
+## 602 604 606 608 610 612 614 616 618 620 622 624 626 629 631 633 636 639 641 644 
+##  27  20  27  27  19  20  28  31  15  21  29  27  20  50  28  39  36  27  44  29 
+## 647 650 654 657 661 665 670 675 680 686 693 702 713 728 753 
+##  36  49  40  34  36  37  33  31  25  26  24  17  14   9   3</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="intro-to-r.html#cb61-1" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(star<span class="sc">$</span>reading),<span class="at">decreasing=</span>T) <span class="co"># sort by decreasing order</span></span></code></pre></div>
+<pre><code>## 
+## 629 650 641 654 633 665 636 647 661 657 670 616 675 622 644 614 631 602 606 608 
+##  50  49  44  40  39  37  36  36  36  34  33  31  31  29  29  28  28  27  27  27 
+## 624 639 686 680 595 693 593 620 604 612 626 610 590 702 592 582 587 588 600 618 
+##  27  27  26  25  24  24  21  21  20  20  20  19  17  17  16  15  15  15  15  15 
+## 578 713 585 597 599 583 728 573 577 580 557 559 570 552 564 572 554 565 567 569 
+##  14  14  13  13  12  10   9   8   7   7   6   6   6   5   5   5   4   4   4   4 
+## 575 529 549 562 753 545 560 527 533 535 536 538 542 543 555 
+##   4   3   3   3   3   2   2   1   1   1   1   1   1   1   1</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="intro-to-r.html#cb63-1" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(star<span class="sc">$</span>reading),<span class="at">decreasing=</span>T)[<span class="dv">1</span>] <span class="co"># limit to the first object in the table</span></span></code></pre></div>
+<pre><code>## 629 
+##  50</code></pre>
+<ul>
+<li>Calculating median – two methods: median(), quantile()</li>
+</ul>
+<p><code>median()</code></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="intro-to-r.html#cb65-1" tabindex="-1"></a>?<span class="fu">median</span>()</span>
+<span id="cb65-2"><a href="intro-to-r.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="intro-to-r.html#cb65-3" tabindex="-1"></a><span class="fu">median</span>(star<span class="sc">$</span>reading)</span></code></pre></div>
+<pre><code>## [1] 629</code></pre>
+<p><code>quantile()</code></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="intro-to-r.html#cb67-1" tabindex="-1"></a>?quantile</span>
+<span id="cb67-2"><a href="intro-to-r.html#cb67-2" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="intro-to-r.html#cb67-3" tabindex="-1"></a><span class="fu">quantile</span>(star<span class="sc">$</span>reading, <span class="at">probs=</span>.<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## 50% 
+## 629</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="intro-to-r.html#cb69-1" tabindex="-1"></a><span class="do">## 25th percentile, 50th percentile, 75th percentile</span></span>
+<span id="cb69-2"><a href="intro-to-r.html#cb69-2" tabindex="-1"></a><span class="fu">quantile</span>(star<span class="sc">$</span>reading, <span class="at">probs=</span><span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">5</span>,.<span class="dv">75</span>))</span></code></pre></div>
+<pre><code>## 25% 50% 75% 
+## 602 629 654</code></pre>
+<ul>
+<li>Standard deviation</li>
+</ul>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="intro-to-r.html#cb71-1" tabindex="-1"></a><span class="fu">sd</span>(star<span class="sc">$</span>reading)</span></code></pre></div>
+<pre><code>## [1] 36.72968</code></pre>
+<ul>
+<li>Another conveniant way to get mean and median</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="intro-to-r.html#cb73-1" tabindex="-1"></a><span class="fu">summary</span>(star<span class="sc">$</span>reading)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   527.0   602.0   629.0   628.8   654.0   753.0</code></pre>
+<p>When you have questions about functions and don’t find the R documentations helpful, you can always turn to search engines. Most of the questions that will come up in your process of learning to use R are likely to be found on <strong>stackoverflow</strong>, so just search your question in Google or other search engines (and remember to indicate <code>R</code> in your searches, if not, you might get answers for other computing languages).</p>
+</div>
+</div>
+<div id="some-things-to-note-for-assignment-1" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Some things to note for assignment 1<a href="intro-to-r.html#some-things-to-note-for-assignment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="object-name" class="section level3 unnumbered hasAnchor">
+<h3>Object name<a href="intro-to-r.html#object-name" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Object name assignment is important. If you name your data set <code>dat</code>, you should call upon the object <code>dat</code> whenever you want to use that object.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="intro-to-r.html#cb75-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;STAR.csv&quot;</span>)</span>
+<span id="cb75-2"><a href="intro-to-r.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="intro-to-r.html#cb75-3" tabindex="-1"></a><span class="fu">class</span>(dat<span class="sc">$</span>reading)</span></code></pre></div>
+</div>
+<div id="removing-objects-using-rm" class="section level3 unnumbered hasAnchor">
+<h3>Removing objects using <code>rm()</code><a href="intro-to-r.html#removing-objects-using-rm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>rm()</code> is a function that accepts two types of arguments,</p>
+<ol style="list-style-type: decimal">
+<li>the objects to be removed, as names (unquoted) or character strings (quoted)</li>
+<li>list – a character vector (or NULL) naming objects to be removed</li>
+</ol>
+<div id="method-1" class="section level4 unnumbered hasAnchor">
+<h4>Method 1<a href="intro-to-r.html#method-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If you want to remove one object, you can use the function <code>rm()</code> and insert the object name as the argument. For example,</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="intro-to-r.html#cb76-1" tabindex="-1"></a><span class="fu">rm</span>(dat)</span></code></pre></div>
+</div>
+<div id="method-2" class="section level4 unnumbered hasAnchor">
+<h4>Method 2<a href="intro-to-r.html#method-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If your environment is cluttered and you want to clear everything in your environment without restarting the R session, you can use the function</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="intro-to-r.html#cb77-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># ls() is a function that outputs all object names in the environment</span></span></code></pre></div>
+</div>
+</div>
+<div id="restarting-r-sessions-and-clearing-workspace" class="section level3 unnumbered hasAnchor">
+<h3>Restarting R sessions and clearing workspace<a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you are working on something new, you should always restart your R session and clear your workspace.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="intro-to-r.html#cb78-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<p>Start a new R session by going to Session &gt; Restart R
+<img src="images/w2_RestartR.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Note: Depending on your default setting, restarting R session may not clear your environment. If so, you can do it by clicking on Session &gt; Clear Workspace…</p>
+</div>
+<div id="checking-code-before-submission" class="section level3 unnumbered hasAnchor">
+<h3>Checking code before submission<a href="intro-to-r.html#checking-code-before-submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before submitting your code, clear your workspace and restart an R session. Then, select your entire R script and run the code. Your R script should run from beginning to end with no errors.</p>
+</div>
+</div>
+<div id="additional-resources" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Additional resources<a href="intro-to-r.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://bookdown.org/rwnahhas/IntroToR/intro.html">An Introduction to R for Research, chapter: Introduction</a></li>
+<li>Practise R on your own using <a href="https://swirlstats.com/students.html">Swirl: Learn R, in R</a></li>
+</ul>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="intro-to-r.html#cb79-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</span>
+<span id="cb79-2"><a href="intro-to-r.html#cb79-2" tabindex="-1"></a><span class="fu">library</span>(swirl)</span>
+<span id="cb79-3"><a href="intro-to-r.html#cb79-3" tabindex="-1"></a><span class="fu">swirl</span>()</span></code></pre></div>
+</div>
+<div id="credits" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Credits<a href="intro-to-r.html#credits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>This lesson includes materials from
+<ul>
+<li><a href="https://scholar.harvard.edu/ellaudet/DSS">Data Analysis for Social Science</a></li>
+<li><a href="https://moderndive.com/index.html">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</a></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started-with-data-sets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-wrangling-with-tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "lunr",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
