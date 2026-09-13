@@ -5,25 +5,24 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>POL342 R Tutorials</title>
-  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="description" content="Tutorial notes for UTM POL342" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="POL342 R Tutorials" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta property="og:description" content="Tutorial notes for UTM POL342" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="POL342 R Tutorials" />
   
-  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="twitter:description" content="Tutorial notes for UTM POL342" />
   
 
-<meta name="author" content="Jiajia Zhou" />
 
 
-<meta name="date" content="2026-03-23" />
+<meta name="date" content="2026-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -139,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+<li><a href="./">POL342 Tutorial Notes</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
@@ -175,14 +173,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#notes-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Notes for assignment 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional Resources</a></li>
 <li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
@@ -191,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
 <li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-file-as-unvotes-data.frame-object"><i class="fa fa-check"></i>Read file as <code>unvotes</code> data.frame object</a></li>
 <li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
@@ -345,36 +343,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
-<ul>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i><b>8.2</b> Load libraries</a></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.3</b> VDem</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.4</b> Canadian Election Study 2021</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.5</b> World Values Survey</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="8.5.1" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i><b>8.5.1</b> Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<li class="chapter" data-level="8.6" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.6</b> Asian Barometer</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
@@ -383,23 +378,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="" target="blank"></a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -420,8 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">POL342 R Tutorials</h1>
-<p class="author"><em><a href="https://jiajiazhou.info/">Jiajia Zhou</a></em></p>
-<p class="date"><em>2026-03-23</em></p>
+<p class="date"><em>2026-09-12</em></p>
 </div>
 <div id="installing-r-and-r-studio" class="section level1 unnumbered hasAnchor">
 <h1>Installing R and R Studio<a href="index.html#installing-r-and-r-studio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -442,7 +436,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -455,8 +448,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
   "sharing": {
     "github": false,
-    "facebook": false,
-    "twitter": false,
+    "facebook": true,
+    "twitter": true,
     "linkedin": false,
     "weibo": false,
     "instapaper": false,
@@ -469,7 +462,10 @@ gitbook.start({
     "family": "sans",
     "size": 2
   },
-  "edit": null,
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
   "history": {
     "link": null,
     "text": null
@@ -478,14 +474,13 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": null,
+  "download": ["POL342-tutorial-notes.pdf", "POL342-tutorial-notes.epub"],
   "search": {
-    "engine": "lunr",
+    "engine": "fuse",
     "options": null
   },
   "toc": {
-    "collapse": "subsection",
-    "scroll_highlight": true
+    "collapse": "subsection"
   }
 });
 });
