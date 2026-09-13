@@ -1,0 +1,12 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Rapp.history
+_book/
+_bookdown_files/
+# Raw datasets: large + not redistributable. Kept locally in Dropbox only.
+Project/
+# Old manual-upload staging folder (obsolete now that git pushes docs/)
+_github_upload/
+# bookdown merged-build artifact (left behind on failed builds)
+/POL342-tutorial-notes.Rmd

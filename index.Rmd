@@ -1,0 +1,36 @@
+--- 
+title: "POL342 R Tutorials"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Tutorial notes for UTM POL342"
+---
+
+# Installing R and R Studio {-}
+
+Before the third week of class, please make sure to install the following software.
+
+  + [Installing R](https://cran.rstudio.com/)
+  + [Installing RStudio](https://posit.co/download/rstudio-desktop/)
+
+```{r include=FALSE}
+#Install bookdown package and tinytex to run compilation
+#require("bookdown")
+#require("tinytex")
+
+#To compile, go to the "Build" tab > "Build Book"
+```
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

@@ -1,0 +1,6 @@
+output_dir: "docs"
+book_filename: "POL342-tutorial-notes"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true

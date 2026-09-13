@@ -1,0 +1,310 @@
+# Communicating results
+    
+* Goals for today's class:
+  * Regression tables
+  * Save tables and figures
+
+## Set-up
+```{r,include=FALSE}
+library(tidyverse)
+library(haven)
+library(modelsummary)
+options(warn = -1) # suppress warning messages that do not disturb the program flow
+```
+
+
+
+## Load libraries
+```{r,eval=F}
+library(tidyverse)
+library(haven)
+
+install.packages("modelsummary") # regression table
+install.packages("pandoc") # to save regression table to Word doc output
+library(modelsummary)
+```
+
+
+## VDem
+
+```{r}
+vars <- c("country_name", "country_id", "year", 
+          "v2x_corr","e_gdppc")
+
+df <- read.csv("Project/VDem/VDem_post2000.csv") |>
+  dplyr::select(all_of(vars)) |>
+  filter(year==2009) 
+```
+
+
+### Scatter plot the bivariate relationship {-}
+```{r}
+ggplot(data=df,aes(x=v2x_corr,y=e_gdppc)) +
+  geom_point()
+```
+
+### Regression line {-}
+```{r}
+ggplot(data=df,aes(x=v2x_corr,y=e_gdppc)) +
+  geom_point(size=1,alpha=.5) +
+  geom_smooth(method="lm",size=.5) + # linear model, i.e. linear regression
+  scale_y_continuous(breaks=c(seq(-5,100,by=10)))
+```
+
+#### Save ggplot as object {-}
+```{r}
+obj1 <- ggplot(data=df,aes(x=v2x_corr,y=e_gdppc)) + # assign ggplot to obj1
+  geom_point(size=1,alpha=.5) +
+  geom_smooth(method="lm",size=.5) + # linear model, i.e. linear regression
+  scale_y_continuous(breaks=c(seq(-5,100,by=10)))
+```
+
+#### Using `ggsave` {-}
+```{r}
+# specify arguments `filename`, `plot`, `width` and `height` of image file
+ggsave(filename = "regressionLine.png",
+       plot = obj1,
+       width=8, height=5)
+```
+
+
+### Regression table {-}
+
+#### Regression output {-}
+```{r}
+m <- lm(data=df,e_gdppc ~ v2x_corr)
+
+summary(m)
+```
+
+
+#### Table using `modelsummary` {-}
+```{r}
+modelsummary(m, stars=TRUE)
+```
+
+#### Goodness-of-fit statistics {-}
+```{r}
+get_gof(m)
+```
+
+#### Select relevant statistics {-}
+
+* Keep only "number of observations", "R-squared", and "adjusted R-squared" values
+```{r}
+modelsummary(m, 
+             stars=TRUE, 
+             gof_map=c("nobs","r.squared","adj.r.squared")) # select relevant goodness-of-fit statistics
+```
+
+#### Relabel {-}
+```{r}
+modelsummary(list("Base"=m), # list allows me to name the models
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("v2x_corr"="Corruption Index")) # rename coefficient
+```
+
+
+#### Save output {-}
+Under Arguments > output, you can see a number of supported file formats: .docx, .html, .tex, .md, .txt, .csv, .xlsx, .png, .jpg
+```{r}
+?modelsummary
+```
+
+
+```{r,eval=F}
+modelsummary(list("Base"=m),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("v2x_corr"="Corruption Index"),
+             output="out.docx") 
+```
+
+### Clear environment {-}
+```{r}
+rm(list=ls())
+```
+
+
+## Canadian Election Study 2021
+
+```{r}
+vars <- c("cps21_age","cps21_news_cons","cps21_govt_confusing") #news consumption and internal political efficacy
+
+ces_select <- read_dta("Project/CES2021/2021 Canadian Election Study v2.0.dta") |>
+  dplyr::select(all_of(vars))
+```
+
+### Transform & drop NAs {-}
+```{r}
+ces_dropna <- ces_select |>
+  mutate(cps21_govt_confusing=ifelse(cps21_govt_confusing==5, #conditional statement
+                                     NA, #if yes
+                                     cps21_govt_confusing), #if no
+         cps21_news_cons=ifelse(cps21_news_cons==7, #conditional statement
+                                NA, #if yes
+                                cps21_news_cons)) |> #if no
+  na.omit() #remove NAs
+```
+
+### Check transformed variables {-}
+```{r}
+table(ces_dropna$cps21_govt_confusing)
+
+table(ces_dropna$cps21_news_cons)
+```
+
+
+### Regression table {-}
+```{r}
+m <- lm(data=ces_dropna,cps21_govt_confusing ~ cps21_news_cons) # model 1
+
+summary(m)
+
+modelsummary(list("Base"=m),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("cps21_news_cons"="News Consumption")) 
+```
+
+#### Controls {-}
+```{r}
+m2 <- lm(data=ces_dropna,cps21_govt_confusing ~ cps21_news_cons + cps21_age) # model 2
+
+modelsummary(list("Base" = m,
+                  "w/ Controls" = m2),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("cps21_news_cons" = "News Consumption",
+                           "cps21_age" = "Age")) 
+```
+
+
+#### Save output {-}
+```{r,eval=F}
+modelsummary(list("Base" = m,
+                  "w/ Controls" = m2),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("cps21_news_cons" = "News Consumption",
+                           "cps21_age" = "Age"),
+             output="ces.docx") 
+```
+
+### Clear environment {-}
+```{r}
+rm(list=ls())
+```
+
+
+## World Values Survey
+
+```{r}
+vars <- c("B_COUNTRY_ALPHA","Q73","Q236") #confidence in parliament, experts versus government
+
+df <- read_rds("Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds") |>
+  select(all_of(vars)) |>
+  filter(B_COUNTRY_ALPHA=="CAN") # choice of country: Canada
+```
+
+### Transform & drop NAs {-}
+```{r}
+df_recode <- df |>
+  mutate(Q73=ifelse(Q73<0,
+                    NA,
+                    Q73),
+         Q236=ifelse(Q236<0,
+                     NA,
+                     Q236)) |>
+  na.omit() # drops all rows with NA values
+```
+
+### Regression table {-}
+```{r}
+m <- lm(data=df_recode,
+        Q236 ~ Q73)
+
+summary(m)
+
+modelsummary(list("Experts vs government"=m),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("Q73"="Confidence in Parliament"),
+             output="wvs_regTable.docx") 
+```
+
+### Clear environment
+```{r}
+rm(list=ls())
+```
+
+
+## Asian Barometer
+```{r}
+vars <- c("country","Year",
+           "q175","q169")
+
+df <- read_dta("Project/asianbarometer_wave5/20230504_W5_merge_15.dta") |>
+  select(all_of(vars)) |>
+  filter(country==11) # Vietnam (refer to codebook)
+```
+
+### Transform & drop NAs {-}
+```{r}
+df_recode <- df |>
+  mutate(q169 = ifelse(q169<1 | q169 > 4, NA, q169),
+         q175 = ifelse(q175<1 | q175 > 4, NA, q175)) |>
+  na.omit()
+```
+
+### Regression table {-}
+```{r}
+m <- lm(data=df_recode,
+        q169 ~ q175)
+
+summary(m)
+
+modelsummary(list("Views toward Democracy"=m),
+             stars=TRUE,
+             gof_map=c("nobs","r.squared","adj.r.squared"), 
+             coef_rename=c("q175"="US harm to Asia"),
+             output="AB_regTable.docx") 
+```
+
+### Saving plots {-}
+```{r}
+df_recode |>
+  ggplot(aes(fill=factor(q169),x=factor(q175))) +
+  geom_bar(position="fill") +
+  theme_bw() +
+  scale_x_discrete(labels=c("Much more good","More good", "More harm", "Much more harm")) +
+  xlab("US does more good or harm to Asia?") +
+  ylab("Proportion") +
+  scale_fill_manual(name="Democratic regimes full of problems", #legend label
+                    values = c("navyblue","blue","skyblue","grey"), #color specification
+                    labels = c("Strongly Agree","Somewhat Agree", "Disagree", "Strongly Disagree"))
+```
+
+#### Save ggplot as object {-}
+```{r}
+obj1 <- df_recode |>
+  ggplot(aes(fill=factor(q169),x=factor(q175))) +
+  geom_bar(position="fill") +
+  theme_bw() +
+  scale_x_discrete(labels=c("Much more good","More good", "More harm", "Much more harm")) +
+  xlab("US does more good or harm to Asia?") +
+  ylab("Proportion") +
+  scale_fill_manual(name="Democratic regimes full of problems", #legend label
+                    values = c("navyblue","blue","skyblue","grey"), #color specification
+                    labels = c("Strongly Agree","Somewhat Agree", "Disagree", "Strongly Disagree"))
+```
+
+#### Using `ggsave` {-}
+```{r}
+# specify arguments filename and plot
+ggsave(filename = "AB_x169y175.png",
+       plot = obj1,
+       height = 5, width = 8)
+```
+
