@@ -1,5 +1,20 @@
 output_dir: "docs"
 book_filename: "POL342-tutorial-notes"
+
+# Only the files listed here are built. To release the next week's chapter,
+# uncomment its line, then Build Book (bookdown::gitbook), commit, and push.
+rmd_files:
+  - index.Rmd
+  - 01-Week2.Rmd
+  # - 02-Week3.Rmd
+  # - 03-Week4.Rmd
+  # - 04-Week5.Rmd
+  # - 05-Week6.Rmd
+  # - 06-Week7.Rmd
+  # - 07-Week8.Rmd
+  # - 08-Week9.Rmd
+  # - 09-Week10.Rmd
+
 language:
   ui:
     chapter_name: "Chapter "

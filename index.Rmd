@@ -11,12 +11,9 @@ github-repo: rstudio/bookdown-demo
 description: "Tutorial notes for UTM POL342"
 ---
 
-# Installing R and R Studio {-}
+# Welcome {-}
 
-Before the third week of class, please make sure to install the following software.
-
-  + [Installing R](https://cran.rstudio.com/)
-  + [Installing RStudio](https://posit.co/download/rstudio-desktop/)
+Tutorial notes for POL342. New chapters are added as the term progresses.
 
 ```{r include=FALSE}
 #Install bookdown package and tinytex to run compilation

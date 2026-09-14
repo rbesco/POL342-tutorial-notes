@@ -116,3 +116,11 @@ Maximum –
 knitr::include_graphics("images/w2_stdev.png")
 ```
 
+
+
+## Installing R and RStudio
+
+Before the third week of class, please make sure to install the following software.
+
+  + [Installing R](https://cran.rstudio.com/)
+  + [Installing RStudio](https://posit.co/download/rstudio-desktop/)
