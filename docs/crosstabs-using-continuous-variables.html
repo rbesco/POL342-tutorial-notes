@@ -5,25 +5,24 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials</title>
-  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="description" content="Tutorial notes for UTM POL342" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta property="og:description" content="Tutorial notes for UTM POL342" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 7 Crosstabs using continuous variables | POL342 R Tutorials" />
   
-  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="twitter:description" content="Tutorial notes for UTM POL342" />
   
 
-<meta name="author" content="Jiajia Zhou" />
 
 
-<meta name="date" content="2026-03-23" />
+<meta name="date" content="2026-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -139,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+<li><a href="./">POL342 Tutorial Notes</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
@@ -175,14 +173,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#notes-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Notes for assignment 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional Resources</a></li>
 <li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
@@ -191,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
 <li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-file-as-unvotes-data.frame-object"><i class="fa fa-check"></i>Read file as <code>unvotes</code> data.frame object</a></li>
 <li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
@@ -345,36 +343,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
-<ul>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i><b>8.2</b> Load libraries</a></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.3</b> VDem</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.4</b> Canadian Election Study 2021</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.5</b> World Values Survey</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="8.5.1" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i><b>8.5.1</b> Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<li class="chapter" data-level="8.6" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.6</b> Asian Barometer</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
@@ -383,23 +378,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="" target="blank"></a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -424,33 +419,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Goals for today’s class:
 <ul>
 <li>Transforming continuous variables into ordinal variables</li>
-<li>Creating and saving crosstab</li>
+<li>Creating cross-tabs</li>
+<li>Saving cross-tabs</li>
 </ul></li>
 </ul>
 <div id="set-up-1" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Set-up<a href="crosstabs-using-continuous-variables.html#set-up-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="make-sure-you-have-your-project-datasets-and-w9.r" class="section level3 unnumbered hasAnchor">
 <h3>Make sure you have your project datasets and <code>W9.R</code><a href="crosstabs-using-continuous-variables.html#make-sure-you-have-your-project-datasets-and-w9.r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="images/w8.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="images/w8.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="load-libraries-1" class="section level3 unnumbered hasAnchor">
 <h3>Load libraries<a href="crosstabs-using-continuous-variables.html#load-libraries-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="crosstabs-using-continuous-variables.html#cb247-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb247-2"><a href="crosstabs-using-continuous-variables.html#cb247-2" tabindex="-1"></a><span class="co"># install.packages(&quot;haven&quot;) # if you haven&#39;t installed the package</span></span>
-<span id="cb247-3"><a href="crosstabs-using-continuous-variables.html#cb247-3" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb247-4"><a href="crosstabs-using-continuous-variables.html#cb247-4" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="crosstabs-using-continuous-variables.html#cb246-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb246-2"><a href="crosstabs-using-continuous-variables.html#cb246-2" tabindex="-1"></a><span class="co"># install.packages(&quot;haven&quot;) # if you haven&#39;t installed the package</span></span>
+<span id="cb246-3"><a href="crosstabs-using-continuous-variables.html#cb246-3" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb246-4"><a href="crosstabs-using-continuous-variables.html#cb246-4" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
 </div>
 </div>
 <div id="vdem-1" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> VDem<a href="crosstabs-using-continuous-variables.html#vdem-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="load-data-2" class="section level3 unnumbered hasAnchor">
 <h3>Load Data<a href="crosstabs-using-continuous-variables.html#load-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="crosstabs-using-continuous-variables.html#cb248-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>, </span>
-<span id="cb248-2"><a href="crosstabs-using-continuous-variables.html#cb248-2" tabindex="-1"></a>          <span class="st">&quot;v2x_libdem&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>,<span class="st">&quot;v2mefemjrn&quot;</span>, <span class="st">&quot;v2pepwrgen&quot;</span>)</span>
-<span id="cb248-3"><a href="crosstabs-using-continuous-variables.html#cb248-3" tabindex="-1"></a></span>
-<span id="cb248-4"><a href="crosstabs-using-continuous-variables.html#cb248-4" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/VDem_post2000.csv&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb248-5"><a href="crosstabs-using-continuous-variables.html#cb248-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
-<span id="cb248-6"><a href="crosstabs-using-continuous-variables.html#cb248-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2010</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="crosstabs-using-continuous-variables.html#cb247-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>, </span>
+<span id="cb247-2"><a href="crosstabs-using-continuous-variables.html#cb247-2" tabindex="-1"></a>          <span class="st">&quot;v2x_libdem&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>,<span class="st">&quot;v2mefemjrn&quot;</span>, <span class="st">&quot;v2pepwrgen&quot;</span>)</span>
+<span id="cb247-3"><a href="crosstabs-using-continuous-variables.html#cb247-3" tabindex="-1"></a></span>
+<span id="cb247-4"><a href="crosstabs-using-continuous-variables.html#cb247-4" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/VDem_post2000.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb247-5"><a href="crosstabs-using-continuous-variables.html#cb247-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
+<span id="cb247-6"><a href="crosstabs-using-continuous-variables.html#cb247-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2010</span>) </span></code></pre></div>
 <ul>
 <li>Variables selected:
 <ul>
@@ -463,37 +459,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="create-ordinal-categories-using-function-cut" class="section level3 unnumbered hasAnchor">
 <h3>Create ordinal categories using function <code>cut()</code><a href="crosstabs-using-continuous-variables.html#create-ordinal-categories-using-function-cut" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="crosstabs-using-continuous-variables.html#cb249-1" tabindex="-1"></a>?cut <span class="co"># pull up the documentation for `cut()`</span></span></code></pre></div>
-<p><img src="images/w8_cut.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="crosstabs-using-continuous-variables.html#cb248-1" tabindex="-1"></a>?cut <span class="co"># pull up the documentation for `cut()`</span></span></code></pre></div>
+<p><img src="images/w8_cut.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
 <div id="consider-this-variable-v2mefemjrn-of-female-journalists" class="section level4 unnumbered hasAnchor">
 <h4>Consider this variable: v2mefemjrn (% of female journalists)<a href="crosstabs-using-continuous-variables.html#consider-this-variable-v2mefemjrn-of-female-journalists" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><img src="images/w8_vdemExample.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="crosstabs-using-continuous-variables.html#cb250-1" tabindex="-1"></a><span class="fu">head</span>(vdem_selected<span class="sc">$</span>v2mefemjrn)</span></code></pre></div>
+<p><img src="images/w8_vdemExample.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="crosstabs-using-continuous-variables.html#cb249-1" tabindex="-1"></a><span class="fu">head</span>(vdem_selected<span class="sc">$</span>v2mefemjrn)</span></code></pre></div>
 <pre><code>## [1] 36.857 39.000 50.294 40.167 36.406 42.688</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="crosstabs-using-continuous-variables.html#cb252-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
-<span id="cb252-2"><a href="crosstabs-using-continuous-variables.html#cb252-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
-<span id="cb252-3"><a href="crosstabs-using-continuous-variables.html#cb252-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="crosstabs-using-continuous-variables.html#cb251-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb251-2"><a href="crosstabs-using-continuous-variables.html#cb251-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb251-3"><a href="crosstabs-using-continuous-variables.html#cb251-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## [1] (24.4,38.5] (38.5,52.5] (38.5,52.5] (38.5,52.5] (24.4,38.5] (38.5,52.5]
 ## Levels: (10.3,24.4] (24.4,38.5] (38.5,52.5] (52.5,66.7]</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="crosstabs-using-continuous-variables.html#cb254-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
-<span id="cb254-2"><a href="crosstabs-using-continuous-variables.html#cb254-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">70</span>)) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
-<span id="cb254-3"><a href="crosstabs-using-continuous-variables.html#cb254-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="crosstabs-using-continuous-variables.html#cb253-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb253-2"><a href="crosstabs-using-continuous-variables.html#cb253-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">70</span>)) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb253-3"><a href="crosstabs-using-continuous-variables.html#cb253-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## [1] (30,50] (30,50] (50,70] (30,50] (30,50] (30,50]
 ## Levels: (10,30] (30,50] (50,70]</code></pre>
 </div>
 <div id="create-a-new-dataframe-with-new-ordinal-variables" class="section level4 unnumbered hasAnchor">
 <h4>Create a new dataframe with new ordinal variables<a href="crosstabs-using-continuous-variables.html#create-a-new-dataframe-with-new-ordinal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="crosstabs-using-continuous-variables.html#cb256-1" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
-<span id="cb256-2"><a href="crosstabs-using-continuous-variables.html#cb256-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v2mefemjrn_ord4 =</span> <span class="fu">cut</span>(v2mefemjrn, </span>
-<span id="cb256-3"><a href="crosstabs-using-continuous-variables.html#cb256-3" tabindex="-1"></a>                              <span class="at">breaks =</span> <span class="dv">4</span>),</span>
-<span id="cb256-4"><a href="crosstabs-using-continuous-variables.html#cb256-4" tabindex="-1"></a>         <span class="at">v2pepwrgen_ord4 =</span> <span class="fu">cut</span>(v2pepwrgen, </span>
-<span id="cb256-5"><a href="crosstabs-using-continuous-variables.html#cb256-5" tabindex="-1"></a>                                 <span class="at">breaks =</span> <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="crosstabs-using-continuous-variables.html#cb255-1" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb255-2"><a href="crosstabs-using-continuous-variables.html#cb255-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v2mefemjrn_ord4 =</span> <span class="fu">cut</span>(v2mefemjrn, </span>
+<span id="cb255-3"><a href="crosstabs-using-continuous-variables.html#cb255-3" tabindex="-1"></a>                              <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb255-4"><a href="crosstabs-using-continuous-variables.html#cb255-4" tabindex="-1"></a>         <span class="at">v2pepwrgen_ord4 =</span> <span class="fu">cut</span>(v2pepwrgen, </span>
+<span id="cb255-5"><a href="crosstabs-using-continuous-variables.html#cb255-5" tabindex="-1"></a>                                 <span class="at">breaks =</span> <span class="dv">4</span>))</span></code></pre></div>
 </div>
 <div id="crosstabs" class="section level4 unnumbered hasAnchor">
 <h4>Crosstabs<a href="crosstabs-using-continuous-variables.html#crosstabs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="crosstabs-using-continuous-variables.html#cb257-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
-<span id="cb257-2"><a href="crosstabs-using-continuous-variables.html#cb257-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
-<span id="cb257-3"><a href="crosstabs-using-continuous-variables.html#cb257-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="crosstabs-using-continuous-variables.html#cb256-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
+<span id="cb256-2"><a href="crosstabs-using-continuous-variables.html#cb256-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
+<span id="cb256-3"><a href="crosstabs-using-continuous-variables.html#cb256-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
@@ -628,10 +624,10 @@ Total
 </div>
 <div id="export-table" class="section level4 unnumbered hasAnchor">
 <h4>Export table<a href="crosstabs-using-continuous-variables.html#export-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="crosstabs-using-continuous-variables.html#cb258-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
-<span id="cb258-2"><a href="crosstabs-using-continuous-variables.html#cb258-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
-<span id="cb258-3"><a href="crosstabs-using-continuous-variables.html#cb258-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb258-4"><a href="crosstabs-using-continuous-variables.html#cb258-4" tabindex="-1"></a>         <span class="at">file=</span><span class="st">&quot;crosstabs.html&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="crosstabs-using-continuous-variables.html#cb257-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab<span class="sc">$</span>v2mefemjrn_ord4,</span>
+<span id="cb257-2"><a href="crosstabs-using-continuous-variables.html#cb257-2" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab<span class="sc">$</span>v2pepwrgen_ord4,</span>
+<span id="cb257-3"><a href="crosstabs-using-continuous-variables.html#cb257-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb257-4"><a href="crosstabs-using-continuous-variables.html#cb257-4" tabindex="-1"></a>         <span class="at">file=</span><span class="st">&quot;crosstabs.html&quot;</span>)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
@@ -768,20 +764,20 @@ Total
 </div>
 <div id="skewed-variables" class="section level3 unnumbered hasAnchor">
 <h3>Skewed variables<a href="crosstabs-using-continuous-variables.html#skewed-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="crosstabs-using-continuous-variables.html#cb259-1" tabindex="-1"></a><span class="fu">ggplot</span>(vdem_selected,<span class="fu">aes</span>(<span class="at">x=</span>e_gdppc)) <span class="sc">+</span></span>
-<span id="cb259-2"><a href="crosstabs-using-continuous-variables.html#cb259-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="crosstabs-using-continuous-variables.html#cb258-1" tabindex="-1"></a><span class="fu">ggplot</span>(vdem_selected,<span class="fu">aes</span>(<span class="at">x=</span>e_gdppc)) <span class="sc">+</span></span>
+<span id="cb258-2"><a href="crosstabs-using-continuous-variables.html#cb258-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-232-1.png" alt="" width="672" /></p>
 <div id="crosstabs-will-not-display-well" class="section level4 unnumbered hasAnchor">
 <h4>Crosstabs will not display well<a href="crosstabs-using-continuous-variables.html#crosstabs-will-not-display-well" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="crosstabs-using-continuous-variables.html#cb260-1" tabindex="-1"></a>crosstab2 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
-<span id="cb260-2"><a href="crosstabs-using-continuous-variables.html#cb260-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
-<span id="cb260-3"><a href="crosstabs-using-continuous-variables.html#cb260-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="dv">4</span>),</span>
-<span id="cb260-4"><a href="crosstabs-using-continuous-variables.html#cb260-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
-<span id="cb260-5"><a href="crosstabs-using-continuous-variables.html#cb260-5" tabindex="-1"></a>                          <span class="at">breaks =</span> <span class="dv">4</span>))</span>
-<span id="cb260-6"><a href="crosstabs-using-continuous-variables.html#cb260-6" tabindex="-1"></a></span>
-<span id="cb260-7"><a href="crosstabs-using-continuous-variables.html#cb260-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab2<span class="sc">$</span>e_gdppc_ord4,</span>
-<span id="cb260-8"><a href="crosstabs-using-continuous-variables.html#cb260-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab2<span class="sc">$</span>v2x_libdem_ord4,</span>
-<span id="cb260-9"><a href="crosstabs-using-continuous-variables.html#cb260-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="crosstabs-using-continuous-variables.html#cb259-1" tabindex="-1"></a>crosstab2 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb259-2"><a href="crosstabs-using-continuous-variables.html#cb259-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
+<span id="cb259-3"><a href="crosstabs-using-continuous-variables.html#cb259-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb259-4"><a href="crosstabs-using-continuous-variables.html#cb259-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
+<span id="cb259-5"><a href="crosstabs-using-continuous-variables.html#cb259-5" tabindex="-1"></a>                          <span class="at">breaks =</span> <span class="dv">4</span>))</span>
+<span id="cb259-6"><a href="crosstabs-using-continuous-variables.html#cb259-6" tabindex="-1"></a></span>
+<span id="cb259-7"><a href="crosstabs-using-continuous-variables.html#cb259-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab2<span class="sc">$</span>e_gdppc_ord4,</span>
+<span id="cb259-8"><a href="crosstabs-using-continuous-variables.html#cb259-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab2<span class="sc">$</span>v2x_libdem_ord4,</span>
+<span id="cb259-9"><a href="crosstabs-using-continuous-variables.html#cb259-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
@@ -916,18 +912,18 @@ Total
 </div>
 <div id="alternative-using-quantile-cut-points" class="section level4 unnumbered hasAnchor">
 <h4>Alternative using quantile cut points<a href="crosstabs-using-continuous-variables.html#alternative-using-quantile-cut-points" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="crosstabs-using-continuous-variables.html#cb261-1" tabindex="-1"></a><span class="fu">quantile</span>(vdem_selected<span class="sc">$</span>e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="crosstabs-using-continuous-variables.html#cb260-1" tabindex="-1"></a><span class="fu">quantile</span>(vdem_selected<span class="sc">$</span>e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>##     0%    25%    50%    75%   100% 
 ##  0.671  3.315  8.971 20.720 94.400</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="crosstabs-using-continuous-variables.html#cb263-1" tabindex="-1"></a>crosstab3 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
-<span id="cb263-2"><a href="crosstabs-using-continuous-variables.html#cb263-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
-<span id="cb263-3"><a href="crosstabs-using-continuous-variables.html#cb263-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="fu">quantile</span>(e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)),</span>
-<span id="cb263-4"><a href="crosstabs-using-continuous-variables.html#cb263-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
-<span id="cb263-5"><a href="crosstabs-using-continuous-variables.html#cb263-5" tabindex="-1"></a>                               <span class="at">breaks =</span> <span class="fu">quantile</span>(v2x_libdem, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)))</span>
-<span id="cb263-6"><a href="crosstabs-using-continuous-variables.html#cb263-6" tabindex="-1"></a></span>
-<span id="cb263-7"><a href="crosstabs-using-continuous-variables.html#cb263-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab3<span class="sc">$</span>v2x_libdem_ord4,</span>
-<span id="cb263-8"><a href="crosstabs-using-continuous-variables.html#cb263-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab3<span class="sc">$</span>e_gdppc_ord4,</span>
-<span id="cb263-9"><a href="crosstabs-using-continuous-variables.html#cb263-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="crosstabs-using-continuous-variables.html#cb262-1" tabindex="-1"></a>crosstab3 <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb262-2"><a href="crosstabs-using-continuous-variables.html#cb262-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e_gdppc_ord4 =</span> <span class="fu">cut</span>(e_gdppc, </span>
+<span id="cb262-3"><a href="crosstabs-using-continuous-variables.html#cb262-3" tabindex="-1"></a>                            <span class="at">breaks =</span> <span class="fu">quantile</span>(e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)),</span>
+<span id="cb262-4"><a href="crosstabs-using-continuous-variables.html#cb262-4" tabindex="-1"></a>         <span class="at">v2x_libdem_ord4 =</span> <span class="fu">cut</span>(v2x_libdem, </span>
+<span id="cb262-5"><a href="crosstabs-using-continuous-variables.html#cb262-5" tabindex="-1"></a>                               <span class="at">breaks =</span> <span class="fu">quantile</span>(v2x_libdem, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)))</span>
+<span id="cb262-6"><a href="crosstabs-using-continuous-variables.html#cb262-6" tabindex="-1"></a></span>
+<span id="cb262-7"><a href="crosstabs-using-continuous-variables.html#cb262-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> crosstab3<span class="sc">$</span>v2x_libdem_ord4,</span>
+<span id="cb262-8"><a href="crosstabs-using-continuous-variables.html#cb262-8" tabindex="-1"></a>         <span class="at">var.col =</span> crosstab3<span class="sc">$</span>e_gdppc_ord4,</span>
+<span id="cb262-9"><a href="crosstabs-using-continuous-variables.html#cb262-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
@@ -1074,7 +1070,6 @@ Total
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1087,8 +1082,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
   "sharing": {
     "github": false,
-    "facebook": false,
-    "twitter": false,
+    "facebook": true,
+    "twitter": true,
     "linkedin": false,
     "weibo": false,
     "instapaper": false,
@@ -1101,7 +1096,10 @@ gitbook.start({
     "family": "sans",
     "size": 2
   },
-  "edit": null,
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-Week8.Rmd",
+    "text": "Edit"
+  },
   "history": {
     "link": null,
     "text": null
@@ -1110,14 +1108,13 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": null,
+  "download": ["POL342-tutorial-notes.pdf", "POL342-tutorial-notes.epub"],
   "search": {
-    "engine": "lunr",
+    "engine": "fuse",
     "options": null
   },
   "toc": {
-    "collapse": "subsection",
-    "scroll_highlight": true
+    "collapse": "subsection"
   }
 });
 });
