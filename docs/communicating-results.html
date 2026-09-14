@@ -5,25 +5,24 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Communicating results | POL342 R Tutorials</title>
-  <meta name="description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="description" content="Tutorial notes for UTM POL342" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Communicating results | POL342 R Tutorials" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta property="og:description" content="Tutorial notes for UTM POL342" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 8 Communicating results | POL342 R Tutorials" />
   
-  <meta name="twitter:description" content="Tutorial notes for POL342 Data Visualization and Analysis for the Social Sciences" />
+  <meta name="twitter:description" content="Tutorial notes for UTM POL342" />
   
 
-<meta name="author" content="Jiajia Zhou" />
 
 
-<meta name="date" content="2026-03-23" />
+<meta name="date" content="2026-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -139,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html">POL342 Tutorial Notes</a></li>
+<li><a href="./">POL342 Tutorial Notes</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Installing R and R Studio</a></li>
@@ -175,14 +173,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#some-things-to-note-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Some things to note for assignment 1</a>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#notes-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Notes for assignment 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional resources</a></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional Resources</a></li>
 <li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
@@ -191,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#install-and-load-packages"><i class="fa fa-check"></i><b>3.2</b> Install and load packages</a></li>
 <li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.3</b> Dataset: UN votes</a>
 <ul>
-<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-dataset-and-save-as-unvotes-object"><i class="fa fa-check"></i>Read dataset and save as <code>unvotes</code> object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-file-as-unvotes-data.frame-object"><i class="fa fa-check"></i>Read file as <code>unvotes</code> data.frame object</a></li>
 <li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.4</b> Recap</a></li>
@@ -345,36 +343,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="communicating-results.html"><a href="communicating-results.html"><i class="fa fa-check"></i><b>8</b> Communicating results</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a>
-<ul>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i>Load libraries</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.2</b> VDem</a>
+<li class="chapter" data-level="8.1" data-path="communicating-results.html"><a href="communicating-results.html#set-up-2"><i class="fa fa-check"></i><b>8.1</b> Set-up</a></li>
+<li class="chapter" data-level="8.2" data-path="communicating-results.html"><a href="communicating-results.html#load-libraries-2"><i class="fa fa-check"></i><b>8.2</b> Load libraries</a></li>
+<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#vdem-2"><i class="fa fa-check"></i><b>8.3</b> VDem</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#scatter-plot-the-bivariate-relationship"><i class="fa fa-check"></i>Scatter plot the bivariate relationship</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-line"><i class="fa fa-check"></i>Regression line</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.3</b> Canadian Election Study 2021</a>
+<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#canadian-election-study-2021-1"><i class="fa fa-check"></i><b>8.4</b> Canadian Election Study 2021</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#check-transformed-variables"><i class="fa fa-check"></i>Check transformed variables</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-1"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.4</b> World Values Survey</a>
+<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#world-values-survey"><i class="fa fa-check"></i><b>8.5</b> World Values Survey</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-1"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-2"><i class="fa fa-check"></i>Regression table</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="8.5.1" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-2"><i class="fa fa-check"></i><b>8.5.1</b> Clear environment</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.5</b> Asian Barometer</a>
+<li class="chapter" data-level="8.6" data-path="communicating-results.html"><a href="communicating-results.html#asian-barometer"><i class="fa fa-check"></i><b>8.6</b> Asian Barometer</a>
 <ul>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#transform-drop-nas-2"><i class="fa fa-check"></i>Transform &amp; drop NAs</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#regression-table-3"><i class="fa fa-check"></i>Regression table</a></li>
 <li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
-<li class="chapter" data-level="" data-path="communicating-results.html"><a href="communicating-results.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html"><i class="fa fa-check"></i><b>9</b> Optimizing ggplot presentation</a>
@@ -383,23 +378,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#bar-charts"><i class="fa fa-check"></i><b>9.2</b> Bar charts</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-asian-barometer"><i class="fa fa-check"></i>Prepare variables (Asian Barometer)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-3"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#box-and-whiskers-plot"><i class="fa fa-check"></i><b>9.3</b> Box and whiskers plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-ces"><i class="fa fa-check"></i>Prepare variables (CES)</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-4"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#scatter-plot"><i class="fa fa-check"></i><b>9.4</b> Scatter plot</a>
 <ul>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#prepare-variables-vdem"><i class="fa fa-check"></i>Prepare variables (VDem)</a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#saving-plots-using-ggsave"><i class="fa fa-check"></i>Saving plots using <code>ggsave()</code></a></li>
 <li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#using-measures-from-other-datasets"><i class="fa fa-check"></i>Using measures from other datasets</a></li>
-<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-6"><i class="fa fa-check"></i>Clear environment</a></li>
+<li class="chapter" data-level="" data-path="optimizing-ggplot-presentation.html"><a href="optimizing-ggplot-presentation.html#clear-environment-5"><i class="fa fa-check"></i>Clear environment</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="" target="blank"></a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -429,59 +424,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="set-up-2" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Set-up<a href="communicating-results.html#set-up-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="load-libraries-2" class="section level3 unnumbered hasAnchor">
-<h3>Load libraries<a href="communicating-results.html#load-libraries-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="communicating-results.html#cb264-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb264-2"><a href="communicating-results.html#cb264-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+</div>
+<div id="load-libraries-2" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Load libraries<a href="communicating-results.html#load-libraries-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="communicating-results.html#cb263-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb263-2"><a href="communicating-results.html#cb263-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb263-3"><a href="communicating-results.html#cb263-3" tabindex="-1"></a></span>
+<span id="cb263-4"><a href="communicating-results.html#cb263-4" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>) <span class="co"># regression table</span></span>
+<span id="cb263-5"><a href="communicating-results.html#cb263-5" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pandoc&quot;</span>) <span class="co"># to save regression table to Word doc output</span></span>
+<span id="cb263-6"><a href="communicating-results.html#cb263-6" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code></pre></div>
+</div>
+<div id="vdem-2" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> VDem<a href="communicating-results.html#vdem-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="communicating-results.html#cb264-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>, </span>
+<span id="cb264-2"><a href="communicating-results.html#cb264-2" tabindex="-1"></a>          <span class="st">&quot;v2x_corr&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>)</span>
 <span id="cb264-3"><a href="communicating-results.html#cb264-3" tabindex="-1"></a></span>
-<span id="cb264-4"><a href="communicating-results.html#cb264-4" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>) <span class="co"># regression table</span></span>
-<span id="cb264-5"><a href="communicating-results.html#cb264-5" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pandoc&quot;</span>) <span class="co"># to save regression table to Word doc output</span></span>
-<span id="cb264-6"><a href="communicating-results.html#cb264-6" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code></pre></div>
-</div>
-</div>
-<div id="vdem-2" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> VDem<a href="communicating-results.html#vdem-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="communicating-results.html#cb265-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>, </span>
-<span id="cb265-2"><a href="communicating-results.html#cb265-2" tabindex="-1"></a>          <span class="st">&quot;v2x_corr&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>)</span>
-<span id="cb265-3"><a href="communicating-results.html#cb265-3" tabindex="-1"></a></span>
-<span id="cb265-4"><a href="communicating-results.html#cb265-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/VDem_post2000.csv&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb265-5"><a href="communicating-results.html#cb265-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
-<span id="cb265-6"><a href="communicating-results.html#cb265-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2009</span>) </span></code></pre></div>
+<span id="cb264-4"><a href="communicating-results.html#cb264-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/VDem_post2000.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb264-5"><a href="communicating-results.html#cb264-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
+<span id="cb264-6"><a href="communicating-results.html#cb264-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2009</span>) </span></code></pre></div>
 <div id="scatter-plot-the-bivariate-relationship" class="section level3 unnumbered hasAnchor">
 <h3>Scatter plot the bivariate relationship<a href="communicating-results.html#scatter-plot-the-bivariate-relationship" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="communicating-results.html#cb266-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span></span>
-<span id="cb266-2"><a href="communicating-results.html#cb266-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="communicating-results.html#cb265-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span></span>
+<span id="cb265-2"><a href="communicating-results.html#cb265-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-239-1.png" alt="" width="672" /></p>
 </div>
 <div id="regression-line" class="section level3 unnumbered hasAnchor">
 <h3>Regression line<a href="communicating-results.html#regression-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="communicating-results.html#cb267-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span></span>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="communicating-results.html#cb266-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span></span>
+<span id="cb266-2"><a href="communicating-results.html#cb266-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb266-3"><a href="communicating-results.html#cb266-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">size=</span>.<span class="dv">5</span>) <span class="sc">+</span> <span class="co"># linear model, i.e. linear regression</span></span>
+<span id="cb266-4"><a href="communicating-results.html#cb266-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">10</span>)))</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-240-1.png" alt="" width="672" /></p>
+<div id="save-ggplot-as-object" class="section level4 unnumbered hasAnchor">
+<h4>Save ggplot as object<a href="communicating-results.html#save-ggplot-as-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="communicating-results.html#cb267-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span> <span class="co"># assign ggplot to obj1</span></span>
 <span id="cb267-2"><a href="communicating-results.html#cb267-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb267-3"><a href="communicating-results.html#cb267-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">size=</span>.<span class="dv">5</span>) <span class="sc">+</span> <span class="co"># linear model, i.e. linear regression</span></span>
 <span id="cb267-4"><a href="communicating-results.html#cb267-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">10</span>)))</span></code></pre></div>
-<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
-<div id="save-ggplot-as-object" class="section level4 unnumbered hasAnchor">
-<h4>Save ggplot as object<a href="communicating-results.html#save-ggplot-as-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="communicating-results.html#cb268-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>v2x_corr,<span class="at">y=</span>e_gdppc)) <span class="sc">+</span> <span class="co"># assign ggplot to obj1</span></span>
-<span id="cb268-2"><a href="communicating-results.html#cb268-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb268-3"><a href="communicating-results.html#cb268-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>,<span class="at">size=</span>.<span class="dv">5</span>) <span class="sc">+</span> <span class="co"># linear model, i.e. linear regression</span></span>
-<span id="cb268-4"><a href="communicating-results.html#cb268-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">10</span>)))</span></code></pre></div>
 </div>
 <div id="using-ggsave" class="section level4 unnumbered hasAnchor">
 <h4>Using <code>ggsave</code><a href="communicating-results.html#using-ggsave" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="communicating-results.html#cb269-1" tabindex="-1"></a><span class="co"># specify arguments `filename`, `plot`, `width` and `height` of image file</span></span>
-<span id="cb269-2"><a href="communicating-results.html#cb269-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;regressionLine.png&quot;</span>,</span>
-<span id="cb269-3"><a href="communicating-results.html#cb269-3" tabindex="-1"></a>       <span class="at">plot =</span> obj1,</span>
-<span id="cb269-4"><a href="communicating-results.html#cb269-4" tabindex="-1"></a>       <span class="at">width=</span><span class="dv">8</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="communicating-results.html#cb268-1" tabindex="-1"></a><span class="co"># specify arguments `filename`, `plot`, `width` and `height` of image file</span></span>
+<span id="cb268-2"><a href="communicating-results.html#cb268-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;regressionLine.png&quot;</span>,</span>
+<span id="cb268-3"><a href="communicating-results.html#cb268-3" tabindex="-1"></a>       <span class="at">plot =</span> obj1,</span>
+<span id="cb268-4"><a href="communicating-results.html#cb268-4" tabindex="-1"></a>       <span class="at">width=</span><span class="dv">8</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="regression-table" class="section level3 unnumbered hasAnchor">
 <h3>Regression table<a href="communicating-results.html#regression-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="regression-output-1" class="section level4 unnumbered hasAnchor">
 <h4>Regression output<a href="communicating-results.html#regression-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="communicating-results.html#cb270-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df,e_gdppc <span class="sc">~</span> v2x_corr)</span>
-<span id="cb270-2"><a href="communicating-results.html#cb270-2" tabindex="-1"></a></span>
-<span id="cb270-3"><a href="communicating-results.html#cb270-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="communicating-results.html#cb269-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df,e_gdppc <span class="sc">~</span> v2x_corr)</span>
+<span id="cb269-2"><a href="communicating-results.html#cb269-2" tabindex="-1"></a></span>
+<span id="cb269-3"><a href="communicating-results.html#cb269-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = e_gdppc ~ v2x_corr, data = df)
@@ -504,32 +499,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="table-using-modelsummary" class="section level4 unnumbered hasAnchor">
 <h4>Table using <code>modelsummary</code><a href="communicating-results.html#table-using-modelsummary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="communicating-results.html#cb272-1" tabindex="-1"></a><span class="fu">modelsummary</span>(m, <span class="at">stars=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="communicating-results.html#cb271-1" tabindex="-1"></a><span class="fu">modelsummary</span>(m, <span class="at">stars=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_kclgfbi99vk9oqdrvwrm = TinyTable.createTableFunctions("tinytable_kclgfbi99vk9oqdrvwrm");
+      const tableFns_giwru7nol67eak1k1x0m = TinyTable.createTableFunctions("tinytable_giwru7nol67eak1k1x0m");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '12', j: 2 } ], css_id: 'tinytable_css_8tiiyf5d0ddn48dyru9l',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_ija1ma3ufxlq6j5dvh0s',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 } ], css_id: 'tinytable_css_qtyyjk2wmgcv5te1e0hk',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_gcdwy0q043lb7j558iej',}, 
-          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_nt6h0sq4mak1s9p85n46',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_o2cd83e56l9kp2fngtrn',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 } ], css_id: 'tinytable_css_k4loyfjbsfisw8lawxet',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_j3glnpeyqajtmj9hkkaq',}, 
+          { positions: [ { i: '11', j: 2 } ], css_id: 'tinytable_css_hamfe6sxxs1pd043jpmr',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_gvmk2vent31kqkidiyeg',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 } ], css_id: 'tinytable_css_8mcyj78kwzoksjsnq3gd',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_gc8sa48uxsxhb964lpff',}, 
+          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_6by7r4yr4liuoyww6hl4',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_xura21r4u8uysn7l21mc',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 } ], css_id: 'tinytable_css_v1b5gjbc128zbdi6zs9t',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_2t2vjmxu1nihfc8350op',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_kclgfbi99vk9oqdrvwrm.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_giwru7nol67eak1k1x0m.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -538,17 +533,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_8tiiyf5d0ddn48dyru9l, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_8tiiyf5d0ddn48dyru9l {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_ija1ma3ufxlq6j5dvh0s, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_ija1ma3ufxlq6j5dvh0s {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_qtyyjk2wmgcv5te1e0hk, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_qtyyjk2wmgcv5te1e0hk { text-align: center }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_gcdwy0q043lb7j558iej, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_gcdwy0q043lb7j558iej {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_nt6h0sq4mak1s9p85n46, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_nt6h0sq4mak1s9p85n46 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_o2cd83e56l9kp2fngtrn, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_o2cd83e56l9kp2fngtrn {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_k4loyfjbsfisw8lawxet, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_k4loyfjbsfisw8lawxet { text-align: left }
-    #tinytable_kclgfbi99vk9oqdrvwrm td.tinytable_css_j3glnpeyqajtmj9hkkaq, #tinytable_kclgfbi99vk9oqdrvwrm th.tinytable_css_j3glnpeyqajtmj9hkkaq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_hamfe6sxxs1pd043jpmr, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_hamfe6sxxs1pd043jpmr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_gvmk2vent31kqkidiyeg, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_gvmk2vent31kqkidiyeg {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_8mcyj78kwzoksjsnq3gd, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_8mcyj78kwzoksjsnq3gd { text-align: center }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_gc8sa48uxsxhb964lpff, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_gc8sa48uxsxhb964lpff {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_6by7r4yr4liuoyww6hl4, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_6by7r4yr4liuoyww6hl4 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_xura21r4u8uysn7l21mc, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_xura21r4u8uysn7l21mc {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_v1b5gjbc128zbdi6zs9t, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_v1b5gjbc128zbdi6zs9t { text-align: left }
+    #tinytable_giwru7nol67eak1k1x0m td.tinytable_css_2t2vjmxu1nihfc8350op, #tinytable_giwru7nol67eak1k1x0m th.tinytable_css_2t2vjmxu1nihfc8350op {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_kclgfbi99vk9oqdrvwrm" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="tinytable" id="tinytable_giwru7nol67eak1k1x0m" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         
         <thead>
               <tr>
@@ -599,12 +594,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                   <td data-row="10" data-col="2">-677.441</td>
                 </tr>
                 <tr>
-                  <td data-row="11" data-col="1">F</td>
-                  <td data-row="11" data-col="2">137.441</td>
-                </tr>
-                <tr>
-                  <td data-row="12" data-col="1">RMSE</td>
-                  <td data-row="12" data-col="2">12.14</td>
+                  <td data-row="11" data-col="1">RMSE</td>
+                  <td data-row="11" data-col="2">12.14</td>
                 </tr>
         </tbody>
       </table>
@@ -613,43 +604,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="goodness-of-fit-statistics" class="section level4 unnumbered hasAnchor">
 <h4>Goodness-of-fit statistics<a href="communicating-results.html#goodness-of-fit-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="communicating-results.html#cb273-1" tabindex="-1"></a><span class="fu">get_gof</span>(m)</span></code></pre></div>
-<pre><code>##        aic      bic r.squared adj.r.squared     rmse nobs        F    logLik
-## 1 1360.881 1370.341 0.4455993     0.4423572 12.14483  173 137.4412 -677.4406</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="communicating-results.html#cb272-1" tabindex="-1"></a><span class="fu">get_gof</span>(m)</span></code></pre></div>
+<pre><code>##        aic      bic r.squared adj.r.squared     rmse nobs    logLik
+## 1 1360.881 1370.341 0.4455993     0.4423572 12.14483  173 -677.4406</code></pre>
 </div>
 <div id="select-relevant-statistics" class="section level4 unnumbered hasAnchor">
 <h4>Select relevant statistics<a href="communicating-results.html#select-relevant-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Keep only “number of observations”, “R-squared”, and “adjusted R-squared” values</li>
 </ul>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="communicating-results.html#cb275-1" tabindex="-1"></a><span class="fu">modelsummary</span>(m, </span>
-<span id="cb275-2"><a href="communicating-results.html#cb275-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>, </span>
-<span id="cb275-3"><a href="communicating-results.html#cb275-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>)) <span class="co"># select relevant goodness-of-fit statistics</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="communicating-results.html#cb274-1" tabindex="-1"></a><span class="fu">modelsummary</span>(m, </span>
+<span id="cb274-2"><a href="communicating-results.html#cb274-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>, </span>
+<span id="cb274-3"><a href="communicating-results.html#cb274-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>)) <span class="co"># select relevant goodness-of-fit statistics</span></span></code></pre></div>
 <!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_aqa0df0gn4l0ohu5lfcg = TinyTable.createTableFunctions("tinytable_aqa0df0gn4l0ohu5lfcg");
+      const tableFns_ypi3w1czne50tm474h54 = TinyTable.createTableFunctions("tinytable_ypi3w1czne50tm474h54");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_x5312a47t4utxkaei1na',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_qhbce9xdg1r6fo3tm6f5',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_u9m5683ztnnixj3xnnq7',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_iheq6uqa96w0mgi2tbjm',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_yhk12c9e6clcdgd7tdwn',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_qfflwgceazjucklrogqi',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_703dosepo8xlg08cobrp',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_0ptbefn1oeozgswaqdaa',}, 
+          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_iwlp2zhyms5nzet7f8m8',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_5xl89h8esvma64py2zlf',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_30d18j9995lfw8gq5und',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_ouncgdi2gls5exs7ikma',}, 
+          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_z3aptau7c18wpp4zs1gr',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_5o1mfc75ay0eqg40r5zg',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_o0kkxug8i3k9ko9ztvlj',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_t843sat29fftqss28lcy',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_aqa0df0gn4l0ohu5lfcg.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_ypi3w1czne50tm474h54.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -658,17 +649,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_x5312a47t4utxkaei1na, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_x5312a47t4utxkaei1na {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_qhbce9xdg1r6fo3tm6f5, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_qhbce9xdg1r6fo3tm6f5 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_u9m5683ztnnixj3xnnq7, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_u9m5683ztnnixj3xnnq7 { text-align: center }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_iheq6uqa96w0mgi2tbjm, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_iheq6uqa96w0mgi2tbjm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_yhk12c9e6clcdgd7tdwn, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_yhk12c9e6clcdgd7tdwn {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_qfflwgceazjucklrogqi, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_qfflwgceazjucklrogqi {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_703dosepo8xlg08cobrp, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_703dosepo8xlg08cobrp { text-align: left }
-    #tinytable_aqa0df0gn4l0ohu5lfcg td.tinytable_css_0ptbefn1oeozgswaqdaa, #tinytable_aqa0df0gn4l0ohu5lfcg th.tinytable_css_0ptbefn1oeozgswaqdaa {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_iwlp2zhyms5nzet7f8m8, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_iwlp2zhyms5nzet7f8m8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_5xl89h8esvma64py2zlf, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_5xl89h8esvma64py2zlf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_30d18j9995lfw8gq5und, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_30d18j9995lfw8gq5und { text-align: center }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_ouncgdi2gls5exs7ikma, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_ouncgdi2gls5exs7ikma {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_z3aptau7c18wpp4zs1gr, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_z3aptau7c18wpp4zs1gr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_5o1mfc75ay0eqg40r5zg, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_5o1mfc75ay0eqg40r5zg {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_o0kkxug8i3k9ko9ztvlj, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_o0kkxug8i3k9ko9ztvlj { text-align: left }
+    #tinytable_ypi3w1czne50tm474h54 td.tinytable_css_t843sat29fftqss28lcy, #tinytable_ypi3w1czne50tm474h54 th.tinytable_css_t843sat29fftqss28lcy {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_aqa0df0gn4l0ohu5lfcg" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="tinytable" id="tinytable_ypi3w1czne50tm474h54" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         
         <thead>
               <tr>
@@ -713,35 +704,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="relabel" class="section level4 unnumbered hasAnchor">
 <h4>Relabel<a href="communicating-results.html#relabel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="communicating-results.html#cb276-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m), <span class="co"># list allows me to name the models</span></span>
-<span id="cb276-2"><a href="communicating-results.html#cb276-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb276-3"><a href="communicating-results.html#cb276-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb276-4"><a href="communicating-results.html#cb276-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;v2x_corr&quot;</span><span class="ot">=</span><span class="st">&quot;Corruption Index&quot;</span>)) <span class="co"># rename coefficient</span></span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="communicating-results.html#cb275-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m), <span class="co"># list allows me to name the models</span></span>
+<span id="cb275-2"><a href="communicating-results.html#cb275-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb275-3"><a href="communicating-results.html#cb275-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb275-4"><a href="communicating-results.html#cb275-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;v2x_corr&quot;</span><span class="ot">=</span><span class="st">&quot;Corruption Index&quot;</span>)) <span class="co"># rename coefficient</span></span></code></pre></div>
 <!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_v8xsz44j3ny8md0xjfuy = TinyTable.createTableFunctions("tinytable_v8xsz44j3ny8md0xjfuy");
+      const tableFns_dd33srt7pdfgeduxwwzi = TinyTable.createTableFunctions("tinytable_dd33srt7pdfgeduxwwzi");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_x15woqea2gu900zjeicl',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_4cm6zoj68ifro7ylq6bj',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_ozzxy2onumpgv2svrlig',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_4agofe8qpffdgi7wvjab',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_pmhcn7i23z30u9vqf9bo',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_n0y3jhuy7qeas1f7gx68',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_5t4yrlnr4cbmfuftviy7',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_tybemq2w4r2pwtzmga49',}, 
+          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_9nxexoij4snsirtl4ian',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_1ldjayomewq5e3dth1wr',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_7r10383qskvkyltzvzz7',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_ud4z94r7qmw7nlgevrbb',}, 
+          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_wnfzkqhi3urn60hi7tew',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_xdg0rqmdbl8q4cpa2e59',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_adqa28zw2g66mztt983d',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_4q0honpwk9nn6ohklw0t',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_v8xsz44j3ny8md0xjfuy.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_dd33srt7pdfgeduxwwzi.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -750,17 +741,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_x15woqea2gu900zjeicl, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_x15woqea2gu900zjeicl {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_4cm6zoj68ifro7ylq6bj, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_4cm6zoj68ifro7ylq6bj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_ozzxy2onumpgv2svrlig, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_ozzxy2onumpgv2svrlig { text-align: center }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_4agofe8qpffdgi7wvjab, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_4agofe8qpffdgi7wvjab {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_pmhcn7i23z30u9vqf9bo, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_pmhcn7i23z30u9vqf9bo {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_n0y3jhuy7qeas1f7gx68, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_n0y3jhuy7qeas1f7gx68 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_5t4yrlnr4cbmfuftviy7, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_5t4yrlnr4cbmfuftviy7 { text-align: left }
-    #tinytable_v8xsz44j3ny8md0xjfuy td.tinytable_css_tybemq2w4r2pwtzmga49, #tinytable_v8xsz44j3ny8md0xjfuy th.tinytable_css_tybemq2w4r2pwtzmga49 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_9nxexoij4snsirtl4ian, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_9nxexoij4snsirtl4ian {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_1ldjayomewq5e3dth1wr, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_1ldjayomewq5e3dth1wr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_7r10383qskvkyltzvzz7, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_7r10383qskvkyltzvzz7 { text-align: center }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_ud4z94r7qmw7nlgevrbb, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_ud4z94r7qmw7nlgevrbb {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_wnfzkqhi3urn60hi7tew, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_wnfzkqhi3urn60hi7tew {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_xdg0rqmdbl8q4cpa2e59, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_xdg0rqmdbl8q4cpa2e59 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_adqa28zw2g66mztt983d, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_adqa28zw2g66mztt983d { text-align: left }
+    #tinytable_dd33srt7pdfgeduxwwzi td.tinytable_css_4q0honpwk9nn6ohklw0t, #tinytable_dd33srt7pdfgeduxwwzi th.tinytable_css_4q0honpwk9nn6ohklw0t {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_v8xsz44j3ny8md0xjfuy" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="tinytable" id="tinytable_dd33srt7pdfgeduxwwzi" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         
         <thead>
               <tr>
@@ -806,52 +797,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="save-output" class="section level4 unnumbered hasAnchor">
 <h4>Save output<a href="communicating-results.html#save-output" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Under Arguments &gt; output, you can see a number of supported file formats: .docx, .html, .tex, .md, .txt, .csv, .xlsx, .png, .jpg</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="communicating-results.html#cb277-1" tabindex="-1"></a>?modelsummary</span></code></pre></div>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="communicating-results.html#cb278-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb278-2"><a href="communicating-results.html#cb278-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb278-3"><a href="communicating-results.html#cb278-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb278-4"><a href="communicating-results.html#cb278-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;v2x_corr&quot;</span><span class="ot">=</span><span class="st">&quot;Corruption Index&quot;</span>),</span>
-<span id="cb278-5"><a href="communicating-results.html#cb278-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;out.docx&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="communicating-results.html#cb276-1" tabindex="-1"></a>?modelsummary</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="communicating-results.html#cb277-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m),</span>
+<span id="cb277-2"><a href="communicating-results.html#cb277-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb277-3"><a href="communicating-results.html#cb277-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb277-4"><a href="communicating-results.html#cb277-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;v2x_corr&quot;</span><span class="ot">=</span><span class="st">&quot;Corruption Index&quot;</span>),</span>
+<span id="cb277-5"><a href="communicating-results.html#cb277-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;out.docx&quot;</span>) </span></code></pre></div>
 </div>
 </div>
 <div id="clear-environment" class="section level3 unnumbered hasAnchor">
 <h3>Clear environment<a href="communicating-results.html#clear-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="communicating-results.html#cb279-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="communicating-results.html#cb278-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
 </div>
-<div id="canadian-election-study-2021-1" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Canadian Election Study 2021<a href="communicating-results.html#canadian-election-study-2021-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="communicating-results.html#cb280-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cps21_age&quot;</span>,<span class="st">&quot;cps21_news_cons&quot;</span>,<span class="st">&quot;cps21_govt_confusing&quot;</span>) <span class="co">#news consumption and internal political efficacy</span></span>
-<span id="cb280-2"><a href="communicating-results.html#cb280-2" tabindex="-1"></a></span>
-<span id="cb280-3"><a href="communicating-results.html#cb280-3" tabindex="-1"></a>ces_select <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;Project/CES2021/2021 Canadian Election Study v2.0.dta&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb280-4"><a href="communicating-results.html#cb280-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(vars))</span></code></pre></div>
+<div id="canadian-election-study-2021-1" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Canadian Election Study 2021<a href="communicating-results.html#canadian-election-study-2021-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="communicating-results.html#cb279-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cps21_age&quot;</span>,<span class="st">&quot;cps21_news_cons&quot;</span>,<span class="st">&quot;cps21_govt_confusing&quot;</span>) <span class="co">#news consumption and internal political efficacy</span></span>
+<span id="cb279-2"><a href="communicating-results.html#cb279-2" tabindex="-1"></a></span>
+<span id="cb279-3"><a href="communicating-results.html#cb279-3" tabindex="-1"></a>ces_select <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;Project/CES2021/2021 Canadian Election Study v2.0.dta&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb279-4"><a href="communicating-results.html#cb279-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(vars))</span></code></pre></div>
 <div id="transform-drop-nas" class="section level3 unnumbered hasAnchor">
 <h3>Transform &amp; drop NAs<a href="communicating-results.html#transform-drop-nas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="communicating-results.html#cb281-1" tabindex="-1"></a>ces_dropna <span class="ot">&lt;-</span> ces_select <span class="sc">|&gt;</span></span>
-<span id="cb281-2"><a href="communicating-results.html#cb281-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cps21_govt_confusing=</span><span class="fu">ifelse</span>(cps21_govt_confusing<span class="sc">==</span><span class="dv">5</span>, <span class="co">#conditional statement</span></span>
-<span id="cb281-3"><a href="communicating-results.html#cb281-3" tabindex="-1"></a>                                     <span class="cn">NA</span>, <span class="co">#if yes</span></span>
-<span id="cb281-4"><a href="communicating-results.html#cb281-4" tabindex="-1"></a>                                     cps21_govt_confusing), <span class="co">#if no</span></span>
-<span id="cb281-5"><a href="communicating-results.html#cb281-5" tabindex="-1"></a>         <span class="at">cps21_news_cons=</span><span class="fu">ifelse</span>(cps21_news_cons<span class="sc">==</span><span class="dv">7</span>, <span class="co">#conditional statement</span></span>
-<span id="cb281-6"><a href="communicating-results.html#cb281-6" tabindex="-1"></a>                                <span class="cn">NA</span>, <span class="co">#if yes</span></span>
-<span id="cb281-7"><a href="communicating-results.html#cb281-7" tabindex="-1"></a>                                cps21_news_cons)) <span class="sc">|&gt;</span> <span class="co">#if no</span></span>
-<span id="cb281-8"><a href="communicating-results.html#cb281-8" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co">#remove NAs</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="communicating-results.html#cb280-1" tabindex="-1"></a>ces_dropna <span class="ot">&lt;-</span> ces_select <span class="sc">|&gt;</span></span>
+<span id="cb280-2"><a href="communicating-results.html#cb280-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cps21_govt_confusing=</span><span class="fu">ifelse</span>(cps21_govt_confusing<span class="sc">==</span><span class="dv">5</span>, <span class="co">#conditional statement</span></span>
+<span id="cb280-3"><a href="communicating-results.html#cb280-3" tabindex="-1"></a>                                     <span class="cn">NA</span>, <span class="co">#if yes</span></span>
+<span id="cb280-4"><a href="communicating-results.html#cb280-4" tabindex="-1"></a>                                     cps21_govt_confusing), <span class="co">#if no</span></span>
+<span id="cb280-5"><a href="communicating-results.html#cb280-5" tabindex="-1"></a>         <span class="at">cps21_news_cons=</span><span class="fu">ifelse</span>(cps21_news_cons<span class="sc">==</span><span class="dv">7</span>, <span class="co">#conditional statement</span></span>
+<span id="cb280-6"><a href="communicating-results.html#cb280-6" tabindex="-1"></a>                                <span class="cn">NA</span>, <span class="co">#if yes</span></span>
+<span id="cb280-7"><a href="communicating-results.html#cb280-7" tabindex="-1"></a>                                cps21_news_cons)) <span class="sc">|&gt;</span> <span class="co">#if no</span></span>
+<span id="cb280-8"><a href="communicating-results.html#cb280-8" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co">#remove NAs</span></span></code></pre></div>
 </div>
 <div id="check-transformed-variables" class="section level3 unnumbered hasAnchor">
 <h3>Check transformed variables<a href="communicating-results.html#check-transformed-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="communicating-results.html#cb282-1" tabindex="-1"></a><span class="fu">table</span>(ces_dropna<span class="sc">$</span>cps21_govt_confusing)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="communicating-results.html#cb281-1" tabindex="-1"></a><span class="fu">table</span>(ces_dropna<span class="sc">$</span>cps21_govt_confusing)</span></code></pre></div>
 <pre><code>## 
 ##    1    2    3    4 
 ## 3371 5905 8464 2651</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="communicating-results.html#cb284-1" tabindex="-1"></a><span class="fu">table</span>(ces_dropna<span class="sc">$</span>cps21_news_cons)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="communicating-results.html#cb283-1" tabindex="-1"></a><span class="fu">table</span>(ces_dropna<span class="sc">$</span>cps21_news_cons)</span></code></pre></div>
 <pre><code>## 
 ##    1    2    3    4    5    6 
 ##  646 3017 4660 5771 4433 1864</code></pre>
 </div>
 <div id="regression-table-1" class="section level3 unnumbered hasAnchor">
 <h3>Regression table<a href="communicating-results.html#regression-table-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="communicating-results.html#cb286-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>ces_dropna,cps21_govt_confusing <span class="sc">~</span> cps21_news_cons) <span class="co"># model 1</span></span>
-<span id="cb286-2"><a href="communicating-results.html#cb286-2" tabindex="-1"></a></span>
-<span id="cb286-3"><a href="communicating-results.html#cb286-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="communicating-results.html#cb285-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>ces_dropna,cps21_govt_confusing <span class="sc">~</span> cps21_news_cons) <span class="co"># model 1</span></span>
+<span id="cb285-2"><a href="communicating-results.html#cb285-2" tabindex="-1"></a></span>
+<span id="cb285-3"><a href="communicating-results.html#cb285-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = cps21_govt_confusing ~ cps21_news_cons, data = ces_dropna)
@@ -870,35 +861,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.8785 on 20389 degrees of freedom
 ## Multiple R-squared:  0.08203,    Adjusted R-squared:  0.08198 
 ## F-statistic:  1822 on 1 and 20389 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="communicating-results.html#cb288-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb288-2"><a href="communicating-results.html#cb288-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb288-3"><a href="communicating-results.html#cb288-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb288-4"><a href="communicating-results.html#cb288-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span><span class="ot">=</span><span class="st">&quot;News Consumption&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="communicating-results.html#cb287-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span><span class="ot">=</span>m),</span>
+<span id="cb287-2"><a href="communicating-results.html#cb287-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb287-3"><a href="communicating-results.html#cb287-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb287-4"><a href="communicating-results.html#cb287-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span><span class="ot">=</span><span class="st">&quot;News Consumption&quot;</span>)) </span></code></pre></div>
 <!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_ggpdnyjpuzbjsm3p2q35 = TinyTable.createTableFunctions("tinytable_ggpdnyjpuzbjsm3p2q35");
+      const tableFns_is65n3zeshj2iw216aw2 = TinyTable.createTableFunctions("tinytable_is65n3zeshj2iw216aw2");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_uf9wo5f9vtiwr0tzv999',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_n7wxyi90yugn038o8gzj',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_19cpg67ayvd4o28j8e8a',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_guc52i8zir1x8gq45emq',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_qnw4os4c4kb8ybls0ut3',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_0vm018t7uxjazq6gar55',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_niedw0tl50wj4q4dtr8q',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_sal2fayn3muxmo71yezl',}, 
+          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_5mq2o8dh6ijjr5xf1wgr',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_q22r1rr4f88gb05gsvd8',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_nn94ek2vg15mfruusid9',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_atl6vgfstzt3ffoobnq2',}, 
+          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_w6qdrwt9rc3cb258f4ce',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_lmdjxqba0lwlcqcbrhl9',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_ss4qwotae89o9x8i7bcb',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_x9k8rfmnrsmgh6u46uxs',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_ggpdnyjpuzbjsm3p2q35.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_is65n3zeshj2iw216aw2.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -907,17 +898,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_uf9wo5f9vtiwr0tzv999, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_uf9wo5f9vtiwr0tzv999 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_n7wxyi90yugn038o8gzj, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_n7wxyi90yugn038o8gzj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_19cpg67ayvd4o28j8e8a, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_19cpg67ayvd4o28j8e8a { text-align: center }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_guc52i8zir1x8gq45emq, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_guc52i8zir1x8gq45emq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_qnw4os4c4kb8ybls0ut3, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_qnw4os4c4kb8ybls0ut3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_0vm018t7uxjazq6gar55, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_0vm018t7uxjazq6gar55 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_niedw0tl50wj4q4dtr8q, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_niedw0tl50wj4q4dtr8q { text-align: left }
-    #tinytable_ggpdnyjpuzbjsm3p2q35 td.tinytable_css_sal2fayn3muxmo71yezl, #tinytable_ggpdnyjpuzbjsm3p2q35 th.tinytable_css_sal2fayn3muxmo71yezl {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_5mq2o8dh6ijjr5xf1wgr, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_5mq2o8dh6ijjr5xf1wgr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_q22r1rr4f88gb05gsvd8, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_q22r1rr4f88gb05gsvd8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_nn94ek2vg15mfruusid9, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_nn94ek2vg15mfruusid9 { text-align: center }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_atl6vgfstzt3ffoobnq2, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_atl6vgfstzt3ffoobnq2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_w6qdrwt9rc3cb258f4ce, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_w6qdrwt9rc3cb258f4ce {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_lmdjxqba0lwlcqcbrhl9, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_lmdjxqba0lwlcqcbrhl9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_ss4qwotae89o9x8i7bcb, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_ss4qwotae89o9x8i7bcb { text-align: left }
+    #tinytable_is65n3zeshj2iw216aw2 td.tinytable_css_x9k8rfmnrsmgh6u46uxs, #tinytable_is65n3zeshj2iw216aw2 th.tinytable_css_x9k8rfmnrsmgh6u46uxs {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_ggpdnyjpuzbjsm3p2q35" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="tinytable" id="tinytable_is65n3zeshj2iw216aw2" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         
         <thead>
               <tr>
@@ -961,39 +952,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- hack to avoid NA insertion in last line -->
 <div id="controls" class="section level4 unnumbered hasAnchor">
 <h4>Controls<a href="communicating-results.html#controls" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="communicating-results.html#cb289-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>ces_dropna,cps21_govt_confusing <span class="sc">~</span> cps21_news_cons <span class="sc">+</span> cps21_age) <span class="co"># model 2</span></span>
-<span id="cb289-2"><a href="communicating-results.html#cb289-2" tabindex="-1"></a></span>
-<span id="cb289-3"><a href="communicating-results.html#cb289-3" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span> <span class="ot">=</span> m,</span>
-<span id="cb289-4"><a href="communicating-results.html#cb289-4" tabindex="-1"></a>                  <span class="st">&quot;w/ Controls&quot;</span> <span class="ot">=</span> m2),</span>
-<span id="cb289-5"><a href="communicating-results.html#cb289-5" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb289-6"><a href="communicating-results.html#cb289-6" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb289-7"><a href="communicating-results.html#cb289-7" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span> <span class="ot">=</span> <span class="st">&quot;News Consumption&quot;</span>,</span>
-<span id="cb289-8"><a href="communicating-results.html#cb289-8" tabindex="-1"></a>                           <span class="st">&quot;cps21_age&quot;</span> <span class="ot">=</span> <span class="st">&quot;Age&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="communicating-results.html#cb288-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>ces_dropna,cps21_govt_confusing <span class="sc">~</span> cps21_news_cons <span class="sc">+</span> cps21_age) <span class="co"># model 2</span></span>
+<span id="cb288-2"><a href="communicating-results.html#cb288-2" tabindex="-1"></a></span>
+<span id="cb288-3"><a href="communicating-results.html#cb288-3" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span> <span class="ot">=</span> m,</span>
+<span id="cb288-4"><a href="communicating-results.html#cb288-4" tabindex="-1"></a>                  <span class="st">&quot;w/ Controls&quot;</span> <span class="ot">=</span> m2),</span>
+<span id="cb288-5"><a href="communicating-results.html#cb288-5" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb288-6"><a href="communicating-results.html#cb288-6" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb288-7"><a href="communicating-results.html#cb288-7" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span> <span class="ot">=</span> <span class="st">&quot;News Consumption&quot;</span>,</span>
+<span id="cb288-8"><a href="communicating-results.html#cb288-8" tabindex="-1"></a>                           <span class="st">&quot;cps21_age&quot;</span> <span class="ot">=</span> <span class="st">&quot;Age&quot;</span>)) </span></code></pre></div>
 <!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_6ha5xa39uih5rfkdunsa = TinyTable.createTableFunctions("tinytable_6ha5xa39uih5rfkdunsa");
+      const tableFns_3vh2ez24dh12kg4csv6i = TinyTable.createTableFunctions("tinytable_3vh2ez24dh12kg4csv6i");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '9', j: 2 }, { i: '9', j: 3 } ], css_id: 'tinytable_css_o354hxclx2hsqadtagmm',}, 
-          { positions: [ { i: '6', j: 2 }, { i: '6', j: 3 } ], css_id: 'tinytable_css_aec6t7tga5g5eit9ss2w',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 } ], css_id: 'tinytable_css_9qactw1w0et3e9k37zrg',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_zxvatkb48w530hq18xz3',}, 
-          { positions: [ { i: '9', j: 1 } ], css_id: 'tinytable_css_haq9ifr4sc0bp9tbq1ct',}, 
-          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_lq9dcwhvwlb6co94iclj',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 } ], css_id: 'tinytable_css_skm3jjnfjqqzcz9xtxto',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_vsodkae6galqv106gpx3',}, 
+          { positions: [ { i: '9', j: 2 }, { i: '9', j: 3 } ], css_id: 'tinytable_css_cf2xp9d61fk2sahadmzi',}, 
+          { positions: [ { i: '6', j: 2 }, { i: '6', j: 3 } ], css_id: 'tinytable_css_q85co912ihhqihvylvau',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 } ], css_id: 'tinytable_css_xsvuj4kik41trxw16azf',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_pnoxaptpoyoydcn431ro',}, 
+          { positions: [ { i: '9', j: 1 } ], css_id: 'tinytable_css_01mv1rs5qzsi9uq31rfa',}, 
+          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_kd05o2hmh8xzk7eiiiny',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 } ], css_id: 'tinytable_css_rcld4b5ltdvaei8g2v64',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_nk952890wkfvrr2mjzq2',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_6ha5xa39uih5rfkdunsa.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_3vh2ez24dh12kg4csv6i.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -1002,17 +993,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_o354hxclx2hsqadtagmm, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_o354hxclx2hsqadtagmm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_aec6t7tga5g5eit9ss2w, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_aec6t7tga5g5eit9ss2w {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_9qactw1w0et3e9k37zrg, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_9qactw1w0et3e9k37zrg { text-align: center }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_zxvatkb48w530hq18xz3, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_zxvatkb48w530hq18xz3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_haq9ifr4sc0bp9tbq1ct, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_haq9ifr4sc0bp9tbq1ct {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_lq9dcwhvwlb6co94iclj, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_lq9dcwhvwlb6co94iclj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_skm3jjnfjqqzcz9xtxto, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_skm3jjnfjqqzcz9xtxto { text-align: left }
-    #tinytable_6ha5xa39uih5rfkdunsa td.tinytable_css_vsodkae6galqv106gpx3, #tinytable_6ha5xa39uih5rfkdunsa th.tinytable_css_vsodkae6galqv106gpx3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_cf2xp9d61fk2sahadmzi, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_cf2xp9d61fk2sahadmzi {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_q85co912ihhqihvylvau, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_q85co912ihhqihvylvau {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_xsvuj4kik41trxw16azf, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_xsvuj4kik41trxw16azf { text-align: center }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_pnoxaptpoyoydcn431ro, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_pnoxaptpoyoydcn431ro {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_01mv1rs5qzsi9uq31rfa, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_01mv1rs5qzsi9uq31rfa {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_kd05o2hmh8xzk7eiiiny, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_kd05o2hmh8xzk7eiiiny {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_rcld4b5ltdvaei8g2v64, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_rcld4b5ltdvaei8g2v64 { text-align: left }
+    #tinytable_3vh2ez24dh12kg4csv6i td.tinytable_css_nk952890wkfvrr2mjzq2, #tinytable_3vh2ez24dh12kg4csv6i th.tinytable_css_nk952890wkfvrr2mjzq2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_6ha5xa39uih5rfkdunsa" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="tinytable" id="tinytable_3vh2ez24dh12kg4csv6i" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         
         <thead>
               <tr>
@@ -1075,44 +1066,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="save-output-1" class="section level4 unnumbered hasAnchor">
 <h4>Save output<a href="communicating-results.html#save-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="communicating-results.html#cb290-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span> <span class="ot">=</span> m,</span>
-<span id="cb290-2"><a href="communicating-results.html#cb290-2" tabindex="-1"></a>                  <span class="st">&quot;w/ Controls&quot;</span> <span class="ot">=</span> m2),</span>
-<span id="cb290-3"><a href="communicating-results.html#cb290-3" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb290-4"><a href="communicating-results.html#cb290-4" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb290-5"><a href="communicating-results.html#cb290-5" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span> <span class="ot">=</span> <span class="st">&quot;News Consumption&quot;</span>,</span>
-<span id="cb290-6"><a href="communicating-results.html#cb290-6" tabindex="-1"></a>                           <span class="st">&quot;cps21_age&quot;</span> <span class="ot">=</span> <span class="st">&quot;Age&quot;</span>),</span>
-<span id="cb290-7"><a href="communicating-results.html#cb290-7" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;ces.docx&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="communicating-results.html#cb289-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Base&quot;</span> <span class="ot">=</span> m,</span>
+<span id="cb289-2"><a href="communicating-results.html#cb289-2" tabindex="-1"></a>                  <span class="st">&quot;w/ Controls&quot;</span> <span class="ot">=</span> m2),</span>
+<span id="cb289-3"><a href="communicating-results.html#cb289-3" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb289-4"><a href="communicating-results.html#cb289-4" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb289-5"><a href="communicating-results.html#cb289-5" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;cps21_news_cons&quot;</span> <span class="ot">=</span> <span class="st">&quot;News Consumption&quot;</span>,</span>
+<span id="cb289-6"><a href="communicating-results.html#cb289-6" tabindex="-1"></a>                           <span class="st">&quot;cps21_age&quot;</span> <span class="ot">=</span> <span class="st">&quot;Age&quot;</span>),</span>
+<span id="cb289-7"><a href="communicating-results.html#cb289-7" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;ces.docx&quot;</span>) </span></code></pre></div>
 </div>
 </div>
 <div id="clear-environment-1" class="section level3 unnumbered hasAnchor">
 <h3>Clear environment<a href="communicating-results.html#clear-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="communicating-results.html#cb291-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="communicating-results.html#cb290-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
 </div>
-<div id="world-values-survey" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> World Values Survey<a href="communicating-results.html#world-values-survey" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="communicating-results.html#cb292-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;B_COUNTRY_ALPHA&quot;</span>,<span class="st">&quot;Q73&quot;</span>,<span class="st">&quot;Q236&quot;</span>) <span class="co">#confidence in parliament, experts versus government</span></span>
-<span id="cb292-2"><a href="communicating-results.html#cb292-2" tabindex="-1"></a></span>
-<span id="cb292-3"><a href="communicating-results.html#cb292-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb292-4"><a href="communicating-results.html#cb292-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
-<span id="cb292-5"><a href="communicating-results.html#cb292-5" tabindex="-1"></a>  <span class="fu">filter</span>(B_COUNTRY_ALPHA<span class="sc">==</span><span class="st">&quot;CAN&quot;</span>) <span class="co"># choice of country: Canada</span></span></code></pre></div>
+<div id="world-values-survey" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> World Values Survey<a href="communicating-results.html#world-values-survey" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="communicating-results.html#cb291-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;B_COUNTRY_ALPHA&quot;</span>,<span class="st">&quot;Q73&quot;</span>,<span class="st">&quot;Q236&quot;</span>) <span class="co">#confidence in parliament, experts versus government</span></span>
+<span id="cb291-2"><a href="communicating-results.html#cb291-2" tabindex="-1"></a></span>
+<span id="cb291-3"><a href="communicating-results.html#cb291-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb291-4"><a href="communicating-results.html#cb291-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
+<span id="cb291-5"><a href="communicating-results.html#cb291-5" tabindex="-1"></a>  <span class="fu">filter</span>(B_COUNTRY_ALPHA<span class="sc">==</span><span class="st">&quot;CAN&quot;</span>) <span class="co"># choice of country: Canada</span></span></code></pre></div>
 <div id="transform-drop-nas-1" class="section level3 unnumbered hasAnchor">
 <h3>Transform &amp; drop NAs<a href="communicating-results.html#transform-drop-nas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="communicating-results.html#cb293-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb293-2"><a href="communicating-results.html#cb293-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Q73=</span><span class="fu">ifelse</span>(Q73<span class="sc">&lt;</span><span class="dv">0</span>,</span>
-<span id="cb293-3"><a href="communicating-results.html#cb293-3" tabindex="-1"></a>                    <span class="cn">NA</span>,</span>
-<span id="cb293-4"><a href="communicating-results.html#cb293-4" tabindex="-1"></a>                    Q73),</span>
-<span id="cb293-5"><a href="communicating-results.html#cb293-5" tabindex="-1"></a>         <span class="at">Q236=</span><span class="fu">ifelse</span>(Q236<span class="sc">&lt;</span><span class="dv">0</span>,</span>
-<span id="cb293-6"><a href="communicating-results.html#cb293-6" tabindex="-1"></a>                     <span class="cn">NA</span>,</span>
-<span id="cb293-7"><a href="communicating-results.html#cb293-7" tabindex="-1"></a>                     Q236)) <span class="sc">|&gt;</span></span>
-<span id="cb293-8"><a href="communicating-results.html#cb293-8" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># drops all rows with NA values</span></span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="communicating-results.html#cb292-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb292-2"><a href="communicating-results.html#cb292-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Q73=</span><span class="fu">ifelse</span>(Q73<span class="sc">&lt;</span><span class="dv">0</span>,</span>
+<span id="cb292-3"><a href="communicating-results.html#cb292-3" tabindex="-1"></a>                    <span class="cn">NA</span>,</span>
+<span id="cb292-4"><a href="communicating-results.html#cb292-4" tabindex="-1"></a>                    Q73),</span>
+<span id="cb292-5"><a href="communicating-results.html#cb292-5" tabindex="-1"></a>         <span class="at">Q236=</span><span class="fu">ifelse</span>(Q236<span class="sc">&lt;</span><span class="dv">0</span>,</span>
+<span id="cb292-6"><a href="communicating-results.html#cb292-6" tabindex="-1"></a>                     <span class="cn">NA</span>,</span>
+<span id="cb292-7"><a href="communicating-results.html#cb292-7" tabindex="-1"></a>                     Q236)) <span class="sc">|&gt;</span></span>
+<span id="cb292-8"><a href="communicating-results.html#cb292-8" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># drops all rows with NA values</span></span></code></pre></div>
 </div>
 <div id="regression-table-2" class="section level3 unnumbered hasAnchor">
 <h3>Regression table<a href="communicating-results.html#regression-table-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="communicating-results.html#cb294-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df_recode,</span>
-<span id="cb294-2"><a href="communicating-results.html#cb294-2" tabindex="-1"></a>        Q236 <span class="sc">~</span> Q73)</span>
-<span id="cb294-3"><a href="communicating-results.html#cb294-3" tabindex="-1"></a></span>
-<span id="cb294-4"><a href="communicating-results.html#cb294-4" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="communicating-results.html#cb293-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df_recode,</span>
+<span id="cb293-2"><a href="communicating-results.html#cb293-2" tabindex="-1"></a>        Q236 <span class="sc">~</span> Q73)</span>
+<span id="cb293-3"><a href="communicating-results.html#cb293-3" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="communicating-results.html#cb293-4" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Q236 ~ Q73, data = df_recode)
@@ -1131,130 +1122,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.8836 on 4016 degrees of freedom
 ## Multiple R-squared:  2.944e-05,  Adjusted R-squared:  -0.0002196 
 ## F-statistic: 0.1183 on 1 and 4016 DF,  p-value: 0.731</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="communicating-results.html#cb296-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Experts vs government&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb296-2"><a href="communicating-results.html#cb296-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb296-3"><a href="communicating-results.html#cb296-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb296-4"><a href="communicating-results.html#cb296-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;Q73&quot;</span><span class="ot">=</span><span class="st">&quot;Confidence in Parliament&quot;</span>)) </span></code></pre></div>
-<!-- preamble start -->
-
-    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
-
-    <script>
-      // Create table-specific functions using external factory
-      const tableFns_p31b8stigg0wpbhtuhe3 = TinyTable.createTableFunctions("tinytable_p31b8stigg0wpbhtuhe3");
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_7mw6nnhgwbr4864irzf7',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_slbi146nj8823zdvyrn3',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_vj05u8exmdl28o1r59sh',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_zacswrhuy0v5hovqxvi2',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_9fya187r7grqxbfg3hzt',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_t4gipp0lc2c1vm7dx9hz',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_hhpp1kb8ogjzn6fixzz2',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_oshadgnhldgi0vw3qv4z',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  tableFns_p31b8stigg0wpbhtuhe3.styleCell(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
-    <style>
-    /* tinytable css entries after */
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_7mw6nnhgwbr4864irzf7, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_7mw6nnhgwbr4864irzf7 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_slbi146nj8823zdvyrn3, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_slbi146nj8823zdvyrn3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_vj05u8exmdl28o1r59sh, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_vj05u8exmdl28o1r59sh { text-align: center }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_zacswrhuy0v5hovqxvi2, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_zacswrhuy0v5hovqxvi2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_9fya187r7grqxbfg3hzt, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_9fya187r7grqxbfg3hzt {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_t4gipp0lc2c1vm7dx9hz, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_t4gipp0lc2c1vm7dx9hz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_hhpp1kb8ogjzn6fixzz2, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_hhpp1kb8ogjzn6fixzz2 { text-align: left }
-    #tinytable_p31b8stigg0wpbhtuhe3 td.tinytable_css_oshadgnhldgi0vw3qv4z, #tinytable_p31b8stigg0wpbhtuhe3 th.tinytable_css_oshadgnhldgi0vw3qv4z {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    </style>
-    <div class="container">
-      <table class="tinytable" id="tinytable_p31b8stigg0wpbhtuhe3" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
-        
-        <thead>
-              <tr>
-                <th scope="col" data-row="0" data-col="1"> </th>
-                <th scope="col" data-row="0" data-col="2">Experts vs government</th>
-              </tr>
-        </thead>
-        <tfoot><tr><td colspan='2'>+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001</td></tr></tfoot>
-        <tbody>
-                <tr>
-                  <td data-row="1" data-col="1">(Intercept)</td>
-                  <td data-row="1" data-col="2">2.504***</td>
-                </tr>
-                <tr>
-                  <td data-row="2" data-col="1"></td>
-                  <td data-row="2" data-col="2">(0.049)</td>
-                </tr>
-                <tr>
-                  <td data-row="3" data-col="1">Confidence in Parliament</td>
-                  <td data-row="3" data-col="2">-0.006</td>
-                </tr>
-                <tr>
-                  <td data-row="4" data-col="1"></td>
-                  <td data-row="4" data-col="2">(0.018)</td>
-                </tr>
-                <tr>
-                  <td data-row="5" data-col="1">Num.Obs.</td>
-                  <td data-row="5" data-col="2">4018</td>
-                </tr>
-                <tr>
-                  <td data-row="6" data-col="1">R2</td>
-                  <td data-row="6" data-col="2">0.000</td>
-                </tr>
-                <tr>
-                  <td data-row="7" data-col="1">R2 Adj.</td>
-                  <td data-row="7" data-col="2">-0.000</td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
-<div id="save-output-2" class="section level4 unnumbered hasAnchor">
-<h4>Save output<a href="communicating-results.html#save-output-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="communicating-results.html#cb297-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Experts vs government&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb297-2"><a href="communicating-results.html#cb297-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb297-3"><a href="communicating-results.html#cb297-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb297-4"><a href="communicating-results.html#cb297-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;Q73&quot;</span><span class="ot">=</span><span class="st">&quot;Confidence in Parliament&quot;</span>),</span>
-<span id="cb297-5"><a href="communicating-results.html#cb297-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;wvs_regTable.docx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="communicating-results.html#cb295-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Experts vs government&quot;</span><span class="ot">=</span>m),</span>
+<span id="cb295-2"><a href="communicating-results.html#cb295-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb295-3"><a href="communicating-results.html#cb295-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb295-4"><a href="communicating-results.html#cb295-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;Q73&quot;</span><span class="ot">=</span><span class="st">&quot;Confidence in Parliament&quot;</span>),</span>
+<span id="cb295-5"><a href="communicating-results.html#cb295-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;wvs_regTable.docx&quot;</span>) </span></code></pre></div>
+</div>
+<div id="clear-environment-2" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Clear environment<a href="communicating-results.html#clear-environment-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="communicating-results.html#cb296-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
 </div>
-<div id="clear-environment-2" class="section level3 unnumbered hasAnchor">
-<h3>Clear environment<a href="communicating-results.html#clear-environment-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="communicating-results.html#cb298-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
-</div>
-</div>
-<div id="asian-barometer" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> Asian Barometer<a href="communicating-results.html#asian-barometer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="communicating-results.html#cb299-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country&quot;</span>,<span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb299-2"><a href="communicating-results.html#cb299-2" tabindex="-1"></a>           <span class="st">&quot;q175&quot;</span>,<span class="st">&quot;q169&quot;</span>)</span>
-<span id="cb299-3"><a href="communicating-results.html#cb299-3" tabindex="-1"></a></span>
-<span id="cb299-4"><a href="communicating-results.html#cb299-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;Project/asianbarometer_wave5/20230504_W5_merge_15.dta&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb299-5"><a href="communicating-results.html#cb299-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
-<span id="cb299-6"><a href="communicating-results.html#cb299-6" tabindex="-1"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="dv">11</span>) <span class="co"># Vietnam (refer to codebook)</span></span></code></pre></div>
+<div id="asian-barometer" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Asian Barometer<a href="communicating-results.html#asian-barometer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="communicating-results.html#cb297-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country&quot;</span>,<span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb297-2"><a href="communicating-results.html#cb297-2" tabindex="-1"></a>           <span class="st">&quot;q175&quot;</span>,<span class="st">&quot;q169&quot;</span>)</span>
+<span id="cb297-3"><a href="communicating-results.html#cb297-3" tabindex="-1"></a></span>
+<span id="cb297-4"><a href="communicating-results.html#cb297-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;Project/asianbarometer_wave5/20230504_W5_merge_15.dta&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb297-5"><a href="communicating-results.html#cb297-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(vars)) <span class="sc">|&gt;</span></span>
+<span id="cb297-6"><a href="communicating-results.html#cb297-6" tabindex="-1"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="dv">11</span>) <span class="co"># Vietnam (refer to codebook)</span></span></code></pre></div>
 <div id="transform-drop-nas-2" class="section level3 unnumbered hasAnchor">
 <h3>Transform &amp; drop NAs<a href="communicating-results.html#transform-drop-nas-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="communicating-results.html#cb300-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb300-2"><a href="communicating-results.html#cb300-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">q169 =</span> <span class="fu">ifelse</span>(q169<span class="sc">&lt;</span><span class="dv">1</span> <span class="sc">|</span> q169 <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="cn">NA</span>, q169),</span>
-<span id="cb300-3"><a href="communicating-results.html#cb300-3" tabindex="-1"></a>         <span class="at">q175 =</span> <span class="fu">ifelse</span>(q175<span class="sc">&lt;</span><span class="dv">1</span> <span class="sc">|</span> q175 <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="cn">NA</span>, q175)) <span class="sc">|&gt;</span></span>
-<span id="cb300-4"><a href="communicating-results.html#cb300-4" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="communicating-results.html#cb298-1" tabindex="-1"></a>df_recode <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb298-2"><a href="communicating-results.html#cb298-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">q169 =</span> <span class="fu">ifelse</span>(q169<span class="sc">&lt;</span><span class="dv">1</span> <span class="sc">|</span> q169 <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="cn">NA</span>, q169),</span>
+<span id="cb298-3"><a href="communicating-results.html#cb298-3" tabindex="-1"></a>         <span class="at">q175 =</span> <span class="fu">ifelse</span>(q175<span class="sc">&lt;</span><span class="dv">1</span> <span class="sc">|</span> q175 <span class="sc">&gt;</span> <span class="dv">4</span>, <span class="cn">NA</span>, q175)) <span class="sc">|&gt;</span></span>
+<span id="cb298-4"><a href="communicating-results.html#cb298-4" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </div>
 <div id="regression-table-3" class="section level3 unnumbered hasAnchor">
 <h3>Regression table<a href="communicating-results.html#regression-table-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="communicating-results.html#cb301-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df_recode,</span>
-<span id="cb301-2"><a href="communicating-results.html#cb301-2" tabindex="-1"></a>        q169 <span class="sc">~</span> q175)</span>
-<span id="cb301-3"><a href="communicating-results.html#cb301-3" tabindex="-1"></a></span>
-<span id="cb301-4"><a href="communicating-results.html#cb301-4" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="communicating-results.html#cb299-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>df_recode,</span>
+<span id="cb299-2"><a href="communicating-results.html#cb299-2" tabindex="-1"></a>        q169 <span class="sc">~</span> q175)</span>
+<span id="cb299-3"><a href="communicating-results.html#cb299-3" tabindex="-1"></a></span>
+<span id="cb299-4"><a href="communicating-results.html#cb299-4" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = q169 ~ q175, data = df_recode)
@@ -1273,142 +1172,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.86 on 1005 degrees of freedom
 ## Multiple R-squared:  0.003775,   Adjusted R-squared:  0.002783 
 ## F-statistic: 3.808 on 1 and 1005 DF,  p-value: 0.05129</code></pre>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="communicating-results.html#cb303-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Views toward Democracy&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb303-2"><a href="communicating-results.html#cb303-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb303-3"><a href="communicating-results.html#cb303-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb303-4"><a href="communicating-results.html#cb303-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;q175&quot;</span><span class="ot">=</span><span class="st">&quot;US harm to Asia&quot;</span>))</span></code></pre></div>
-<!-- preamble start -->
-
-    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
-
-    <script>
-      // Create table-specific functions using external factory
-      const tableFns_xwo2xuv4h4sppcoovj80 = TinyTable.createTableFunctions("tinytable_xwo2xuv4h4sppcoovj80");
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '7', j: 2 } ], css_id: 'tinytable_css_ucfinx1eluizn51o4v2j',}, 
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_6wgbjizeis7fnb0ssin6',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_pd7p4xj1m928b0nmj4mk',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_09en3cu5m3hrt9gdfy95',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_x4ddxp0oxxq1mzcubpcn',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_nvzjljnxugvxm01gm27z',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 } ], css_id: 'tinytable_css_m0zfhr8l4f6e5egmg8du',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_8p5ka7fg0embq9c654e3',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  tableFns_xwo2xuv4h4sppcoovj80.styleCell(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
-    <style>
-    /* tinytable css entries after */
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_ucfinx1eluizn51o4v2j, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_ucfinx1eluizn51o4v2j {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_6wgbjizeis7fnb0ssin6, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_6wgbjizeis7fnb0ssin6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_pd7p4xj1m928b0nmj4mk, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_pd7p4xj1m928b0nmj4mk { text-align: center }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_09en3cu5m3hrt9gdfy95, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_09en3cu5m3hrt9gdfy95 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_x4ddxp0oxxq1mzcubpcn, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_x4ddxp0oxxq1mzcubpcn {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_nvzjljnxugvxm01gm27z, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_nvzjljnxugvxm01gm27z {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_m0zfhr8l4f6e5egmg8du, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_m0zfhr8l4f6e5egmg8du { text-align: left }
-    #tinytable_xwo2xuv4h4sppcoovj80 td.tinytable_css_8p5ka7fg0embq9c654e3, #tinytable_xwo2xuv4h4sppcoovj80 th.tinytable_css_8p5ka7fg0embq9c654e3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    </style>
-    <div class="container">
-      <table class="tinytable" id="tinytable_xwo2xuv4h4sppcoovj80" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
-        
-        <thead>
-              <tr>
-                <th scope="col" data-row="0" data-col="1"> </th>
-                <th scope="col" data-row="0" data-col="2">Views toward Democracy</th>
-              </tr>
-        </thead>
-        <tfoot><tr><td colspan='2'>+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001</td></tr></tfoot>
-        <tbody>
-                <tr>
-                  <td data-row="1" data-col="1">(Intercept)</td>
-                  <td data-row="1" data-col="2">2.438***</td>
-                </tr>
-                <tr>
-                  <td data-row="2" data-col="1"></td>
-                  <td data-row="2" data-col="2">(0.081)</td>
-                </tr>
-                <tr>
-                  <td data-row="3" data-col="1">US harm to Asia</td>
-                  <td data-row="3" data-col="2">0.081+</td>
-                </tr>
-                <tr>
-                  <td data-row="4" data-col="1"></td>
-                  <td data-row="4" data-col="2">(0.042)</td>
-                </tr>
-                <tr>
-                  <td data-row="5" data-col="1">Num.Obs.</td>
-                  <td data-row="5" data-col="2">1007</td>
-                </tr>
-                <tr>
-                  <td data-row="6" data-col="1">R2</td>
-                  <td data-row="6" data-col="2">0.004</td>
-                </tr>
-                <tr>
-                  <td data-row="7" data-col="1">R2 Adj.</td>
-                  <td data-row="7" data-col="2">0.003</td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
-<div id="save-output-3" class="section level4 unnumbered hasAnchor">
-<h4>Save output<a href="communicating-results.html#save-output-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="communicating-results.html#cb304-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Views toward Democracy&quot;</span><span class="ot">=</span>m),</span>
-<span id="cb304-2"><a href="communicating-results.html#cb304-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
-<span id="cb304-3"><a href="communicating-results.html#cb304-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
-<span id="cb304-4"><a href="communicating-results.html#cb304-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;q175&quot;</span><span class="ot">=</span><span class="st">&quot;US harm to Asia&quot;</span>),</span>
-<span id="cb304-5"><a href="communicating-results.html#cb304-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;AB_regTable.docx&quot;</span>) </span></code></pre></div>
-</div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="communicating-results.html#cb301-1" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">&quot;Views toward Democracy&quot;</span><span class="ot">=</span>m),</span>
+<span id="cb301-2"><a href="communicating-results.html#cb301-2" tabindex="-1"></a>             <span class="at">stars=</span><span class="cn">TRUE</span>,</span>
+<span id="cb301-3"><a href="communicating-results.html#cb301-3" tabindex="-1"></a>             <span class="at">gof_map=</span><span class="fu">c</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;r.squared&quot;</span>,<span class="st">&quot;adj.r.squared&quot;</span>), </span>
+<span id="cb301-4"><a href="communicating-results.html#cb301-4" tabindex="-1"></a>             <span class="at">coef_rename=</span><span class="fu">c</span>(<span class="st">&quot;q175&quot;</span><span class="ot">=</span><span class="st">&quot;US harm to Asia&quot;</span>),</span>
+<span id="cb301-5"><a href="communicating-results.html#cb301-5" tabindex="-1"></a>             <span class="at">output=</span><span class="st">&quot;AB_regTable.docx&quot;</span>) </span></code></pre></div>
 </div>
 <div id="saving-plots" class="section level3 unnumbered hasAnchor">
 <h3>Saving plots<a href="communicating-results.html#saving-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="communicating-results.html#cb305-1" tabindex="-1"></a>df_recode <span class="sc">|&gt;</span></span>
-<span id="cb305-2"><a href="communicating-results.html#cb305-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">factor</span>(q169),<span class="at">x=</span><span class="fu">factor</span>(q175))) <span class="sc">+</span></span>
-<span id="cb305-3"><a href="communicating-results.html#cb305-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
-<span id="cb305-4"><a href="communicating-results.html#cb305-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb305-5"><a href="communicating-results.html#cb305-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Much more good&quot;</span>,<span class="st">&quot;More good&quot;</span>, <span class="st">&quot;More harm&quot;</span>, <span class="st">&quot;Much more harm&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb305-6"><a href="communicating-results.html#cb305-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;US does more good or harm to Asia?&quot;</span>) <span class="sc">+</span></span>
-<span id="cb305-7"><a href="communicating-results.html#cb305-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion&quot;</span>) <span class="sc">+</span></span>
-<span id="cb305-8"><a href="communicating-results.html#cb305-8" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name=</span><span class="st">&quot;Democratic regimes full of problems&quot;</span>, <span class="co">#legend label</span></span>
-<span id="cb305-9"><a href="communicating-results.html#cb305-9" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;navyblue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;grey&quot;</span>), <span class="co">#color specification</span></span>
-<span id="cb305-10"><a href="communicating-results.html#cb305-10" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly Agree&quot;</span>,<span class="st">&quot;Somewhat Agree&quot;</span>, <span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Strongly Disagree&quot;</span>))</span></code></pre></div>
-<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="communicating-results.html#cb302-1" tabindex="-1"></a>df_recode <span class="sc">|&gt;</span></span>
+<span id="cb302-2"><a href="communicating-results.html#cb302-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">factor</span>(q169),<span class="at">x=</span><span class="fu">factor</span>(q175))) <span class="sc">+</span></span>
+<span id="cb302-3"><a href="communicating-results.html#cb302-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb302-4"><a href="communicating-results.html#cb302-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb302-5"><a href="communicating-results.html#cb302-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Much more good&quot;</span>,<span class="st">&quot;More good&quot;</span>, <span class="st">&quot;More harm&quot;</span>, <span class="st">&quot;Much more harm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb302-6"><a href="communicating-results.html#cb302-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;US does more good or harm to Asia?&quot;</span>) <span class="sc">+</span></span>
+<span id="cb302-7"><a href="communicating-results.html#cb302-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion&quot;</span>) <span class="sc">+</span></span>
+<span id="cb302-8"><a href="communicating-results.html#cb302-8" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name=</span><span class="st">&quot;Democratic regimes full of problems&quot;</span>, <span class="co">#legend label</span></span>
+<span id="cb302-9"><a href="communicating-results.html#cb302-9" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;navyblue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;grey&quot;</span>), <span class="co">#color specification</span></span>
+<span id="cb302-10"><a href="communicating-results.html#cb302-10" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly Agree&quot;</span>,<span class="st">&quot;Somewhat Agree&quot;</span>, <span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Strongly Disagree&quot;</span>))</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-265-1.png" alt="" width="672" /></p>
 <div id="save-ggplot-as-object-1" class="section level4 unnumbered hasAnchor">
 <h4>Save ggplot as object<a href="communicating-results.html#save-ggplot-as-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="communicating-results.html#cb306-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> df_recode <span class="sc">|&gt;</span></span>
-<span id="cb306-2"><a href="communicating-results.html#cb306-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">factor</span>(q169),<span class="at">x=</span><span class="fu">factor</span>(q175))) <span class="sc">+</span></span>
-<span id="cb306-3"><a href="communicating-results.html#cb306-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
-<span id="cb306-4"><a href="communicating-results.html#cb306-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb306-5"><a href="communicating-results.html#cb306-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Much more good&quot;</span>,<span class="st">&quot;More good&quot;</span>, <span class="st">&quot;More harm&quot;</span>, <span class="st">&quot;Much more harm&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb306-6"><a href="communicating-results.html#cb306-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;US does more good or harm to Asia?&quot;</span>) <span class="sc">+</span></span>
-<span id="cb306-7"><a href="communicating-results.html#cb306-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion&quot;</span>) <span class="sc">+</span></span>
-<span id="cb306-8"><a href="communicating-results.html#cb306-8" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name=</span><span class="st">&quot;Democratic regimes full of problems&quot;</span>, <span class="co">#legend label</span></span>
-<span id="cb306-9"><a href="communicating-results.html#cb306-9" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;navyblue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;grey&quot;</span>), <span class="co">#color specification</span></span>
-<span id="cb306-10"><a href="communicating-results.html#cb306-10" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly Agree&quot;</span>,<span class="st">&quot;Somewhat Agree&quot;</span>, <span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Strongly Disagree&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="communicating-results.html#cb303-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> df_recode <span class="sc">|&gt;</span></span>
+<span id="cb303-2"><a href="communicating-results.html#cb303-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span><span class="fu">factor</span>(q169),<span class="at">x=</span><span class="fu">factor</span>(q175))) <span class="sc">+</span></span>
+<span id="cb303-3"><a href="communicating-results.html#cb303-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb303-4"><a href="communicating-results.html#cb303-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb303-5"><a href="communicating-results.html#cb303-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Much more good&quot;</span>,<span class="st">&quot;More good&quot;</span>, <span class="st">&quot;More harm&quot;</span>, <span class="st">&quot;Much more harm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb303-6"><a href="communicating-results.html#cb303-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;US does more good or harm to Asia?&quot;</span>) <span class="sc">+</span></span>
+<span id="cb303-7"><a href="communicating-results.html#cb303-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion&quot;</span>) <span class="sc">+</span></span>
+<span id="cb303-8"><a href="communicating-results.html#cb303-8" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name=</span><span class="st">&quot;Democratic regimes full of problems&quot;</span>, <span class="co">#legend label</span></span>
+<span id="cb303-9"><a href="communicating-results.html#cb303-9" tabindex="-1"></a>                    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;navyblue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;skyblue&quot;</span>,<span class="st">&quot;grey&quot;</span>), <span class="co">#color specification</span></span>
+<span id="cb303-10"><a href="communicating-results.html#cb303-10" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly Agree&quot;</span>,<span class="st">&quot;Somewhat Agree&quot;</span>, <span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Strongly Disagree&quot;</span>))</span></code></pre></div>
 </div>
 <div id="using-ggsave-1" class="section level4 unnumbered hasAnchor">
 <h4>Using <code>ggsave</code><a href="communicating-results.html#using-ggsave-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="communicating-results.html#cb307-1" tabindex="-1"></a><span class="co"># specify arguments filename and plot</span></span>
-<span id="cb307-2"><a href="communicating-results.html#cb307-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;AB_x169y175.png&quot;</span>,</span>
-<span id="cb307-3"><a href="communicating-results.html#cb307-3" tabindex="-1"></a>       <span class="at">plot =</span> obj1,</span>
-<span id="cb307-4"><a href="communicating-results.html#cb307-4" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div>
-</div>
-</div>
-<div id="clear-environment-3" class="section level3 unnumbered hasAnchor">
-<h3>Clear environment<a href="communicating-results.html#clear-environment-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="communicating-results.html#cb308-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="communicating-results.html#cb304-1" tabindex="-1"></a><span class="co"># specify arguments filename and plot</span></span>
+<span id="cb304-2"><a href="communicating-results.html#cb304-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;AB_x169y175.png&quot;</span>,</span>
+<span id="cb304-3"><a href="communicating-results.html#cb304-3" tabindex="-1"></a>       <span class="at">plot =</span> obj1,</span>
+<span id="cb304-4"><a href="communicating-results.html#cb304-4" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div>
 
+</div>
 </div>
 </div>
 </div>
@@ -1422,7 +1225,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1435,8 +1237,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
   "sharing": {
     "github": false,
-    "facebook": false,
-    "twitter": false,
+    "facebook": true,
+    "twitter": true,
     "linkedin": false,
     "weibo": false,
     "instapaper": false,
@@ -1449,7 +1251,10 @@ gitbook.start({
     "family": "sans",
     "size": 2
   },
-  "edit": null,
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/08-Week9.Rmd",
+    "text": "Edit"
+  },
   "history": {
     "link": null,
     "text": null
@@ -1458,14 +1263,13 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": null,
+  "download": ["POL342-tutorial-notes.pdf", "POL342-tutorial-notes.epub"],
   "search": {
-    "engine": "lunr",
+    "engine": "fuse",
     "options": null
   },
   "toc": {
-    "collapse": "subsection",
-    "scroll_highlight": true
+    "collapse": "subsection"
   }
 });
 });
