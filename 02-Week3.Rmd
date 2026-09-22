@@ -45,6 +45,7 @@ knitr::include_graphics("images/w3_Rconsole.png")
 
 
 RStudio is more user friendly, with many nice features.
+
   + R studio has R do the calculations in the background
   + Always open and use RStudio! Never R!
 
@@ -54,6 +55,7 @@ knitr::include_graphics("images/w3_RStudio.png")
 
 #### Console {-}
 Output: shows code run, (some) results, errors, etc
+
   + Can write code directly here, but don't. Have to re-type every time.
 
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
@@ -62,6 +64,7 @@ knitr::include_graphics("images/w3_RStudio1.png")
 
 #### Environment {-}
 The environment lists saved objects
+
 + Object can be many things: one number, analysis results, dataset, etc.
 + Can "call" (use) them multiple times.
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
@@ -73,12 +76,14 @@ knitr::include_graphics("images/w3_RStudio2.png")
 knitr::include_graphics("images/w3_RStudio3.png")
 ```
 "Files" doesn't mean all the files on your computer. 
+
   + Have to tell R which folder to look at. 
 Plots has the graphs and figures you make
 
 
 #### R Script {-}
 To write code, we need an R script.
+
   + Menu: File>New File>R Script
 
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
@@ -102,6 +107,8 @@ The file `W3.R` can be found in the folder for this class (Quercus > Files > Pra
 ### Objects {-}
 Objects store data. Assign (create/save/change) objects using `<-`
 
+  + R does not save calculations by default! You have to put it in an object.
+
 The way to assign an object is to type `object name <- data`. For example,
 ```{r}
 obj1 <- 15
@@ -124,6 +131,7 @@ c(10,20)
 ```
 
 We assign a new object and run `mean()` on the new object.
+
   + We called the new object "obj2", but you could pick a different name. 
 ```{r}
 obj2 <- c(10,20)
@@ -192,6 +200,7 @@ View(scores_data)
 ###  Dataframe Analysis {-}
 
 If a dataframe has multiple variables, you need to tell the function both. 
+
   + dataframe first
   + then: $
   + variable name
@@ -250,6 +259,7 @@ The working directory is the folder where R defaults to open and save files.
 Find the current working directory using the function getwd().
 
 Change the working directory using the function setwd("")
+
   + Use getwd() after?
 ```{r,eval=F}
 setwd("") 
@@ -401,7 +411,11 @@ dat <- read.csv("STAR.csv")
 class(dat$reading)
 ```
 
-### Removing objects using `rm()` {-}
+### Checking code before submission {-}
+
+Before submitting your code, clear your workspace and restart an R session. Then, select your entire R script and run the code. Your R script should run from beginning to end with no errors.
+
+#### Removing objects using `rm()` {-}
 
 `rm()` is a function that accepts two types of arguments,
 
@@ -415,7 +429,7 @@ rm(dat)
 ```
 
 #### Method 2 {-}
-If your environment is cluttered and you want to clear everything in your environment without restarting the R session, you can use the function
+If your environment is cluttered and you want to clear everything in your environment you can use the function
 ```{r,eval=F}
 rm(list = ls()) # ls() is a function that outputs all object names in the environment
 ```
@@ -435,9 +449,6 @@ knitr::include_graphics("images/w2_RestartR.png")
 
 Note: Depending on your default setting, restarting R session may not clear your environment. If so, you can do it by clicking on Session > Clear Workspace...
 
-### Checking code before submission {-}
-
-Before submitting your code, clear your workspace and restart an R session. Then, select your entire R script and run the code. Your R script should run from beginning to end with no errors.
 
 ## Additional Resources
   + [An Introduction to R for Research, chapter: Introduction](https://bookdown.org/rwnahhas/IntroToR/intro.html)

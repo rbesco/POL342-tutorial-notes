@@ -177,9 +177,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#notes-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Notes for assignment 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
-<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#removing-objects-using-rm"><i class="fa fa-check"></i>Removing objects using <code>rm()</code></a></li>
-<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
 <li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional Resources</a></li>
 <li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
@@ -241,34 +240,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.1</span> RStudio: Integrated Development Environment (IDE) editor:<a href="intro-to-r.html#rstudio-integrated-development-environment-ide-editor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R itself is very annoying and difficult to use</p>
 <p><img src="images/w3_Rconsole.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>RStudio is more user friendly, with many nice features.
-+ R studio has R do the calculations in the background
-+ Always open and use RStudio! Never R!</p>
+<p>RStudio is more user friendly, with many nice features.</p>
+<ul>
+<li>R studio has R do the calculations in the background</li>
+<li>Always open and use RStudio! Never R!</li>
+</ul>
 <p><img src="images/w3_RStudio.png" width="90%" style="display: block; margin: auto;" /></p>
 <div id="console" class="section level4 unnumbered hasAnchor">
 <h4>Console<a href="intro-to-r.html#console" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Output: shows code run, (some) results, errors, etc
-+ Can write code directly here, but don’t. Have to re-type every time.</p>
+<p>Output: shows code run, (some) results, errors, etc</p>
+<ul>
+<li>Can write code directly here, but don’t. Have to re-type every time.</li>
+</ul>
 <p><img src="images/w3_RStudio1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="environment" class="section level4 unnumbered hasAnchor">
 <h4>Environment<a href="intro-to-r.html#environment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The environment lists saved objects
-+ Object can be many things: one number, analysis results, dataset, etc.
-+ Can “call” (use) them multiple times.
-<img src="images/w3_RStudio2.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>The environment lists saved objects</p>
+<ul>
+<li>Object can be many things: one number, analysis results, dataset, etc.</li>
+<li>Can “call” (use) them multiple times.
+<img src="images/w3_RStudio2.png" width="90%" style="display: block; margin: auto;" /></li>
+</ul>
 </div>
 <div id="filesplots" class="section level4 unnumbered hasAnchor">
 <h4>Files/Plots<a href="intro-to-r.html#filesplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><img src="images/w3_RStudio3.png" width="90%" style="display: block; margin: auto;" />
-“Files” doesn’t mean all the files on your computer.
-+ Have to tell R which folder to look at.
-Plots has the graphs and figures you make</p>
+“Files” doesn’t mean all the files on your computer.</p>
+<ul>
+<li>Have to tell R which folder to look at.
+Plots has the graphs and figures you make</li>
+</ul>
 </div>
 <div id="r-script" class="section level4 unnumbered hasAnchor">
 <h4>R Script<a href="intro-to-r.html#r-script" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>To write code, we need an R script.
-+ Menu: File&gt;New File&gt;R Script</p>
+<p>To write code, we need an R script.</p>
+<ul>
+<li>Menu: File&gt;New File&gt;R Script</li>
+</ul>
 <p><img src="images/w3_RStudio_Rfile2.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="open-the-r-script-w3.r" class="section level4 unnumbered hasAnchor">
@@ -293,6 +302,9 @@ Plots has the graphs and figures you make</p>
 <div id="objects" class="section level3 unnumbered hasAnchor">
 <h3>Objects<a href="intro-to-r.html#objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Objects store data. Assign (create/save/change) objects using <code>&lt;-</code></p>
+<ul>
+<li>R does not save calculations by default! You have to put it in an object.</li>
+</ul>
 <p>The way to assign an object is to type <code>object name &lt;- data</code>. For example,</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-r.html#cb5-1" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="dv">15</span></span></code></pre></div>
 <p>You will see <code>obj1</code> added to your environment panel.</p>
@@ -310,8 +322,10 @@ Plots has the graphs and figures you make</p>
 <p>We can use <code>c()</code> to combine elements, such as numbers. We can then run a function like <code>mean()</code> on the combined output.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-r.html#cb6-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 10 20</code></pre>
-<p>We assign a new object and run <code>mean()</code> on the new object.
-+ We called the new object “obj2”, but you could pick a different name.</p>
+<p>We assign a new object and run <code>mean()</code> on the new object.</p>
+<ul>
+<li>We called the new object “obj2”, but you could pick a different name.</li>
+</ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-r.html#cb8-1" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span>
 <span id="cb8-2"><a href="intro-to-r.html#cb8-2" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="intro-to-r.html#cb8-3" tabindex="-1"></a><span class="fu">mean</span>(obj2)</span></code></pre></div>
@@ -355,10 +369,12 @@ Plots has the graphs and figures you make</p>
 </div>
 <div id="dataframe-analysis" class="section level3 unnumbered hasAnchor">
 <h3>Dataframe Analysis<a href="intro-to-r.html#dataframe-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If a dataframe has multiple variables, you need to tell the function both.
-+ dataframe first
-+ then: $
-+ variable name</p>
+<p>If a dataframe has multiple variables, you need to tell the function both.</p>
+<ul>
+<li>dataframe first</li>
+<li>then: $</li>
+<li>variable name</li>
+</ul>
 <p>Calculate the mean</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="intro-to-r.html#cb20-1" tabindex="-1"></a><span class="fu">mean</span>(scores_data<span class="sc">$</span>score)</span></code></pre></div>
 <p>Now another mean:</p>
@@ -392,8 +408,10 @@ Plots has the graphs and figures you make</p>
 <h3>Working Directories<a href="intro-to-r.html#working-directories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The working directory is the folder where R defaults to open and save files.</p>
 <p>Find the current working directory using the function getwd().</p>
-<p>Change the working directory using the function setwd(““)
-+ Use getwd() after?</p>
+<p>Change the working directory using the function setwd(““)</p>
+<ul>
+<li>Use getwd() after?</li>
+</ul>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="intro-to-r.html#cb25-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;&quot;</span>) </span>
 <span id="cb25-2"><a href="intro-to-r.html#cb25-2" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="intro-to-r.html#cb25-3" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
@@ -518,13 +536,17 @@ Plots has the graphs and figures you make</p>
 <span id="cb55-2"><a href="intro-to-r.html#cb55-2" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="intro-to-r.html#cb55-3" tabindex="-1"></a><span class="fu">class</span>(dat<span class="sc">$</span>reading)</span></code></pre></div>
 </div>
-<div id="removing-objects-using-rm" class="section level3 unnumbered hasAnchor">
-<h3>Removing objects using <code>rm()</code><a href="intro-to-r.html#removing-objects-using-rm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="checking-code-before-submission" class="section level3 unnumbered hasAnchor">
+<h3>Checking code before submission<a href="intro-to-r.html#checking-code-before-submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before submitting your code, clear your workspace and restart an R session. Then, select your entire R script and run the code. Your R script should run from beginning to end with no errors.</p>
+<div id="removing-objects-using-rm" class="section level4 unnumbered hasAnchor">
+<h4>Removing objects using <code>rm()</code><a href="intro-to-r.html#removing-objects-using-rm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>rm()</code> is a function that accepts two types of arguments,</p>
 <ol style="list-style-type: decimal">
 <li>the objects to be removed, as names (unquoted) or character strings (quoted)</li>
 <li>list – a character vector (or NULL) naming objects to be removed</li>
 </ol>
+</div>
 <div id="method-1" class="section level4 unnumbered hasAnchor">
 <h4>Method 1<a href="intro-to-r.html#method-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you want to remove one object, you can use the function <code>rm()</code> and insert the object name as the argument. For example,</p>
@@ -532,7 +554,7 @@ Plots has the graphs and figures you make</p>
 </div>
 <div id="method-2" class="section level4 unnumbered hasAnchor">
 <h4>Method 2<a href="intro-to-r.html#method-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>If your environment is cluttered and you want to clear everything in your environment without restarting the R session, you can use the function</p>
+<p>If your environment is cluttered and you want to clear everything in your environment you can use the function</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="intro-to-r.html#cb57-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># ls() is a function that outputs all object names in the environment</span></span></code></pre></div>
 </div>
 </div>
@@ -543,10 +565,6 @@ Plots has the graphs and figures you make</p>
 <p>Start a new R session by going to Session &gt; Restart R
 <img src="images/w2_RestartR.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Note: Depending on your default setting, restarting R session may not clear your environment. If so, you can do it by clicking on Session &gt; Clear Workspace…</p>
-</div>
-<div id="checking-code-before-submission" class="section level3 unnumbered hasAnchor">
-<h3>Checking code before submission<a href="intro-to-r.html#checking-code-before-submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Before submitting your code, clear your workspace and restart an R session. Then, select your entire R script and run the code. Your R script should run from beginning to end with no errors.</p>
 </div>
 </div>
 <div id="additional-resources" class="section level2 hasAnchor" number="2.5">
