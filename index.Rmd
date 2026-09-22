@@ -16,6 +16,10 @@ description: "Tutorial notes for UTM POL342"
 Tutorial notes for POL342. New chapters are added as the term progresses.
 
 ```{r include=FALSE}
+
+# Stop help pages (e.g. ?read.csv) from opening in the browser during the build
+options(browser = function(url) invisible(NULL))
+
 #Install bookdown package and tinytex to run compilation
 #require("bookdown")
 #require("tinytex")

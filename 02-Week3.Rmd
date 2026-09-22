@@ -4,9 +4,9 @@ Week 3 tutorial goals:
 
   * R Basics 
     + Object types
-    + Packages
     + Working directory
     + Importing data
+    + R Project
     + Exploring data
   
 ```{css, echo=FALSE}
@@ -27,36 +27,43 @@ options(warn = -1) # suppress warning messages that do not disturb the program f
 ```
 
 ### What is R? What is coding? {-}
-  + Coding is a language that is fed directly into an interpreter. 
-  + Programming languages are fed into a computing system that reads the script and executes the commands.
-  + Non-programming languages simply translates the programming language into its corresponding output, e.g. Hypertext Markup Language (HTML). HTML is often used to display information on webpages. 
-```{r echo=FALSE, out.width = "70%", fig.align = "center"}
-knitr::include_graphics("images/w3_htmleg.png")
-```
-  + E.g. of other programming languages: JavaScript; Python; Mac Terminal (bash); Windows Command Prompt
-  + `R` is a software for statistical computing. It is designed with particular processes that are tailored to statistical analysis and graphics. In order to initiate those processes, we write our commands in an R script for R to interpret and execute.
+  + Coding is writing instructions in a computer language. There are lots of coding languages (python, html, Javascript, etc). 
+  + The computer reads the code and executes the commands.
+  + `R` is a coding language AND "back-end" software for statistical computing.
+  + Write the R code in an R script (file).
+  + Run the code/script and the computer follows the instructions.
+
+The code is an important product! It's not "rough work".
   
-### Integrated Development Environment (IDE) editor: RStudio {-}
-RStudio is a software that makes R more user-friendly. If you run the software R, you see only a single panel, which is not very informative. 
+  
+### RStudio: Integrated Development Environment (IDE) editor: 
+R itself is very annoying and difficult to use
 
 ```{r echo=FALSE, out.width = "70%", fig.align = "center"}
 knitr::include_graphics("images/w3_Rconsole.png")
 ```
 
 
-RStudio gives you more panels in addition to the R console (on the left) that displays information to support our use of R.
+RStudio is more user friendly, with many nice features.
+  + R studio has R do the calculations in the background
+  + Always open and use RStudio! Never R!
 
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
 knitr::include_graphics("images/w3_RStudio.png")
 ```
 
 #### Console {-}
+Output: shows code run, (some) results, errors, etc
+  + Can write code directly here, but don't. Have to re-type every time.
+
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
 knitr::include_graphics("images/w3_RStudio1.png")
 ```
 
 #### Environment {-}
-The environment lists the objects you have saved and are able to "call" (i.e. use in subsequent commands).
+The environment lists saved objects
++ Object can be many things: one number, analysis results, dataset, etc.
++ Can "call" (use) them multiple times.
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
 knitr::include_graphics("images/w3_RStudio2.png")
 ```
@@ -65,18 +72,14 @@ knitr::include_graphics("images/w3_RStudio2.png")
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
 knitr::include_graphics("images/w3_RStudio3.png")
 ```
+"Files" doesn't mean all the files on your computer. 
+  + Have to tell R which folder to look at. 
+Plots has the graphs and figures you make
 
 
 #### R Script {-}
-You can try to run codes in the console, but running codes linearly can be restricting, kind of like using a typewriter instead of a word document---you have to redo everything when you make a mistake.
-```{r echo=FALSE, out.width = "90%", fig.align = "center"}
-knitr::include_graphics("images/w3_RStudio_console.png")
-```
-
-In order to create our code document, we need the R script.
-```{r echo=FALSE, out.width = "90%", fig.align = "center"}
-knitr::include_graphics("images/w3_RStudio_Rfile.png")
-```
+To write code, we need an R script.
+  + Menu: File>New File>R Script
 
 ```{r echo=FALSE, out.width = "90%", fig.align = "center"}
 knitr::include_graphics("images/w3_RStudio_Rfile2.png")
@@ -91,31 +94,29 @@ The file `W3.R` can be found in the folder for this class (Quercus > Files > Pra
 ###  A sophisticated calculator {-}
 `R` can do whatever your calculator can do, and much more.
 ```{r}
-0 * 10
-10 + 5
-round(0.25839012,digits=2)
-round(0.25839012,digits=5)
+2 + 2
+5 * 10
 ```
-
+  + Ignore the ## and the number in brackets [1], they're not really part of the output and won't show up if you make a proper table.
 
 ### Objects {-}
-Objects store data. You can assign objects using `<-` or `=`. In general, we use `<-` for assignment. There are distinctions between the two that are not relevant to the content here.
+Objects store data. Assign (create/save/change) objects using `<-`
 
-The way to assignment object is to type `<object name> <- <data>`. For example,
+The way to assign an object is to type `object name <- data`. For example,
 ```{r}
 obj1 <- 15
 ```
 
-You will see `obj1` added to your environment panel. "Names of objects can only contain letters, numbers, _ (underscore), or . (period), and *must begin with a letter*" ([An Introduction to R for Research](https://bookdown.org/rwnahhas/IntroToR/naming-objects.html), emphasis added).
+You will see `obj1` added to your environment panel. 
+
+  + Names of objects can only contain letters, numbers, _ (underscore), or . (period), and *must begin with a letter*" ([An Introduction to R for Research](https://bookdown.org/rwnahhas/IntroToR/naming-objects.html). No spaces!
 
 ### Functions {-}
-Similar to what we did in Excel last week. Functions are what makes R useful. 
+Similar to what we did in Excel last week. Functions are what makes R useful.
 
-Understanding a new function. Use `?<functionname>` to pull up the R documentation for the function. For example, one of the basic functions we need to learn is `c()` which allows you to combine data. The function `mean()` allows you to calculate the mean value, similar to the AVERAGE function we used in Microsoft Excel last week.
-```{r}
-?c()
-?mean()
-```
+Lets learn two functions: c() and mean(). The function `c()` allows you to combine data into a single object. The function `mean()` allows you to calculate the mean value, similar to the AVERAGE function we used in Microsoft Excel last week.
+
+  + Use `?<functionname>` to pull up the R documentation for the function. For example, ?c()
 
 We can use `c()` to combine elements, such as numbers. We can then run a function like `mean()` on the combined output.
 ```{r}
@@ -123,6 +124,7 @@ c(10,20)
 ```
 
 We assign a new object and run `mean()` on the new object.
+  + We called the new object "obj2", but you could pick a different name. 
 ```{r}
 obj2 <- c(10,20)
 
@@ -131,7 +133,7 @@ mean(obj2)
 
 
 ### Comments {-}
-`R` does not evaluate lines starting with `#`. This allow us to add glosses to our code
+`R` does not evaluate lines starting with `#`. This allow us to add comments and explanations to the code.
 ```{r}
 ?mean() # this function runs R documentation for function mean()
 ```
@@ -139,7 +141,13 @@ mean(obj2)
 
 ### Data types {-}
 
-Data types tell `R` how the object should be read. Why do they matter? They affect what calculations can be done and how functions work. Words or labels can be specified using quotations `"`. These are known as characters in R. The function `class()` will tell you what kind of data type a variable is. Now lets create two objects, one with numbers and one with characters.
+Data types tell `R` how the object should be read. Why do they matter? They affect what calculations can be done and how functions work. 
+
+Words or labels can be specified using quotations `"`. These are known as characters in R. 
+
+The function `class()` will tell you what kind of data type a variable is. 
+
+Now lets create two objects, one with numbers and one with characters.
 ```{r}
 numbers <- c(10,19,100)
 words <- c("cat ate my homework","today","100 pianos")
@@ -149,6 +157,8 @@ class(words)
 ```
 
 The exact same numbers can be read as numbers or characters. The numbers 1, 2, 3 could refer to the `numeric` type, or they could refer to the labels "1", "2", "3", which are the `character` type.
+
+  + This is sometimes a problem for students. If your code is giving an error, check the class of the object. 
 ```{r,echo=F}
 eg1 <- c("1","3","2")
 ```
@@ -162,106 +172,113 @@ mean(eg1) # characters have no mean
 class(eg1)
 ```
 
-There are six basic data types: character, numeric, integer, logical, complex, raw. We will only be using numeric, character, and logical types. 
+We will only use numeric/integer, character, and logical (true/false) data types. Others exist, but you don't need to know about them.
 
 ### Data frames {-}
-Now, we want something closer to a dataset. We can use the column bind function `cbind()` to join two equal-length vectors. Let's create two variables
+
+To make a dataset object we use the `data.frame()` function. Each variable can only be one data type. If there is a mix, it will be forced to be character. 
 ```{r}
-id <- c(1,3,2) # the first variable, let's say we have three student ids 1,2,3
-score <- c(250, 450, 800) # they scored 250, 450, 800 respectively
+scores_data <- data.frame(name = c("Besco","Anderson","Lin"),
+                  score = c(250,450,800)) 
+
 ```
 
-
-```{r}
-eg2 <- cbind(id,score) #forms a matrix with two numeric columns
-```
-
-View the newly created object `eg2` using `view()` function.
-```{r, eval=F}
-View(eg2)
-```
-
-Note that using `cbind()` (column bind) function creates a matrix, which can only contain one class of data, leading to a coercion of all elements to the same class.
-```{r}
-# coercion
-eg1 <- cbind(c("1",3,2),c(250,450,800))  # note eg1 in your Environment is marked 'chr' indication whereas eg2 is marked 'num'
-```
-
-If we want a mix of different data types in the same table, we use the `data.frame()` function. Each variable, however, can only take be one data type. If you input a mix of character and numeric elements, they will be coerced to character for that variable, similar to the previous example above.
-```{r}
-eg1 <- data.frame(v1 = c("a","c","b"),
-                  v2 = c(250,450,800)) # notice that "=" is used here for local assignment
-eg2 <- data.frame(v1 = c(1,2,3),
-                  v2 = c(250,800,450))
-```
-
-View each data frame.
+View the data frame.
 ```{r,eval=F}
-View(eg1)
-View(eg2)
+View(scores_data)
 ```
 
 
-###  Base R vs. packages {-}
-R comes with a set of base commands that allows you to do a range of statistical tasks. For example, let's try using plotting using base R functions and the object eg2.
-```{r}
-?plot() # Generic X-Y Plotting
+###  Dataframe Analysis {-}
+
+If a dataframe has multiple variables, you need to tell the function both. 
+  + dataframe first
+  + then: $
+  + variable name
+
+
+Calculate the mean
+```{r,eval=F}
+mean(scores_data$score)
 ```
 
-```{r echo=FALSE, out.width = "70%", fig.align = "center"}
-knitr::include_graphics("images/w3_plotfunction.png")
+Now another mean:
+```{r,eval=F}
+mean(scores_data$name)
 ```
 
+Why didn't that work?
 
-We need to specify arguments `x`, `y`, and type of plot `type`. To select one column from a dataframe, use `$` to specify column.
-```{r}
-plot(x = eg2$v1,
-     y = eg2$v2, 
+
+Now lets make a plot of the data (we will learn the details later).
+
+This code is for a scatterplot:
+
+```{r, error=TRUE}
+plot(x = scores_data$name,
+     y = scores_data$score, 
      type = "l")
 ```
 
-#### Tidyverse {-}
-R, as an open-source software, allows users to built functions using the basic functions within R. To load these additional user-built functions, we have to download and load packages. Tidyverse is a package we will be using throughout this course.
-```{r, eval=F}
-install.packages("tidyverse")
-# you only need to install packages once
-library(tidyverse) # you have to load the package every time you restart an R session
-```
+This fails. `name` is a `character` variable, and R cannot put words on a scatterplot axis. 
 
-Try using the `ggplot` function from the tidyverse package. This is complex. Don't worry if you don't understand what the code is doing. Just run it. We will be using the function repeatedly over the next few weeks.
+
+A bar chart uses the names as labels and the scores as heights:
 ```{r}
-# eg1
-ggplot(data = eg1, aes(x = v1, y = v2)) + geom_line() # eg1 is unable to plot a line because v1 is a character type
-
-# eg2
-ggplot(data = eg2, aes(x = v1, y = v2)) + geom_line()
+barplot(height = scores_data$score,
+        names.arg = scores_data$name)
 ```
+
+
+## Opening Data Files
+
+You can open data files by importing the dataset. 
+
+  + There are different formats of datasets, but Comma Separate Values  (csv) is the most common. 
   
 
-## Working directory and importing data
-You can find out your current working directory by using the function getwd(). Your working directory is the root folder where R begins to retrieve any information.
+Menu: File> Import Dataset > From Text (base R)
+
+  + Navigate to the STAR Dataset on your computer and import it
+  
+
+### Working Directories {-}
+
+The working directory is the folder where R defaults to open and save files. 
+
+
+Find the current working directory using the function getwd().
+
+Change the working directory using the function setwd("")
+  + Use getwd() after?
 ```{r,eval=F}
+setwd("") 
+
 getwd()
+
 ```
 
-#### Opening file `STAR.csv` {-}
-If the file is not in the current working directory, you can either
+
+If the file you want is not in the current working directory, you can either:
+
  + 1. Move the file to your working directory
- + 2. change your working directory (if on Mac, go to your top bar, Session > Set Working Directory > Choose Directory, and select the location where your file is located), 
- + 3. alternatively, if the file is in a subfolder of your current working directory, you can retrieve it by stating the path.
+ 
+ + 2. change your working directory (Menu: Session > Set Working Directory > Choose Directory, and select the folder where the file is located)
+ 
+ + 3. Advanced move: if the file is in a subfolder of your working directory, give its partial path, e.g. `read.csv("data/STAR.csv")`
  
 We are going to use the function `read.csv()`, which takes a file path for its first argument.
 ```{r,eval=F}
-# the basic way to load a csv file
-?read.csv()
-
-paste0(getwd(),"/STAR.csv") # this will give you a string for the STAR.csv file if it is in your current directory
+?read.csv() 
 ```
 
 ```{r,eval=F}
-read.csv(paste0(getwd(),"/STAR.csv")) # this will read the file if it is in your current working directory
+STAR <- read.csv("STAR.csv") # reads STAR.csv from your working directory
 ```
-But that was just for illustration purposes. This can get cumbersome when dealing with multiple files. 
+
+
+
+
 
 ### R project to organize our workflow {-}
   + `File` > `New Project...`
@@ -303,7 +320,9 @@ star <- read.csv("STAR.csv") # reads the data file as stores it as object "star"
 ```
 
 ###  Exploring the data {-}
-Now, we are going to do what we tried to do something similar to what we did with Microsoft Excel last week.
+
+
+Now, we are going to do something similar to what we did with Microsoft Excel last week.
 ```{r,eval=F}
 View(star) # look at the data
 ```
@@ -314,9 +333,9 @@ head(star) # shows the first six rows
 
   + Identify the number of observations and names of variables
 ```{r}
-dim(star) # provides dimensions of dataframe: rows, columns
-
 colnames(star) # list variable names
+
+nrow(star) # number of rows
 ```
 
   + Object type
@@ -336,22 +355,12 @@ mean(star$graduated) # calculates the mean of graduated
 ```
 
   + Finding mode
-  + NOT `mode()`
+  + NOT `mode()`, that does something different! Common error. 
 ```{r}
 table(star$graduated) # tabulates all values in the column
-sort(table(star$graduated)) # sorts by increasing order
 ```
 
-  + What if there are too many unique values?
-```{r}
-table(star$reading)
-
-sort(table(star$reading),decreasing=T) # sort by decreasing order
-
-sort(table(star$reading),decreasing=T)[1] # limit to the first object in the table
-```
-
-  + Calculating median -- two methods: median(), quantile()
+  + Calculating median: median()
 
 `median()`
 ```{r}
@@ -360,13 +369,12 @@ sort(table(star$reading),decreasing=T)[1] # limit to the first object in the tab
 median(star$reading)
 ```
 
-`quantile()`
++ Quantiles: quantile()
 ```{r}
 ?quantile
 
-quantile(star$reading, probs=.5)
 
-## 25th percentile, 50th percentile, 75th percentile
+# 25th percentile, 50th percentile, 75th percentile
 quantile(star$reading, probs=c(.25,.5,.75))
 ```
 
@@ -375,12 +383,13 @@ quantile(star$reading, probs=c(.25,.5,.75))
 sd(star$reading)
 ```
 
-  + Another conveniant way to get mean and median
+  + Another convenient way to get mean and median
 ```{r}
 summary(star$reading)
 ```
 
-When you have questions about functions and don't find the R documentations helpful, you can always turn to search engines. Most of the questions that will come up in your process of learning to use R are likely to be found on **stackoverflow**, so just search your question in Google or other search engines (and remember to indicate `R` in your searches, if not, you might get answers for other computing languages).
+Don't forget - you have a handy summary sheet of functions!
+
 
 ## Notes for assignment 1
 

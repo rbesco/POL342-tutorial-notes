@@ -1,12 +1,14 @@
 output_dir: "docs"
 book_filename: "POL342-tutorial-notes"
 
+# STUDENT VERSION - this is what "Build Book" uses and what gets pushed to GitHub.
 # Only the files listed here are built. To release the next week's chapter,
-# uncomment its line, then Build Book (bookdown::gitbook), commit, and push.
+# uncomment its line, then Build Book, commit, and push.
+# (To preview ALL chapters privately, source preview_all.R instead.)
 rmd_files:
   - index.Rmd
   - 01-Week2.Rmd
-  # - 02-Week3.Rmd
+  - 02-Week3.Rmd
   # - 03-Week4.Rmd
   # - 04-Week5.Rmd
   # - 05-Week6.Rmd

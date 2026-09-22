@@ -1,0 +1,22 @@
+# PRIVATE PREVIEW - builds every chapter into _preview/ (gitignored, never published).
+# Run via preview_all.R, or in the console:
+#   bookdown::render_book(config_file = "_bookdown_all.yml")
+# When you add a new chapter file, add it here AND (commented out) in _bookdown.yml.
+output_dir: "_preview"
+book_filename: "POL342-tutorial-notes"
+rmd_files:
+  - index.Rmd
+  - 01-Week2.Rmd
+  - 02-Week3.Rmd
+  - 03-Week4.Rmd
+  - 04-Week5.Rmd
+  - 05-Week6.Rmd
+  - 06-Week7.Rmd
+  - 07-Week8.Rmd
+  - 08-Week9.Rmd
+  - 09-Week10.Rmd
+
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true

@@ -2,3 +2,11 @@ getting-started-with-data-sets
 understanding-data-sets
 basics-of-a-function
 installing-r-and-rstudio
+intro-to-r
+rstudio
+rstudio-integrated-development-environment-ide-editor
+getting-started
+opening-data-files
+notes-for-assignment-1
+additional-resources
+credits

@@ -10,3 +10,5 @@ Project/
 _github_upload/
 # bookdown merged-build artifact (left behind on failed builds)
 /POL342-tutorial-notes.Rmd
+# Private full-book preview output (see preview_all.R)
+_preview/
