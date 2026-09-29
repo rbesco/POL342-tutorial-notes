@@ -1,14 +1,14 @@
 
 # Crosstabs using continuous variables
 
-* Goals for today's class:
+Week 8 tutorial goals:
   * Transforming continuous variables into ordinal variables
   * Creating cross-tabs
   * Saving cross-tabs
 
 ## Set-up
 
-### Make sure you have your project datasets and `W9.R` {-}
+### Make sure you have your project datasets and `W8.R` {-}
 ```{r echo=FALSE, out.width = "100%", fig.align = "center"}
 knitr::include_graphics("images/w8.png")
 ```

@@ -1,6 +1,6 @@
 # Communicating results
     
-* Goals for today's class:
+Week 9 tutorial goals:
   * Regression tables
   * Save tables and figures
 

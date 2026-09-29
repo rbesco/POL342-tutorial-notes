@@ -1,6 +1,6 @@
 # Data visualization
 
-* Goals for today's class:
+Week 5 tutorial goals:
 
   * More on manipulating variables
     + `if_else()`

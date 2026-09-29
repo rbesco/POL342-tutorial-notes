@@ -1,7 +1,7 @@
 
 # Introducing project datasets
 
-* Goals for today's class:
+Week 7 tutorial goals:
   * Learning to use the project datasets
     + Varieties of Democracy (VDem)
     + Canadian Election Study 2021
@@ -16,7 +16,7 @@ This will take a while because the files are large.
 knitr::include_graphics("images/w7_projectdata.png")
 ```
 
-### Download the other file (`W8.R`) and put everything in your R project folder {-}
+### Download the other file (`W7.R`) and put everything in your R project folder {-}
 ```{r echo=FALSE, out.width = "100%", fig.align = "center"}
 knitr::include_graphics("images/W7.png")
 ```

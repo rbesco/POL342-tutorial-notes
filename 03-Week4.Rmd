@@ -1,8 +1,11 @@
 # Data Wrangling with Tidyverse
 
-Goals for today's class:
+Week 4 tutorial goals:
 
-  * Tidyverse basics for datasets
+  * Packages
+  * Pipes
+  * Logical operators
+  * Tidyverse functions for datasets
     + `filter()`
     + `reframe()`
     + `group_by()`
@@ -22,17 +25,13 @@ Open RStudio using your `.Rproject` file and follow along using the `W4.R` scrip
 ```{r echo=FALSE, out.width = "80%", fig.align = "center"}
 knitr::include_graphics("images/w4_RstudioSetup.png")
 ```
-    
-## Install and load packages
-```{r, echo=F}
-library(tidyverse)
-```
 
-```{r, eval=F}
-install.packages("tidyverse") # if you haven't
 
-library(tidyverse)
-```
+
+
+
+
+
 
 ## Dataset: UN votes
 
@@ -56,21 +55,21 @@ unvotes <- read.csv("unvotes_ca.csv")
 
 | variable      | desc.                                                                                                                                      |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| rcid          | The roll call id; used to join with un_votes and un_roll_call_issues                                          |
+| rcid          | The roll call id; used to join with un_votes and un_roll_call_issues                                                                       |
 | country       | Country name, by official English short name                                                                                               |
 | country_code  | 2-character ISO country code                                                                                                               |
 | year          | Year in which vote took place                                                                                                              |
-| vote          | Vote result as a factor of yes/abstain/no                                                                                                  |
+| vote          | Vote result as yes/abstain/no                                                                                                  |
 | session       | Session number. The UN holds one session per year; these started in 1946                                                                   |
 | importantvote | Whether the vote was classified as important by the  U.S. State Department report "Voting Practices in the United Nations".  These classifications began with session 39 |
-| date          | Date of the vote, as a Date vector                                                                                                         |
+| date          | Date of the vote                                                                                                         |
 | unres         | Resolution code                                                                                                                            |
 | amend         | Whether the vote was on an amendment; coded only until 1985                                                                                |
 | para          | Whether the vote was only on a paragraph and not a resolution; coded only until 1985                                                       |
 | short         | Short description                                                                                                                          |
 | descr         | Longer description                                                                                                                         |
 | short_name    | Two-letter issue codes                                                                                                                     |
-| issue         | Descriptive issue name             
+| issue         | Descriptive issue name                                                                                                                     |
 
 
 ### View the data {-}
@@ -96,58 +95,14 @@ We are going to spend around 15-30 minutes practising what we learnt last week.
     + What are the unique values in `vote` and `issue`? (Hint: `unique()`)
     + Could you provide a tally of the data under `vote`? (Hint: `table()`)
     + What is the median `year` in the dataset?
+    
+    
+    
+    
 
-## Tidyverse
+### Conditional statements and operators {-}
 
-### Pipes {-}
-Two types of piping `|>` (base R) and `%>%` (magrittr). The differences are not meaningful for this course. We will be using the `|>` pipe for simplicity.
-
-Tidyverse pipes facilitate a sequence of actions performed on **a single object**. After every action, the `|>` is used to indicate that the output of the previous action is used as the input of the next action.
-
-To make sure the pipe runs, the function must be able to take the piped object as its first argument.
-```{r}
-## the following codes are equivalent
-#Base R
-summary(unvotes)
-
-#Tidyverse
-unvotes |> summary()
-```
-
-
-### Piping data frames {-}
-
-In this course, our focus is on data sets (i.e. data frames). Hence for the rest of today's class, we will focus on six tidyverse functions that are developed for the purpose of manipulating data frames.
-
-* Tidyverse functions for datasets
-    + `filter()` : subsets the data based on a conditional statement
-    + `reframe()` : collapses/summarizes the dataset to produce stated summary statistics (e.g. `mean()`)
-    + `group_by()` : divides the data based on specified groups so that subsequent functions can be run on each group separately
-    + `mutate()` : creates a new variable (i.e. new column) in the dataset
-    + `arrange()` : order the rows based on a criterion
-    + `select()` : keep columns using their variable names (columns not specified are dropped from the dataset)
-
-### filter() {-}
-The `filter()` function allows you to slice out parts of the data based on your criterion.
-```{r,eval=F}
-# Subset only rows in the 60th UNGA session and save as new object
-unvotes |> 
-  filter(session==60)
-```
-
-
-```{r}
-sess60 <- unvotes |> 
-  filter(session==60)
-
-# top 8 rows in the session 60 subset
-head(sess60,8)
-```
-To understand how to `filter` datasets based on a certain criterion, we need to understand how to construct conditional statements using operators.
-
-#### Conditional statements and operators {-}
-
-Conditional statements produce `logical` class (i.e. TRUE or FALSE) output that help us to manipulate objects as well as customize the execution of functions.
+Conditional statements produce `logical` class (i.e. TRUE or FALSE) output to manipulate objects and use functions.
 
 Operators are used to construct conditional statements.
 
@@ -208,7 +163,89 @@ eg2 == "apple"
 1 != 3
 ```
 
+
+    
+## Packages
+
+What is a package? 
+
+  + New functions or other code that can be added to R 
+  + Like an extension for Chrome, app for smartphone
+  + Created by people for free
+  + Thousands! But some are more common
+
+
+### Installing Packages
+
+Have to be installed once on each computer
+
+  + CRAN is the default/official package repository for R
+
+```{r, eval=F}
+install.packages("tidyverse") # if you haven't
+```
+
+Have to be opened "loaded" into R from your "library" each time
+
+```{r, eval=F}
+library(tidyverse)
+```
+
+
+## Pipes and Tidyverse
+
+### Pipes {-}
+The pipe operator lets us do things in a sequence or chain. It looks like this:  `|>` 
+
+  +  Without pipes, you have to read from inside of brackets to outside, like math
+  +  There is also a Tidyverse specific pipe, but we won't use it `%>%` (magrittr)
+
+Pipes facilitate a sequence of actions performed on **a single object**. After every action, the `|>` means the output of the previous action is used as the input (argument) of the next action (function).
+
+A pipe puts the output into the brackets
+
+  +  As the first argument
+
+```{r}
+## the following codes are equivalent
+#Base R
+summary(unvotes)
+
+#Tidyverse
+unvotes |> summary()
+```
+
+
+### Tidyverse functions {-}
+
+Tidyverse is a set of functions and packages
+
+we will focus on six functions for manipulating data frames
+
+  + use pipes and conditional operators a lot!
+
+* Tidyverse functions for datasets
+    + `filter()` : subsets the data based on a conditional statement
+    + `reframe()` : collapses/summarizes the dataset to produce stated summary statistics (e.g. `mean()`)
+    + `group_by()` : divides the data based on specified groups so that subsequent functions can be run on each group separately
+    + `mutate()` : creates a new variable (i.e. new column) in the dataset
+    + `arrange()` : order the rows based on a criterion
+    + `select()` : keep columns using their variable names (columns not specified are dropped from the dataset)
+
+
+### filter() {-}
+The `filter()` function allows you to slice out parts of the data based on your criterion.
+```{r,eval=F}
+# Subset only rows in the year 1990
+unvotes |> 
+  filter(year == 1990)
+```
+
+
 By inserting these conditional statements into the `filter` function, we can create subsets of the dataset.
+
+  + Note assignment operator and pipes go in opposite directions, which is a little confusing
+
 ```{r}
 afterColdWar <- unvotes |> 
   filter(year > 1990)
@@ -218,14 +255,34 @@ head(afterColdWar,8)
 ```
 
 
-### reframe() {-}
-The `reframe()` function creates a new data frame (often having the effect of reducing/summarizing the data frame) based on selected functions, e.g. `mean()`, `unique()`, `n()`(number of observations) etc.
+Multiple pipes for multiple steps: 
+```{r}
+## Dataset, then filter, then summary
+unvotes |>
+  filter(year > 1990) |>
+  summary()
+```
 
-By using `reframe(min(year))`, the code collapses the data to produce only the minimum year
+
+
+### reframe() {-}
+The `reframe()` function creates a new data frame (often having the effect of reducing/summarizing the data frame) based on selected functions, e.g. `mean()`, `unique()`, `n()` (number of observations) etc.
+
+
+Collapses the data and add up the number of votes that are yes
 ```{r}
 unvotes |>
-  reframe(min(year))
+  reframe(sum(vote == "yes"))
 ```
+
+
+Group by year, then collapse to show yes votes by year
+```{r}
+unvotes |>
+  group_by(year) |>
+  reframe(sum(vote == "yes"))
+```
+
 
 You can produce more than one summary statistic.
 ```{r}
@@ -236,7 +293,7 @@ unvotes |>
           yesshare = sum(vote=="yes")/n()) # total number voted "yes" divided by total number of observations, n()
 ```
 
-Note that in the `sum` function ahove, a conditional statement `vote=="yes"` is inserted so that the total number of votes can be tallied. This is possible because `TRUE` takes the value of 1 and `FALSE` takes the value of 0). For example,
+Note that in the `sum` function above, a conditional statement `vote=="yes"` is inserted so that the total number of votes can be tallied. This is possible because `TRUE` takes the value of 1 and `FALSE` takes the value of 0. For example,
 
 | vote | based on conditional statement | value |
 |------|--------------------------------|-------|
@@ -265,7 +322,7 @@ unvotes |>
 
 
 ### mutate() {-}
-The `mutate()` function allows you to add new columns to your dataframe. For example, if you wanted to retain the original dataframe while calculating the mean, max, and yes vote shares in each year, you can apply the same functions using `mutate()` instead of `reframe()`
+The `mutate()` function allows you to add new columns to your dataframe. For example, if you wanted to retain the original dataframe while calculating the number of yes votes and the yes vote share in each year, you can apply the same functions using `mutate()` instead of `reframe()`
 ```{r}
 new_unvotes <- unvotes |>
   group_by(year) |>
@@ -302,7 +359,7 @@ unvotes |>
 
 
 ## Summary
-Piping is useful when the output you want requires a series of operations. For example, the following operations tallies the number of "yes", "no", "abstain" votes in each year, and creates a new data frame by assignment the pipe to a new object `unvotes_2015`.
+Piping is useful when the output you want requires a series of operations. For example, the following operations tally the number of "yes", "no", "abstain" votes in 2015, and save the result as a new data frame called `unvotes_2015` by assigning the pipe to a new object.
 ```{r}
 unvotes_2015 <- unvotes |>
   filter(year==2015) |> # subset data in 2015
@@ -316,7 +373,7 @@ unvotes_2015
 ```
 
 #### Another example {-}
-Let's say we are interested in the issue of "Human rights," and we want to know the yearly share of all the different votes that Canada has cast between 1990 to 2010. How would we do it?
+Let's say we are interested in the issue of "Human rights," and we want to know the yearly share of all the different votes that Canada has cast after 1990 and before 2010 (i.e. 1991 to 2009). How would we do it?
 ```{r}
 # first find out what vote types there are
 unique(unvotes$vote)

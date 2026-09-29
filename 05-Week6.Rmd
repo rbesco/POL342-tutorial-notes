@@ -1,6 +1,6 @@
 # Regression and confidence intervals
 
-* Goals for today's class:
+Week 6 tutorial goals:
   * Difference in means -- `t.test()`
   * Linear regression -- `lm()`
   * Visualizing models using `ggplot`

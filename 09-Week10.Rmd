@@ -1,6 +1,6 @@
 # Optimizing ggplot presentation
 
-* Goals for today's class:
+Week 10 tutorial goals:
   * Optimizing ggplot presentation for each of the plot types (bar charts, box and whiskers, scatter plot)
   * Other graph specifications (themes, axes, font size, etc.)
 
