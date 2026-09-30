@@ -10,3 +10,13 @@ opening-data-files
 notes-for-assignment-1
 additional-resources
 credits
+data-wrangling-with-tidyverse
+before-the-start-of-each-class
+dataset-un-votes
+recap
+packages
+installing-packages
+pipes-and-tidyverse
+summary
+more-resources
+credits-1
