@@ -116,7 +116,7 @@ obj1 <- 15
 
 You will see `obj1` added to your environment panel. 
 
-  + Names of objects can only contain letters, numbers, _ (underscore), or . (period), and *must begin with a letter*" ([An Introduction to R for Research](https://bookdown.org/rwnahhas/IntroToR/naming-objects.html). No spaces!
+  + Names of objects can only contain letters, numbers, _ (underscore), or . (period), and *must begin with a letter*. ([An Introduction to R for Research](https://bookdown.org/rwnahhas/IntroToR/naming-objects.html). No spaces!
 
 ### Functions {-}
 Similar to what we did in Excel last week. Functions are what makes R useful.
@@ -243,7 +243,7 @@ barplot(height = scores_data$score,
 
 You can open data files by importing the dataset. 
 
-  + There are different formats of datasets, but Comma Separate Values  (csv) is the most common. 
+  + There are different formats of datasets, but Comma Separated Values (csv) is the most common. 
   
 
 Menu: File> Import Dataset > From Text (base R)
@@ -326,7 +326,7 @@ star <- read.csv("data/STAR.csv")
 ```
 
 ```{r,eval=F}
-star <- read.csv("STAR.csv") # reads the data file as stores it as object "star"
+star <- read.csv("STAR.csv") # reads the data file and stores it as object "star"
 ```
 
 ###  Exploring the data {-}
