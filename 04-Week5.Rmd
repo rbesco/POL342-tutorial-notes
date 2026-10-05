@@ -89,14 +89,9 @@ Last week we learnt the following tidyverse functions
   * select()
   * arrange()
 
-`filter()` takes expressions that produce a logical value, i.e. conditional statements
-```{r}
-unvotes |>
-  filter(year==1983 & importantvote==1)
-```
 
 
-`group_by()` take either variables or conditional statements
+`group_by()` takes either variables or conditional statements
 ```{r,eval=F}
 unvotes |>
   group_by(session)
@@ -107,7 +102,35 @@ unvotes |>
   group_by(year>1989)
 ```
 
-`mutate()` and `reframe()` take variable assignment arguments. For `mutate()`, the original data frame is retained and new variables/columns are added to the data frame. For `reframe()` the data frame is reduced to the size of the new object.
+
+`mutate()` and `reframe()` take variable assignment arguments (`name = value`). 
+
+  + `mutate()`, adds new changed variables/columns to the data frame. 
+  +  `reframe()` replaces the data with a new, smaller data frame that contains only the new columns
+```{r,eval=F}
+unvotes |>
+  mutate(years_ago = 2025 - year) # adds a column; every row is kept
+
+#or
+
+unvotes |>
+  reframe(votes = n()) # one row: the number of votes
+```
+
+
+`select()` and `arrange()` take variable names.
+```{r, eval=F}
+unvotes |>
+  select(country, year, issue)
+```
+
+
+
+`filter()` takes expressions that produce a logical value, i.e. conditional statements
+```{r}
+unvotes |>
+  filter(year==1983 & importantvote==1)
+```
 
 
 ### `=` versus `==` {-}
@@ -168,13 +191,6 @@ table(is.na(unvotes$importantvote))
 
 This tells us that the variable has 425 missing values.
 
-<!--
-`select()` and `arrange()` take variable names.
-```{r, eval=F}
-unvotes |>
-  select(country, year, issue)
-```
--->
 
 ### Omitting Argument Names {-}
 
