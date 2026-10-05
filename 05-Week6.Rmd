@@ -31,12 +31,12 @@ library(tidyverse)
 ### Load data {-}
 ```{r,echo=F}
 df <- read.csv("data/survey.csv")
-un_country <- read.csv("data/unvotes_country_1946-7.csv")
+un_country <- read.csv("data/unvotes_country_1947.csv")
 ```
 
 ```{r,eval=F}
 df <- read.csv("survey.csv")
-un_country <- read.csv("unvotes_country_1946-7.csv")
+un_country <- read.csv("unvotes_country_1947.csv")
 ```
 
 ## Recap

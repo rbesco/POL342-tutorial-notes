@@ -2,7 +2,10 @@
 
 Week 5 tutorial goals:
 
-  * More on manipulating variables
+  * Recap and a few more basics
+    + = versus ==
+    + missing values (NA)
+    + omitting/assuming arguments
     + `if_else()`
   * Single variables using `ggplot`
     + Categorical (nominal/ordinal)
@@ -19,10 +22,9 @@ Week 5 tutorial goals:
 
 ### Download files from Quercus {-}
 
-Move all the files into your R project `.Rproj` folder.
-```{r echo=FALSE, out.width = "70%", fig.align = "center"}
-knitr::include_graphics("images/w5.png")
-```
+Move all the files into your R project `.Rproj` folder
+
+Open your R project
 
 
 ### Install new package and load all packages required for this class {-}
@@ -41,15 +43,15 @@ library(tidyverse)
 ```
 
 ## Load data
-We will be using two data sets today, one from last week---Canada's votes at the UNGA---and the other is an experimental data.
+We will be using two data sets today, one from last week---Canada's votes at the UNGA---and the other is a survey of Canadians from the 2025 Canadian Election Study.
 ```{r,eval=F}
-df <- read.csv("unvotes_ca.csv")
-survey <- read.csv("survey.csv")
+unvotes <- read.csv("unvotes_ca.csv")
+ces <- read.csv("ces2025_small.csv")
 ```
 
 ```{r,echo=F}
-df <- read.csv("data/unvotes_ca.csv")
-survey <- read.csv("data/survey.csv")
+unvotes <- read.csv("data/unvotes_ca.csv")
+ces <- read.csv("data/ces2025_small.csv")
 ```
 
 
@@ -89,61 +91,94 @@ Last week we learnt the following tidyverse functions
 
 `filter()` takes expressions that produce a logical value, i.e. conditional statements
 ```{r}
-df |>
+unvotes |>
   filter(year==1983 & importantvote==1)
 ```
 
 
 `group_by()` take either variables or conditional statements
 ```{r,eval=F}
-df |>
+unvotes |>
   group_by(session)
 
 #or
 
-df |>
+unvotes |>
   group_by(year>1989)
 ```
 
 `mutate()` and `reframe()` take variable assignment arguments. For `mutate()`, the original data frame is retained and new variables/columns are added to the data frame. For `reframe()` the data frame is reduced to the size of the new object.
 
 
+### `=` versus `==` {-}
+
+These look almost the same, but they do very different things.
+
+  + `=` (one equals sign) **names** something: "make this equal to".
+  + `==` (two equals signs) **checks** something: "is this equal to?" The answer is `TRUE` or `FALSE`.
+
+Inside a function, `name = value` format is common
+
+  + the name before the `=` is a new column name that you choose
+  + the value after the `=` is what goes in that column
+
+```{r}
+unvotes |>
+  reframe(meanyear = mean(year)) # new column called meanyear, equal to the mean of year
+```
+
+`==` is a conditional statement, like the ones we used with `filter()` last week. It checks every row and gives `TRUE` or `FALSE`. Since `TRUE` counts as 1 and `FALSE` as 0, the mean is the share of votes that were "yes".
+```{r}
+mean(unvotes$vote == "yes") # share of votes that were "yes"
+```
+
+Here we use both. `in_favour =` names a new column, and `vote == "yes"` checks each row to see if the vote was "yes".
+```{r}
+unvotes |>
+  mutate(in_favour = vote == "yes") |> # new column called in_favour: TRUE if the vote was "yes"
+  select(year, vote, in_favour) |>
+  head()
+```
+
+
 ### Missing values {-}
 
 If a variable contains missing (`NA`) values, summary statistics such as mean() and sum() will return `NA` unless the argument na.rm is specified TRUE, meaning missing values should be removed.
 ```{r}
-df |>
+unvotes |>
   reframe(imptvote = sum(importantvote, na.rm=T)) # by default na.rm=FALSE
 ```
 
 
 ```{r}
-df |>
+unvotes |>
   reframe(imptvote = sum(importantvote))
 ```
 
 To see if a variable contains missing values, you can use a combination of `table` and `is.na()`. `is.na()` returns a same-length vector of `TRUE`/`FALSE` (`TRUE` if the value is missing and `FALSE` if the value is present).
 ```{r,eval=F}
-is.na(df$importantvote)
+is.na(unvotes$importantvote)
 ```
 
 
 ```{r}
-table(is.na(df$importantvote))
+table(is.na(unvotes$importantvote))
 ```
 
 
 This tells us that the variable has 425 missing values.
 
+<!--
 `select()` and `arrange()` take variable names.
 ```{r, eval=F}
-df |>
+unvotes |>
   select(country, year, issue)
 ```
+-->
 
-### Argument names {-}
+### Omitting Argument Names {-}
 
-In many of the examples here, I omit the name of the argument. This is fine when we know the order of the arguments or when the function requires only one argument. For example, the following codes are equivalent.
+In many of the examples here, I omit the name of the argument. This is fine when we know the order of the arguments. For example, the following codes are equivalent.
 ```{r,eval=F}
 read.csv(file="unvotes_ca.csv", header=T)
 
@@ -159,47 +194,67 @@ But that's only because I stated them in the right sequence. See the documentati
 knitr::include_graphics("images/w5_readcsv.png")
 ```
 
-Specifying the argument is a safe way to work with unfamiliar functions because it is fine if you get the sequence wrong.
-```{r,eval=F}
-read.csv(header=TRUE, file="unvotes_ca.csv")
-```
-
-This will give you an error.
+Wrong order will give you an error!
 ```{r,eval=F}
 read.csv(TRUE, "unvotes_ca.csv")
 ```
 
 
+Specifying the argument is a safe way to work with unfamiliar functions because it is fine if you get the sequence wrong.
+```{r,eval=F}
+read.csv(header=TRUE, file="unvotes_ca.csv")
+```
+
+
 ### `if_else()` function {-}
-Let's say we want to create a new binary variable that denotes two separate periods, during and before/after the cold war.
+Let's say we want to create a new binary variable that is 1 if the vote is about weapons, and 0 for all other issues.
 
 ```{r}
 #read the if_else() documentation
 ?if_else
 ```
 
-`if_else` takes a conditional statement as its first argument, followed by the replacement value if `TRUE` as the second argument, and replacement value if `FALSE` as the third argument. (Do you remember what a conditional statement is? See Section \@ref(conditional-statements)) 
+`if_else` takes a conditional statement as its first argument, followed by the replacement value if `TRUE` as the second argument, and replacement value if `FALSE` as the third argument. 
+
+  + Do you remember what a conditional statement is? See [Conditional statements and operators](#conditional-statements-and-operators) in the previous chapter.
 
 ```{r echo=FALSE, out.width = "70%", fig.align = "center"}
 knitr::include_graphics("images/w5_ifelse.png")
 ```
 
+
 ```{r}
-df2 <- df |> 
-  mutate(support = if_else(vote=="yes", # logical test
-                          1, # TRUE/yes output
-                          0)) # FALSE/no output
+unvotes_weapons <- unvotes |>
+  mutate(weapons = if_else(issue == "Nuclear weapons and nuclear material", # logical test
+                           1, # TRUE output
+                           0)) # FALSE output
+```
+
+  + Note this makes a new object, `unvotes_weapons`. Good practice not to edit the original dataset, especially if we are change an existing variable or drop rows like with `filter()`.
+
+This misses the votes on "Arms control and disarmament". Use `|` (or) to combine two conditional statements.
+
+```{r}
+unvotes_weapons <- unvotes |>
+  mutate(weapons = if_else(issue == "Arms control and disarmament" |
+                             issue == "Nuclear weapons and nuclear material", # logical tests, using |, the OR symbol
+                           1, # TRUE output
+                           0)) # FALSE output
 ```
 
 Find the new variable at the extreme right of the data set.
+
+  + Look at your data after running code to see if it worked like you wanted!
 ```{r,eval=F}
-View(df2)
+View(unvotes_weapons)
 ```
 
 
-Quick exercise: Explain what each step of the following code executes and what variable `x` represents in the resultant output.
+
+
+**Quick exercise**: Explain what each step of the following code executes and what variable `x` represents in the output.
 ```{r}
-df |>
+unvotes |>
   group_by(issue, importantvote) |>
   reframe(n = n()) |>
   group_by(issue) |>
@@ -216,51 +271,31 @@ The `ggplot2` package contains functions tailored to making presentable and info
 ```{r}
 ggplot()
 ```
-To begin plotting on `ggplot()`, you need to specify two components, 1. data, 2. x-axis and/or y-axis.
 
-The x- and y- axes are specified under `aes()` which refers to aesthetic mappings. Aesthetic mappings describe how variables in the data are mapped to visual properties.
+To begin plotting on `ggplot()`, you need to specify three components, 1. data, 2. x-axis and/or y-axis, 3. type of plot (geometry)
 
-Integer/numeric (class) on x-axis
-```{r}
-ggplot(data=df, aes(x=importantvote))
-```
+  + The x- and y- axes are specified under `aes()` which refers to aesthetic mappings. Aesthetic mappings describe how variables in the data are mapped to visual properties.
 
-Character (class) on the y-axis
-```{r}
-ggplot(data=df, aes(y=vote))
-```
+  + Types of plots are geometry. For example: geom_bar(), geom_histogram(), geom_point()
 
 
 ## Plots for categorical variables
 
 ### Univariate: nominal/ordinal {-}
 
-Create frequency bar charts by adding `geom_bar()` to `ggplot()`
 ```{r}
-ggplot(df2, aes(x=vote)) +
-  geom_bar()
-```
-
-Note: Do not confuse geom_bar with another type of bar chart, `geom_col()`. `geom_bar()` summarizes the data into groups while `geom_col()` plots the values in the data.
-```{r}
-data <- data.frame(vote = c("abstain","no","yes"),
-                   count = c(5,15,20))
-
-ggplot(data, aes(x=vote,y=count)) +
-  geom_col()
-```
-
-For clearer presentation of single variables, categories with long names can be plotted on the y-axis instead of x-axis.
-```{r}
-# poor presentation
-df2 |>
+unvotes |>
   ggplot(aes(x=issue)) +
   geom_bar()
 ```
 
+Plot on the y-axis instead of x-axis.
+  
+  + Sometimes better for long names
+
 ```{r}
 # better presentation
-df2 |>
+unvotes |>
   ggplot(aes(y=issue)) +
   geom_bar()
 ```
@@ -279,7 +314,7 @@ knitr::include_graphics("images/w5_tabxtab.png")
 
 Let's cross-tabulate Canada's votes on the six issues listed in the dataset. Independent variable in columns and dependent variables in rows. (Note: `tab_xtab` is not a tidyverse function. Hence, variable names should be preceded by object name of data frame and `$`)
 ```{r}
-tab_xtab(var.col=df2$issue, var.row=df2$vote,
+tab_xtab(var.col=unvotes$issue, var.row=unvotes$vote,
          show.col.prc = TRUE,
          show.row.prc = FALSE)
 ```
@@ -289,7 +324,7 @@ tab_xtab(var.col=df2$issue, var.row=df2$vote,
 
 What we want:
 ```{r,echo=F}
-df2 |>
+unvotes |>
   ggplot(aes(y=issue,fill=vote)) +
   geom_bar(position="fill") +
   xlab("Proportion")
@@ -297,7 +332,7 @@ df2 |>
 
 **First step: `geom_bar()`**
 ```{r}
-df2 |>
+unvotes |>
   ggplot(aes(y=issue)) +
   geom_bar()
 ```
@@ -306,14 +341,14 @@ df2 |>
 
 
 ```{r}
-df2 |>
+unvotes |>
   ggplot(aes(y=issue, fill=vote)) +
   geom_bar()
 ```
 
 **Third step: argument `position`**
 ```{r}
-df2 |>
+unvotes |>
   ggplot(aes(y=issue,fill=vote)) +
   geom_bar(position="fill") + # position="fill" sets each bar to the same height of 1
   xlab("Proportion")
@@ -322,38 +357,32 @@ df2 |>
 
 ## Plots for interval variables
 
-### Survey experiment data {-}
+### Canadian Election Study data {-}
 
-Let us switch data sets here because the UN data set does not contain suitable interval/ratio variables for us to play with.
+Let us switch data sets here because the UN data set does not contain suitable interval/ratio variables.
 
-The data used in the following section is sourced from the replication data of the paper,\
-Lee, Nathan. “Do Policy Makers Listen to Experts? Evidence from a National Survey of Local and State Policy Makers.” American Political Science Review 116, no. 2 (2022): 677–88. \ https://doi.org/10.1017/S0003055421000800. \
-Replication data file: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/S2SNOT
+The data used in the following section comes from the 2025 Canadian Election Study (CES), a large survey of Canadians taken during and after the 2025 federal election.\
+Stephenson, Laura B., Allison Harell, and Daniel Rubenson. 2025 Canadian Election Study (CES). [dataset]
 
-Data comes from a survey fielded to policymakers (elected municipal officials, elected county officials, state legislators, state legislative staffers)
-
-We use a simplified version of the data:
+We use a simplified version of the data with fewer variables. A missing value (`NA`) means the person did not answer the question or was not asked it. These are the variables we use today:
 
 | variable      | desc.                                                                             |
 |---------------|-----------------------------------------------------------------------------------|
-| issue         | Needle exchange (1 out of 3 issues discussed in the paper).                       |
-| treated       | 1 if treated, 0 if control. Treatment: Experts from several universities have examined this issue and concluded that needle exchanges do not increase drug use.                                          |
-| preference    | Dependent variable 1: policy preferences (scaled 0-1). Do you support needle exchange? (Strongly support -- Strongly oppose)   |
-| accuracy      | Dependent variable 2: belief accuracy (scaled 0-1). If you were to guess, what percentage of public health experts who conduct research related to needle exchanges believe these programs do NOT increase drug use? (Less than 20%, 20 - 40%, 40 - 60%, 60 - 80%, More than 80%)  |
-| republican    | Party affiliation of the policymaker (1 if Republican, 0 if Democrat)             |
-| age           | Age of the policymaker                                                            |
-| gov_exp       | Over your career, how many years have you worked in government?                   |
+| age           | Age of the respondent in years                                                    |
+| born_canada   | Where the respondent was born: "Born in Canada" or "Born elsewhere"               |
+| lib_rating    | How do you feel about the Liberal Party? (0 = really dislike, 100 = really like)  |
+| con_rating    | How do you feel about the Conservative Party? (0 = really dislike, 100 = really like) |
 
 Take a look at the data.
 ```{r,eval=F}
-View(survey)
+View(ces)
 ```
 
 ### Univariate: interval {-}
 
 Create histograms by adding `geom_histogram()` to `ggplot()`
 ```{r}
-survey |>
+ces |>
   ggplot(aes(x=age)) +
   geom_histogram()
 ```
@@ -361,28 +390,10 @@ survey |>
 
 ### Bivariate: nominal/ordinal and interval {-}
 
-**Note: numeric class objects are treated as continuous variables**
+Box and whiskers by group -- `geom_boxplot()`. The third box, `NA`, is the people who did not say where they were born.
 ```{r}
-class(survey$treated)
-```
-
-Box and whiskers by group -- `geom_boxplot()`
-```{r}
-# incorrect plot
-survey |>
-  ggplot(aes(x=republican,y=age)) +
-  geom_boxplot()
-```
-
-** Factor class **
-```{r}
-class(factor(survey$republican))
-```
-
-Corrected using `factor()`
-```{r}
-survey |>
-  ggplot(aes(x=factor(republican),y=age)) +
+ces |>
+  ggplot(aes(x=born_canada,y=con_rating)) +
   geom_boxplot()
 ```
 
@@ -391,9 +402,34 @@ survey |>
 
 Scatter plot `geom_point()`
 ```{r}
-ggplot(survey,aes(x=age,y=gov_exp)) +
+ggplot(ces,aes(x=lib_rating,y=con_rating)) +
   geom_point()
 ```
+
+## Assignment tips
+
+Section 2 of the assignment uses a different version of the UN votes data, `unvotes_country_1947.csv`.
+
+  + In `unvotes_ca.csv`, each row is **one vote** by Canada.
+  + In `unvotes_country_1947.csv`, each row is **one country**. It covers all UN member countries, but only for the year 1947.
+
+| variable    | desc.                                                                                   |
+|-------------|-----------------------------------------------------------------------------------------|
+| country     | Country name                                                                            |
+| votes       | Number of UN votes the country cast in 1947                                             |
+| share_yes   | Share of the country's votes that were "yes", from 0 (none) to 1 (all)                  |
+| ICAO_region | World region of the country (see below)                                                 |
+
+The regions use codes from the International Civil Aviation Organization (ICAO):
+
+  + AFI: Africa
+  + ASIAPAC: Asia and the Pacific
+  + CARSAM: Caribbean and South America (including Central America and Mexico)
+  + EUR: Europe
+  + MID: Middle East
+  + NAM: North America
+
+Look at the data with `View()` before you start!
 
 ## Credits
 * This lesson includes materials from
