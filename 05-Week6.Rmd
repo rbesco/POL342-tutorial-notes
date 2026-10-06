@@ -1,63 +1,60 @@
 # Regression and confidence intervals
 
 Week 6 tutorial goals:
+  * Factors -- `factor()`
   * Difference in means -- `t.test()`
   * Linear regression -- `lm()`
   * Visualizing models using `ggplot`
     + estimates and confidence intervals -- `geom_pointrange()`
     + regression lines
-      + `geom_smooth()` 
+      + `geom_smooth()`
       + `geom_ribbon()`
 
 ## Before the start of class
 ```{r, echo=F}
 library(tidyverse)
-library(broom)
+library(parameters)
 ```
 
 ### Download files from Quercus {-}
 
-```{r echo=FALSE, out.width = "70%", fig.align = "center"}
-knitr::include_graphics("images/w6.png")
-```
+Move all the files into your R project `.Rproj` folder
+
+Open your R project
 
 ### Install new package and load all packages required for this class {-}
 ```{r,eval=F}
-install.packages("broom")
-library(broom)
+install.packages("parameters")
+library(parameters)
 library(tidyverse)
 ```
 
 ### Load data {-}
 ```{r,echo=F}
-df <- read.csv("data/survey.csv")
+ces <- read.csv("data/ces2025_small.csv")
 un_country <- read.csv("data/unvotes_country_1947.csv")
 ```
 
 ```{r,eval=F}
-df <- read.csv("survey.csv")
+ces <- read.csv("ces2025_small.csv")
 un_country <- read.csv("unvotes_country_1947.csv")
 ```
 
 ## Recap
 
-### Converting variable to factor class {-}
+### Bar chart for a nominal variable {-}
 
-* Republican 
+* born_canada
 ```{r}
-class(df$republican)
-```
-
-* ICAO_region
-```{r}
-unique(un_country$ICAO_region)
+unique(ces$born_canada)
 ```
 
 ```{r}
-ggplot(df, aes(x=factor(republican))) +
+ggplot(ces, aes(x=born_canada)) +
   geom_bar()
 ```
 
+The third bar is `NA`: 132 people did not answer the question.
 
 ### Determining plot based on type of variable {-}
 
@@ -65,36 +62,84 @@ ggplot(df, aes(x=factor(republican))) +
 * Categorical (nominal/ordinal) and numerical (interval/ratio) -- Box and whiskers `geom_boxplot`
 * Numerical (interval/ratio) and numerical -- Scatter plot `geom_point`
 
+* ICAO_region
+```{r}
+unique(un_country$ICAO_region)
+```
+
 ```{r}
 ggplot(un_country, aes(x=ICAO_region, y=share_yes)) +
   geom_boxplot()
 ```
 
-## Experimental study data
+## Factors
 
-Using the same survey data we used last week: the replication data of the paper,\
-Lee, Nathan. “Do Policy Makers Listen to Experts? Evidence from a National Survey of Local and State Policy Makers.” American Political Science Review 116, no. 2 (2022): 677–88. \ https://doi.org/10.1017/S0003055421000800. \
-Replication data file: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/S2SNOT
+A **factor** is R's data type for categories. A factor has a fixed set of categories, called **levels**, and the levels have an order. We use `factor()` to turn a variable into a factor. There are two common reasons to do this.
 
-### Outcomes of interest in the study: {-} 
-1. Beliefs about experts (If you were to guess, what percentage of public health experts who conduct research related to needle exchanges believe these programs do NOT increase drug use? {Less than 20%, 20–40%, 40–60%, 60–80%, More than 80%}) \
-2. Policy preferences (Do you support or oppose the use of {needle exchange programs)? {Strongly support, Moderately support, Slightly support, Neither support nor oppose, Slightly oppose, Moderately oppose, Strongly oppose.}
+### Numbers that are really categories {-}
 
-### Treatment {-}
-The study implements two types of experiments but we focus only on one aspect of it involving cross-subject design (i.e. participants are split into treatment and control groups). The theory being tested is *accuracy-motivated reasoning*. The authors hypothesize that policy makers will update their beliefs and preferences following exposure to information about experts. Three policy issues, with high degree of expert consensus but are highly politicized, are utilized in the study. We look at one of the issues on needle exchange.
+The variable `union` asks "Do you belong to a union?". It is coded 1 = yes and 0 = no. The numbers are just labels for two categories, so `union` is a nominal variable. But R stores it as a number.
+```{r}
+class(ces$union)
+```
 
-Here is an excerpt of the treatment: \
-A needle exchange program is a social service which provides clean needles to
-drug users to reduce the spread of disease (like HIV or Hepatitis C). However, some people think
-these programs encourage drug use. \
-[(Treatment) Experts from several universities have examined this issue and concluded that needle exchanges do not increase drug use.]
+Because `union` is a number, `ggplot()` treats it as continuous. This boxplot is wrong: it draws one box instead of one box for each group.
+```{r}
+ggplot(ces, aes(x=union, y=ndp_rating)) +
+  geom_boxplot()
+```
 
-### Data {-}
-survey fielded to policymakers (elected municipal officials, elected county officials, state legislators, state legislative staffers) 
+Notice the x axis: 0.25, 0.50, 0.75. R thinks `union` could be any number between 0 and 1. The warning message about a "continuous x aesthetic" is also a sign that something is wrong.
+
+Wrapping the variable in `factor()` tells R that it is a category.
+```{r}
+class(factor(ces$union))
+```
+
+```{r}
+ggplot(ces, aes(x=factor(union), y=ndp_rating)) +
+  geom_boxplot()
+```
+
+Now there is one box for non-members (0), one for union members (1), and one for people who did not answer (`NA`).
+
+### Setting the order of categories {-}
+
+Text categories are sorted alphabetically, so "Born elsewhere" comes before "Born in Canada".
+```{r}
+ggplot(ces, aes(x=born_canada, y=con_rating)) +
+  geom_boxplot()
+```
+
+The `levels` argument of `factor()` sets the order ourselves. Write the categories exactly as they appear in the data.
+```{r}
+ggplot(ces, aes(x=factor(born_canada, levels=c("Born in Canada","Born elsewhere")), y=con_rating)) +
+  geom_boxplot()
+```
+
+This only changes the order in the plot. The data stays the same.
+
+## Canadian Election Study data
+
+We use the same 2025 Canadian Election Study (CES) data as last week.\
+Stephenson, Laura B., Allison Harell, and Daniel Rubenson. 2025 Canadian Election Study (CES). [dataset]
+
+These are the variables we use today:
+
+| variable      | desc.                                                                             |
+|---------------|-----------------------------------------------------------------------------------|
+| born_canada   | Where the respondent was born: "Born in Canada" or "Born elsewhere"               |
+| union         | Do you belong to a union? (1 = yes, 0 = no)                                       |
+| con_rating    | How do you feel about the Conservative Party? (0 = really dislike, 100 = really like) |
+| ndp_rating    | How do you feel about the NDP? (0 = really dislike, 100 = really like)            |
+
+Today we compare two groups: people born in Canada and people born elsewhere. Do they feel differently about the parties?
+
+This is a **comparison, not an experiment**. In an experiment, the researcher randomly decides who gets the treatment, so the groups are alike in every other way. Nobody randomly decided where our respondents were born. People born in Canada and people born elsewhere also differ in other ways (for example age, province or religion). So a difference between the groups does not show that where you were born *causes* the difference.
 
 Display first five rows of the dataset.
 ```{r}
-head(df,5)
+head(ces,5)
 ```
 
 ## Difference in means -- `t.test()`
@@ -105,126 +150,132 @@ head(df,5)
 knitr::include_graphics("images/w6_ttest.png")
 ```
 
-We are going to use the method involving a formula and data. Formulas are written in R by stating the name of the dependent variable and independent variable, separated by a `~`. In the case of experiments, the independent variable is the treatment and the dependent variable is the outcome of interest, i.e. `OutcomeOfInterest ~ Treatment`.
+The dependent variable and independent variable are separated by a `~`. The dependent variable should be an interval variable (like a 0-100 rating), and the group variable must have exactly two groups. `t.test()` leaves out `NA`s automatically.
 
-### Outcome 1: Beliefs about experts {-}
-Be careful of the direction of the difference. By default, `t.test()` takes the mean of group 0 - mean of group 1 (in numerical order, alphabetical if the groups are denoted by strings).
+  + this is a common format, same for regression
+
+### Outcome 1: Conservative Party rating {-}
 ```{r}
-t.test(accuracy ~ treated, data = df)
+t.test(con_rating ~ born_canada, data = ces)
 ```
 
+This output shows the mean of each group and a confidence interval, but it does not show the difference itself. The p-value is also hard to read (`< 2.2e-16` is a very small number).
 
-In order to get the right direction of the effect, we need to reverse the factor order.
+### Making the output easier to read -- `model_parameters()` {-}
+
+The function `model_parameters()` from the package `parameters` turns the t-test output into a clear table. We pipe the t-test into it.
 ```{r}
-t.test(accuracy ~ factor(treated, levels=c(1,0)), data = df)
+t.test(con_rating ~ born_canada, data = ces) |>
+  model_parameters()
 ```
 
+The table shows the mean of each group, the `Difference`, its 95% confidence interval (`95% CI`) and the p-value (`p`).
 
-### Outcome 2: Policy preferences {-}
-```{r}
-t.test(preference ~ factor(treated, levels=c(1,0)), data = df)
-```
+Be careful of the direction of the difference. `t.test()` takes the mean of the first group minus the mean of the second group. The groups are in numerical order, or alphabetical order if they are text. So here it is "Born elsewhere" minus "Born in Canada": 51.11 - 42.02 = 9.09.
 
-
-
-## Visualizing treatment effects
-
-### Extract the output using `tidy()` from package `broom` {-}
-
-By default, the output from a t.test is stored in its own unique class of output, which makes it hard for us to extract the data. `broom` is a package that helps us to convert these types of model output into a data frame. In particular, we use the function `tidy()` from `broom`. `tidy()` works on most analysis models in R. The tidy-ed output is as follows,
-
-```{r}
-t.test(accuracy ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy()
-```
-
-### Interpreting the effect {-}
+### Interpreting the difference {-}
 
 #### Mathematical interpretation {-}
-Exposure to information regarding expert views of the issue led to a 9.88 percentage point increase in belief accuracy. The observed effect is statistically significant.
+Respondents born elsewhere rate the Conservative Party 9.09 points higher (on a 0-100 scale) than respondents born in Canada. The difference is statistically significant (p < .001).
+
+Note that this is points on a 0-100 scale, not percentage points.
 
 #### Substantive interpretation {-}
-The increase in belief accuracy on the issue of needle exchange suggests that policy makers are receptive to new evidence about expert views.
+People who immigrated to Canada feel somewhat warmer toward the Conservatives than people born in Canada. Remember that this is a comparison, not an experiment, so we cannot say that being born outside Canada *causes* people to like the Conservatives more.
+
+### Outcome 2: NDP rating {-}
+```{r}
+t.test(ndp_rating ~ born_canada, data = ces) |>
+  model_parameters()
+```
+
+Respondents born elsewhere rate the NDP 0.46 points lower than respondents born in Canada. The difference is not statistically significant (p = 0.401), and the confidence interval includes 0.
+
+
+
+## Visualizing differences in means
 
 ### Estimates and confidence intervals -- geom_pointrange() {-}
 
-Using the tidy-ed data frame, we can plot the estimate. Because the estimate is one-dimensional (you only need either x or y), the other dimension can be used as a name label instead of a variable.
+The output of `model_parameters()` is a data frame, so we can pipe it straight into `ggplot()`. Because the estimate is one-dimensional (you only need either x or y), the other dimension can be used as a name label instead of a variable.
 ```{r}
-t.test(accuracy ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy() |>
-  ggplot(aes(y=estimate,x="belief about experts")) + 
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low,))
+t.test(con_rating ~ born_canada, data = ces) |>
+  model_parameters() |>
+  ggplot(aes(y=Difference,x="Conservative rating")) +
+  geom_pointrange(aes(ymax=CI_high,ymin=CI_low))
 ```
 
 `geom_pointrange()` **syntax** (**do not run the following code**)
 ```{r, eval=F}
 ggplot(<name of dataframe>,
-       aes(y = estimate, # from the tidy-ed output
+       aes(y = Difference, # from the model_parameters() output
            x = "name of x-axis label")) + # x will be the x-axis label
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low)) # from the tidy-ed output
+  geom_pointrange(aes(ymax=CI_high,ymin=CI_low)) # from the model_parameters() output
 ```
 
 
-#### To highlight how the effect is statistically significant, we usually add the 0-intercept line {-}
+#### To highlight whether the difference is statistically significant, we usually add the 0-intercept line {-}
 ```{r}
-t.test(accuracy ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy() |>
-  ggplot(aes(y=estimate,x="belief about experts")) + 
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low)) +
+t.test(con_rating ~ born_canada, data = ces) |>
+  model_parameters() |>
+  ggplot(aes(y=Difference,x="Conservative rating")) +
+  geom_pointrange(aes(ymax=CI_high,ymin=CI_low)) +
   geom_hline(aes(yintercept=0),linetype="dashed") # this adds a horizontal line
 ```
 
 #### To beautify the graph, we might change its `theme` and change x and y labels (`xlab` and `ylab`). {-}
+Put the direction of the difference in the label, so readers know which group is higher.
 ```{r}
-t.test(accuracy ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy() |>
-  ggplot(aes(y=estimate,x="belief about experts")) + 
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low)) +
+t.test(con_rating ~ born_canada, data = ces) |>
+  model_parameters() |>
+  ggplot(aes(y=Difference,x="Conservative rating")) +
+  geom_pointrange(aes(ymax=CI_high,ymin=CI_low)) +
   geom_hline(aes(yintercept=0),linetype="dashed") +
   theme_bw() + # black and white theme
   xlab("") + # hides the x label
-  ylab("Difference in means") # replaces the y label
+  ylab("Difference in means (Born elsewhere - Born in Canada)") # replaces the y label
 ```
 
-
+The same plot for the NDP rating. Here the confidence interval crosses the dashed 0 line, so the difference is not statistically significant.
 ```{r}
-t.test(preference ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy() |>
-  ggplot(aes(y=estimate,x="policy preference")) + 
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low)) +
+t.test(ndp_rating ~ born_canada, data = ces) |>
+  model_parameters() |>
+  ggplot(aes(y=Difference,x="NDP rating")) +
+  geom_pointrange(aes(ymax=CI_high,ymin=CI_low)) +
   geom_hline(aes(yintercept=0),linetype="dashed") +
   theme_bw() +
   xlab("") +
-  ylab("Difference in means")
+  ylab("Difference in means (Born elsewhere - Born in Canada)")
 ```
 
 You could also flip the x and y.
 ```{r}
-t.test(preference ~ factor(treated, levels=c(1,0)), data = df) |>
-  tidy() |>
-  ggplot(aes(x=estimate,y="policy preference")) + 
-  geom_pointrange(aes(xmax=conf.high,xmin=conf.low)) +
+t.test(ndp_rating ~ born_canada, data = ces) |>
+  model_parameters() |>
+  ggplot(aes(x=Difference,y="NDP rating")) +
+  geom_pointrange(aes(xmax=CI_high,xmin=CI_low)) +
   geom_vline(aes(xintercept=0),linetype="dashed") +
   theme_bw() +
   ylab("") +
-  xlab("Difference in means")
+  xlab("Difference in means (Born elsewhere - Born in Canada)")
 ```
 
-      
+
 
 ## Linear regression
 
 ### Load a different dataset (some variables from Varieties of Democracies data set) {-}
 ```{r,echo=F}
-d <- read.csv("data/vdem_w6tutorial.csv")
+vdem <- read.csv("data/vdem_w6tutorial.csv")
 ```
 
 ```{r,eval=F}
-d <- read.csv("vdem_w6tutorial.csv")
+vdem <- read.csv("vdem_w6tutorial.csv")
 ```
 
 
 * Variables from Varieties of Democracy dataset
+
   + Power distributed by gender (C) (v2pepwrgen): Q. Is political power distributed according to gender? (0: Men have a near-monopoly power on political power, 4: Men and women have roughly equal political power.)
   + Female journalists (C) (v2mefemjrn): Q. Please estimate the percentage (%) of journalists in the print and broadcast media who are women. (Interval)
 
@@ -236,24 +287,24 @@ knitr::include_graphics("images/w6_vdemcodebook.png")
 More details on codebook next week!
 
 ```{r}
-summary(d$v2pepwrgen)
+summary(vdem$v2pepwrgen)
 ```
 
 ### Bivariate relationship using a scatter plot `geom_point()` {-}
 ```{r}
-d |>
+vdem |>
   ggplot(aes(y=v2pepwrgen,x=v2mefemjrn)) +
   geom_point() +
   theme_classic()
 ```
 
 ```{r,echo=F}
-m1 <- lm(data=d,v2pepwrgen ~ v2mefemjrn)
+m1 <- lm(data=vdem,v2pepwrgen ~ v2mefemjrn)
 
-d$fitted <- m1$fitted.values
-d$residuals <- m1$residuals
+vdem$fitted <- m1$fitted.values
+vdem$residuals <- m1$residuals
 
-d |>
+vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
   geom_point() +
   geom_line(aes(y=fitted)) +
@@ -262,7 +313,7 @@ d |>
 
 
 ```{r,echo=F}
-d |>
+vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
   geom_point(alpha=0.5) +
   geom_point(aes(y=fitted),shape=1,color="maroon") +
@@ -271,7 +322,7 @@ d |>
 
 
 ```{r,echo=F}
-d |>
+vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
   geom_point(alpha=0.5) +
   geom_point(aes(y=fitted),shape=1,color="maroon") +
@@ -280,7 +331,7 @@ d |>
 ```
 
 ```{r,echo=F}
-d |>
+vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
   geom_point(alpha=0.5) +
   geom_line(aes(y=fitted),color="maroon") +
@@ -288,12 +339,9 @@ d |>
   theme_classic()
 ```
 
-#### Regression output {-}
-
-
 #### Visualizing regression line using `geom_smooth()` {-}
 ```{r}
-d |>
+vdem |>
   ggplot(aes(y=v2pepwrgen,x=v2mefemjrn)) +
   geom_point(alpha=0.5) + # alpha changes the transparency of the points
   geom_smooth(method="lm") +
@@ -301,21 +349,7 @@ d |>
 ```
 
 
-### Regression estimates (similar to survey treatment visualization) {-}
-```{r}
-lm(data=d,v2pepwrgen ~ v2mefemjrn) |>
-  tidy(conf.int=T,conf.level=.95) |>
-  filter(term!="(Intercept)") |>
-  ggplot(aes(y=estimate,x="% Female Journalists")) + 
-  geom_pointrange(aes(ymax=conf.high,ymin=conf.low,)) +
-  geom_hline(aes(yintercept=0),linetype="dashed") +
-  theme_bw() +
-  ylab("Coefficient Estimate") +
-  xlab("")
-```
-
-
-## Credits 
+## Credits
 * This lesson includes materials from
   * [unvotes](https://github.com/dgrtwo/unvotes)
 

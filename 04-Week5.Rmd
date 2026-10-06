@@ -1,4 +1,4 @@
-# Data visualization
+# Data visualization and Bivariate Analysis
 
 Week 5 tutorial goals:
 
@@ -59,7 +59,7 @@ ces <- read.csv("data/ces2025_small.csv")
 
 ### R scripts {-}
 
-R scripts should be complete in itself. Before submitting your assignments, start a new session, clear your workspace, select the entire code (i.e. "Select All") and run everything. You should not get any errors.
+R scripts should be complete in themselves. Before submitting your assignments, start a new session, clear your workspace, select the entire code (i.e. "Select All") and run everything. You should not get any errors.
 
 
 
@@ -99,7 +99,7 @@ unvotes |>
 #or
 
 unvotes |>
-  group_by(year>1989)
+  group_by(year>1990)
 ```
 
 
@@ -246,7 +246,7 @@ unvotes_weapons <- unvotes |>
                            0)) # FALSE output
 ```
 
-  + Note this makes a new object, `unvotes_weapons`. Good practice not to edit the original dataset, especially if we are change an existing variable or drop rows like with `filter()`.
+  + Note this makes a new object, `unvotes_weapons`. Good practice not to edit the original dataset, especially if we change an existing variable or drop rows like with `filter()`.
 
 This misses the votes on "Arms control and disarmament". Use `|` (or) to combine two conditional statements.
 
@@ -283,7 +283,10 @@ unvotes |>
 
 ### `ggplot()` {-}
 
-The `ggplot2` package contains functions tailored to making presentable and informative graphs. It works through piecing together separate pieces of graphical components joined by a `+` sign, beginning with the empty plane specified using the function ggplot().
+`ggplot2` is a popular package for making nice graphs.
+
+  + First we start with a blank graph, then add things with the `+` sign
+  
 ```{r}
 ggplot()
 ```
@@ -319,7 +322,7 @@ unvotes |>
 
 ### Bivariate: two nominal/ordinal variables {-}
 
-* Crosstabs and chi-square test -- tab_xtab()
+* Crosstabs -- tab_xtab()
 ```{r}
 ?tab_xtab
 ```
@@ -328,7 +331,7 @@ unvotes |>
 knitr::include_graphics("images/w5_tabxtab.png")
 ```
 
-Let's cross-tabulate Canada's votes on the six issues listed in the dataset. Independent variable in columns and dependent variables in rows. (Note: `tab_xtab` is not a tidyverse function. Hence, variable names should be preceded by object name of data frame and `$`)
+Let's cross-tabulate Canada's votes on the six issues listed in the dataset. Independent variable in columns and dependent variable in rows. (Note: `tab_xtab` is not a tidyverse function. Hence, variable names should be preceded by object name of data frame and `$`)
 ```{r}
 tab_xtab(var.col=unvotes$issue, var.row=unvotes$vote,
          show.col.prc = TRUE,

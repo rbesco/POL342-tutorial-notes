@@ -20,11 +20,11 @@ pipes-and-tidyverse
 summary
 more-resources
 credits-1
-data-visualization
+data-visualization-and-bivariate-analysis
 before-the-start-of-each-class-1
 load-data
 recap-and-some-additional-basics
-data-visualization-1
+data-visualization
 plots-for-categorical-variables
 plots-for-interval-variables
 assignment-tips
