@@ -425,6 +425,15 @@ ggplot(ces,aes(x=lib_rating,y=con_rating)) +
   geom_point()
 ```
 
+With so many people, the dots pile on top of each other. Many people also give round numbers like 0, 50 and 100, so they land on exactly the same spot.
+
+  + `geom_jitter()` moves each dot a tiny random amount, so dots in the same spot can be seen
+  + `alpha` makes the dots see-through (0 = invisible, 1 = solid), so crowded areas look darker
+```{r}
+ggplot(ces,aes(x=lib_rating,y=con_rating)) +
+  geom_jitter(alpha=0.1)
+```
+
 ## Assignment tips
 
 Section 2 of the assignment uses a different version of the UN votes data, `unvotes_country_1947.csv`.

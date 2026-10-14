@@ -36,33 +36,33 @@ library(marginaleffects)
 vars <- c("country","Year",
            "q170","q175")
 
-df <- read_dta("Project/asianbarometer_wave5/20230504_W5_merge_15.dta") |>
+ab_vietnam <- read_dta("Project/asianbarometer_wave5/20230504_W5_merge_15.dta") |>
   select(all_of(vars)) |>
   filter(country==11) # Vietnam
 ```
 
 #### Recode variables {-}
 ```{r}
-df_recode <- df |>
+ab_vietnam_recoded <- ab_vietnam |>
   mutate(q170 = ifelse(q170<1 | q170 > 4, NA, q170),
          q175 = ifelse(q175<1 | q175 > 4, NA, q175)) |>
   na.omit()
 ```
 
 ```{r,include=F,eval=F}
-m <- lm(data=df_recode,
+m <- lm(data=ab_vietnam_recoded,
         q170 ~ q175)
 
-m2 <- lm(data=df_recode,
+m2 <- lm(data=ab_vietnam_recoded,
         q170 ~ q177)
 
-m_controls <- lm(data=df_recode,
+m_controls <- lm(data=ab_vietnam_recoded,
         q170 ~ q175 + q177 + Se9c_4)
 ```
 
 #### Basic plot {-}
 ```{r}
-df_recode |>
+ab_vietnam_recoded |>
   ggplot(aes(fill=factor(q170),x=factor(q175))) +
   geom_bar(position="fill")
 ```
@@ -76,14 +76,14 @@ df_recode |>
 
 
 ```{r}
-df_recode |>
+ab_vietnam_recoded |>
   ggplot(aes(fill=factor(q170),x=factor(q175))) +
   geom_bar(position="fill") +
   theme_bw()
 ```
 
 ```{r}
-df_recode |>
+ab_vietnam_recoded |>
   ggplot(aes(fill=factor(q170),x=factor(q175))) +
   geom_bar(position="fill") +
   theme_bw() +
@@ -93,7 +93,7 @@ df_recode |>
 ```
 
 ```{r}
-df_recode |>
+ab_vietnam_recoded |>
   ggplot(aes(fill=factor(q170),x=factor(q175))) +
   geom_bar(position="fill") +
   theme_bw() +
@@ -108,7 +108,7 @@ df_recode |>
 
 
 ```{r}
-df_recode |>
+ab_vietnam_recoded |>
   ggplot(aes(fill=factor(q170),x=factor(q175))) +
   geom_bar(position="fill") +
   theme_bw() +
@@ -137,27 +137,27 @@ rm(list=ls())
 
 ### Prepare variables (CES) {-}
 ```{r}
-vars <- c("pes21_groups1_4","cps21_news_cons","cps21_govt_confusing") #news consumption and internal political efficacy
+vars <- c("cps25_interest_gen_1","cps25_news_cons","cps25_govt_confusing") #interest in politics, news consumption and internal political efficacy
 
-ces_select <- read_dta("Project/CES2021/2021 Canadian Election Study v2.0.dta") |>
+ces_select <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
   dplyr::select(all_of(vars))
 
 ces_dropna <- ces_select |>
-  mutate(cps21_govt_confusing=ifelse(cps21_govt_confusing==5, #conditional statement
+  mutate(cps25_govt_confusing=ifelse(cps25_govt_confusing==5, #conditional statement
                                      NA, #if yes
-                                     cps21_govt_confusing), #if no
-         cps21_news_cons=ifelse(cps21_news_cons==7, #conditional statement
+                                     cps25_govt_confusing), #if no
+         cps25_news_cons=ifelse(cps25_news_cons==7, #conditional statement
                                 NA, #if yes
-                                cps21_news_cons), #if no
-         pes21_groups1_4=ifelse(pes21_groups1_4<0,
+                                cps25_news_cons), #if no
+         cps25_interest_gen_1=ifelse(cps25_interest_gen_1<0, # -99 = don't know
                                 NA,
-                                pes21_groups1_4)) |> 
+                                cps25_interest_gen_1)) |> 
   na.omit() #remove NAs
 ```
 
 
 ```{r}
-ggplot(ces_dropna, aes(x=factor(cps21_govt_confusing), y=pes21_groups1_4)) +
+ggplot(ces_dropna, aes(x=factor(cps25_govt_confusing), y=cps25_interest_gen_1)) +
   geom_boxplot()
 ```
 
@@ -170,13 +170,13 @@ knitr::include_graphics("images/w10_ggplot_shape.png")
 ```
 
 ```{r}
-ggplot(ces_dropna, aes(x=factor(cps21_govt_confusing), y=pes21_groups1_4)) +
+ggplot(ces_dropna, aes(x=factor(cps25_govt_confusing), y=cps25_interest_gen_1)) +
   geom_boxplot(width=0.3, fill="darkseagreen") +
   geom_point(stat="summary", fun=mean, shape=23, fill="black",size=2.5) +
   scale_x_discrete(labels=c("1\nStrongly Disagree","Somewhat Disagree","Somewhat Agree","4\nStrongly Agree")) +
   theme_bw() +
   xlab("Sometimes, politics and government seem so complicated that a person\n like me can't really understand what's going on.") +
-  ylab("How do you feel about the following groups in Canada\n [politicians in general]?")
+  ylab("How interested are you in politics generally?\n(0 = no interest, 10 = a great deal)")
 ```
 
 ### Clear environment {-}
@@ -195,13 +195,13 @@ vdem_selected <- read.csv("Project/VDem/VDem_post2000.csv") |>
   select(all_of(vars)) |>
   filter(year==2014)
 
-df <- vdem_selected |>
+vdem_trade <- vdem_selected |>
   mutate(trade = (e_cow_exports+e_cow_imports)/(e_gdp)) # trade volume as proportion of gdp
 
-ggplot(data=df,aes(x=trade,y=v2x_pubcorr)) +
+ggplot(data=vdem_trade,aes(x=trade,y=v2x_pubcorr)) +
   geom_point()
 
-ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
+ggplot(data=vdem_trade,aes(x=log(trade),y=v2x_pubcorr)) +
   geom_point()
 ```
 
@@ -211,7 +211,7 @@ ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
 For example, the bivariate scatter seems to support a theory that reliance of economy on trade is associated with lower levels of public sector corruption. However, when GDP per capita is included, the plot shows that countries that rely on trade also tend to be richer. In other words, we may not have sufficient variation to disentangle the effects of trade reliance from developed economies.
 
 ```{r}
-ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
+ggplot(data=vdem_trade,aes(x=log(trade),y=v2x_pubcorr)) +
   geom_point(aes(color=log(e_gdppc)),alpha=0.8,size=2) +
   theme_classic() +
   xlab("Trade volume as proportion of GDP") +
@@ -225,7 +225,7 @@ ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
 
 ```{r}
 # save as object
-plt <- ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
+trade_plot <- ggplot(data=vdem_trade,aes(x=log(trade),y=v2x_pubcorr)) +
   geom_point(aes(color=log(e_gdppc)),alpha=0.8,size=2) +
   theme_classic() +
   xlab("Total trade per capita (logged)") +
@@ -234,7 +234,7 @@ plt <- ggplot(data=df,aes(x=log(trade),y=v2x_pubcorr)) +
                        low="black",high="red")
 
 # use ggsave()
-ggsave(filename="plt.png",plot=plt)
+ggsave(filename="trade_plot.png",plot=trade_plot)
 ```
 
 ### Using measures from other datasets {-}
@@ -242,23 +242,23 @@ ggsave(filename="plt.png",plot=plt)
 If you want to include data from other data sets, you must receive approval from the TAs or Prof. Besco prior to submission.
 
 ```{r}
-cowSL <- read.csv("data/statelist2024.csv")
+cow_states <- read.csv("data/statelist2024.csv")
 library(countrycode)
 
-cowSL$ccode_vdem <- countrycode(cowSL$ccode,
+cow_states$ccode_vdem <- countrycode(cow_states$ccode,
                                 origin="cown",
                                 destination="vdem")
 
-cowSL2 <- cowSL |>
+cow_states_first <- cow_states |>
   filter(ccode_vdem %in% vdem_selected$country_id) |>
   group_by(ccode) |>
   slice_min(styear) # using the earliest year for states that re-enter the system
 
-df2 <- left_join(df, 
-          cowSL2[,c("ccode_vdem","styear")],
+vdem_trade_statehood <- left_join(vdem_trade, 
+          cow_states_first[,c("ccode_vdem","styear")],
           by=c("country_id" = "ccode_vdem"))
 
-ggplot(data=df2,aes(x=log(trade),y=v2x_pubcorr)) +
+ggplot(data=vdem_trade_statehood,aes(x=log(trade),y=v2x_pubcorr)) +
   geom_point(aes(color=styear),alpha=0.8,size=2) +
   theme_classic() +
   xlab("Trade volume as proportion of GDP") +

@@ -11,11 +11,12 @@ rmd_files:
   - 02-Week3.Rmd
   - 03-Week4.Rmd
   - 04-Week5.Rmd
-  # - 05-Week6.Rmd
+  - 05-Week6.Rmd
   # - 06-Week7.Rmd
   # - 07-Week8.Rmd
   # - 08-Week9.Rmd
   # - 09-Week10.Rmd
+  # - 10-Week11.Rmd
 
 language:
   ui:

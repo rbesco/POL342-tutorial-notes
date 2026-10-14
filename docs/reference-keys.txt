@@ -29,3 +29,12 @@ plots-for-categorical-variables
 plots-for-interval-variables
 assignment-tips
 credits-2
+regression-and-confidence-intervals
+before-the-start-of-class
+recap-1
+factors
+canadian-election-study-data-1
+difference-in-means-t.test
+visualizing-differences-in-means
+linear-regression
+credits-3

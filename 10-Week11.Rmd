@@ -1,0 +1,210 @@
+# Additional Regression Techniques
+
+Week 11 tutorial goals:
+  * Nominal variables in regression
+    + changing the reference category -- `relevel()`
+  * Optional (not required for the term project)
+    + Interactions
+    + Binary outcomes and logistic regression -- `glm()`
+
+## Set-up
+```{r,include=FALSE}
+library(tidyverse)
+library(haven)
+library(sjPlot)
+library(modelsummary)
+library(marginaleffects)
+options(warn = -1) # suppress warning messages that do not disturb the program flow
+```
+
+### Load libraries {-}
+```{r,eval=F}
+library(tidyverse)
+library(haven)
+library(sjPlot)
+library(modelsummary)
+library(marginaleffects)
+```
+
+## Canadian Election Study 2025
+
+### Load Data {-}
+```{r}
+vars <- c("cps25_govt_confusing", "cps25_fed_id", "cps25_age_in_years",
+          "cps25_bornin_canada", "pes25_turnout2025", "cps25_party_rating_23")
+
+ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
+  select(all_of(vars))
+```
+
+* Variables selected:
+  * `cps25_govt_confusing`: Politics and government seem so complicated that a person like me can't really understand what's going on (1 = Strongly disagree, 4 = Strongly agree, 5 = Don't know)
+  * `cps25_fed_id`: In federal politics, do you usually think of yourself as a: (1 = Liberal, 2 = Conservative, 3 = NDP, 4 = Bloc Quebecois, 5 = Green, 6 = Another party, 7 = None of these, 8 = Don't know, 9 = People's Party)
+  * `cps25_age_in_years`: Age in years
+  * `cps25_bornin_canada`: Were you born in Canada? (1 = Yes, 2 = No, 3 = Don't know)
+  * `pes25_turnout2025`: Did you vote in the 2025 federal election? (1 = Yes, 2 to 8 = different reasons for not voting)
+  * `cps25_party_rating_23`: How do you feel about the Liberal Party? (0 = really dislike, 100 = really like, -99 = Don't know)
+
+### Recode {-}
+We reverse the scale of `cps25_govt_confusing` like we did in Week 8, so that a higher number means the person understands politics more.
+```{r}
+ces_recoded <- ces_selected |>
+  mutate(govt_confusing = if_else(cps25_govt_confusing == 5, NA, cps25_govt_confusing),
+         govt_understand = 5 - govt_confusing,
+         party_id = if_else(cps25_fed_id %in% c(7, 8), NA, cps25_fed_id),
+         party_id = factor(party_id))
+```
+
+## Nominal variables in regression
+
+Party identification is a **nominal** variable. The numbers are just labels for parties, so we turn it into a factor.
+
+A nominal variable with *n* categories gives *n - 1* coefficients in the regression table. One category is left out. This is the **reference category**. Each coefficient compares that party to the reference category.
+
+By default, the reference category is the first level of the factor: Liberal (1).
+```{r}
+levels(ces_recoded$party_id)
+```
+
+### Regression with a nominal variable {-}
+```{r}
+party_model <- lm(govt_understand ~ party_id, data = ces_recoded)
+
+party_names <- c("party_id2" = "Conservative",
+                 "party_id3" = "NDP",
+                 "party_id4" = "Bloc",
+                 "party_id5" = "Green",
+                 "party_id6" = "Another party",
+                 "party_id9" = "People's Party")
+
+modelsummary(list("Liberal reference" = party_model),
+             stars = TRUE,
+             gof_map = c("nobs", "r.squared"),
+             coef_rename = party_names)
+```
+
+Now interpret: what does this mean?
+
+### Changing the reference category -- `relevel()` {-}
+To compare each party to the Conservatives instead, use `relevel()` and set `ref` to the Conservative category (2).
+
+**NOTE:** `relevel()` only works on factor variables. If the variable is not a factor, you will get an error.
+```{r}
+ces_recoded <- ces_recoded |>
+  mutate(party_id_con = relevel(party_id, ref = "2"))
+
+levels(ces_recoded$party_id_con)
+```
+
+```{r}
+party_model_con <- lm(govt_understand ~ party_id_con, data = ces_recoded)
+
+party_names_con <- c("party_id_con1" = "Liberal",
+                     "party_id_con3" = "NDP",
+                     "party_id_con4" = "Bloc",
+                     "party_id_con5" = "Green",
+                     "party_id_con6" = "Another party",
+                     "party_id_con9" = "People's Party")
+
+modelsummary(list("Liberal reference" = party_model,
+                  "Conservative reference" = party_model_con),
+             stars = TRUE,
+             gof_map = c("nobs", "r.squared"),
+             coef_rename = c(party_names, party_names_con))
+```
+
+Now interpret: what does this mean? What changed between the two columns, and what stayed the same?
+
+
+## Optional: Interactions and binary outcomes
+
+**This section is not required for the term project.**
+
+### More recoding {-}
+```{r}
+ces_recoded <- ces_recoded |>
+  mutate(lib_rating = if_else(cps25_party_rating_23 == -99, NA, cps25_party_rating_23),
+         born_canada = if_else(cps25_bornin_canada == 1, "Born in Canada", "Born elsewhere"),
+         born_canada = if_else(cps25_bornin_canada == 3, NA, born_canada),
+         turnout = if_else(pes25_turnout2025 == 1, 1, 0))
+```
+
+### Interactions {-}
+Is the effect of age on feelings about the Liberal Party the same for people born in Canada and people born elsewhere? Use `*` instead of `+` to add an interaction.
+```{r}
+interaction_model <- lm(lib_rating ~ cps25_age_in_years * born_canada, data = ces_recoded)
+
+modelsummary(interaction_model,
+             stars = TRUE,
+             gof_map = c("nobs", "r.squared"))
+```
+
+Interactions are much easier to understand as a plot. Put both variables in `condition`: the first is the x-axis, the second gives one line for each group.
+```{r}
+plot_predictions(interaction_model, condition = c("cps25_age_in_years", "born_canada"))
+```
+
+Now interpret: what does this mean?
+
+### Binary outcomes {-}
+`turnout` is a **binary** variable: 1 = voted, 0 = did not vote.
+
+#### Crosstab {-}
+```{r}
+tab_xtab(var.row = ces_recoded$turnout,
+         var.col = ces_recoded$born_canada,
+         show.col.prc = TRUE)
+```
+
+#### OLS regression {-}
+```{r}
+turnout_ols <- lm(turnout ~ born_canada, data = ces_recoded)
+
+modelsummary(turnout_ols,
+             stars = TRUE,
+             gof_map = c("nobs", "r.squared"))
+```
+
+Compare the coefficient to the difference in percentages in the crosstab. They are the same: with a binary outcome, an OLS coefficient is a change in the *probability* (or percentage) of the outcome.
+
+#### A straight line and a binary outcome {-}
+Every point is at 0 or 1, but a straight line keeps going. It can predict values above 1 (more than 100%) or below 0.
+```{r}
+ces_recoded |>
+  ggplot(aes(x = cps25_age_in_years, y = turnout)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(method = "lm") +
+  theme_classic()
+```
+
+### Logistic regression -- `glm()` {-}
+Logistic regression (logit) is made for binary outcomes. Its predictions always stay between 0 and 1. Use `glm()` with `family = "binomial"`. The rest is the same as `lm()`.
+```{r}
+turnout_age_ols <- lm(turnout ~ cps25_age_in_years, data = ces_recoded)
+
+turnout_age_logit <- glm(turnout ~ cps25_age_in_years, data = ces_recoded, family = "binomial")
+
+modelsummary(list("OLS" = turnout_age_ols,
+                  "Logit" = turnout_age_logit),
+             stars = TRUE,
+             gof_map = c("nobs"))
+```
+
+Logit coefficients are **not** changes in probability, so they are hard to interpret directly. Use `plot_predictions()` to show the predicted probability instead.
+
+#### Predictions: OLS {-}
+```{r}
+plot_predictions(turnout_age_ols, condition = "cps25_age_in_years")
+```
+
+#### Predictions: Logit {-}
+```{r}
+plot_predictions(turnout_age_logit, condition = "cps25_age_in_years")
+```
+
+Now interpret: how are the two plots different? Look at the oldest respondents.
+
+
+## Credits
+* This lesson uses data from
+  * Stephenson, Laura B., Allison Harell, and Daniel Rubenson. 2025 Canadian Election Study (CES). [dataset]

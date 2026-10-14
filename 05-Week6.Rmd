@@ -1,14 +1,13 @@
 # Regression and confidence intervals
 
 Week 6 tutorial goals:
+
   * Factors -- `factor()`
   * Difference in means -- `t.test()`
   * Linear regression -- `lm()`
   * Visualizing models using `ggplot`
     + estimates and confidence intervals -- `geom_pointrange()`
-    + regression lines
-      + `geom_smooth()`
-      + `geom_ribbon()`
+    + regression lines -- `geom_smooth()`
 
 ## Before the start of class
 ```{r, echo=F}
@@ -32,15 +31,25 @@ library(tidyverse)
 ### Load data {-}
 ```{r,echo=F}
 ces <- read.csv("data/ces2025_small.csv")
-un_country <- read.csv("data/unvotes_country_1947.csv")
 ```
 
 ```{r,eval=F}
 ces <- read.csv("ces2025_small.csv")
-un_country <- read.csv("unvotes_country_1947.csv")
 ```
 
 ## Recap
+
+
+
+### Determining plot based on type of variable {-}
+
+* Single categorical (nominal/ordinal) variable -- Bar chart `geom_bar()`
+* Single numerical (interval/ratio) variable -- Histogram `geom_histogram()`
+* Categorical (nominal/ordinal) and categorical -- Stacked bar chart `geom_bar()`
+* Categorical (nominal/ordinal) and numerical (interval/ratio) -- Box and whiskers `geom_boxplot()`
+* Numerical (interval/ratio) and numerical -- Scatter plot `geom_point()`
+
+
 
 ### Bar chart for a nominal variable {-}
 
@@ -56,29 +65,47 @@ ggplot(ces, aes(x=born_canada)) +
 
 The third bar is `NA`: 132 people did not answer the question.
 
-### Determining plot based on type of variable {-}
+  + How could we not show the NAs?
 
-* Categorical (nominal/ordinal) and categorical -- Stacked bar chart `geom_bar`
-* Categorical (nominal/ordinal) and numerical (interval/ratio) -- Box and whiskers `geom_boxplot`
-* Numerical (interval/ratio) and numerical -- Scatter plot `geom_point`
-
-* ICAO_region
+Use `filter()` to keep only the people who answered, then pipe the result into `ggplot()`. `is.na()` is `TRUE` when a value is missing, so `is.na(ces$born_canada) == FALSE` keeps the rows that are **not** missing.
 ```{r}
-unique(un_country$ICAO_region)
+ces |>
+  filter(is.na(ces$born_canada) == FALSE) |> # keep people who are not NA for born_canada
+  ggplot(aes(x=born_canada)) +
+  geom_bar()
 ```
 
+This is the same `is.na()` we used with `table()` last week to count missing values:
 ```{r}
-ggplot(un_country, aes(x=ICAO_region, y=share_yes)) +
-  geom_boxplot()
+table(is.na(ces$born_canada))
 ```
+
+Note: adding `na.rm=TRUE` to `geom_bar()` does **not** remove the `NA` bar. The NAs have to be removed from the data first.
+
+
+
+```{r}
+ggplot(ces, aes(x=union)) +
+  geom_bar()
+```
+
+Wait! Something is wrong!
+
 
 ## Factors
 
-A **factor** is R's data type for categories. A factor has a fixed set of categories, called **levels**, and the levels have an order. We use `factor()` to turn a variable into a factor. There are two common reasons to do this.
+A **factor** is R's data type for categories. Similar to character, but has levels with an order. Order can be arbitrary (province), or meaningful (agree/disagree). 
+
+  + R assumes all letters/words are character and all numbers are numeric
+
+  + Use `factor()` to turn a variable into a factor. 
+  
+  + Why? When numbers or characters are really categories. 
+
 
 ### Numbers that are really categories {-}
 
-The variable `union` asks "Do you belong to a union?". It is coded 1 = yes and 0 = no. The numbers are just labels for two categories, so `union` is a nominal variable. But R stores it as a number.
+The variable `union` asks "Do you belong to a union?". It is coded 1 = yes and 0 = no. The numbers are just labels for two categories, so `union` is a nominal variable, or maybe ordinal. But R stores it as a number.
 ```{r}
 class(ces$union)
 ```
@@ -96,8 +123,16 @@ Wrapping the variable in `factor()` tells R that it is a category.
 class(factor(ces$union))
 ```
 
+We use `mutate()` to save the factor as a new column, `union_factor`. The original `union` column stays the same. Now we can use `union_factor` in every plot without wrapping it in `factor()` each time.
 ```{r}
-ggplot(ces, aes(x=factor(union), y=ndp_rating)) +
+ces <- ces |>
+  mutate(union_factor = factor(union))
+
+class(ces$union_factor)
+```
+
+```{r}
+ggplot(ces, aes(x=union_factor, y=ndp_rating)) +
   geom_boxplot()
 ```
 
@@ -105,19 +140,33 @@ Now there is one box for non-members (0), one for union members (1), and one for
 
 ### Setting the order of categories {-}
 
+Look at another variable: born_canada 
+
 Text categories are sorted alphabetically, so "Born elsewhere" comes before "Born in Canada".
 ```{r}
 ggplot(ces, aes(x=born_canada, y=con_rating)) +
   geom_boxplot()
 ```
 
-The `levels` argument of `factor()` sets the order ourselves. Write the categories exactly as they appear in the data.
+The `levels` argument of `factor()` sets the order ourselves. Write the categories exactly as they appear in the data. Like with `union`, we use `mutate()` to save it as a new column, `born_canada_order`.
 ```{r}
-ggplot(ces, aes(x=factor(born_canada, levels=c("Born in Canada","Born elsewhere")), y=con_rating)) +
+ces <- ces |>
+  mutate(born_canada_order = factor(born_canada, levels=c("Born in Canada","Born elsewhere")))
+```
+
+```{r}
+ggplot(ces, aes(x=born_canada_order, y=con_rating)) +
   geom_boxplot()
 ```
 
-This only changes the order in the plot. The data stays the same.
+
+
+This only changes the order of the categories. The original `born_canada` column stays the same.
+
+
+
+***Now write some code to change the union categories to words instead of 0 and 1, then make a boxplot ***
+
 
 ## Canadian Election Study data
 
@@ -175,13 +224,14 @@ Be careful of the direction of the difference. `t.test()` takes the mean of the 
 
 ### Interpreting the difference {-}
 
-#### Mathematical interpretation {-}
-Respondents born elsewhere rate the Conservative Party 9.09 points higher (on a 0-100 scale) than respondents born in Canada. The difference is statistically significant (p < .001).
+#### Interpretation {-}
+Respondents born elsewhere rate the Conservative Party 9 points higher (on a 0-100 scale) than respondents born in Canada. 
 
-Note that this is points on a 0-100 scale, not percentage points.
+The difference is statistically significant (p < .001), so the correlation very likely isn't due to chance.
 
-#### Substantive interpretation {-}
-People who immigrated to Canada feel somewhat warmer toward the Conservatives than people born in Canada. Remember that this is a comparison, not an experiment, so we cannot say that being born outside Canada *causes* people to like the Conservatives more.
+This is not an experiment, so we can't say that being born outside Canada *causes* people to like the Conservatives more.
+
+  + An alternative explaination would be...
 
 ### Outcome 2: NDP rating {-}
 ```{r}
@@ -274,9 +324,11 @@ vdem <- read.csv("vdem_w6tutorial.csv")
 ```
 
 
+Each row is a country in 2023 (179 countries).
+
 * Variables from Varieties of Democracy dataset
 
-  + Power distributed by gender (C) (v2pepwrgen): Q. Is political power distributed according to gender? (0: Men have a near-monopoly power on political power, 4: Men and women have roughly equal political power.)
+  + Power distributed by gender (C) (v2pepwrgen): Q. Is political power distributed according to gender? (0: Men have a near-monopoly on political power, 4: Men and women have roughly equal political power.)
   + Female journalists (C) (v2mefemjrn): Q. Please estimate the percentage (%) of journalists in the print and broadcast media who are women. (Interval)
 
 ### V-Dem codebook {-}
@@ -286,11 +338,20 @@ knitr::include_graphics("images/w6_vdemcodebook.png")
 
 More details on codebook next week!
 
+### From ordinal to interval {-}
+
+The (C) means the variable is coded by country experts. Each expert answers the question on the 0 to 4 scale above. That answer is **ordinal**: the categories have an order, but the gaps between them are not equal.
+
+V-Dem then combines the answers of all the experts for a country into one score. This score is not limited to 0, 1, 2, 3 or 4. It can be any number, including decimals and negative numbers. Higher numbers still mean more equal power between men and women. Because it is a continuous number, we can treat it as an **interval** variable.
 ```{r}
 summary(vdem$v2pepwrgen)
 ```
 
+Notice the minimum is below 0 and the maximum is above 3. These are not the 0 to 4 answers from the codebook.
+
 ### Bivariate relationship using a scatter plot `geom_point()` {-}
+
+Do countries with more women journalists also have more equal political power between men and women?
 ```{r}
 vdem |>
   ggplot(aes(y=v2pepwrgen,x=v2mefemjrn)) +
@@ -298,11 +359,13 @@ vdem |>
   theme_classic()
 ```
 
-```{r,echo=F}
-m1 <- lm(data=vdem,v2pepwrgen ~ v2mefemjrn)
+### What does a regression do? {-}
 
-vdem$fitted <- m1$fitted.values
-vdem$residuals <- m1$residuals
+A linear regression finds the straight line that best fits the points.
+```{r,echo=F}
+journalists_model <- lm(v2pepwrgen ~ v2mefemjrn, data = vdem)
+
+vdem$fitted <- journalists_model$fitted.values
 
 vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
@@ -311,16 +374,19 @@ vdem |>
   theme_classic()
 ```
 
-
-```{r,echo=F}
+<!--
+For each country, the line gives a **predicted value** (red circles): the value we would guess for that country based only on its share of women journalists.
+```{r,echo=F,eval=F}
 vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
   geom_point(alpha=0.5) +
   geom_point(aes(y=fitted),shape=1,color="maroon") +
   theme_classic()
 ```
+-->
 
 
+The gap between a country's real value and its predicted value is the **error** (the grey lines). Some countries are above the line and some are below.
 ```{r,echo=F}
 vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
@@ -330,6 +396,7 @@ vdem |>
   theme_classic()
 ```
 
+The regression line is the line that makes these errors as small as possible overall.
 ```{r,echo=F}
 vdem |>
   ggplot(aes(x=v2mefemjrn,y=v2pepwrgen)) +
@@ -339,17 +406,53 @@ vdem |>
   theme_classic()
 ```
 
-#### Visualizing regression line using `geom_smooth()` {-}
+### Running a regression -- `lm()` {-}
+
+`lm()` stands for "linear model". It uses the same `~` format as `t.test()`: the dependent variable goes on the left and the independent variable on the right. Like `t.test()`, it leaves out `NA`s automatically.
+
+`lm()` **syntax** (**do not run the following code**)
+```{r, eval=F}
+lm(dependent variable ~ independent variable, data = <name of dataframe>)
+```
+
+We save the regression as an object and use `model_parameters()` to make the output easy to read, just like with the t-test.
+```{r}
+journalists_model <- lm(v2pepwrgen ~ v2mefemjrn, data = vdem)
+
+journalists_model |>
+  model_parameters()
+```
+
+The table has two rows:
+
+* `v2mefemjrn`: the **coefficient**, or slope, of the line. This is the number we care about.
+
+* `(Intercept)`: the predicted value of the dependent variable when the independent variable is 0. Not useful.
+
+### Interpreting the coefficient {-}
+
+The coefficient is interpreted as...
+
+
+The relationship is statistically significant (p < .001), and the confidence interval (0.04 to 0.07) does not include 0.
+
+
+This is not an experiment, so it does not show that women journalists *cause* more equal power. Other things, like wealth or democracy, could explain both.
+
+### Visualizing regression line using `geom_smooth()` {-}
+
+`geom_smooth(method="lm")` runs the same regression and draws the line. The grey band around the line is the 95% confidence interval.
 ```{r}
 vdem |>
   ggplot(aes(y=v2pepwrgen,x=v2mefemjrn)) +
   geom_point(alpha=0.5) + # alpha changes the transparency of the points
-  geom_smooth(method="lm") +
+  geom_smooth(method="lm") + # lm = linear model
   theme_classic()
 ```
 
 
 ## Credits
-* This lesson includes materials from
-  * [unvotes](https://github.com/dgrtwo/unvotes)
+* This lesson uses data from
+  * Stephenson, Laura B., Allison Harell, and Daniel Rubenson. 2025 Canadian Election Study (CES).
+  * Varieties of Democracy (V-Dem) Project. [V-Dem Dataset](https://www.v-dem.net/data/the-v-dem-dataset/).
 
