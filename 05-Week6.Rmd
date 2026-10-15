@@ -1,13 +1,12 @@
-# Regression and confidence intervals
+# Factor Variables, T-tests, and Regression
 
 Week 6 tutorial goals:
 
   * Factors -- `factor()`
   * Difference in means -- `t.test()`
   * Linear regression -- `lm()`
-  * Visualizing models using `ggplot`
-    + estimates and confidence intervals -- `geom_pointrange()`
-    + regression lines -- `geom_smooth()`
+  * Visualizing regression models using `ggplot`
+
 
 ## Before the start of class
 ```{r, echo=F}
@@ -68,6 +67,9 @@ The third bar is `NA`: 132 people did not answer the question.
   + How could we not show the NAs?
 
 Use `filter()` to keep only the people who answered, then pipe the result into `ggplot()`. `is.na()` is `TRUE` when a value is missing, so `is.na(ces$born_canada) == FALSE` keeps the rows that are **not** missing.
+
+  + Adding `na.rm=TRUE` to `geom_bar()` does **not** remove the `NA` bar. The NAs have to be removed from the data first.
+
 ```{r}
 ces |>
   filter(is.na(ces$born_canada) == FALSE) |> # keep people who are not NA for born_canada
@@ -80,9 +82,10 @@ This is the same `is.na()` we used with `table()` last week to count missing val
 table(is.na(ces$born_canada))
 ```
 
-Note: adding `na.rm=TRUE` to `geom_bar()` does **not** remove the `NA` bar. The NAs have to be removed from the data first.
 
 
+
+Now lets try another variable, Union:
 
 ```{r}
 ggplot(ces, aes(x=union)) +
@@ -118,7 +121,7 @@ ggplot(ces, aes(x=union, y=ndp_rating)) +
 
 Notice the x axis: 0.25, 0.50, 0.75. R thinks `union` could be any number between 0 and 1. The warning message about a "continuous x aesthetic" is also a sign that something is wrong.
 
-Wrapping the variable in `factor()` tells R that it is a category.
+Wrapping the variable in `factor()` tells R that it is a category, but only temporarily.
 ```{r}
 class(factor(ces$union))
 ```
@@ -165,7 +168,14 @@ This only changes the order of the categories. The original `born_canada` column
 
 
 
+
+
+
 ***Now write some code to change the union categories to words instead of 0 and 1, then make a boxplot ***
+
+
+
+
 
 
 ## Canadian Election Study data
@@ -195,13 +205,16 @@ head(ces,5)
 
 ### Syntax {-}
 
-```{r echo=FALSE, out.width = "70%", fig.align = "center"}
-knitr::include_graphics("images/w6_ttest.png")
-```
-
-The dependent variable and independent variable are separated by a `~`. The dependent variable should be an interval variable (like a 0-100 rating), and the group variable must have exactly two groups. `t.test()` leaves out `NA`s automatically.
+The dependent variable and independent variable are separated by a `~`. 
 
   + this is a common format, same for regression
+
+The dependent variable should be an interval variable (like a 0-100 rating)
+
+The group variable must have exactly two groups. `
+
+  + t.test()` leaves out `NA`s automatically.
+
 
 ### Outcome 1: Conservative Party rating {-}
 ```{r}
@@ -213,6 +226,8 @@ This output shows the mean of each group and a confidence interval, but it does 
 ### Making the output easier to read -- `model_parameters()` {-}
 
 The function `model_parameters()` from the package `parameters` turns the t-test output into a clear table. We pipe the t-test into it.
+
+  + the table is actually a tiny one row dataframe, with each number as a column
 ```{r}
 t.test(con_rating ~ born_canada, data = ces) |>
   model_parameters()
@@ -224,7 +239,6 @@ Be careful of the direction of the difference. `t.test()` takes the mean of the 
 
 ### Interpreting the difference {-}
 
-#### Interpretation {-}
 Respondents born elsewhere rate the Conservative Party 9 points higher (on a 0-100 scale) than respondents born in Canada. 
 
 The difference is statistically significant (p < .001), so the correlation very likely isn't due to chance.
@@ -247,11 +261,13 @@ Respondents born elsewhere rate the NDP 0.46 points lower than respondents born 
 
 ### Estimates and confidence intervals -- geom_pointrange() {-}
 
-The output of `model_parameters()` is a data frame, so we can pipe it straight into `ggplot()`. Because the estimate is one-dimensional (you only need either x or y), the other dimension can be used as a name label instead of a variable.
+The output of `model_parameters()` is a data frame, so we can pipe it straight into `ggplot()`. 
+
+Because the estimate is one-dimensional (you only need either x or y), the other dimension can be used as a name label instead of a variable. In this code, y=Difference is the estimate. x="Conservative rating" is just an axis label, so it is in quotes.
 ```{r}
 t.test(con_rating ~ born_canada, data = ces) |>
   model_parameters() |>
-  ggplot(aes(y=Difference,x="Conservative rating")) +
+  ggplot(aes(y=Difference,x="Conservative rating")) + 
   geom_pointrange(aes(ymax=CI_high,ymin=CI_low))
 ```
 

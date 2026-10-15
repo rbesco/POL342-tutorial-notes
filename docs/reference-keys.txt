@@ -29,7 +29,7 @@ plots-for-categorical-variables
 plots-for-interval-variables
 assignment-tips
 credits-2
-regression-and-confidence-intervals
+factor-variables-t-tests-and-regression
 before-the-start-of-class
 recap-1
 factors
