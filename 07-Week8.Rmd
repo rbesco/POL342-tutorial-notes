@@ -1,19 +1,17 @@
 
-# Crosstabs using continuous variables
+# Recoding variables and crosstabs
 
 Week 8 tutorial goals:
-  * Transforming continuous variables into ordinal variables
-  * Creating cross-tabs
-  * Saving cross-tabs
+
+  * Recoding categories: changing and combining categories
+  * Turning continuous variables into categories with `cut()`
+  * Creating and saving cross-tabs
   * Reversing the scale of a variable
 
 ## Set-up
 
 ### Make sure you have your project datasets and `W8.R` {-}
-```{r echo=FALSE, out.width = "100%", fig.align = "center"}
-knitr::include_graphics("images/w8.png")
-```
-
+You also need `ces2025_small.csv`, the CES file we used in Weeks 5 and 6. Put it in the same folder as `W8.R`.
 
 ### Load libraries {-}
 ```{r}
@@ -23,6 +21,78 @@ library(haven)
 library(sjPlot)
 ```
 
+### Load data {-}
+We start with the smaller CES file from Weeks 5 and 6 (`ces2025_small.csv`).
+```{r,eval=F}
+ces <- read.csv("ces2025_small.csv")
+```
+
+```{r,echo=F}
+ces <- read.csv("data/ces2025_small.csv")
+```
+
+## Recode categories
+
+Sometimes we want to change the categories of a variable. We can give the categories clearer names, or combine several categories into fewer. We use `mutate()` and `if_else()`, the same as in Week 5.
+
+### Give categories clearer names {-}
+In Week 6, we saw that `union` is coded 1 = yes and 0 = no. Sometimes values like "yes" and "no" are easier to work with.
+```{r}
+table(ces$union)
+```
+
+If `union` is 1, the new variable is "Yes". Otherwise it is "No".
+```{r}
+ces <- ces |>
+  mutate(union_member = if_else(union == 1, "Yes", "No"))
+```
+
+#### Check the new variable {-}
+Every 1 should be "Yes" and every 0 should be "No". People with `NA` for `union` still have `NA`.
+```{r}
+tab_xtab(var.row = ces$union,
+         var.col = ces$union_member)
+```
+
+### Combine categories: create a region variable {-}
+`province` has 13 categories, and some have very few respondents. We can combine provinces into four regions: West, Ontario, Quebec and Atlantic.
+```{r}
+table(ces$province)
+```
+
+#### Create the region variable with `if_else()` {-}
+Now we need four categories instead of two, so we build the new variable one region at a time. `%in%` (from Week 4) checks whether a value is in a list: `province %in% c("Alberta", "Manitoba")` is `TRUE` for anyone from Alberta or Manitoba.
+
+* The first line creates `region`. People from the West get "West", and everyone else gets `NA` for now.
+* Each line after that fills in one more region. If the test is `FALSE`, we keep what `region` already was.
+```{r}
+ces <- ces |>
+  mutate(region = if_else(province %in% c("British Columbia", "Alberta", "Saskatchewan", "Manitoba"), "West", NA),
+         region = if_else(province == "Ontario", "Ontario", region),
+         region = if_else(province == "Quebec", "Quebec", region),
+         region = if_else(province %in% c("New Brunswick", "Nova Scotia", "Prince Edward Island",
+                                          "Newfoundland and Labrador"), "Atlantic", region))
+```
+
+#### Check the new variable {-}
+Every province should be in one region. The three territories (Yukon, Northwest Territories and Nunavut) are not in any region, so they are `NA`. Only 61 people live there.
+```{r}
+tab_xtab(var.row = ces$province,
+         var.col = ces$region)
+```
+
+#### Crosstab of region and vote choice {-}
+```{r}
+tab_xtab(var.row = ces$vote,
+         var.col = ces$region,
+         show.col.prc = TRUE)
+```
+
+### Clear environment {-}
+```{r}
+rm(list=ls())
+```
+
 ## VDem
 
 ### Load Data {-}
@@ -30,7 +100,7 @@ library(sjPlot)
 vars <- c("country_name", "country_id", "year", 
           "v2x_libdem","e_gdppc","v2mefemjrn", "v2pepwrgen")
 
-vdem_selected <- read.csv("Project/VDem/VDem_post2000.csv") |>
+vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
   select(all_of(vars)) |>
   filter(year==2010) 
 ```
@@ -38,7 +108,7 @@ vdem_selected <- read.csv("Project/VDem/VDem_post2000.csv") |>
 * Variables selected:
   * `v2x_libdem`: Liberal democracy index
   * `e_gdppc`: GDP per capita
-  * `v2mefemjrn`: % of female journalist
+  * `v2mefemjrn`: % of female journalists
   * `v2pepwrgen`: Power distributed by gender
 
 ### Create ordinal categories using function `cut()` {-}
@@ -70,9 +140,9 @@ cut(vdem_selected$v2mefemjrn, # numeric variable
   head()
 ```
 
-#### Create a new dataframe with new ordinal variables {-}
+#### Add the new ordinal variables to the data frame {-}
 ```{r}
-vdem_gender_groups <- vdem_selected |>
+vdem_selected <- vdem_selected |>
   mutate(v2mefemjrn_ord4 = cut(v2mefemjrn, 
                               breaks = 4),
          v2pepwrgen_ord4 = cut(v2pepwrgen, 
@@ -81,15 +151,15 @@ vdem_gender_groups <- vdem_selected |>
 
 #### Crosstabs {-}
 ```{r}
-tab_xtab(var.row = vdem_gender_groups$v2mefemjrn_ord4,
-         var.col = vdem_gender_groups$v2pepwrgen_ord4,
+tab_xtab(var.row = vdem_selected$v2mefemjrn_ord4,
+         var.col = vdem_selected$v2pepwrgen_ord4,
          show.col.prc = TRUE)
 ```
 
 #### Export table {-}
 ```{r}
-tab_xtab(var.row = vdem_gender_groups$v2mefemjrn_ord4,
-         var.col = vdem_gender_groups$v2pepwrgen_ord4,
+tab_xtab(var.row = vdem_selected$v2mefemjrn_ord4,
+         var.col = vdem_selected$v2pepwrgen_ord4,
          show.col.prc = TRUE,
          file="crosstabs.html")
 ```
@@ -105,14 +175,14 @@ ggplot(vdem_selected,aes(x=e_gdppc)) +
 
 #### Crosstabs will not display well {-}
 ```{r}
-vdem_skewed_groups <- vdem_selected |>
-  mutate(e_gdppc_ord4 = cut(e_gdppc, 
+vdem_selected <- vdem_selected |>
+  mutate(e_gdppc_ord4 = cut(e_gdppc,
                             breaks = 4),
-         v2x_libdem_ord4 = cut(v2x_libdem, 
+         v2x_libdem_ord4 = cut(v2x_libdem,
                           breaks = 4))
 
-tab_xtab(var.row = vdem_skewed_groups$e_gdppc_ord4,
-         var.col = vdem_skewed_groups$v2x_libdem_ord4,
+tab_xtab(var.row = vdem_selected$e_gdppc_ord4,
+         var.col = vdem_selected$v2x_libdem_ord4,
          show.col.prc = TRUE)
 ```
 
@@ -122,15 +192,16 @@ tab_xtab(var.row = vdem_skewed_groups$e_gdppc_ord4,
 quantile(vdem_selected$e_gdppc, probs = seq(0, 1, 0.25),na.rm=T)
 ```
 
+The new variables end in `_quant4`, so they don't replace the `_ord4` variables we just made.
 ```{r}
-vdem_quantile_groups <- vdem_selected |>
-  mutate(e_gdppc_ord4 = cut(e_gdppc, 
-                            breaks = quantile(e_gdppc, probs = seq(0, 1, 0.25),na.rm=T)),
-         v2x_libdem_ord4 = cut(v2x_libdem, 
-                               breaks = quantile(v2x_libdem, probs = seq(0, 1, 0.25),na.rm=T)))
+vdem_selected <- vdem_selected |>
+  mutate(e_gdppc_quant4 = cut(e_gdppc,
+                              breaks = quantile(e_gdppc, probs = seq(0, 1, 0.25),na.rm=T)),
+         v2x_libdem_quant4 = cut(v2x_libdem,
+                                 breaks = quantile(v2x_libdem, probs = seq(0, 1, 0.25),na.rm=T)))
 
-tab_xtab(var.row = vdem_quantile_groups$v2x_libdem_ord4,
-         var.col = vdem_quantile_groups$e_gdppc_ord4,
+tab_xtab(var.row = vdem_selected$v2x_libdem_quant4,
+         var.col = vdem_selected$e_gdppc_quant4,
          show.col.prc = TRUE)
 ```
 
@@ -157,10 +228,10 @@ ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") 
 
 #### Create a turnout variable {-}
 ```{r}
-ces_turnout <- ces_selected |>
+ces_selected <- ces_selected |>
   mutate(turnout = if_else(pes25_turnout2025 == 1, "Voted", "Did not vote"))
 
-table(ces_turnout$turnout)
+table(ces_selected$turnout)
 ```
 
 ### Age and turnout {-}
@@ -168,24 +239,24 @@ table(ces_turnout$turnout)
 #### Crosstab using age as it is {-}
 Age has almost 80 different values, so the crosstab has almost 80 columns. It is very hard to read.
 ```{r}
-tab_xtab(var.row = ces_turnout$turnout,
-         var.col = ces_turnout$cps25_age_in_years,
+tab_xtab(var.row = ces_selected$turnout,
+         var.col = ces_selected$cps25_age_in_years,
          show.col.prc = TRUE)
 ```
 
 #### Create age groups using `cut()` {-}
 ```{r}
-ces_turnout <- ces_turnout |>
+ces_selected <- ces_selected |>
   mutate(age_groups = cut(cps25_age_in_years,
                           breaks = c(17, 29, 44, 64, 100)))
 
-table(ces_turnout$age_groups)
+table(ces_selected$age_groups)
 ```
 
 #### Crosstab using age groups {-}
 ```{r}
-tab_xtab(var.row = ces_turnout$turnout,
-         var.col = ces_turnout$age_groups,
+tab_xtab(var.row = ces_selected$turnout,
+         var.col = ces_selected$age_groups,
          show.col.prc = TRUE)
 ```
 
@@ -199,7 +270,7 @@ First, set "Don't know" (5) to `NA`. Then subtract the variable from (highest va
 * 4 becomes 5 - 4 = 1
 
 ```{r}
-ces_turnout <- ces_turnout |>
+ces_selected <- ces_selected |>
   mutate(govt_confusing = if_else(cps25_govt_confusing == 5, NA, cps25_govt_confusing),
          govt_understand = 5 - govt_confusing)
 ```
@@ -207,14 +278,14 @@ ces_turnout <- ces_turnout |>
 #### Check the new variable {-}
 Every 1 in the old variable is a 4 in the new variable, and so on.
 ```{r}
-tab_xtab(var.row = ces_turnout$govt_confusing,
-         var.col = ces_turnout$govt_understand)
+tab_xtab(var.row = ces_selected$govt_confusing,
+         var.col = ces_selected$govt_understand)
 ```
 
 #### Crosstab of understanding politics and turnout {-}
 ```{r}
-tab_xtab(var.row = ces_turnout$turnout,
-         var.col = ces_turnout$govt_understand,
+tab_xtab(var.row = ces_selected$turnout,
+         var.col = ces_selected$govt_understand,
          show.col.prc = TRUE)
 ```
 

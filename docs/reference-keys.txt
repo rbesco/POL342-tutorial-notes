@@ -38,3 +38,10 @@ difference-in-means-t.test
 visualizing-differences-in-means
 linear-regression
 credits-3
+introducing-project-datasets
+set-up
+overview-use-of-data-sets
+vdem
+world-values-survey-wave-7-2017-2022
+asian-barometer-wave-5-2018-2021
+canadian-election-study-2025

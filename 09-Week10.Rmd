@@ -191,7 +191,7 @@ rm(list=ls())
 vars <- c("country_name", "country_id", "year", 
           "e_cow_exports","e_gdppc","e_gdp","e_cow_imports","v2x_pubcorr")
 
-vdem_selected <- read.csv("Project/VDem/VDem_post2000.csv") |>
+vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
   select(all_of(vars)) |>
   filter(year==2014)
 

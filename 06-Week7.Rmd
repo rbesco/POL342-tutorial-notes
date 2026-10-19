@@ -67,7 +67,7 @@ Look at the codebook, which can be found in the same folder as the dataset.
 
 ### Step 2: Select your variables {-}
 
-Select the variables you want and assign them to the variable `vars`. I've selected \
+Select the variables you want and assign them to the variable `vars`. I've selected:
 
 * Country name
 * Country ID
@@ -96,8 +96,8 @@ knitr::include_graphics("images/W7_corr2.png")
 
 Select a year for analysis and use the `filter` function to extract the data for that year. Please note that the VDem file in your project folder is a reduced version of the original dataset. You can find the original dataset [here](https://www.v-dem.net/data/the-v-dem-dataset/). 
 ```{r}
-vdem_selected <- read.csv("Project/VDem/VDem_post2000.csv") |>
-  select(vars) |>
+vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
+  select(all_of(vars)) |>
   filter(year==2019)
 ```
 
@@ -117,7 +117,7 @@ ggplot(vdem_selected,aes(x=v2x_corr)) +
   geom_histogram()
 ```
 
-#### GDP per capita is measured in 10,000 PPP-adjusted dollars.
+#### GDP per capita is measured in thousands of dollars {-}
 
 ```{r}
 ggplot(vdem_selected,aes(x=e_gdppc)) +
@@ -126,7 +126,7 @@ ggplot(vdem_selected,aes(x=e_gdppc)) +
 
 #### Bivariate relationship {-}
 
-A scatter plot is selected here because both variables are continuuous numerical measures.
+A scatter plot is selected here because both variables are continuous numerical measures.
 ```{r}
 ggplot(data=vdem_selected,aes(x=v2x_corr,y=e_gdppc)) +
   geom_point()
@@ -152,7 +152,7 @@ rm(list=ls())
 
 Look at the codebook and choose your variables.
 ```{r}
-vars <- c("B_COUNTRY_ALPHA","Q73","Q236") #confidence in political parties, experts versus government
+vars <- c("B_COUNTRY_ALPHA","Q73","Q236") #confidence in parliament, experts versus government
 ```
 
 ### Step 3: Trim down your data set {-}
@@ -162,7 +162,7 @@ vars <- c("B_COUNTRY_ALPHA","Q73","Q236") #confidence in political parties, expe
 WVS dataset includes a collection of individual surveys in multiple countries. As such, it creates a nested data structure, where we would expect individual-level factors to be confounded by country-level differences. For simplicity, we explore variations within countries.
 ```{r}
 wvs_canada <- read_rds("Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds") |>
-  select(vars) |>
+  select(all_of(vars)) |>
   filter(B_COUNTRY_ALPHA=="CAN") # choice of country: Canada
 ```
 
@@ -216,7 +216,7 @@ wvs_canada_recoded |>
 
 
 ```{r}
-tab_xtab(var.col=wvs_canada$Q73, var.row=wvs_canada$Q236,
+tab_xtab(var.col=wvs_canada_recoded$Q73, var.row=wvs_canada_recoded$Q236,
          show.col.prc = TRUE)
 ```
 
@@ -245,7 +245,7 @@ wvs_canada_recoded |>
 #### United States {-}
 ```{r}
 read_rds("Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds") |>
-  select(vars) |>
+  select(all_of(vars)) |>
   filter(B_COUNTRY_ALPHA=="USA") |>
   mutate(Q73=if_else(Q73<0,
                     NA,
@@ -268,7 +268,7 @@ read_rds("Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds") |>
 #### Japan {-}
 ```{r}
 read_rds("Project/WVS/WVS_Cross-National_Wave_7_rds_v6_0.rds") |>
-  select(vars) |>
+  select(all_of(vars)) |>
   filter(B_COUNTRY_ALPHA=="JPN") |>
   mutate(Q73=if_else(Q73<0,
                     NA,
@@ -335,7 +335,7 @@ vars <- c("country","Year",
 
 ```{r}
 ab_korea <- read_dta("Project/asianbarometer_wave5/20230504_W5_merge_15.dta") |>
-  select(vars) |>
+  select(all_of(vars)) |>
   filter(country==3) # South Korea (refer to codebook)
 
 summary(ab_korea)
@@ -369,7 +369,7 @@ ab_korea_recoded |>
 
 #### Examining the relationship of perceptions of US and views of democracy {-}
 
-#### DV1: q175 {-}
+#### Independent variable 1: q175 {-}
 ```{r}
 ab_korea_recoded |>
   ggplot(aes(fill=factor(q169),x=factor(q175))) +
@@ -377,7 +377,7 @@ ab_korea_recoded |>
   theme_bw()
 ```
 
-#### DV2: q184 {-}
+#### Independent variable 2: q184 {-}
 ```{r}
 ab_korea_recoded |>
   ggplot(aes(fill=factor(q169),x=factor(q184))) +
@@ -400,7 +400,7 @@ vars <- c("cps25_news_cons","cps25_govt_confusing") #news consumption and intern
 For the CES 2025, we don't need the `year` specification.
 ```{r}
 ces_select <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  select(vars)
+  select(all_of(vars))
 ```
 
 ### Step 4: Examine the univariate distribution and bivariate relationship {-}
@@ -415,7 +415,7 @@ summary(ces_select)
 
 #### Examine the variables {-}
 
-Bar chart for ordinal variables. Remember to change the numerical variable into 
+Bar chart for ordinal variables. Remember to change the numerical variable into a factor with `factor()`.
 ```{r}
 ggplot(ces_select,aes(x=factor(cps25_news_cons))) +
   geom_bar()

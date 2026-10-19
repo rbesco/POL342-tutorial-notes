@@ -36,7 +36,7 @@ library(marginaleffects)
 vars <- c("country_name", "country_id", "year", 
           "v2x_corr","e_gdppc")
 
-vdem_2009 <- read.csv("Project/VDem/VDem_post2000.csv") |>
+vdem_2009 <- read.csv("Project/VDem/vdem2000_2023.csv") |>
   dplyr::select(all_of(vars)) |>
   filter(year==2009) 
 ```
