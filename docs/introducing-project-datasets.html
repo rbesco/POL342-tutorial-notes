@@ -300,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
 <ul>
-<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets"><i class="fa fa-check"></i>Download project datasets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets-and-codebooks"><i class="fa fa-check"></i>Download project datasets AND Codebooks</a></li>
 <li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w7.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W7.R</code>) and put everything in your R project folder</a></li>
 <li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
 </ul></li>
@@ -363,16 +363,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introducing-project-datasets" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Introducing project datasets<a href="introducing-project-datasets.html#introducing-project-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Week 7 tutorial goals:
-* Learning to use the project datasets
-+ Canadian Election Study 2025
-+ Varieties of Democracy (VDem)
-+ World Values Survey (Wave 7)
-+ Asian Barometer (Wave 5)</p>
+<p>Week 7 tutorial goals:</p>
+<ul>
+<li><p>Learning to use the project datasets</p>
+<ul>
+<li>Canadian Election Study 2025</li>
+<li>Varieties of Democracy (VDem)</li>
+<li>World Values Survey (Wave 7)</li>
+<li>Asian Barometer (Wave 5)</li>
+</ul></li>
+</ul>
 <div id="set-up" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Set-up<a href="introducing-project-datasets.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="download-project-datasets" class="section level3 unnumbered hasAnchor">
-<h3>Download project datasets<a href="introducing-project-datasets.html#download-project-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="download-project-datasets-and-codebooks" class="section level3 unnumbered hasAnchor">
+<h3>Download project datasets AND Codebooks<a href="introducing-project-datasets.html#download-project-datasets-and-codebooks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Projects folder on Quercus</p>
+<ul>
+<li>Canadian Election Study 2025</li>
+<li>World Values Survey</li>
+<li>Asia Barometer</li>
+<li>Varieties of Democracy</li>
+</ul>
 <p>This will take a while because the files are large.</p>
 </div>
 <div id="download-the-other-file-w7.r-and-put-everything-in-your-r-project-folder" class="section level3 unnumbered hasAnchor">
@@ -395,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is the general approach we will take to use the datasets for the project assignment.</p>
 <div id="step-1-select-one-of-the-four-data-sets" class="section level3 unnumbered hasAnchor">
 <h3>Step 1: Select one of the four data sets<a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Each data set focuses on a different type of data. You will be selecting variables from <em>one dataset</em> for your term project. Take a look at the code book and decide which data set you want to use.</p>
+<p>Each data set focuses on a different type of data. Later you will be selecting variables from <em>one dataset</em> for your term project. Take a look at the code book and decide which data set you want to use.</p>
 </div>
 <div id="step-2-select-your-variables" class="section level3 unnumbered hasAnchor">
 <h3>Step 2: Select your variables<a href="introducing-project-datasets.html#step-2-select-your-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -403,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="step-3-trim-down-the-data-set" class="section level3 unnumbered hasAnchor">
 <h3>Step 3: Trim down the data set<a href="introducing-project-datasets.html#step-3-trim-down-the-data-set" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Before examining the variables, it is helpful to trim down your data set to the variables you have selected.</p>
+<p>Before examining the variables, make a mini-version of the dataset with only the variables you selected.</p>
 <div id="additional-step" class="section level4 unnumbered hasAnchor">
 <h4>Additional step:<a href="introducing-project-datasets.html#additional-step" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -474,14 +485,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bivariate-relationship" class="section level4 unnumbered hasAnchor">
 <h4>Bivariate relationship<a href="introducing-project-datasets.html#bivariate-relationship" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If both variables are nominal/ordinal, we can use a stacked bar chart.</p>
+<p>is.na() is TRUE when a value is missing, so “== FALSE” keeps people who answered.</p>
+<p>Use is.na() on both variables, so excluded if missing on either one</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="introducing-project-datasets.html#cb207-1" tabindex="-1"></a>ces_select <span class="sc">|&gt;</span></span>
-<span id="cb207-2"><a href="introducing-project-datasets.html#cb207-2" tabindex="-1"></a>  <span class="co"># is.na() is TRUE when a value is missing, so &quot;== FALSE&quot; keeps people who answered.</span></span>
-<span id="cb207-3"><a href="introducing-project-datasets.html#cb207-3" tabindex="-1"></a>  <span class="co"># The comma means both conditions must be true. This only affects the plot:</span></span>
-<span id="cb207-4"><a href="introducing-project-datasets.html#cb207-4" tabindex="-1"></a>  <span class="co"># ces_select itself does not change, because we don&#39;t save the result with &lt;-</span></span>
-<span id="cb207-5"><a href="introducing-project-datasets.html#cb207-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(news_cons) <span class="sc">==</span> <span class="cn">FALSE</span>, <span class="fu">is.na</span>(govt_confusing) <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb207-6"><a href="introducing-project-datasets.html#cb207-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(news_cons),<span class="at">fill=</span><span class="fu">factor</span>(govt_confusing))) <span class="sc">+</span></span>
-<span id="cb207-7"><a href="introducing-project-datasets.html#cb207-7" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span> <span class="co"># &quot;fill&quot; makes every bar the same height, so it shows proportions</span></span>
-<span id="cb207-8"><a href="introducing-project-datasets.html#cb207-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<span id="cb207-2"><a href="introducing-project-datasets.html#cb207-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(news_cons) <span class="sc">==</span> <span class="cn">FALSE</span>, <span class="fu">is.na</span>(govt_confusing) <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="co"># comma means both conditions must be true</span></span>
+<span id="cb207-3"><a href="introducing-project-datasets.html#cb207-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(news_cons),<span class="at">fill=</span><span class="fu">factor</span>(govt_confusing))) <span class="sc">+</span></span>
+<span id="cb207-4"><a href="introducing-project-datasets.html#cb207-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span> <span class="co"># &quot;fill&quot; makes every bar the same height, so it shows proportions</span></span>
+<span id="cb207-5"><a href="introducing-project-datasets.html#cb207-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-178-1.png" alt="" width="672" /></p>
 </div>
 </div>

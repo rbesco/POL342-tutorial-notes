@@ -2,7 +2,9 @@
 # Introducing project datasets
 
 Week 7 tutorial goals:
+
   * Learning to use the project datasets
+  
     + Canadian Election Study 2025
     + Varieties of Democracy (VDem)
     + World Values Survey (Wave 7)
@@ -10,9 +12,16 @@ Week 7 tutorial goals:
 
 ## Set-up
 
-### Download project datasets {-}
-This will take a while because the files are large.
+### Download project datasets AND Codebooks {-}
 
+In Projects folder on Quercus
+
+  + Canadian Election Study 2025
+  + World Values Survey
+  + Asia Barometer
+  + Varieties of Democracy
+  
+  This will take a while because the files are large.
 
 ### Download the other file (`W7.R`) and put everything in your R project folder {-}
 
@@ -39,7 +48,7 @@ This is the general approach we will take to use the datasets for the project as
 
 ### Step 1: Select one of the four data sets {-}
 
-Each data set focuses on a different type of data. You will be selecting variables from *one dataset* for your term project. Take a look at the code book and decide which data set you want to use.
+Each data set focuses on a different type of data. Later you will be selecting variables from *one dataset* for your term project. Take a look at the code book and decide which data set you want to use.
 
 ### Step 2: Select your variables {-}
 
@@ -47,7 +56,7 @@ Look at the **codebook** to find your variables.
 
 ### Step 3: Trim down the data set {-}
 
-Before examining the variables, it is helpful to trim down your data set to the variables you have selected.
+Before examining the variables, make a mini-version of the dataset with only the variables you selected.
 
 #### Additional step: {-}
 * For the following data sets, you have to select a subset of the data
@@ -123,12 +132,14 @@ ces_select <- ces_select |> # save the new variables in the same data frame
 #### Bivariate relationship {-}
 
 If both variables are nominal/ordinal, we can use a stacked bar chart.
+
+is.na() is TRUE when a value is missing, so "== FALSE" keeps people who answered.
+
+Use is.na() on both variables, so excluded if missing on either one 
+
 ```{r}
 ces_select |>
-  # is.na() is TRUE when a value is missing, so "== FALSE" keeps people who answered.
-  # The comma means both conditions must be true. This only affects the plot:
-  # ces_select itself does not change, because we don't save the result with <-
-  filter(is.na(news_cons) == FALSE, is.na(govt_confusing) == FALSE) |>
+  filter(is.na(news_cons) == FALSE, is.na(govt_confusing) == FALSE) |> # comma means both conditions must be true
   ggplot(aes(x=factor(news_cons),fill=factor(govt_confusing))) +
   geom_bar(position="fill") + # "fill" makes every bar the same height, so it shows proportions
   theme_bw()
