@@ -41,7 +41,7 @@ credits-3
 introducing-project-datasets
 set-up
 overview-use-of-data-sets
+canadian-election-study-2025
 vdem
 world-values-survey-wave-7-2017-2022
 asian-barometer-wave-5-2018-2021
-canadian-election-study-2025

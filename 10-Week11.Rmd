@@ -30,11 +30,11 @@ library(marginaleffects)
 
 ### Load Data {-}
 ```{r}
-vars <- c("cps25_govt_confusing", "cps25_fed_id", "cps25_age_in_years",
+my_vars <- c("cps25_govt_confusing", "cps25_fed_id", "cps25_age_in_years",
           "cps25_bornin_canada", "pes25_turnout2025", "cps25_party_rating_23")
 
 ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  select(all_of(vars))
+  select(all_of(my_vars))
 ```
 
 * Variables selected:

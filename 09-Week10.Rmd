@@ -33,11 +33,11 @@ library(marginaleffects)
 
 #### Load data and select variables {-}
 ```{r}
-vars <- c("country","Year",
+my_vars <- c("country","Year",
            "q170","q175")
 
 ab_vietnam <- read_dta("Project/asianbarometer_wave5/20230504_W5_merge_15.dta") |>
-  select(all_of(vars)) |>
+  select(all_of(my_vars)) |>
   filter(country==11) # Vietnam
 ```
 
@@ -137,10 +137,10 @@ rm(list=ls())
 
 ### Prepare variables (CES) {-}
 ```{r}
-vars <- c("cps25_interest_gen_1","cps25_news_cons","cps25_govt_confusing") #interest in politics, news consumption and internal political efficacy
+my_vars <- c("cps25_interest_gen_1","cps25_news_cons","cps25_govt_confusing") #interest in politics, news consumption and internal political efficacy
 
 ces_select <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  dplyr::select(all_of(vars))
+  dplyr::select(all_of(my_vars))
 
 ces_dropna <- ces_select |>
   mutate(cps25_govt_confusing=ifelse(cps25_govt_confusing==5, #conditional statement
@@ -188,11 +188,11 @@ rm(list=ls())
 
 ### Prepare variables (VDem) {-}
 ```{r}
-vars <- c("country_name", "country_id", "year", 
+my_vars <- c("country_name", "country_id", "year", 
           "e_cow_exports","e_gdppc","e_gdp","e_cow_imports","v2x_pubcorr")
 
 vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
-  select(all_of(vars)) |>
+  select(all_of(my_vars)) |>
   filter(year==2014)
 
 vdem_trade <- vdem_selected |>

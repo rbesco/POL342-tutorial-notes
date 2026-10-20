@@ -97,11 +97,11 @@ rm(list=ls())
 
 ### Load Data {-}
 ```{r}
-vars <- c("country_name", "country_id", "year", 
+my_vars <- c("country_name", "country_id", "year", 
           "v2x_libdem","e_gdppc","v2mefemjrn", "v2pepwrgen")
 
 vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
-  select(all_of(vars)) |>
+  select(all_of(my_vars)) |>
   filter(year==2010) 
 ```
 
@@ -215,10 +215,10 @@ rm(list=ls())
 
 ### Load Data {-}
 ```{r}
-vars <- c("cps25_age_in_years", "pes25_turnout2025", "cps25_govt_confusing")
+my_vars <- c("cps25_age_in_years", "pes25_turnout2025", "cps25_govt_confusing")
 
 ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  select(all_of(vars))
+  select(all_of(my_vars))
 ```
 
 * Variables selected:

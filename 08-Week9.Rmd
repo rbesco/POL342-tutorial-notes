@@ -33,11 +33,11 @@ library(marginaleffects)
 ## VDem
 
 ```{r}
-vars <- c("country_name", "country_id", "year", 
+my_vars <- c("country_name", "country_id", "year", 
           "v2x_corr","e_gdppc")
 
 vdem_2009 <- read.csv("Project/VDem/vdem2000_2023.csv") |>
-  dplyr::select(all_of(vars)) |>
+  dplyr::select(all_of(my_vars)) |>
   filter(year==2009) 
 ```
 
@@ -131,10 +131,10 @@ rm(list=ls())
 ## Canadian Election Study 2025
 
 ```{r}
-vars <- c("cps25_age_in_years","cps25_news_cons","cps25_govt_confusing") #news consumption and internal political efficacy
+my_vars <- c("cps25_age_in_years","cps25_news_cons","cps25_govt_confusing") #news consumption and internal political efficacy
 
 ces_select <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  dplyr::select(all_of(vars))
+  dplyr::select(all_of(my_vars))
 ```
 
 ### Transform & drop NAs {-}
