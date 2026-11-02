@@ -1,0 +1,3390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Manipulating variables | POL342 R Tutorials</title>
+  <meta name="description" content="Tutorial notes for UTM POL342" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Manipulating variables | POL342 R Tutorials" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial notes for UTM POL342" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Manipulating variables | POL342 R Tutorials" />
+  
+  <meta name="twitter:description" content="Tutorial notes for UTM POL342" />
+  
+
+
+
+<meta name="date" content="2026-11-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducing-project-datasets.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">POL342 Tutorial Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html"><i class="fa fa-check"></i><b>1</b> Getting Started With Data Sets</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#understanding-data-sets"><i class="fa fa-check"></i><b>1.1</b> Understanding data sets</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#basics-of-a-function"><i class="fa fa-check"></i><b>1.2</b> Basics of a function</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#consider-the-first-variable-in-the-data-set"><i class="fa fa-check"></i>Consider the first variable in the data set</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#next-variables-reading-and-math."><i class="fa fa-check"></i>Next variables, “reading” and “math”.</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#measures-of-dispersion"><i class="fa fa-check"></i>Measures of dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-data-sets.html"><a href="getting-started-with-data-sets.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing R and RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio"><i class="fa fa-check"></i><b>2.1</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#what-is-r-what-is-coding"><i class="fa fa-check"></i>What is R? What is coding?</a></li>
+<li class="chapter" data-level="2.1.1" data-path="intro-to-r.html"><a href="intro-to-r.html#rstudio-integrated-development-environment-ide-editor"><i class="fa fa-check"></i><b>2.1.1</b> RStudio: Integrated Development Environment (IDE) editor:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>2.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#a-sophisticated-calculator"><i class="fa fa-check"></i>A sophisticated calculator</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#dataframe-analysis"><i class="fa fa-check"></i>Dataframe Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#opening-data-files"><i class="fa fa-check"></i><b>2.3</b> Opening Data Files</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#working-directories"><i class="fa fa-check"></i>Working Directories</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#r-project-to-organize-our-workflow"><i class="fa fa-check"></i>R project to organize our workflow</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#exploring-the-data"><i class="fa fa-check"></i>Exploring the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#notes-for-assignment-1"><i class="fa fa-check"></i><b>2.4</b> Notes for assignment 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#object-name"><i class="fa fa-check"></i>Object name</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#checking-code-before-submission"><i class="fa fa-check"></i>Checking code before submission</a></li>
+<li class="chapter" data-level="" data-path="intro-to-r.html"><a href="intro-to-r.html#restarting-r-sessions-and-clearing-workspace"><i class="fa fa-check"></i>Restarting R sessions and clearing workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#additional-resources"><i class="fa fa-check"></i><b>2.5</b> Additional Resources</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#credits"><i class="fa fa-check"></i><b>2.6</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data Wrangling with Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#before-the-start-of-each-class"><i class="fa fa-check"></i><b>3.1</b> Before the start of each class</a></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#dataset-un-votes"><i class="fa fa-check"></i><b>3.2</b> Dataset: UN votes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#read-file-as-unvotes-data.frame-object"><i class="fa fa-check"></i>Read file as <code>unvotes</code> data.frame object</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#view-the-data"><i class="fa fa-check"></i>View the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#recap"><i class="fa fa-check"></i><b>3.3</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#conditional-statements-and-operators"><i class="fa fa-check"></i>Conditional statements and operators</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#packages"><i class="fa fa-check"></i><b>3.4</b> Packages</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#installing-packages"><i class="fa fa-check"></i><b>3.4.1</b> Installing Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes-and-tidyverse"><i class="fa fa-check"></i><b>3.5</b> Pipes and Tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#pipes"><i class="fa fa-check"></i>Pipes</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i>Tidyverse functions</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#filter"><i class="fa fa-check"></i>filter()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#reframe"><i class="fa fa-check"></i>reframe()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#group_by"><i class="fa fa-check"></i>group_by()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#mutate"><i class="fa fa-check"></i>mutate()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#select"><i class="fa fa-check"></i>select()</a></li>
+<li class="chapter" data-level="" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#arrange"><i class="fa fa-check"></i>arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#summary"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+<li class="chapter" data-level="3.7" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#more-resources"><i class="fa fa-check"></i><b>3.7</b> More resources</a></li>
+<li class="chapter" data-level="3.8" data-path="data-wrangling-with-tidyverse.html"><a href="data-wrangling-with-tidyverse.html#credits-1"><i class="fa fa-check"></i><b>3.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html"><i class="fa fa-check"></i><b>4</b> Data visualization and Bivariate Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#before-the-start-of-each-class-1"><i class="fa fa-check"></i><b>4.1</b> Before the start of each class</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#download-files-from-quercus"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#install-new-package-and-load-all-packages-required-for-this-class"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#recap-and-some-additional-basics"><i class="fa fa-check"></i><b>4.3</b> Recap and some additional basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#r-scripts"><i class="fa fa-check"></i>R scripts</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#syntax-for-functions-functionnamearguments"><i class="fa fa-check"></i>Syntax for functions: <code>&lt;functionname&gt;(&lt;argument(s)&gt;)</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#arguments-are-function-specific"><i class="fa fa-check"></i>Arguments are function-specific</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#versus"><i class="fa fa-check"></i><code>=</code> versus <code>==</code></a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#omitting-argument-names"><i class="fa fa-check"></i>Omitting Argument Names</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#if_else-function"><i class="fa fa-check"></i><code>if_else()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#data-visualization"><i class="fa fa-check"></i><b>4.4</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#ggplot"><i class="fa fa-check"></i><code>ggplot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#plots-for-categorical-variables"><i class="fa fa-check"></i><b>4.5</b> Plots for categorical variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#univariate-nominalordinal"><i class="fa fa-check"></i>Univariate: nominal/ordinal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#bivariate-two-nominalordinal-variables"><i class="fa fa-check"></i>Bivariate: two nominal/ordinal variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#plots-for-interval-variables"><i class="fa fa-check"></i><b>4.6</b> Plots for interval variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#canadian-election-study-data"><i class="fa fa-check"></i>Canadian Election Study data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#univariate-interval"><i class="fa fa-check"></i>Univariate: interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#bivariate-nominalordinal-and-interval"><i class="fa fa-check"></i>Bivariate: nominal/ordinal and interval</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#bivariate-two-interval-variables"><i class="fa fa-check"></i>Bivariate: two interval variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#assignment-tips"><i class="fa fa-check"></i><b>4.7</b> Assignment tips</a></li>
+<li class="chapter" data-level="4.8" data-path="data-visualization-and-bivariate-analysis.html"><a href="data-visualization-and-bivariate-analysis.html#credits-2"><i class="fa fa-check"></i><b>4.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html"><i class="fa fa-check"></i><b>5</b> Factor Variables, T-tests, and Regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#before-the-start-of-class"><i class="fa fa-check"></i><b>5.1</b> Before the start of class</a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#download-files-from-quercus-1"><i class="fa fa-check"></i>Download files from Quercus</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#install-new-package-and-load-all-packages-required-for-this-class-1"><i class="fa fa-check"></i>Install new package and load all packages required for this class</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#load-data-1"><i class="fa fa-check"></i>Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#recap-1"><i class="fa fa-check"></i><b>5.2</b> Recap</a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#determining-plot-based-on-type-of-variable"><i class="fa fa-check"></i>Determining plot based on type of variable</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#bar-chart-for-a-nominal-variable"><i class="fa fa-check"></i>Bar chart for a nominal variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#factors"><i class="fa fa-check"></i><b>5.3</b> Factors</a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#numbers-that-are-really-categories"><i class="fa fa-check"></i>Numbers that are really categories</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#setting-the-order-of-categories"><i class="fa fa-check"></i>Setting the order of categories</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#canadian-election-study-data-1"><i class="fa fa-check"></i><b>5.4</b> Canadian Election Study data</a></li>
+<li class="chapter" data-level="5.5" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#difference-in-means-t.test"><i class="fa fa-check"></i><b>5.5</b> Difference in means – <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#syntax"><i class="fa fa-check"></i>Syntax</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#outcome-1-conservative-party-rating"><i class="fa fa-check"></i>Outcome 1: Conservative Party rating</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#making-the-output-easier-to-read-model_parameters"><i class="fa fa-check"></i>Making the output easier to read – <code>model_parameters()</code></a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#interpreting-the-difference"><i class="fa fa-check"></i>Interpreting the difference</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#outcome-2-ndp-rating"><i class="fa fa-check"></i>Outcome 2: NDP rating</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#visualizing-differences-in-means"><i class="fa fa-check"></i><b>5.6</b> Visualizing differences in means</a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#estimates-and-confidence-intervals-geom_pointrange"><i class="fa fa-check"></i>Estimates and confidence intervals – geom_pointrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#linear-regression"><i class="fa fa-check"></i><b>5.7</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#load-a-different-dataset-some-variables-from-varieties-of-democracies-data-set"><i class="fa fa-check"></i>Load a different dataset (some variables from Varieties of Democracies data set)</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#v-dem-codebook"><i class="fa fa-check"></i>V-Dem codebook</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#from-ordinal-to-interval"><i class="fa fa-check"></i>From ordinal to interval</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#bivariate-relationship-using-a-scatter-plot-geom_point"><i class="fa fa-check"></i>Bivariate relationship using a scatter plot <code>geom_point()</code></a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#what-does-a-regression-do"><i class="fa fa-check"></i>What does a regression do?</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#running-a-regression-lm"><i class="fa fa-check"></i>Running a regression – <code>lm()</code></a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#interpreting-the-coefficient"><i class="fa fa-check"></i>Interpreting the coefficient</a></li>
+<li class="chapter" data-level="" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#visualizing-regression-line-using-geom_smooth"><i class="fa fa-check"></i>Visualizing regression line using <code>geom_smooth()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="factor-variables-t-tests-and-regression.html"><a href="factor-variables-t-tests-and-regression.html#credits-3"><i class="fa fa-check"></i><b>5.8</b> Credits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html"><i class="fa fa-check"></i><b>6</b> Introducing project datasets</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#set-up"><i class="fa fa-check"></i><b>6.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-project-datasets-and-codebooks"><i class="fa fa-check"></i>Download project datasets AND Codebooks</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#download-the-other-file-w7.r-and-put-everything-in-your-r-project-folder"><i class="fa fa-check"></i>Download the other file (<code>W7.R</code>) and put everything in your R project folder</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#load-libraries"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#overview-use-of-data-sets"><i class="fa fa-check"></i><b>6.2</b> Overview: Use of data sets</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-1-select-one-of-the-four-data-sets"><i class="fa fa-check"></i>Step 1: Select one of the four data sets</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set"><i class="fa fa-check"></i>Step 3: Trim down the data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#canadian-election-study-2025"><i class="fa fa-check"></i><b>6.3</b> Canadian Election Study 2025</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-1"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-1"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#vdem"><i class="fa fa-check"></i><b>6.4</b> VDem</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-2"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-the-data-set-select-a-year"><i class="fa fa-check"></i>Step 3: Trim down the data set (select a year)</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-2"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-1"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#world-values-survey-wave-7-2017-2022"><i class="fa fa-check"></i><b>6.5</b> World Values Survey (Wave 7, 2017-2022)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-3"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-1"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-3"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#other-countries"><i class="fa fa-check"></i>Other countries</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-2"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#asian-barometer-wave-5-2018-2021"><i class="fa fa-check"></i><b>6.6</b> Asian Barometer (Wave 5, 2018-2021)</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-2-select-your-variables-4"><i class="fa fa-check"></i>Step 2: Select your variables</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-3-trim-down-your-data-set-2"><i class="fa fa-check"></i>Step 3: Trim down your data set</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#step-4-examine-the-univariate-distribution-and-bivariate-relationship-4"><i class="fa fa-check"></i>Step 4: Examine the univariate distribution and bivariate relationship</a></li>
+<li class="chapter" data-level="" data-path="introducing-project-datasets.html"><a href="introducing-project-datasets.html#remove-all-from-environment-3"><i class="fa fa-check"></i>Remove all from environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="manipulating-variables.html"><a href="manipulating-variables.html"><i class="fa fa-check"></i><b>7</b> Manipulating variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="manipulating-variables.html"><a href="manipulating-variables.html#set-up-1"><i class="fa fa-check"></i><b>7.1</b> Set-up</a>
+<ul>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#make-sure-you-have-your-project-datasets-and-w8.r"><i class="fa fa-check"></i>Make sure you have your project datasets and <code>W8.R</code></a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#load-libraries-1"><i class="fa fa-check"></i>Load libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="manipulating-variables.html"><a href="manipulating-variables.html#recode-categories-ces-2025"><i class="fa fa-check"></i><b>7.2</b> Recode categories (CES 2025)</a>
+<ul>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#load-data-2"><i class="fa fa-check"></i>Load data</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#reverse-scale"><i class="fa fa-check"></i>Reverse scale</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#combine-categories-create-a-region-variable"><i class="fa fa-check"></i>Combine categories: create a region variable</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="manipulating-variables.html"><a href="manipulating-variables.html#age-groups-and-turnout-ces-2025"><i class="fa fa-check"></i><b>7.3</b> Age groups and turnout (CES 2025)</a>
+<ul>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#create-a-turnout-variable"><i class="fa fa-check"></i>Create a turnout variable</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#age-and-turnout"><i class="fa fa-check"></i>Age and turnout</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#crosstab-of-tariff-support-and-age-groups"><i class="fa fa-check"></i>Crosstab of tariff support and age groups</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#clear-environment"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="manipulating-variables.html"><a href="manipulating-variables.html#turning-continuous-variables-into-categories-v-dem"><i class="fa fa-check"></i><b>7.4</b> Turning continuous variables into categories (V-Dem)</a>
+<ul>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#load-data-3"><i class="fa fa-check"></i>Load data</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#create-ordinal-categories-using-function-cut-1"><i class="fa fa-check"></i>Create ordinal categories using function <code>cut()</code></a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#skewed-variables-gdp-per-capita"><i class="fa fa-check"></i>Skewed variables: GDP per capita</a></li>
+<li class="chapter" data-level="" data-path="manipulating-variables.html"><a href="manipulating-variables.html#clear-environment-1"><i class="fa fa-check"></i>Clear environment</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="manipulating-variables.html"><a href="manipulating-variables.html#credits-4"><i class="fa fa-check"></i><b>7.5</b> Credits</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">POL342 R Tutorials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manipulating-variables" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Manipulating variables<a href="manipulating-variables.html#manipulating-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Week 8 tutorial goals:</p>
+<ul>
+<li>Reversing the scale of a variable</li>
+<li>Changing categories</li>
+<li>Turning continuous variables into categories with <code>cut()</code></li>
+<li>Creating and saving cross-tabs</li>
+</ul>
+<div id="set-up-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Set-up<a href="manipulating-variables.html#set-up-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="make-sure-you-have-your-project-datasets-and-w8.r" class="section level3 unnumbered hasAnchor">
+<h3>Make sure you have your project datasets and <code>W8.R</code><a href="manipulating-variables.html#make-sure-you-have-your-project-datasets-and-w8.r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This week uses two files from your <code>Project</code> folder. They must be in these folders inside your R project folder:</p>
+<ul>
+<li>CES 2025: <code>Project/CES2025/2025 Canadian Election Study v1.dta</code></li>
+<li>V-Dem: <code>Project/VDem/vdem2000_2023.csv</code></li>
+</ul>
+</div>
+<div id="load-libraries-1" class="section level3 unnumbered hasAnchor">
+<h3>Load libraries<a href="manipulating-variables.html#load-libraries-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="manipulating-variables.html#cb243-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb243-2"><a href="manipulating-variables.html#cb243-2" tabindex="-1"></a><span class="co"># install.packages(&quot;haven&quot;) # if you haven&#39;t installed the package</span></span>
+<span id="cb243-3"><a href="manipulating-variables.html#cb243-3" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb243-4"><a href="manipulating-variables.html#cb243-4" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
+</div>
+</div>
+<div id="recode-categories-ces-2025" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Recode categories (CES 2025)<a href="manipulating-variables.html#recode-categories-ces-2025" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes we want to change the categories of a variable. We can reverse the order or combine categories. Use <code>mutate()</code> and <code>if_else()</code>, the same as in Week 5.</p>
+<div id="load-data-2" class="section level3 unnumbered hasAnchor">
+<h3>Load data<a href="manipulating-variables.html#load-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Only load the CES variables we need.</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="manipulating-variables.html#cb244-1" tabindex="-1"></a>my_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cps25_tarrifs_3&quot;</span>, <span class="st">&quot;cps25_tarrifs_1&quot;</span>, <span class="st">&quot;cps25_province&quot;</span>, <span class="st">&quot;cps25_votechoice&quot;</span>,</span>
+<span id="cb244-2"><a href="manipulating-variables.html#cb244-2" tabindex="-1"></a>             <span class="st">&quot;pes25_turnout2025&quot;</span>, <span class="st">&quot;cps25_age_in_years&quot;</span>)</span>
+<span id="cb244-3"><a href="manipulating-variables.html#cb244-3" tabindex="-1"></a></span>
+<span id="cb244-4"><a href="manipulating-variables.html#cb244-4" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;Project/CES2025/2025 Canadian Election Study v1.dta&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb244-5"><a href="manipulating-variables.html#cb244-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(my_vars))</span></code></pre></div>
+<ul>
+<li>Variables selected:
+<ul>
+<li><code>cps25_tarrifs_3</code>: Do you support or oppose retaliatory tariffs against the US? (1 = Strongly support, 2 = Somewhat support, 3 = Somewhat oppose, 4 = Strongly oppose, 5 = Don’t know)</li>
+<li><code>cps25_tarrifs_1</code>: Has the relationship between Canada and the US become better or worse after US President Trump’s election? (1 = Better, 2 = Worse, 3 = Same as before, 4 = Don’t know, 5 = Prefer not to answer)</li>
+<li><code>cps25_province</code>: Province or territory (1 to 13)</li>
+<li><code>cps25_votechoice</code>: Which party do you think you will vote for? (1 to 8, 7 = Don’t know)</li>
+<li><code>pes25_turnout2025</code>: Did you vote in the 2025 federal election? (1 = Yes, 2 to 8 = various responses)</li>
+<li><code>cps25_age_in_years</code>: Age in years</li>
+</ul></li>
+</ul>
+</div>
+<div id="reverse-scale" class="section level3 unnumbered hasAnchor">
+<h3>Reverse scale<a href="manipulating-variables.html#reverse-scale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For <code>cps25_tarrifs_3</code>, a higher number means the person <em>opposes</em> tariffs more. If we want “support for tariffs” variable, reverse the scale.</p>
+<div id="reverse-the-scale-with-if_else" class="section level4 unnumbered hasAnchor">
+<h4>Reverse the scale with <code>if_else()</code><a href="manipulating-variables.html#reverse-the-scale-with-if_else" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can change each category by hand: 1 becomes 4, 2 becomes 3, etc.</p>
+<ul>
+<li>The first line creates <code>support_manual</code>. People who answered 1 get 4, and everyone else gets <code>NA</code> for now.</li>
+<li>Each line after that fills in one more category. If the test is <code>FALSE</code>, we keep what <code>support_manual</code> already was.</li>
+</ul>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="manipulating-variables.html#cb245-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb245-2"><a href="manipulating-variables.html#cb245-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">support_manual =</span> <span class="fu">if_else</span>(cps25_tarrifs_3 <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>),</span>
+<span id="cb245-3"><a href="manipulating-variables.html#cb245-3" tabindex="-1"></a>         <span class="at">support_manual =</span> <span class="fu">if_else</span>(cps25_tarrifs_3 <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">3</span>, support_manual),</span>
+<span id="cb245-4"><a href="manipulating-variables.html#cb245-4" tabindex="-1"></a>         <span class="at">support_manual =</span> <span class="fu">if_else</span>(cps25_tarrifs_3 <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">2</span>, support_manual),</span>
+<span id="cb245-5"><a href="manipulating-variables.html#cb245-5" tabindex="-1"></a>         <span class="at">support_manual =</span> <span class="fu">if_else</span>(cps25_tarrifs_3 <span class="sc">==</span> <span class="dv">4</span>, <span class="dv">1</span>, support_manual))</span></code></pre></div>
+<p>What about “don’t know”(5)?</p>
+</div>
+<div id="shortcut-to-reverse" class="section level4 unnumbered hasAnchor">
+<h4>Shortcut to reverse<a href="manipulating-variables.html#shortcut-to-reverse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Subtract the variable from 5 (highest value + 1).</p>
+<ul>
+<li>1 becomes 5 - 1 = 4</li>
+<li>4 becomes 5 - 4 = 1</li>
+</ul>
+<p>The math would turn “Don’t know” (5) into 5 - 5 = 0, so first set 5 to <code>NA</code> in a new variable, the same as in Week 7.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="manipulating-variables.html#cb246-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb246-2"><a href="manipulating-variables.html#cb246-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tariffs_oppose =</span> <span class="fu">if_else</span>(cps25_tarrifs_3 <span class="sc">==</span> <span class="dv">5</span>, <span class="cn">NA</span>, cps25_tarrifs_3),</span>
+<span id="cb246-3"><a href="manipulating-variables.html#cb246-3" tabindex="-1"></a>         <span class="at">tariffs_support =</span> <span class="dv">5</span> <span class="sc">-</span> tariffs_oppose)</span></code></pre></div>
+<p>What if you want to reverse but have the scale be 0-4?</p>
+</div>
+<div id="check-the-new-variables" class="section level4 unnumbered hasAnchor">
+<h4>Check the new variables<a href="manipulating-variables.html#check-the-new-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Every 1 in the old variable is a 4 in the new variable, and so on.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="manipulating-variables.html#cb247-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>cps25_tarrifs_3,</span>
+<span id="cb247-2"><a href="manipulating-variables.html#cb247-2" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>tariffs_support)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+Do you support or<br>oppose[Field-tariffs_exp_text_en]retaliatory<br>tariffs against t
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+tariffs_support
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+1
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+2
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+3
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+4
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol style="list-style-type: decimal">
+<li>Strongly support
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8730</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">8730</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="2" style="list-style-type: decimal">
+<li>Somewhat support
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">5144</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">5144</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="3" style="list-style-type: decimal">
+<li>Somewhat oppose
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1992</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1992</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="4" style="list-style-type: decimal">
+<li>Strongly oppose
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2646</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2646</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="5" style="list-style-type: decimal">
+<li>Don’t know/<br>Prefer not to answer
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">0</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">2646</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1992</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">5144</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">8730</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">18512</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=NaN · df=12 · Cramer’s V=NaN · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="its-important-to-look-at-categories" class="section level4 unnumbered hasAnchor">
+<h4>It’s important to look at categories<a href="manipulating-variables.html#its-important-to-look-at-categories" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Look at <code>cps25_tarrifs_1</code></p>
+<!--  The categories are not in order: 3 ("Same as before") belongs between 1 ("Better") and 2 ("Worse"). So subtracting from a number would not put it in order.
+
+``` r
+ces_selected |>
+  group_by(cps25_tarrifs_1) |>
+  reframe(n = n())
+```
+
+```
+## # A tibble: 5 × 2
+##   cps25_tarrifs_1                 n
+##   <dbl+lbl>                   <int>
+## 1 1 [1. Better]                 339
+## 2 2 [2. Worse]                18069
+## 3 3 [3. Same as before]        1049
+## 4 4 [4. Don't know]             447
+## 5 5 [5. Prefer not to answer]   276
+```
+
+
+
+
+Union Yes/No example, commented out 2026-11-02 (Week 8 now uses the CES .dta, which has no `union`)
+
+### Give categories clearer names {-}
+In Week 6, we saw that `union` is coded 1 = yes and 0 = no. Sometimes values like "yes" and "no" are easier to work with.
+
+``` r
+table(ces$union)
+```
+
+If `union` is 1, the new variable is "Yes". Otherwise it is "No".
+
+``` r
+ces <- ces |>
+  mutate(union_member = if_else(union == 1, "Yes", "No"))
+```
+
+#### Check the new variable {-}
+Every 1 should be "Yes" and every 0 should be "No". People with `NA` for `union` still have `NA`.
+
+``` r
+tab_xtab(var.row = ces$union,
+         var.col = ces$union_member)
+```
+-->
+</div>
+</div>
+<div id="combine-categories-create-a-region-variable" class="section level3 unnumbered hasAnchor">
+<h3>Combine categories: create a region variable<a href="manipulating-variables.html#combine-categories-create-a-region-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>cps25_province</code> has 13 categories, and some have very few respondents. We can combine provinces into four regions: West, Ontario, Quebec and Atlantic.</p>
+<ul>
+<li><code>table(ces_selected$cps25_province)</code> only shows the codes. This shows the codes, the province names and the number of respondents:</li>
+</ul>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="manipulating-variables.html#cb248-1" tabindex="-1"></a>ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb248-2"><a href="manipulating-variables.html#cb248-2" tabindex="-1"></a>  <span class="fu">group_by</span>(cps25_province) <span class="sc">|&gt;</span></span>
+<span id="cb248-3"><a href="manipulating-variables.html#cb248-3" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 13 × 2
+##    cps25_province                        n
+##    &lt;dbl+lbl&gt;                         &lt;int&gt;
+##  1  1 [1. Alberta]                    2265
+##  2  2 [2. British Columbia]           2738
+##  3  3 [3. Manitoba]                    736
+##  4  4 [4. New Brunswick]               436
+##  5  5 [5. Newfoundland and Labrador]   220
+##  6  6 [6. Northwest Territories]        14
+##  7  7 [7. Nova Scotia]                 524
+##  8  8 [8. Nunavut]                       6
+##  9  9 [9. Ontario]                    7637
+## 10 10 [10. Prince Edward Island]        90
+## 11 11 [11. Quebec]                    4906
+## 12 12 [12. Saskatchewan]               567
+## 13 13 [13. Yukon]                       41</code></pre>
+<div id="create-the-region-variable-with-if_else" class="section level4 unnumbered hasAnchor">
+<h4>Create the region variable with <code>if_else()</code><a href="manipulating-variables.html#create-the-region-variable-with-if_else" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We build the new variable one region at a time, the same way we reversed the scale by hand.</p>
+<ul>
+<li><p>The first line creates <code>region</code>. People from the West get “West”, and everyone else gets <code>NA</code> for now.</p></li>
+<li><p><code>%in%</code> (from Week 4) checks whether a value is in a list: <code>cps25_province %in% c(1, 3)</code> is <code>TRUE</code> for anyone from Alberta (1) or Manitoba (3).</p></li>
+<li><p>Each line after that fills in one more region. If the test is <code>FALSE</code>, keep what <code>region</code> already was.</p></li>
+</ul>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="manipulating-variables.html#cb250-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb250-2"><a href="manipulating-variables.html#cb250-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">if_else</span>(cps25_province <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">12</span>), <span class="st">&quot;West&quot;</span>, <span class="cn">NA</span>), <span class="co"># Alberta, BC, Manitoba, Saskatchewan</span></span>
+<span id="cb250-3"><a href="manipulating-variables.html#cb250-3" tabindex="-1"></a>         <span class="at">region =</span> <span class="fu">if_else</span>(cps25_province <span class="sc">==</span> <span class="dv">9</span>, <span class="st">&quot;Ontario&quot;</span>, region),</span>
+<span id="cb250-4"><a href="manipulating-variables.html#cb250-4" tabindex="-1"></a>         <span class="at">region =</span> <span class="fu">if_else</span>(cps25_province <span class="sc">==</span> <span class="dv">11</span>, <span class="st">&quot;Quebec&quot;</span>, region),</span>
+<span id="cb250-5"><a href="manipulating-variables.html#cb250-5" tabindex="-1"></a>         <span class="at">region =</span> <span class="fu">if_else</span>(cps25_province <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">10</span>), <span class="st">&quot;Atlantic&quot;</span>, region)) <span class="co"># NB, NL, NS, PEI</span></span></code></pre></div>
+</div>
+<div id="check-the-new-variable" class="section level4 unnumbered hasAnchor">
+<h4>Check the new variable<a href="manipulating-variables.html#check-the-new-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Every province should be in one region. The three territories (Yukon, Northwest Territories and Nunavut) are not in any region, so they are <code>NA</code>. Only 61 people live there.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="manipulating-variables.html#cb251-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>cps25_province,</span>
+<span id="cb251-2"><a href="manipulating-variables.html#cb251-2" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>region)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+In which province or<br>territory are you<br>currently living?
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+region
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Atlantic
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Ontario
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Quebec
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+West
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol style="list-style-type: decimal">
+<li>Alberta
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2265</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2265</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="2" style="list-style-type: decimal">
+<li>British Columbia
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2738</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2738</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="3" style="list-style-type: decimal">
+<li>Manitoba
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">736</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">736</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="4" style="list-style-type: decimal">
+<li>New Brunswick
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">436</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">436</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="5" style="list-style-type: decimal">
+<li>Newfoundland and<br>Labrador
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">220</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">220</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="6" style="list-style-type: decimal">
+<li>Northwest<br>Territories
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">0</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="7" style="list-style-type: decimal">
+<li>Nova Scotia
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">524</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">524</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="8" style="list-style-type: decimal">
+<li>Nunavut
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">0</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="9" style="list-style-type: decimal">
+<li>Ontario
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7637</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">7637</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="10" style="list-style-type: decimal">
+<li>Prince Edward<br>Island
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">90</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">90</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="11" style="list-style-type: decimal">
+<li>Quebec
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">4906</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">4906</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="12" style="list-style-type: decimal">
+<li>Saskatchewan
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">567</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">567</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="13" style="list-style-type: decimal">
+<li>Yukon
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">0</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1270</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">7637</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">4906</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">6306</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">20119</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=NaN · df=36 · Cramer’s V=NaN · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="crosstab-of-region-and-vote-choice" class="section level4 unnumbered hasAnchor">
+<h4>Crosstab of region and vote choice<a href="manipulating-variables.html#crosstab-of-region-and-vote-choice" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>First, set “Don’t know” (7) to <code>NA</code>. People who had already voted in advance polls were asked a different question, so they are not included here.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="manipulating-variables.html#cb252-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb252-2"><a href="manipulating-variables.html#cb252-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vote_choice =</span> <span class="fu">if_else</span>(cps25_votechoice <span class="sc">==</span> <span class="dv">7</span>, <span class="cn">NA</span>, cps25_votechoice))</span>
+<span id="cb252-3"><a href="manipulating-variables.html#cb252-3" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="manipulating-variables.html#cb252-4" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>vote_choice,</span>
+<span id="cb252-5"><a href="manipulating-variables.html#cb252-5" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>region,</span>
+<span id="cb252-6"><a href="manipulating-variables.html#cb252-6" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+Which party do you<br>think you will vote<br>for? - Selected<br>Choice
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+region
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Atlantic
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Ontario
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+Quebec
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+West
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol style="list-style-type: decimal">
+<li>Liberal Party
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">516</span><br><span style="color:#339933;">60.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2690</span><br><span style="color:#339933;">51.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1505</span><br><span style="color:#339933;">42.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1795</span><br><span style="color:#339933;">41.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">6506</span><br><span style="color:#339933;">46.5 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="2" style="list-style-type: decimal">
+<li>Conservative<br>Party
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">236</span><br><span style="color:#339933;">27.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1848</span><br><span style="color:#339933;">35.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">701</span><br><span style="color:#339933;">19.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1849</span><br><span style="color:#339933;">42.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">4634</span><br><span style="color:#339933;">33.1 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="3" style="list-style-type: decimal">
+<li>NDP
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">63</span><br><span style="color:#339933;">7.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">488</span><br><span style="color:#339933;">9.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">191</span><br><span style="color:#339933;">5.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">513</span><br><span style="color:#339933;">11.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1255</span><br><span style="color:#339933;">9 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="4" style="list-style-type: decimal">
+<li>Bloc Québécois
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1011</span><br><span style="color:#339933;">28.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1011</span><br><span style="color:#339933;">7.2 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="5" style="list-style-type: decimal">
+<li>Green Party
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">1.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">141</span><br><span style="color:#339933;">2.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">62</span><br><span style="color:#339933;">1.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">100</span><br><span style="color:#339933;">2.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">316</span><br><span style="color:#339933;">2.3 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="6" style="list-style-type: decimal">
+<li>Another party<br>(please specify)
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">5</span><br><span style="color:#339933;">0.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">0.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">0.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">23</span><br><span style="color:#339933;">0.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">82</span><br><span style="color:#339933;">0.6 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+<ol start="8" style="list-style-type: decimal">
+<li>People’s Party
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">16</span><br><span style="color:#339933;">1.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">74</span><br><span style="color:#339933;">1.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">32</span><br><span style="color:#339933;">0.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">60</span><br><span style="color:#339933;">1.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">182</span><br><span style="color:#339933;">1.3 %</span>
+</td>
+</tr></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">849</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">5268</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">3529</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">4340</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">13986</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=3522.415 · df=18 · Cramer’s V=0.290 · p=0.000
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="age-groups-and-turnout-ces-2025" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Age groups and turnout (CES 2025)<a href="manipulating-variables.html#age-groups-and-turnout-ces-2025" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We keep using <code>ces_selected</code>.</p>
+<div id="create-a-turnout-variable" class="section level3 unnumbered hasAnchor">
+<h3>Create a turnout variable<a href="manipulating-variables.html#create-a-turnout-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="manipulating-variables.html#cb253-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb253-2"><a href="manipulating-variables.html#cb253-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">turnout =</span> <span class="fu">if_else</span>(pes25_turnout2025 <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Voted&quot;</span>, <span class="st">&quot;Did not vote&quot;</span>))</span>
+<span id="cb253-3"><a href="manipulating-variables.html#cb253-3" tabindex="-1"></a></span>
+<span id="cb253-4"><a href="manipulating-variables.html#cb253-4" tabindex="-1"></a><span class="fu">table</span>(ces_selected<span class="sc">$</span>turnout)</span></code></pre></div>
+<pre><code>## 
+## Did not vote        Voted 
+##         1509        12566</code></pre>
+<p>Wait! Is something wrong with this code? Possibly more than one thing!</p>
+</div>
+<div id="age-and-turnout" class="section level3 unnumbered hasAnchor">
+<h3>Age and turnout<a href="manipulating-variables.html#age-and-turnout" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="crosstab-using-age-as-it-is" class="section level4 unnumbered hasAnchor">
+<h4>Crosstab using age as it is<a href="manipulating-variables.html#crosstab-using-age-as-it-is" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Age has almost 80 different values, so the crosstab has almost 80 columns. It is very hard to read.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="manipulating-variables.html#cb255-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>turnout,</span>
+<span id="cb255-2"><a href="manipulating-variables.html#cb255-2" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>cps25_age_in_years,</span>
+<span id="cb255-3"><a href="manipulating-variables.html#cb255-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+turnout
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="77">
+To make sure we are<br>talking to a cross<br>section of<br>Canadians, we need<br>to get a
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="18" style="list-style-type: decimal">
+<li>18
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="19" style="list-style-type: decimal">
+<li>19
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="20" style="list-style-type: decimal">
+<li>20
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="21" style="list-style-type: decimal">
+<li>21
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="22" style="list-style-type: decimal">
+<li>22
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="23" style="list-style-type: decimal">
+<li>23
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="24" style="list-style-type: decimal">
+<li>24
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="25" style="list-style-type: decimal">
+<li>25
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="26" style="list-style-type: decimal">
+<li>26
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="27" style="list-style-type: decimal">
+<li>27
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="28" style="list-style-type: decimal">
+<li>28
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="29" style="list-style-type: decimal">
+<li>29
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="30" style="list-style-type: decimal">
+<li>30
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="31" style="list-style-type: decimal">
+<li>31
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="32" style="list-style-type: decimal">
+<li>32
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="33" style="list-style-type: decimal">
+<li>33
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="34" style="list-style-type: decimal">
+<li>34
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="35" style="list-style-type: decimal">
+<li>35
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="36" style="list-style-type: decimal">
+<li>36
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="37" style="list-style-type: decimal">
+<li>37
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="38" style="list-style-type: decimal">
+<li>38
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="39" style="list-style-type: decimal">
+<li>39
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="40" style="list-style-type: decimal">
+<li>40
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="41" style="list-style-type: decimal">
+<li>41
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="42" style="list-style-type: decimal">
+<li>42
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="43" style="list-style-type: decimal">
+<li>43
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="44" style="list-style-type: decimal">
+<li>44
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="45" style="list-style-type: decimal">
+<li>45
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="46" style="list-style-type: decimal">
+<li>46
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="47" style="list-style-type: decimal">
+<li>47
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="48" style="list-style-type: decimal">
+<li>48
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="49" style="list-style-type: decimal">
+<li>49
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="50" style="list-style-type: decimal">
+<li>50
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="51" style="list-style-type: decimal">
+<li>51
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="52" style="list-style-type: decimal">
+<li>52
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="53" style="list-style-type: decimal">
+<li>53
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="54" style="list-style-type: decimal">
+<li>54
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="55" style="list-style-type: decimal">
+<li>55
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="56" style="list-style-type: decimal">
+<li>56
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="57" style="list-style-type: decimal">
+<li>57
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="58" style="list-style-type: decimal">
+<li>58
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="59" style="list-style-type: decimal">
+<li>59
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="60" style="list-style-type: decimal">
+<li>60
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="61" style="list-style-type: decimal">
+<li>61
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="62" style="list-style-type: decimal">
+<li>62
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="63" style="list-style-type: decimal">
+<li>63
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="64" style="list-style-type: decimal">
+<li>64
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="65" style="list-style-type: decimal">
+<li>65
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="66" style="list-style-type: decimal">
+<li>66
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="67" style="list-style-type: decimal">
+<li>67
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="68" style="list-style-type: decimal">
+<li>68
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="69" style="list-style-type: decimal">
+<li>69
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="70" style="list-style-type: decimal">
+<li>70
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="71" style="list-style-type: decimal">
+<li>71
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="72" style="list-style-type: decimal">
+<li>72
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="73" style="list-style-type: decimal">
+<li>73
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="74" style="list-style-type: decimal">
+<li>74
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="75" style="list-style-type: decimal">
+<li>75
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="76" style="list-style-type: decimal">
+<li>76
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="77" style="list-style-type: decimal">
+<li>77
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="78" style="list-style-type: decimal">
+<li>78
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="79" style="list-style-type: decimal">
+<li>79
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="80" style="list-style-type: decimal">
+<li>80
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="81" style="list-style-type: decimal">
+<li>81
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="82" style="list-style-type: decimal">
+<li>82
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="83" style="list-style-type: decimal">
+<li>83
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="84" style="list-style-type: decimal">
+<li>84
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="85" style="list-style-type: decimal">
+<li>85
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="86" style="list-style-type: decimal">
+<li>86
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="87" style="list-style-type: decimal">
+<li>87
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="88" style="list-style-type: decimal">
+<li>88
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="89" style="list-style-type: decimal">
+<li>89
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="90" style="list-style-type: decimal">
+<li>90
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="91" style="list-style-type: decimal">
+<li>91
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="92" style="list-style-type: decimal">
+<li>92
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="93" style="list-style-type: decimal">
+<li>93
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+<ol start="96" style="list-style-type: decimal">
+<li>96
+</td>
+</tr></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+Did not vote
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">23</span><br><span style="color:#339933;">29.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">18.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">10</span><br><span style="color:#339933;">13.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">24</span><br><span style="color:#339933;">21.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">14.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">23</span><br><span style="color:#339933;">16.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">41</span><br><span style="color:#339933;">23 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">31</span><br><span style="color:#339933;">17.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">14.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">29</span><br><span style="color:#339933;">18.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">46</span><br><span style="color:#339933;">25.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">11.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">31</span><br><span style="color:#339933;">14.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">38</span><br><span style="color:#339933;">16.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">50</span><br><span style="color:#339933;">19.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">33</span><br><span style="color:#339933;">14 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">54</span><br><span style="color:#339933;">18.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">28</span><br><span style="color:#339933;">12 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">12.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">30</span><br><span style="color:#339933;">13.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">41</span><br><span style="color:#339933;">18.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">11.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">34</span><br><span style="color:#339933;">13.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">30</span><br><span style="color:#339933;">15.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">36</span><br><span style="color:#339933;">14.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">26</span><br><span style="color:#339933;">12.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">38</span><br><span style="color:#339933;">14.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">41</span><br><span style="color:#339933;">14.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">35</span><br><span style="color:#339933;">15 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">28</span><br><span style="color:#339933;">12.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">26</span><br><span style="color:#339933;">11.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">8.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">31</span><br><span style="color:#339933;">14.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">19</span><br><span style="color:#339933;">9.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">21</span><br><span style="color:#339933;">10.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">9.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">8.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">20</span><br><span style="color:#339933;">9.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">8.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">35</span><br><span style="color:#339933;">12.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">9.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">17</span><br><span style="color:#339933;">6.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">21</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">19</span><br><span style="color:#339933;">6.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">28</span><br><span style="color:#339933;">8.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">27</span><br><span style="color:#339933;">7.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">17</span><br><span style="color:#339933;">7.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">17</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">5</span><br><span style="color:#339933;">1.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">5.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">16</span><br><span style="color:#339933;">6.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">10</span><br><span style="color:#339933;">4.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">6.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">6.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#339933;">3.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">3.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#339933;">3.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#339933;">3.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">2.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">5</span><br><span style="color:#339933;">5.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">7.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">5</span><br><span style="color:#339933;">6.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#339933;">8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">2.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">2.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">6.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">12.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1509</span><br><span style="color:#339933;">10.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+Voted
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">56</span><br><span style="color:#339933;">70.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">68</span><br><span style="color:#339933;">81.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">65</span><br><span style="color:#339933;">86.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">90</span><br><span style="color:#339933;">78.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">107</span><br><span style="color:#339933;">85.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">114</span><br><span style="color:#339933;">83.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">137</span><br><span style="color:#339933;">77 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">147</span><br><span style="color:#339933;">82.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">130</span><br><span style="color:#339933;">85.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">129</span><br><span style="color:#339933;">81.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">134</span><br><span style="color:#339933;">74.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">163</span><br><span style="color:#339933;">88.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">179</span><br><span style="color:#339933;">85.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">195</span><br><span style="color:#339933;">83.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">211</span><br><span style="color:#339933;">80.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">203</span><br><span style="color:#339933;">86 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">235</span><br><span style="color:#339933;">81.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">205</span><br><span style="color:#339933;">88 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">186</span><br><span style="color:#339933;">87.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">199</span><br><span style="color:#339933;">86.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">184</span><br><span style="color:#339933;">81.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">202</span><br><span style="color:#339933;">88.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">226</span><br><span style="color:#339933;">86.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">162</span><br><span style="color:#339933;">84.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">208</span><br><span style="color:#339933;">85.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">187</span><br><span style="color:#339933;">87.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">225</span><br><span style="color:#339933;">85.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">237</span><br><span style="color:#339933;">85.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">199</span><br><span style="color:#339933;">85 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">197</span><br><span style="color:#339933;">87.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">196</span><br><span style="color:#339933;">88.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">160</span><br><span style="color:#339933;">91.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">187</span><br><span style="color:#339933;">85.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">173</span><br><span style="color:#339933;">90.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">177</span><br><span style="color:#339933;">89.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">204</span><br><span style="color:#339933;">90.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">250</span><br><span style="color:#339933;">91.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">191</span><br><span style="color:#339933;">90.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">240</span><br><span style="color:#339933;">91.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">240</span><br><span style="color:#339933;">93 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">247</span><br><span style="color:#339933;">87.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">245</span><br><span style="color:#339933;">90.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">253</span><br><span style="color:#339933;">93.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">277</span><br><span style="color:#339933;">93 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">276</span><br><span style="color:#339933;">93.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">285</span><br><span style="color:#339933;">91.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">327</span><br><span style="color:#339933;">92.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">201</span><br><span style="color:#339933;">92.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">227</span><br><span style="color:#339933;">93 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">246</span><br><span style="color:#339933;">95 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">257</span><br><span style="color:#339933;">98.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">269</span><br><span style="color:#339933;">94.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">221</span><br><span style="color:#339933;">93.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">235</span><br><span style="color:#339933;">95.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">219</span><br><span style="color:#339933;">93.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">178</span><br><span style="color:#339933;">93.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">179</span><br><span style="color:#339933;">96.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">246</span><br><span style="color:#339933;">95.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">214</span><br><span style="color:#339933;">96.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">190</span><br><span style="color:#339933;">96.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">152</span><br><span style="color:#339933;">96.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">141</span><br><span style="color:#339933;">97.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">88</span><br><span style="color:#339933;">94.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">99</span><br><span style="color:#339933;">92.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">70</span><br><span style="color:#339933;">93.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">69</span><br><span style="color:#339933;">92 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">43</span><br><span style="color:#339933;">97.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">34</span><br><span style="color:#339933;">97.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">26</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">93.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">87.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">6</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12566</span><br><span style="color:#339933;">89.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">79</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">83</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">75</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">114</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">125</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">137</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">152</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">158</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">180</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">185</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">210</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">233</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">261</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">236</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">289</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">233</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">213</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">229</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">225</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">229</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">260</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">192</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">244</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">213</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">263</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">278</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">234</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">225</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">222</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">175</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">218</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">192</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">198</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">226</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">272</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">211</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">262</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">258</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">282</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">272</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">270</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">298</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">295</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">313</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">354</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">218</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">244</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">259</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">262</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">284</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">237</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">245</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">234</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">190</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">185</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">258</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">221</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">196</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">158</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">144</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">93</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">107</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">75</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">75</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">44</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">35</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">26</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">18</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">16</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">8</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">6</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">3</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">3</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">14075</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="79">
+χ<sup>2</sup>=420.449 · df=76 · Cramer’s V=0.173 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="create-ordinal-categories-using-function-cut" class="section level4 unnumbered hasAnchor">
+<h4>Create ordinal categories using function <code>cut()</code><a href="manipulating-variables.html#create-ordinal-categories-using-function-cut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>cut()</code> turns a numeric variable into categories.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="manipulating-variables.html#cb256-1" tabindex="-1"></a>?cut <span class="co"># pull up the documentation for `cut()`</span></span></code></pre></div>
+<p><img src="images/w8_cut.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="create-age-groups-using-cut" class="section level4 unnumbered hasAnchor">
+<h4>Create age groups using <code>cut()</code><a href="manipulating-variables.html#create-age-groups-using-cut" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="manipulating-variables.html#cb257-1" tabindex="-1"></a>ces_selected <span class="ot">&lt;-</span> ces_selected <span class="sc">|&gt;</span></span>
+<span id="cb257-2"><a href="manipulating-variables.html#cb257-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_groups =</span> <span class="fu">cut</span>(cps25_age_in_years,</span>
+<span id="cb257-3"><a href="manipulating-variables.html#cb257-3" tabindex="-1"></a>                          <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">29</span>, <span class="dv">44</span>, <span class="dv">64</span>, <span class="dv">100</span>)))</span>
+<span id="cb257-4"><a href="manipulating-variables.html#cb257-4" tabindex="-1"></a></span>
+<span id="cb257-5"><a href="manipulating-variables.html#cb257-5" tabindex="-1"></a><span class="fu">table</span>(ces_selected<span class="sc">$</span>age_groups)</span></code></pre></div>
+<pre><code>## 
+##  (17,29]  (29,44]  (44,64] (64,100] 
+##     3068     5343     6984     4785</code></pre>
+<p>Note: cut includes to the right, so <code>(17,29]</code> means 18 to 29. Someone who is 29 is in the first group, and someone who is 30 is in the second.</p>
+</div>
+<div id="crosstab-using-age-groups" class="section level4 unnumbered hasAnchor">
+<h4>Crosstab using age groups<a href="manipulating-variables.html#crosstab-using-age-groups" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="manipulating-variables.html#cb259-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>turnout,</span>
+<span id="cb259-2"><a href="manipulating-variables.html#cb259-2" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>age_groups,</span>
+<span id="cb259-3"><a href="manipulating-variables.html#cb259-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+turnout
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+age_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(17,29]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(29,44]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(44,64]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(64,100]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+Did not vote
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">304</span><br><span style="color:#339933;">18.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">523</span><br><span style="color:#339933;">14.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">494</span><br><span style="color:#339933;">9.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">188</span><br><span style="color:#339933;">4.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1509</span><br><span style="color:#339933;">10.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+Voted
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1340</span><br><span style="color:#339933;">81.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3007</span><br><span style="color:#339933;">85.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">4561</span><br><span style="color:#339933;">90.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3658</span><br><span style="color:#339933;">95.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12566</span><br><span style="color:#339933;">89.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">1644</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">3530</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">5055</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">3846</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">14075</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=306.999 · df=3 · Cramer’s V=0.148 · p=0.000
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="crosstab-of-tariff-support-and-age-groups" class="section level3 unnumbered hasAnchor">
+<h3>Crosstab of tariff support and age groups<a href="manipulating-variables.html#crosstab-of-tariff-support-and-age-groups" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="manipulating-variables.html#cb260-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> ces_selected<span class="sc">$</span>tariffs_support,</span>
+<span id="cb260-2"><a href="manipulating-variables.html#cb260-2" tabindex="-1"></a>         <span class="at">var.col =</span> ces_selected<span class="sc">$</span>age_groups,</span>
+<span id="cb260-3"><a href="manipulating-variables.html#cb260-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+tariffs_support
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+age_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(17,29]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(29,44]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(44,64]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(64,100]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+1
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">408</span><br><span style="color:#339933;">15.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">727</span><br><span style="color:#339933;">15.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1020</span><br><span style="color:#339933;">15.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">491</span><br><span style="color:#339933;">10.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2646</span><br><span style="color:#339933;">14.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+2
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">378</span><br><span style="color:#339933;">14.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">615</span><br><span style="color:#339933;">12.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">629</span><br><span style="color:#339933;">9.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">370</span><br><span style="color:#339933;">8.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">1992</span><br><span style="color:#339933;">10.8 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+3
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">872</span><br><span style="color:#339933;">33 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1344</span><br><span style="color:#339933;">28 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1675</span><br><span style="color:#339933;">25.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1253</span><br><span style="color:#339933;">27.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">5144</span><br><span style="color:#339933;">27.8 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+4
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">987</span><br><span style="color:#339933;">37.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2113</span><br><span style="color:#339933;">44 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3163</span><br><span style="color:#339933;">48.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2467</span><br><span style="color:#339933;">53.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">8730</span><br><span style="color:#339933;">47.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">2645</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">4799</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">6487</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">4581</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">18512</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=288.359 · df=9 · Cramer’s V=0.072 · p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="clear-environment" class="section level3 unnumbered hasAnchor">
+<h3>Clear environment<a href="manipulating-variables.html#clear-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="manipulating-variables.html#cb261-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+</div>
+</div>
+<div id="turning-continuous-variables-into-categories-v-dem" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Turning continuous variables into categories (V-Dem)<a href="manipulating-variables.html#turning-continuous-variables-into-categories-v-dem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-data-3" class="section level3 unnumbered hasAnchor">
+<h3>Load data<a href="manipulating-variables.html#load-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="manipulating-variables.html#cb262-1" tabindex="-1"></a>my_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_id&quot;</span>, <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb262-2"><a href="manipulating-variables.html#cb262-2" tabindex="-1"></a>          <span class="st">&quot;v2x_libdem&quot;</span>,<span class="st">&quot;e_gdppc&quot;</span>,<span class="st">&quot;v2mefemjrn&quot;</span>, <span class="st">&quot;v2pepwrgen&quot;</span>)</span>
+<span id="cb262-3"><a href="manipulating-variables.html#cb262-3" tabindex="-1"></a></span>
+<span id="cb262-4"><a href="manipulating-variables.html#cb262-4" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Project/VDem/vdem2000_2023.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb262-5"><a href="manipulating-variables.html#cb262-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(my_vars)) <span class="sc">|&gt;</span></span>
+<span id="cb262-6"><a href="manipulating-variables.html#cb262-6" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2010</span>)</span></code></pre></div>
+<ul>
+<li>Variables selected:
+<ul>
+<li><code>v2x_libdem</code>: Liberal democracy index</li>
+<li><code>e_gdppc</code>: GDP per capita</li>
+<li><code>v2mefemjrn</code>: % of female journalists</li>
+<li><code>v2pepwrgen</code>: Power distributed by gender</li>
+</ul></li>
+</ul>
+</div>
+<div id="create-ordinal-categories-using-function-cut-1" class="section level3 unnumbered hasAnchor">
+<h3>Create ordinal categories using function <code>cut()</code><a href="manipulating-variables.html#create-ordinal-categories-using-function-cut-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="consider-this-variable-v2mefemjrn-of-female-journalists" class="section level4 unnumbered hasAnchor">
+<h4>Consider this variable: v2mefemjrn (% of female journalists)<a href="manipulating-variables.html#consider-this-variable-v2mefemjrn-of-female-journalists" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/w8_vdemExample.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="manipulating-variables.html#cb263-1" tabindex="-1"></a><span class="fu">head</span>(vdem_selected<span class="sc">$</span>v2mefemjrn)</span></code></pre></div>
+<pre><code>## [1] 36.857 39.000 50.294 40.167 36.406 42.688</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="manipulating-variables.html#cb265-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb265-2"><a href="manipulating-variables.html#cb265-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb265-3"><a href="manipulating-variables.html#cb265-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## [1] (24.4,38.5] (38.5,52.5] (38.5,52.5] (38.5,52.5] (24.4,38.5] (38.5,52.5]
+## Levels: (10.3,24.4] (24.4,38.5] (38.5,52.5] (52.5,66.7]</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="manipulating-variables.html#cb267-1" tabindex="-1"></a><span class="fu">cut</span>(vdem_selected<span class="sc">$</span>v2mefemjrn, <span class="co"># numeric variable</span></span>
+<span id="cb267-2"><a href="manipulating-variables.html#cb267-2" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">70</span>)) <span class="sc">|&gt;</span> <span class="co"># either number of intervals OR list of cut points</span></span>
+<span id="cb267-3"><a href="manipulating-variables.html#cb267-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## [1] (30,50] (30,50] (50,70] (30,50] (30,50] (30,50]
+## Levels: (10,30] (30,50] (50,70]</code></pre>
+</div>
+<div id="add-the-new-ordinal-variables-to-the-data-frame" class="section level4 unnumbered hasAnchor">
+<h4>Add the new ordinal variables to the data frame<a href="manipulating-variables.html#add-the-new-ordinal-variables-to-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="manipulating-variables.html#cb269-1" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb269-2"><a href="manipulating-variables.html#cb269-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">female_journalists_groups =</span> <span class="fu">cut</span>(v2mefemjrn,</span>
+<span id="cb269-3"><a href="manipulating-variables.html#cb269-3" tabindex="-1"></a>                                         <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb269-4"><a href="manipulating-variables.html#cb269-4" tabindex="-1"></a>         <span class="at">gender_power_groups =</span> <span class="fu">cut</span>(v2pepwrgen,</span>
+<span id="cb269-5"><a href="manipulating-variables.html#cb269-5" tabindex="-1"></a>                                   <span class="at">breaks =</span> <span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="crosstab-of-female-journalists-and-gender-power" class="section level4 unnumbered hasAnchor">
+<h4>Crosstab of female journalists and gender power<a href="manipulating-variables.html#crosstab-of-female-journalists-and-gender-power" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="manipulating-variables.html#cb270-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> vdem_selected<span class="sc">$</span>female_journalists_groups,</span>
+<span id="cb270-2"><a href="manipulating-variables.html#cb270-2" tabindex="-1"></a>         <span class="at">var.col =</span> vdem_selected<span class="sc">$</span>gender_power_groups,</span>
+<span id="cb270-3"><a href="manipulating-variables.html#cb270-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+female_journalists_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+gender_power_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-1.97,-0.622]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-0.622,0.724]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.724,2.07]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(2.07,3.42]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(10.3,24.4]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">50 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">18.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">11.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">28</span><br><span style="color:#339933;">15.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.4,38.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">43.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">51.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">37</span><br><span style="color:#339933;">38.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">68</span><br><span style="color:#339933;">38.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(38.5,52.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">6.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">25.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">40</span><br><span style="color:#339933;">41.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">78.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">70</span><br><span style="color:#339933;">39.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(52.5,66.7]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">8.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12</span><br><span style="color:#339933;">6.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">16</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">96</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">23</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=39.809 · df=9 · Cramer’s V=0.273 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="save-a-crosstab" class="section level4 unnumbered hasAnchor">
+<h4>Save a crosstab<a href="manipulating-variables.html#save-a-crosstab" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="manipulating-variables.html#cb271-1" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> vdem_selected<span class="sc">$</span>female_journalists_groups,</span>
+<span id="cb271-2"><a href="manipulating-variables.html#cb271-2" tabindex="-1"></a>         <span class="at">var.col =</span> vdem_selected<span class="sc">$</span>gender_power_groups,</span>
+<span id="cb271-3"><a href="manipulating-variables.html#cb271-3" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb271-4"><a href="manipulating-variables.html#cb271-4" tabindex="-1"></a>         <span class="at">file=</span><span class="st">&quot;crosstabs.html&quot;</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+female_journalists_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+gender_power_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-1.97,-0.622]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(-0.622,0.724]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.724,2.07]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(2.07,3.42]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(10.3,24.4]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">50 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">18.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">11.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">28</span><br><span style="color:#339933;">15.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.4,38.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">43.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">22</span><br><span style="color:#339933;">51.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">37</span><br><span style="color:#339933;">38.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">68</span><br><span style="color:#339933;">38.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(38.5,52.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">6.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">25.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">40</span><br><span style="color:#339933;">41.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">78.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">70</span><br><span style="color:#339933;">39.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(52.5,66.7]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">8</span><br><span style="color:#339933;">8.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">8.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">12</span><br><span style="color:#339933;">6.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">16</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">96</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">23</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">178</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=39.809 · df=9 · Cramer’s V=0.273 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+<p>For your final project, open the html file on your laptops and copy the table into your word document</p>
+</div>
+</div>
+<div id="skewed-variables-gdp-per-capita" class="section level3 unnumbered hasAnchor">
+<h3>Skewed variables: GDP per capita<a href="manipulating-variables.html#skewed-variables-gdp-per-capita" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="manipulating-variables.html#cb272-1" tabindex="-1"></a><span class="fu">ggplot</span>(vdem_selected,<span class="fu">aes</span>(<span class="at">x=</span>e_gdppc)) <span class="sc">+</span></span>
+<span id="cb272-2"><a href="manipulating-variables.html#cb272-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="POL342-tutorial-notes_files/figure-html/unnamed-chunk-244-1.png" alt="" width="672" /></p>
+<div id="crosstabs-will-not-display-well" class="section level4 unnumbered hasAnchor">
+<h4>Crosstabs will not display well<a href="manipulating-variables.html#crosstabs-will-not-display-well" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="manipulating-variables.html#cb273-1" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb273-2"><a href="manipulating-variables.html#cb273-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gdp_groups =</span> <span class="fu">cut</span>(e_gdppc,</span>
+<span id="cb273-3"><a href="manipulating-variables.html#cb273-3" tabindex="-1"></a>                          <span class="at">breaks =</span> <span class="dv">4</span>),</span>
+<span id="cb273-4"><a href="manipulating-variables.html#cb273-4" tabindex="-1"></a>         <span class="at">democracy_groups =</span> <span class="fu">cut</span>(v2x_libdem,</span>
+<span id="cb273-5"><a href="manipulating-variables.html#cb273-5" tabindex="-1"></a>                                <span class="at">breaks =</span> <span class="dv">4</span>))</span>
+<span id="cb273-6"><a href="manipulating-variables.html#cb273-6" tabindex="-1"></a></span>
+<span id="cb273-7"><a href="manipulating-variables.html#cb273-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> vdem_selected<span class="sc">$</span>gdp_groups,</span>
+<span id="cb273-8"><a href="manipulating-variables.html#cb273-8" tabindex="-1"></a>         <span class="at">var.col =</span> vdem_selected<span class="sc">$</span>democracy_groups,</span>
+<span id="cb273-9"><a href="manipulating-variables.html#cb273-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+gdp_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+democracy_groups
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.00411,0.227]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.227,0.45]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.45,0.672]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.672,0.895]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.577,24.1]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">49</span><br><span style="color:#339933;">89.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">44</span><br><span style="color:#339933;">95.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">29</span><br><span style="color:#339933;">90.6 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">27.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">133</span><br><span style="color:#339933;">76.9 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(24.1,47.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">4</span><br><span style="color:#339933;">7.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">9.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">25</span><br><span style="color:#339933;">62.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">32</span><br><span style="color:#339933;">18.5 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(47.5,71]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">1.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">6</span><br><span style="color:#339933;">3.5 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(71,94.5]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">1.8 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">1</span><br><span style="color:#339933;">2.5 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">2</span><br><span style="color:#339933;">1.2 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">55</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">46</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">32</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">40</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">173</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=77.469 · df=9 · Cramer’s V=0.386 · Fisher’s p=0.000
+</td>
+</tr>
+</table>
+</div>
+<div id="alternative-using-quantile-cut-points" class="section level4 unnumbered hasAnchor">
+<h4>Alternative using quantile cut points<a href="manipulating-variables.html#alternative-using-quantile-cut-points" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="manipulating-variables.html#cb274-1" tabindex="-1"></a><span class="fu">quantile</span>(vdem_selected<span class="sc">$</span>e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)</span></code></pre></div>
+<pre><code>##     0%    25%    50%    75%   100% 
+##  0.671  3.315  8.971 20.720 94.400</code></pre>
+<p>The new variables end in <code>_quartiles</code>, so they don’t replace the <code>_groups</code> variables we just made.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="manipulating-variables.html#cb276-1" tabindex="-1"></a>vdem_selected <span class="ot">&lt;-</span> vdem_selected <span class="sc">|&gt;</span></span>
+<span id="cb276-2"><a href="manipulating-variables.html#cb276-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gdp_quartiles =</span> <span class="fu">cut</span>(e_gdppc,</span>
+<span id="cb276-3"><a href="manipulating-variables.html#cb276-3" tabindex="-1"></a>                             <span class="at">breaks =</span> <span class="fu">quantile</span>(e_gdppc, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)),</span>
+<span id="cb276-4"><a href="manipulating-variables.html#cb276-4" tabindex="-1"></a>         <span class="at">democracy_quartiles =</span> <span class="fu">cut</span>(v2x_libdem,</span>
+<span id="cb276-5"><a href="manipulating-variables.html#cb276-5" tabindex="-1"></a>                                   <span class="at">breaks =</span> <span class="fu">quantile</span>(v2x_libdem, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>),<span class="at">na.rm=</span>T)))</span>
+<span id="cb276-6"><a href="manipulating-variables.html#cb276-6" tabindex="-1"></a></span>
+<span id="cb276-7"><a href="manipulating-variables.html#cb276-7" tabindex="-1"></a><span class="fu">tab_xtab</span>(<span class="at">var.row =</span> vdem_selected<span class="sc">$</span>democracy_quartiles,</span>
+<span id="cb276-8"><a href="manipulating-variables.html#cb276-8" tabindex="-1"></a>         <span class="at">var.col =</span> vdem_selected<span class="sc">$</span>gdp_quartiles,</span>
+<span id="cb276-9"><a href="manipulating-variables.html#cb276-9" tabindex="-1"></a>         <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">
+democracy_quartiles
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="4">
+gdp_quartiles
+</th>
+<th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">
+Total
+</th>
+</tr>
+<tr>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(0.671,3.31]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(3.31,8.97]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(8.97,20.7]
+</td>
+<td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">
+(20.7,94.4]
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.005,0.157]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">27.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">30.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">9</span><br><span style="color:#339933;">21.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">7</span><br><span style="color:#339933;">16.3 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">41</span><br><span style="color:#339933;">24 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.157,0.373]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">18</span><br><span style="color:#339933;">41.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">12</span><br><span style="color:#339933;">27.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">9</span><br><span style="color:#339933;">21.4 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">2</span><br><span style="color:#339933;">4.7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">41</span><br><span style="color:#339933;">24 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.373,0.66]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">30.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">15</span><br><span style="color:#339933;">34.9 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">13</span><br><span style="color:#339933;">31 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">44</span><br><span style="color:#339933;">25.7 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">
+(0.66,0.894]
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">0</span><br><span style="color:#339933;">0 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">3</span><br><span style="color:#339933;">7 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">11</span><br><span style="color:#339933;">26.2 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center; ">
+<span style="color:black;">31</span><br><span style="color:#339933;">72.1 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;  ">
+<span style="color:black;">45</span><br><span style="color:#339933;">26.3 %</span>
+</td>
+</tr>
+<tr>
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">
+Total
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">42</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">43</span><br><span style="color:#339933;">100 %</span>
+</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;">
+<span style="color:black;">171</span><br><span style="color:#339933;">100 %</span>
+</td>
+</tr>
+<td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">
+χ<sup>2</sup>=74.710 · df=9 · Cramer’s V=0.382 · p=0.000
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="clear-environment-1" class="section level3 unnumbered hasAnchor">
+<h3>Clear environment<a href="manipulating-variables.html#clear-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="manipulating-variables.html#cb277-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+</div>
+</div>
+<div id="credits-4" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Credits<a href="manipulating-variables.html#credits-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>This lesson uses data from
+<ul>
+<li>Stephenson, Laura B., Allison Harell, and Daniel Rubenson. 2025 Canadian Election Study (CES). [dataset]</li>
+<li>Varieties of Democracy (V-Dem) Project. <a href="https://www.v-dem.net/data/the-v-dem-dataset/">V-Dem Dataset</a>.</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducing-project-datasets.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-Week8.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["POL342-tutorial-notes.pdf", "POL342-tutorial-notes.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

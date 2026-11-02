@@ -45,3 +45,9 @@ canadian-election-study-2025
 vdem
 world-values-survey-wave-7-2017-2022
 asian-barometer-wave-5-2018-2021
+manipulating-variables
+set-up-1
+recode-categories-ces-2025
+age-groups-and-turnout-ces-2025
+turning-continuous-variables-into-categories-v-dem
+credits-4
