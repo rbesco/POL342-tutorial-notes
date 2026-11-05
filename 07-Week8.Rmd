@@ -19,7 +19,6 @@ This week uses two files from your `Project` folder. They must be in these folde
 ### Load libraries {-}
 ```{r}
 library(tidyverse)
-# install.packages("haven") # if you haven't installed the package
 library(haven)
 library(sjPlot)
 ```
@@ -48,7 +47,9 @@ ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") 
 
 ### Reverse scale {-}
 
-For `cps25_tarrifs_3`, a higher number means the person *opposes* tariffs more. If we want "support for tariffs" variable, reverse the scale.
+For `cps25_tarrifs_3`, a higher number means the person *opposes* tariffs more. If we want a "support for tariffs" variable, reverse the scale.
+
++ `cps25_tarrifs_3`: Do you support or oppose retaliatory tariffs against the US? (1 = Strongly support, 2 = Somewhat support, 3 = Somewhat oppose, 4 = Strongly oppose, 5 = Don't know)
 
 #### Reverse the scale with `if_else()` {-}
 We can change each category by hand: 1 becomes 4, 2 becomes 3, etc.
@@ -63,10 +64,10 @@ ces_selected <- ces_selected |>
          support_manual = if_else(cps25_tarrifs_3 == 4, 1, support_manual))
 ```
 
-What about "don't know"(5)?
+What about "don't know" (5)?
 
 #### Shortcut to reverse {-}
-Subtract the variable from 5 (highest value + 1). 
+Basic math: subtract the variable from 5 (highest value + 1). 
 
 + 1 becomes 5 - 1 = 4
 + 4 becomes 5 - 4 = 1
@@ -128,7 +129,7 @@ tab_xtab(var.row = ces$union,
 ### Combine categories: create a region variable {-}
 `cps25_province` has 13 categories, and some have very few respondents. We can combine provinces into four regions: West, Ontario, Quebec and Atlantic.
 
-  + `table(ces_selected$cps25_province)` only shows the codes. This shows the codes, the province names and the number of respondents:
+  + `table(ces_selected$cps25_province)` works, but this is easier to read:
 
 ```{r}
 ces_selected |>
@@ -162,15 +163,16 @@ tab_xtab(var.row = ces_selected$cps25_province,
 
 
 #### Crosstab of region and vote choice {-}
-First, set "Don't know" (7) to `NA`. People who had already voted in advance polls were asked a different question, so they are not included here.
-```{r}
-ces_selected <- ces_selected |>
-  mutate(vote_choice = if_else(cps25_votechoice == 7, NA, cps25_votechoice))
 
-tab_xtab(var.row = ces_selected$vote_choice,
+Let's do some bivariate analysis!
+
+```{r}
+tab_xtab(var.row = ces_selected$cps25_votechoice,
          var.col = ces_selected$region,
          show.col.prc = TRUE)
 ```
+
++ For your project, you might want to make a new vote choice variable, remove don't knows or other parties, etc.
 
 ## Age groups and turnout (CES 2025)
 
@@ -184,7 +186,7 @@ ces_selected <- ces_selected |>
 table(ces_selected$turnout)
 ```
 
-Wait! Is something wrong with this code? Possibly more than one thing!
+Wait! Is something wrong with this turnout variable? Possibly more than one thing!
 
 ### Age and turnout {-}
 
@@ -215,7 +217,7 @@ ces_selected <- ces_selected |>
 table(ces_selected$age_groups)
 ```
 
-Note: cut includes to the right, so `(17,29]` means 18 to 29. Someone who is 29 is in the first group, and someone who is 30 is in the second.
+Note: cut includes to the right/higher, so `(17,29]` means 18 to 29.
 
 #### Crosstab using age groups {-}
 ```{r}
@@ -236,7 +238,7 @@ tab_xtab(var.row = ces_selected$tariffs_support,
 rm(list=ls())
 ```
 
-## Turning continuous variables into categories (V-Dem)
+## Different ways of turning continuous variables into categories (V-Dem)
 
 ### Load data {-}
 ```{r}
@@ -262,9 +264,11 @@ knitr::include_graphics("images/w8_vdemExample.png")
 ```
 
 ```{r}
-head(vdem_selected$v2mefemjrn)
+summary(vdem_selected$v2mefemjrn)
 ```
+The cut function has a "breaks" option which cuts the data range into equal sized parts.
 
+  + splits the min-max range in four
 
 ```{r}
 cut(vdem_selected$v2mefemjrn, # numeric variable
@@ -293,6 +297,9 @@ tab_xtab(var.row = vdem_selected$female_journalists_groups,
 ```
 
 #### Save a crosstab {-}
+
+Add the option "file=" to save the crosstab to your computer in the working directory (your R project folder)
+
 ```{r}
 tab_xtab(var.row = vdem_selected$female_journalists_groups,
          var.col = vdem_selected$gender_power_groups,
@@ -301,7 +308,7 @@ tab_xtab(var.row = vdem_selected$female_journalists_groups,
 ```
 
 
-For your final project, open the html file on your laptops and copy the table into your word document
+For your final project, open the html file on your laptop and copy the table into your Word document
 
 ### Skewed variables: GDP per capita {-}
 ```{r}
@@ -309,7 +316,7 @@ ggplot(vdem_selected,aes(x=e_gdppc)) +
   geom_histogram()
 ```
 
-#### Crosstabs will not display well {-}
+#### Crosstabs have lots of empty or small cells {-}
 ```{r}
 vdem_selected <- vdem_selected |>
   mutate(gdp_groups = cut(e_gdppc,
@@ -324,6 +331,9 @@ tab_xtab(var.row = vdem_selected$gdp_groups,
 
 
 #### Alternative using quantile cut points {-}
+
+Use the "breaks = quantile" option to split into four categories with equal numbers of units
+
 ```{r}
 quantile(vdem_selected$e_gdppc, probs = seq(0, 1, 0.25),na.rm=T)
 ```

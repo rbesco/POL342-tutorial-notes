@@ -49,5 +49,5 @@ manipulating-variables
 set-up-1
 recode-categories-ces-2025
 age-groups-and-turnout-ces-2025
-turning-continuous-variables-into-categories-v-dem
+different-ways-of-turning-continuous-variables-into-categories-v-dem
 credits-4

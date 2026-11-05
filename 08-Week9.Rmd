@@ -14,9 +14,15 @@ library(marginaleffects)
 options(warn = -1) # suppress warning messages that do not disturb the program flow
 ```
 
+### Make sure you have your project datasets and `W9.R` {-}
+This week uses two files from your `Project` folder. They must be in these folders inside your R project folder:
 
++ V-Dem: `Project/VDem/vdem2000_2023.csv`
++ CES 2025: `Project/CES2025/2025 Canadian Election Study v1.dta`
 
-## Load libraries
+### Load libraries {-}
+
+#### Install new packages "modelsummary" and "marginaleffects" {-}
 ```{r,eval=F}
 library(tidyverse)
 library(haven)
@@ -36,31 +42,31 @@ library(marginaleffects)
 my_vars <- c("country_name", "country_id", "year", 
           "v2x_corr","e_gdppc")
 
-vdem_2009 <- read.csv("Project/VDem/vdem2000_2023.csv") |>
-  dplyr::select(all_of(my_vars)) |>
+vdem_selected <- read.csv("Project/VDem/vdem2000_2023.csv") |>
+  select(all_of(my_vars)) |>
   filter(year==2009) 
 ```
 
 
 ### Scatter plot the bivariate relationship {-}
 ```{r}
-ggplot(data=vdem_2009,aes(x=v2x_corr,y=e_gdppc)) +
+ggplot(data=vdem_selected,aes(x=v2x_corr,y=e_gdppc)) +
   geom_point()
 ```
 
 ### Regression line {-}
 ```{r}
-ggplot(data=vdem_2009,aes(x=v2x_corr,y=e_gdppc)) +
+ggplot(data=vdem_selected,aes(x=v2x_corr,y=e_gdppc)) +
   geom_point(size=1,alpha=.5) +
-  geom_smooth(method="lm",size=.5) + # linear model, i.e. linear regression
+  geom_smooth(method="lm",linewidth=.5) + # linear model, i.e. linear regression; linewidth sets the thickness of the line
   scale_y_continuous(breaks=c(seq(-5,100,by=10)))
 ```
 
 #### Save ggplot as object {-}
 ```{r}
-corruption_plot <- ggplot(data=vdem_2009,aes(x=v2x_corr,y=e_gdppc)) + # assign ggplot to corruption_plot
+corruption_plot <- ggplot(data=vdem_selected,aes(x=v2x_corr,y=e_gdppc)) + # assign ggplot to corruption_plot
   geom_point(size=1,alpha=.5) +
-  geom_smooth(method="lm",size=.5) + # linear model, i.e. linear regression
+  geom_smooth(method="lm",linewidth=.5) + # linear model, i.e. linear regression
   scale_y_continuous(breaks=c(seq(-5,100,by=10)))
 ```
 
@@ -76,8 +82,9 @@ ggsave(filename = "regressionLine.png",
 ### Regression table {-}
 
 #### Table using `modelsummary` {-}
+In Week 6, we used `model_parameters()` to read regression results. `modelsummary()` from the package `modelsummary` makes a regression table that is ready to put in a paper.
 ```{r}
-corruption_model <- lm(data=vdem_2009,e_gdppc ~ v2x_corr)
+corruption_model <- lm(e_gdppc ~ v2x_corr, data = vdem_selected)
 
 modelsummary(corruption_model, stars=TRUE)
 ```
@@ -133,51 +140,53 @@ rm(list=ls())
 ```{r}
 my_vars <- c("cps25_age_in_years","cps25_news_cons","cps25_govt_confusing") #news consumption and internal political efficacy
 
-ces_select <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
-  dplyr::select(all_of(my_vars))
+ces_selected <- read_dta("Project/CES2025/2025 Canadian Election Study v1.dta") |>
+  select(all_of(my_vars))
 ```
 
-### Transform & drop NAs {-}
+### Set "don't know" to `NA` {-}
+Same as Week 7: use `if_else()` to make new variables, and keep them in the same data frame.
 ```{r}
-ces_dropna <- ces_select |>
-  mutate(cps25_govt_confusing=ifelse(cps25_govt_confusing==5, #conditional statement
-                                     NA, #if yes
-                                     cps25_govt_confusing), #if no
-         cps25_news_cons=ifelse(cps25_news_cons==7, #conditional statement
+ces_selected <- ces_selected |> # save the new variables in the same data frame
+  mutate(govt_confusing=if_else(cps25_govt_confusing==5, # don't know or refused
                                 NA, #if yes
-                                cps25_news_cons)) |> #if no
-  na.omit() #remove NAs
+                                cps25_govt_confusing), #if no
+         news_cons=if_else(cps25_news_cons==7, # don't know or refused
+                           NA, #if yes
+                           cps25_news_cons)) #if no
 ```
 
-### Check transformed variables {-}
+### Check the new variables {-}
 ```{r}
-table(ces_dropna$cps25_govt_confusing)
+table(ces_selected$govt_confusing)
 
-table(ces_dropna$cps25_news_cons)
+table(ces_selected$news_cons)
 ```
+
+`lm()` leaves out `NA`s automatically (Week 6), so we don't need to remove them first.
 
 
 ### Regression table {-}
 ```{r}
-news_model <- lm(data=ces_dropna,cps25_govt_confusing ~ cps25_news_cons) # model 1
+news_model <- lm(govt_confusing ~ news_cons, data = ces_selected) # model 1
 
 modelsummary(list("Base"=news_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"),
-             coef_rename=c("cps25_news_cons"="News Consumption"))
+             coef_rename=c("news_cons"="News Consumption"))
 ```
 
 Now interpret: what does this mean?
 
 #### Controls {-}
 ```{r}
-news_age_model <- lm(data=ces_dropna,cps25_govt_confusing ~ cps25_news_cons + cps25_age_in_years) # model 2
+news_age_model <- lm(govt_confusing ~ news_cons + cps25_age_in_years, data = ces_selected) # model 2
 
 modelsummary(list("Base" = news_model,
                   "w/ Controls" = news_age_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("cps25_news_cons" = "News Consumption",
+             coef_rename=c("news_cons" = "News Consumption",
                            "cps25_age_in_years" = "Age"))
 ```
 
@@ -187,12 +196,12 @@ Now interpret: what does this mean?
 
 `plot_predictions()` from the package `marginaleffects` shows the predicted value of the dependent variable at each value of the independent variable. The `condition` argument is the variable on the x-axis.
 ```{r}
-plot_predictions(news_model, condition = "cps25_news_cons")
+plot_predictions(news_model, condition = "news_cons")
 ```
 
 The same plot for the model with controls.
 ```{r}
-plot_predictions(news_age_model, condition = "cps25_news_cons")
+plot_predictions(news_age_model, condition = "news_cons")
 ```
 
 Now interpret: what does this mean?
@@ -203,7 +212,7 @@ modelsummary(list("Base" = news_model,
                   "w/ Controls" = news_age_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("cps25_news_cons" = "News Consumption",
+             coef_rename=c("news_cons" = "News Consumption",
                            "cps25_age_in_years" = "Age"),
              output="ces.docx") 
 ```
