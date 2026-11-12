@@ -9,6 +9,7 @@ Week 9 tutorial goals:
 ```{r,include=FALSE}
 library(tidyverse)
 library(haven)
+library(sjPlot)
 library(modelsummary)
 library(marginaleffects)
 options(warn = -1) # suppress warning messages that do not disturb the program flow
@@ -26,6 +27,7 @@ This week uses two files from your `Project` folder. They must be in these folde
 ```{r,eval=F}
 library(tidyverse)
 library(haven)
+library(sjPlot)
 
 install.packages("modelsummary") # regression table
 install.packages("pandoc") # to save regression table to Word doc output
@@ -89,7 +91,6 @@ corruption_model <- lm(e_gdppc ~ v2x_corr, data = vdem_selected)
 modelsummary(corruption_model, stars=TRUE)
 ```
 
-Now interpret: what does this mean?
 
 #### Goodness-of-fit statistics {-}
 ```{r}
@@ -109,9 +110,15 @@ modelsummary(corruption_model,
 ```{r}
 modelsummary(list("Base"=corruption_model), # list allows me to name the models
              stars=TRUE,
-             gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("v2x_corr"="Corruption Index")) # rename coefficient
+             gof_map=c("nobs","r.squared","adj.r.squared"),
+             coef_map=c("v2x_corr"="Corruption Index",
+                        "(Intercept)"="Intercept"), # rename and order coefficients
+             title="GDP per capita and corruption")
 ```
+
+
+Now interpret: what does this mean?
+
 
 
 #### Save output {-}
@@ -125,8 +132,10 @@ Under Arguments > output, you can see a number of supported file formats: .docx,
 modelsummary(list("Base"=corruption_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("v2x_corr"="Corruption Index"),
-             output="out.docx") 
+             coef_map=c("v2x_corr"="Corruption Index",
+                        "(Intercept)"="Intercept"), # rename and order coefficients
+             title="GDP per capita and corruption",
+             output="corruption_table.docx")
 ```
 
 ### Clear environment {-}
@@ -158,9 +167,9 @@ ces_selected <- ces_selected |> # save the new variables in the same data frame
 
 ### Check the new variables {-}
 ```{r}
-table(ces_selected$govt_confusing)
-
-table(ces_selected$news_cons)
+tab_xtab(var.row = ces_selected$cps25_govt_confusing,
+         var.col = ces_selected$govt_confusing,
+         show.na = TRUE) # show NAs, so we can see the 5s became NA
 ```
 
 `lm()` leaves out `NA`s automatically (Week 6), so we don't need to remove them first.
@@ -173,7 +182,9 @@ news_model <- lm(govt_confusing ~ news_cons, data = ces_selected) # model 1
 modelsummary(list("Base"=news_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"),
-             coef_rename=c("news_cons"="News Consumption"))
+             coef_map=c("news_cons"="News Consumption",
+                        "(Intercept)"="Intercept"), # rename and order coefficients
+             title="Gov Confusing")
 ```
 
 Now interpret: what does this mean?
@@ -186,8 +197,10 @@ modelsummary(list("Base" = news_model,
                   "w/ Controls" = news_age_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("news_cons" = "News Consumption",
-                           "cps25_age_in_years" = "Age"))
+             coef_map=c("news_cons"="News Consumption",
+                        "cps25_age_in_years" = "Age",
+                        "(Intercept)"="Intercept"), # rename and order coefficients
+             title="Gov Confusing")
 ```
 
 Now interpret: what does this mean?
@@ -200,8 +213,13 @@ plot_predictions(news_model, condition = "news_cons")
 ```
 
 The same plot for the model with controls.
+
+We also add nicer axis labels. `plot_predictions()` makes a ggplot, so we can add labels with `+`, the same as before.
+
 ```{r}
-plot_predictions(news_age_model, condition = "news_cons")
+plot_predictions(news_age_model, condition = "news_cons") +
+  xlab("News consumption") +
+  ylab("Govt is confusing")
 ```
 
 Now interpret: what does this mean?
@@ -212,9 +230,11 @@ modelsummary(list("Base" = news_model,
                   "w/ Controls" = news_age_model),
              stars=TRUE,
              gof_map=c("nobs","r.squared","adj.r.squared"), 
-             coef_rename=c("news_cons" = "News Consumption",
-                           "cps25_age_in_years" = "Age"),
-             output="ces.docx") 
+             coef_map=c("news_cons"="News Consumption",
+                        "cps25_age_in_years" = "Age",
+                        "(Intercept)"="Intercept"), # rename and order coefficients
+             title="Gov Confusing",
+             output="ces.docx")
 ```
 
 ### Clear environment {-}

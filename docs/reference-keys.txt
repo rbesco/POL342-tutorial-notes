@@ -51,3 +51,8 @@ recode-categories-ces-2025
 age-groups-and-turnout-ces-2025
 different-ways-of-turning-continuous-variables-into-categories-v-dem
 credits-4
+communicating-results
+set-up-2
+vdem-1
+canadian-election-study-2025-1
+credits-5
