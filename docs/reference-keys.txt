@@ -56,3 +56,11 @@ set-up-2
 vdem-1
 canadian-election-study-2025-1
 credits-5
+beautiful-and-effective-data-visualization
+set-up-3
+bar-charts
+box-and-whiskers-plot
+scatter-plot
+fancy-graphs-and-options
+optional-merging-data-from-another-dataset
+credits-6

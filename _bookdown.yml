@@ -15,7 +15,7 @@ rmd_files:
   - 06-Week7.Rmd
   - 07-Week8.Rmd
   - 08-Week9.Rmd
-  # - 09-Week10.Rmd
+  - 09-Week10.Rmd
   # - 10-Week11.Rmd
 
 language:
