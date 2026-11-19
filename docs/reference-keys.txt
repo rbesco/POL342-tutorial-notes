@@ -62,5 +62,5 @@ bar-charts
 box-and-whiskers-plot
 scatter-plot
 fancy-graphs-and-options
-optional-merging-data-from-another-dataset
+merging-data-from-another-dataset
 credits-6

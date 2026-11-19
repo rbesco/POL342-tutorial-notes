@@ -15,7 +15,7 @@ Week 10 tutorial goals:
     + highlighting a group
     + dumbbell plot
     + just for fun: The Economist, Taylor Swift and cat themes
-  * Optional: merging data from another dataset
+  * Merging data from another dataset
 
 
 ## Set-up
@@ -32,7 +32,7 @@ This week uses three files from your `Project` folder. They must be in these fol
 + CES 2025: `Project/CES2025/2025 Canadian Election Study v1.dta`
 + V-Dem: `Project/VDem/vdem2000_2023.csv`
 
-For the optional merging example, also put `statelist2024.csv` in your R project folder.
+For the merging example, also put `statelist2024.csv` in your R project folder.
 
 ### Load libraries {-}
 ```{r,eval=F}
@@ -458,7 +458,7 @@ ggplot(data=vdem_selected |> filter(e_regionpol_6C==5), # Western Europe and Nor
 rm(list=ls())
 ```
 
-## Optional: Merging data from another dataset
+## Merging data from another dataset
 
 If you want to include data from other data sets, you must receive approval from the TAs or Prof. Besco prior to submission.
 
